@@ -2,7 +2,7 @@
 
 HED tags are assigned to event codes (also known as triggers or event numbers) in EEG recordings and allow humans and computers to better understand what these codes represent (e.g. code #5 -> Target detection in an RSVP paradigm). [Click here](/interactive) to see an interactive visualization of HED hierarchy (note: it shows an an older version of HED schema). The latest version of the schema is available [here](http://www.hedtags.org/schema) in wiki format.
 
-<a href="http://netdb1.cs.utsa.edu/hed"> <button name="button">Online HED validator</button></a>
+<a href="http://visual.cs.utsa.edu/hed"> <button name="button">Online HED validator</button></a>
 
 [<img src="/images/HED_tree_brief.png">](/interactive)
 ===
@@ -17,11 +17,11 @@ Follow these steps:
 1. Read [HED Schema](http://www.hedtags.org/schema). It contains all tags in the HED hierarchy.  
 2. Read [HED reference paper](http://journal.frontiersin.org/article/10.3389/fninf.2016.00042/full).  
 3. Read [HED Tagging Strategy Guide](http://www.hedtags.org/downloads/HED%20Tagging%20Strategy%20Guide.pdf)
-4. Read about CTAGGER GUI-based HED tagging ([MATLAB](https://github.com/VisLab/HEDTools/blob/master/matlab/documentation/HEDToolsUserManual.pdf)).  
+4. Read about CTAGGER GUI-based HED tagging ([MATLAB](https://github.com/hed-standard/hed-matlab/blob/master/matlab/docs/HEDToolsUserManual.pdf)).  
 
 ## Tools
 
-1.Tools supporting HED tagging can be found at: [HED Tools](https://github.com/VisLab/HEDTools). The repository organizes the tools by language, so the [matlab](https://github.com/VisLab/HEDTools/tree/master/matlab) subdirectory contains HED tools for MATLAB. This repository also contains a zip file ready for installation as an EEGLAB plugin in the [eeglabplugin](https://github.com/VisLab/HEDTools/tree/master/EEGLABPlugin) directory.  
+1.Tools supporting HED tagging can be found at: [HED Tools](https://github.com/hed-standard). The repository organizes the tools by language, so the [matlab](https://github.com/hed-standard/hed-matlab) subdirectory contains HED tools for MATLAB. This repository also contains a zip file ready for installation as an EEGLAB plugin in the [eeglabplugin](https://github.com/hed-standard/hed-matlab/tree/master/EEGLABPlugin) directory.  
 2. [rERP Toolbox](http://sccn.ucsd.edu/wiki/EEGLAB/RERP) is an open source Matlab toolbox for calculating overlapping Event Related Potentials (ERP) by multiple regression (an alternative to averaging). It can also perform regression on HED tags.  
 3. [Interactive visualization of HED hierarchy](/interactive) in your web browser.
 
@@ -34,11 +34,15 @@ Follow these steps:
 
 ## People
 
-* Nima Bigdely-Shamlo ([Qusp](http://www.qusp.io))
+* Nima Bigdely-Shamlo
 * Kay Robbins ([University of Texas San Antonio](https://www.utsa.edu/))
 * Scott Makeig ([Swartz Center, UCSD](http://sccn.ucsd.edu)).
-* Jeremy Cockfield ([University of Texas San Antonio](https://www.utsa.edu/))
-* Christian Kothe ([Qusp](http://www.qusp.io)).
+* Arnaud Delorme ([Swartz Center, UCSD](http://sccn.ucsd.edu)).
+* Dung Truong ([Swartz Center, UCSD](http://sccn.ucsd.edu)).
+* Ian Callanan ([University of Texas San Antonio](https://www.utsa.edu/))
+* Alexander Jones ([University of Texas San Antonio](https://www.utsa.edu/))
+* Aaron Hodson ([University of Texas San Antonio](https://www.utsa.edu/))
+* Owen Winterberg ([University of Texas San Antonio](https://www.utsa.edu/))
 * Makoto Miyakoshi ([Swartz Center, UCSD](http://sccn.ucsd.edu)).
 
 and many others.
