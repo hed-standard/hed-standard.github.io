@@ -12,6 +12,7 @@ HED tags are assigned to event codes (also known as triggers or event numbers) i
 In the same way that we tag a picture on Flicker, or a video clip on Youtube (e.g. cat, cute, funny), we can tag EEG experimental event types used in event-related EEG research. Hierarchical Event Descriptors (HED) is a set of descriptor tags partially adopted from BrainMap/NeuroLex ontologies and organized hierarchically. HED tags can be used to describe many types of EEG experiment events in a uniform, extensible, and machine readable manner.
 
 ## How do I start?
+Check out the [Documentation page]({{ site.url }}/hed-docs) to start using HED tools to tag your data.
 Follow these steps:
 
 1. Read [HED Schema](http://www.hedtags.org/schema). It contains all tags in the HED hierarchy.  
