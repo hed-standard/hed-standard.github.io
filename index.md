@@ -14,12 +14,6 @@ In the same way that we tag a picture on Flicker, or a video clip on Youtube (e.
 ## How do I start?
 Check out the [Documentation page]({{ site.url }}/hed-docs) to start using HED tools to tag your data.  
 
-## Tools
-
-1.Tools supporting HED tagging can be found at: [HED Tools](https://github.com/hed-standard). The repository organizes the tools by language, so the [matlab](https://github.com/hed-standard/hed-matlab) subdirectory contains HED tools for MATLAB. This repository also contains a zip file ready for installation as an EEGLAB plugin in the [eeglabplugin](https://github.com/hed-standard/hed-matlab/tree/master/EEGLABPlugin) directory.  
-2. [rERP Toolbox](http://sccn.ucsd.edu/wiki/EEGLAB/RERP) is an open source Matlab toolbox for calculating overlapping Event Related Potentials (ERP) by multiple regression (an alternative to averaging). It can also perform regression on HED tags.  
-3. [Interactive visualization of HED hierarchy](/interactive) in your web browser.
-
 ## Who is using HED tags?
 
 * [National Database for Autism Research (NDAR)](http://ndar.nih.gov/)
