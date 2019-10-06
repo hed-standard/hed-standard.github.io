@@ -1,21 +1,28 @@
 ![](/images/HED_connected_logo_100.png)
 
-HED tags are assigned to event codes (also known as triggers or event numbers) in EEG recordings and allow humans and computers to better understand what these codes represent (e.g. code #5 -> Target detection in an RSVP paradigm). [Click here](/interactive) to see an interactive visualization of HED hierarchy (note: it shows an an older version of HED schema). The latest version of the schema is available [here](http://www.hedtags.org/schema) in wiki format.
+## What is HED?
 
-<a href="http://visual.cs.utsa.edu/hed"> <button name="button">Online HED validator</button></a>
+HED (Hierarchical Event Descriptors) is a framework for systematically describing both laboratory and real-world events. HED tags are comma-separated path strings. The allowed HED tags are organized in a forest of groups with the roots *Event*, *Item*, *Sensory presentation*, *Attribute*, *Action*, *Participant*, *Experiment context*, and *Paradigm* (view the visualization of HED tags below).
+
+The goal of HED is to describe precisely the nature of the events of interest occurring in an experiment using a common language, so that the following two things can be accomplished. First, you and/or other researchers can better understand the experience and responses of the participant. Secondly, data analysis and meta-analysis can more easily and flexibly compare events (and responses to events) across datasets and studies to better isolate common “cognitive aspects”.
+
+Event annotation comes in two forms: code-specific and event-specific. In code-specific event annotation, researchers identify a small number of event classes or categories and annotate events by category. In event-specific event annotation, researchers identify events with specific values for continuous parameters and annotate events by the times at which the events occur.
+
+The HED framework has been developed for application to EEG brain imaging, but may also be applied to other brain imaging (MEG, fNIRS), multimodal (a.k.a, mobile brain/body imaging), physiological (ECG, EMG, GSR), or purely behavioral data. HED has recently been adopted as part of the BIDS ([Brain Imaging Data Structure](http://bids.neuroimaging.io)) standard for brain imaging.
+
+## The HED Schema
+
+The [HED Schema](http://www.hedtags.org/schema) contains allowed HED tags and describes their properties. It is partially adopted from BrainMap/NeuroLex ontologies and organized hierarchically. You can click on the image below for an interactive visualization of HED hierarchy:
 
 [<img src="/images/HED_tree_brief.png">](/interactive)
-===
-
-## Why tags?
-
-In the same way that we tag a picture on Flicker, or a video clip on Youtube (e.g. cat, cute, funny), we can tag EEG experimental event types used in event-related EEG research. Hierarchical Event Descriptors (HED) is a set of descriptor tags partially adopted from BrainMap/NeuroLex ontologies and organized hierarchically. HED tags can be used to describe many types of EEG experiment events in a uniform, extensible, and machine readable manner.
 
 ## How do I start?
+
 Check out the [Documentation page]({{ site.url }}/hed-docs) to start using HED tools to tag your data.  
 
 ## Who is using HED tags?
 
+* [Brain Imaging Data Structure (BIDS)](https://www.nature.com/articles/s41597-019-0104-8). Also check out [BIDS specification of HED](https://bids-specification.readthedocs.io/en/stable/99-appendices/03-hed.html)
 * [National Database for Autism Research (NDAR)](http://ndar.nih.gov/)
 * [CaN-CTA project of Army Research Labaratory](http://cancta.net)
 * [EEG Study Schema (ESS)](http://www.eegstudy.org)
