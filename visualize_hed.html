@@ -1,6 +1,6 @@
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="hed.css">
+<link rel="stylesheet" type="text/css" href="test_visualization/hed.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
 function loadXMLDoc(filename)
@@ -20,8 +20,8 @@ return xhttp.responseXML;
 }
 function displayResult()
 {
-xml = loadXMLDoc("HED.xml");
-xsl = loadXMLDoc("hed-schema.xsl");
+xml = loadXMLDoc("test_visualization/HED.xml");
+xsl = loadXMLDoc("test_visualization/hed-schema.xsl");
 // code for IE
 if (window.ActiveXObject || xhttp.responseType == "msxml-document")
   {
