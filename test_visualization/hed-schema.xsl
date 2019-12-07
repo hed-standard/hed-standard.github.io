@@ -11,15 +11,16 @@
 </xsl:template>
 
 <xsl:template match="node[node]">
-	<li description="{description}"><xsl:value-of select="name"/></li>
-	<div class="attribute" style="display: none">
-	<xsl:for-each select="@*">
-		<xsl:value-of select="name(.)"/>:<xsl:value-of select="."/>, 
-	</xsl:for-each>
-	</div>
+	<li description="{description}"><xsl:value-of select="name"/>
 	<ul>
 		<xsl:apply-templates select="node"/>
 	</ul>
+	<div class="attribute" style="display: none">
+		<xsl:for-each select="@*">
+			<xsl:value-of select="name(.)"/>:<xsl:value-of select="."/>,
+		</xsl:for-each>
+	</div>
+	</li>
 </xsl:template>
 
 <xsl:template match="/">
@@ -27,4 +28,5 @@
 </xsl:template>
 
 </xsl:stylesheet>
+
 

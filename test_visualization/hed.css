@@ -27,3 +27,35 @@ body{
   font-size: 10px;
   cursor:pointer;
 }
+
+ul {
+    position: relative;
+    list-style: none;
+    padding-left: 32px;
+}
+
+li {
+    position: relative;
+}
+
+li::before, li::after {
+    content: "";
+    position: absolute;
+    left: -12px;
+}
+li::before {
+    border-top: 1px solid black;
+    top: 9px;
+    width: 8px;
+    height: 0;
+}
+li::after {
+    border-left: 1px solid #000;
+    height: 100%;
+    width: 0px;
+    top: 2px;
+}
+ul > li:last-of-type::after {
+    height: 8px;
+}
+

@@ -1,6 +1,6 @@
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="test_visualization/hed.css">
+<link rel="stylesheet" type="text/css" href="hed-collapsible.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
 function loadXMLDoc(filename)
@@ -39,18 +39,23 @@ else if (document.implementation && document.implementation.createDocument)
 $('li').css('cursor', 'pointer');
 $("li").click(function(event) {
     var selected = $(event.target);
-    var attrs = selected.next().text();
+    var attrs = selected.children("div").text();
     parsed = attrs.split(',');
     parsed = parsed.map(x => "<p>" + x.trim() + "</p>");
     parsed = parsed.slice(0,parsed.length-1); // last item is empty (result of extra , at the end)
     var finalText = parsed.join("");
     finalText = finalText == null || finalText.length == 0 ? "" : "<p><i>Attribute</i></p>"+finalText;
-    $("div.tooltip > h3").text(selected.text());
+    $("div.tooltip > h3").text(selected
+        .clone()    //clone the element
+        .children() //select all the children
+        .remove()   //remove all the children
+        .end()  //again go back to selected element
+        .text());
     $("div.tooltip > p#description").text(selected.attr("description"));
     $("div.tooltip > div#attribute").html(finalText);
     $("div.tooltip").css({
-        top: selected.position().top + "px",
-        left: selected.position().left + selected.textWidth() + 10 + "px"
+        top: selected.offset().top + "px",
+        left: selected.offset().left + selected.textWidth() + 10 + "px"
     }).show();
 })
 $('.close').on('click', function(){
@@ -68,10 +73,12 @@ $.fn.textWidth = function(){
 };
 }
 </script>
+<script>
+</script>
 </head>
 <body onload="displayResult()">
 <h1>HED Schema</h1>
-<div id="example"></div>
+<ul id="example" class="collapsibleList"></ul>
 <div class="tooltip">
     <span class="close" style="position:relative; float:left">X</span>
     <h3>Tooltip title</h3>
@@ -82,3 +89,4 @@ $.fn.textWidth = function(){
 </div>
 </body>
 </html>
+
