@@ -5,7 +5,7 @@
 	<a description="{description}" class="list-group-item"><xsl:value-of select="name"/></a>
 	<div class="attribute" style="display: none">
 	<xsl:for-each select="@*">
-		<xsl:value-of select="name(.)"/>:<xsl:value-of select="."/>, 
+		<xsl:value-of select="name(.)"/>: <xsl:value-of select="."/>,
 	</xsl:for-each>
 	</div>
 </xsl:template>
@@ -14,7 +14,7 @@
 	<a href="#{translate(name,' ','_')}" description="{description}" class="list-group-item" data-toggle="collapse"><xsl:value-of select="name"/></a>
 	<div class="attribute" style="display: none">
 		<xsl:for-each select="@*">
-			<xsl:value-of select="name(.)"/>:<xsl:value-of select="."/>,
+			<xsl:value-of select="name(.)"/>: <xsl:value-of select="."/>,
 		</xsl:for-each>
 	</div>
 	<div class="list-group collapse multi-collapse show" id="{translate(name,' ','_')}">
