@@ -52,7 +52,7 @@
                 $("h3#title").text(this.textContent);
                 $("p#tag").text("Full tag: /" + path);
                 $("p#description").text(selected.attr("description"));
-                $("div#attribute-list").html(finalText);
+                $("div#metadata").html(finalText);
             })
         }
 
@@ -101,7 +101,7 @@
                         <p id="tag"></p>
                         <p id="description"></p>
                         <p>--------</p>
-                        <div id="attribute-list"></div>
+                        <div id="metadata"></div>
                     </div>
                 </div>
             </div>
