@@ -46,7 +46,8 @@ body{
     top: 2px;
 }
 
-a.list-group-item:last-of-type + div::after {
+/*Remove left border line for last list-group div*/
+a.list-group-item:last-of-type + div + div::after {
     border-style: none;
 }
 
@@ -83,12 +84,11 @@ a.list-group-item:last-of-type + div::after {
     padding: 0;
     overflow: hidden;
 }
-.list-group-item + .list-group {
+/*Indentation for hierarchical display*/
+.list-group {
     padding-left: 30px;
 }
-.list-group-item .fa {
-    margin-right: 5px;
-}
+
 
 /*Tooltip container*/
 /* Tooltip container */
