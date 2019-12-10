@@ -77,12 +77,25 @@
     <h1>HED Schema</h1>
 
 
-    <div id="infoBoard" class="fixed-top">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col-3"></div>
                 <div class="col-3">
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target=".multi-collapse">Expand/Collapse all</button>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col col-lg-3">
+                <div id="example" class="list-group list-group-root well"></div>
+            </div>
+            <div class="col col-lg-3"></div>
+            <div class="col col-lg-4">
+                <div id="infoBoard" class="border border-primary rounded">
                     <div>
                         <h3 id="title">Title</h3>
                         <p id="tag"></p>
@@ -94,9 +107,6 @@
             </div>
         </div>
     </div>
-    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target=".multi-collapse">Expand/Collapse all</button>
-
-    <div id="example" class="list-group list-group-root well"></div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
