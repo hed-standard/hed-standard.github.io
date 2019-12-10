@@ -1,92 +1,106 @@
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="hed-collapsible.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script>
-function loadXMLDoc(filename)
-{
-if (window.ActiveXObject)
-  {
-  xhttp = new ActiveXObject("Msxml2.XMLHTTP");
-  }
-else
-  {
-  xhttp = new XMLHttpRequest();
-  }
-xhttp.open("GET", filename, false);
-try {xhttp.responseType = "msxml-document"} catch(err) {} // Helping IE11
-xhttp.send("");
-return xhttp.responseXML;
-}
-function displayResult()
-{
-xml = loadXMLDoc("test_visualization/HED.xml");
-xsl = loadXMLDoc("test_visualization/hed-schema.xsl");
-// code for IE
-if (window.ActiveXObject || xhttp.responseType == "msxml-document")
-  {
-  ex = xml.transformNode(xsl);
-  document.getElementById("example").innerHTML = ex;
-  }
-// code for Chrome, Firefox, Opera, etc.
-else if (document.implementation && document.implementation.createDocument)
-  {
-  xsltProcessor = new XSLTProcessor();
-  xsltProcessor.importStylesheet(xsl);
-  resultDocument = xsltProcessor.transformToFragment(xml, document);
-  document.getElementById("example").appendChild(resultDocument);
-  }
-$('li').css('cursor', 'pointer');
-$("li").click(function(event) {
-    var selected = $(event.target);
-    var attrs = selected.children("div").text();
-    parsed = attrs.split(',');
-    parsed = parsed.map(x => "<p>" + x.trim() + "</p>");
-    parsed = parsed.slice(0,parsed.length-1); // last item is empty (result of extra , at the end)
-    var finalText = parsed.join("");
-    finalText = finalText == null || finalText.length == 0 ? "" : "<p><i>Attribute</i></p>"+finalText;
-    $("div.tooltip > h3").text(selected
-        .clone()    //clone the element
-        .children() //select all the children
-        .remove()   //remove all the children
-        .end()  //again go back to selected element
-        .text());
-    $("div.tooltip > p#description").text(selected.attr("description"));
-    $("div.tooltip > div#attribute").html(finalText);
-    $("div.tooltip").css({
-        top: selected.offset().top + "px",
-        left: selected.offset().left + selected.textWidth() + 10 + "px"
-    }).show();
-})
-$('.close').on('click', function(){
-  $("div.tooltip").fadeOut();
-});
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="test_visualization/hed-collapsible.css">
+    <script>
+        function loadXMLDoc(filename)
+        {
+            if (window.ActiveXObject)
+            {
+                xhttp = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            else
+            {
+                xhttp = new XMLHttpRequest();
+            }
+            xhttp.open("GET", filename, false);
+            try {xhttp.responseType = "msxml-document"} catch(err) {} // Helping IE11
+            xhttp.send("");
+            return xhttp.responseXML;
+        }
+        function displayResult()
+        {
+            xml = loadXMLDoc("test_visualization/HED.xml");
+            xsl = loadXMLDoc("test_visualization/hed-schema.xsl");
+            // code for IE
+            if (window.ActiveXObject || xhttp.responseType == "msxml-document")
+            {
+                ex = xml.transformNode(xsl);
+                document.getElementById("example").innerHTML = ex;
+            }
+            // code for Chrome, Firefox, Opera, etc.
+            else if (document.implementation && document.implementation.createDocument)
+            {
+                xsltProcessor = new XSLTProcessor();
+                xsltProcessor.importStylesheet(xsl);
+                resultDocument = xsltProcessor.transformToFragment(xml, document);
+                document.getElementById("example").appendChild(resultDocument);
+            }
 
-$.fn.textWidth = function(){
-  // Credit: https://stackoverflow.com/questions/1582534/calculating-text-width
-  var html_org = $(this).html();
-  var html_calc = '<span>' + html_org + '</span>';
-  $(this).html(html_calc);
-  var width = $(this).find('span:first').width();
-  $(this).html(html_org);
-  return width;
-};
-}
-</script>
-<script>
-</script>
+            $("a").mouseover(function() {
+                var path = getPath(this);
+                var selected = $(event.target);
+                var attrs = selected.next().next().text();
+                parsed = attrs.split(',');
+                parsed = parsed.map(x => "<p>" + x.trim() + "</p>");
+                parsed = parsed.slice(0,parsed.length-1); // last item is empty (result of extra , at the end)
+                var finalText = parsed.join("");
+                // console.log(selected.text);
+                finalText = finalText == null || finalText.length == 0 ? "" : "<p><i>Attribute</i></p>"+finalText;
+                $("h3#title").text(this.textContent);
+                $("p#tag").text("Full tag: /" + path);
+                $("p#description").text(selected.attr("description"));
+                $("div#attribute").html(finalText);
+            })
+        }
+        function getPath(node) {
+            var path = node.textContent;
+            var parentTagNode = node.parentElement.previousElementSibling;
+            while (parentTagNode != null) {
+                if (parentTagNode.tagName == 'A') {
+                    // console.log(parentTagNode.textContent);
+                    path = parentTagNode.textContent + "/" + path;
+                }
+                node = parentTagNode;
+                parentTagNode = node.parentElement.previousElementSibling;
+            }
+            // console.log(path);
+            return path;
+        }
+    </script>
 </head>
 <body onload="displayResult()">
-<h1>HED Schema</h1>
-<ul id="example" class="collapsibleList"></ul>
-<div class="tooltip">
-    <span class="close" style="position:relative; float:left">X</span>
-    <h3>Tooltip title</h3>
-    <p id="description"></p>
-    <p>--------</p>
-    <div id="attribute"></div>
-    
-</div>
+    <h1>HED Schema</h1>
+
+
+    <div id="infoBoard" class="fixed-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col-3"></div>
+                <div class="col-3">
+                    <div>
+                        <h3 id="title">Title</h3>
+                        <p id="tag"></p>
+                        <p id="description"></p>
+                        <p>--------</p>
+                        <div id="attribute"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target=".multi-collapse">Expand/Collapse all</button>
+
+    <div id="example" class="list-group list-group-root well"></div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+
+    </script>
 </body>
 </html>
-

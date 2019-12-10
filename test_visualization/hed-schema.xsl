@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:template match="node[not(node)]">
-	<li description="{description}"><xsl:value-of select="name"/></li>
+	<a description="{description}" class="list-group-item"><xsl:value-of select="name"/></a>
 	<div class="attribute" style="display: none">
 	<xsl:for-each select="@*">
 		<xsl:value-of select="name(.)"/>:<xsl:value-of select="."/>, 
@@ -11,16 +11,15 @@
 </xsl:template>
 
 <xsl:template match="node[node]">
-	<li description="{description}"><xsl:value-of select="name"/>
-	<ul>
+	<a href="#{translate(name,' ','_')}" description="{description}" class="list-group-item" data-toggle="collapse"><xsl:value-of select="name"/></a>
+	<div class="list-group collapse multi-collapse show" id="{translate(name,' ','_')}">
 		<xsl:apply-templates select="node"/>
-	</ul>
+	</div>
 	<div class="attribute" style="display: none">
 		<xsl:for-each select="@*">
 			<xsl:value-of select="name(.)"/>:<xsl:value-of select="."/>,
 		</xsl:for-each>
 	</div>
-	</li>
 </xsl:template>
 
 <xsl:template match="/">
@@ -28,5 +27,4 @@
 </xsl:template>
 
 </xsl:stylesheet>
-
 
