@@ -42,12 +42,11 @@
             $("a").mouseover(function() {
                 var path = getPath(this);
                 var selected = $(event.target);
-                var attrs = selected.next().next().text();
+                var attrs = selected.siblings(".attribute").first().text();
                 parsed = attrs.split(',');
                 parsed = parsed.map(x => "<p>" + x.trim() + "</p>");
                 parsed = parsed.slice(0,parsed.length-1); // last item is empty (result of extra , at the end)
                 var finalText = parsed.join("");
-                // console.log(selected.text);
                 finalText = finalText == null || finalText.length == 0 ? "" : "<p><i>Attribute</i></p>"+finalText;
                 $("h3#title").text(this.textContent);
                 $("p#tag").text("Full tag: /" + path);
