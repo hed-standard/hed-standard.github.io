@@ -42,8 +42,9 @@
             $("a").mouseover(function() {
                 var path = getPath(this);
                 var selected = $(event.target);
-                var attrs = selected.siblings(".attribute").first().text();
-                parsed = attrs.split(',');
+                var attrs = selected.next(".attribute").text();
+                console.log(attrs);
+                parsed = attrs.split(','); // attributes are written in comma separated string
                 parsed = parsed.map(x => "<p>" + x.trim() + "</p>");
                 parsed = parsed.slice(0,parsed.length-1); // last item is empty (result of extra , at the end)
                 var finalText = parsed.join("");
@@ -54,6 +55,8 @@
                 $("div#attribute").html(finalText);
             })
         }
+
+        /* Get full path of tag node */
         function getPath(node) {
             var path = node.textContent;
             var parentTagNode = node.parentElement.previousElementSibling;
