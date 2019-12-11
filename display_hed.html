@@ -70,6 +70,16 @@
             }
             return "/" + path;
         }
+        function showHideAll() {
+            if ($("#example").attr("status") == "show") {
+                $("#example").find(".collapse").removeClass("show");
+                $("#example").attr("status","hide");
+            }
+            else {
+                $("#example").find(".collapse").addClass("show");
+                $("#example").attr("status","show");
+            }
+        }
     </script>
 </head>
 <body onload="displayResult()">
@@ -90,7 +100,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col col-lg-3">
-                <div id="example" class="list-group list-group-root well"></div>
+                <div id="example" class="list-group list-group-root well" status="show"></div>
             </div>
             <div class="col col-lg-3"></div>
             <div class="col col-lg-4">
