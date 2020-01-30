@@ -1,0 +1,2480 @@
+<?xml version="1.0" ?>
+<HED>
+   <node uri="HED-Presentation_modality">
+      <name>Presentation modality</name>
+      <node frequency="/Attribute/Auditory/Frequency/#" loudness="/Attribute/Auditory/Loudness/#" uri="HED-Presentation_modality-Auditory" wave-form="/Attribute/Auditory/Wave form">
+         <name>Auditory</name>
+         <node uri="HED-Presentation_modality-Auditory-Tone">
+            <name>Tone</name>
+         </node>
+      </node>
+      <node uri="HED-Presentation_modality-Olfactory">
+         <name>Olfactory</name>
+      </node>
+      <node uri="HED-Presentation_modality-Taste">
+         <name>Taste</name>
+      </node>
+      <node uri="HED-Presentation_modality-Tactile">
+         <name>Tactile</name>
+      </node>
+      <node rendering-type="/Attribute/Visual/Rendering" scene="/Item" uri="HED-Presentation_modality-Visual">
+         <name>Visual</name>
+         <node uri="HED-Presentation_modality-Visual-Flash">
+            <name>Flash</name>
+         </node>
+         <node uri="HED-Presentation_modality-Visual-Move_into_view">
+            <name>Move into view</name>
+         </node>
+         <node uri="HED-Presentation_modality-Visual-Saccade">
+            <name>Saccade</name>
+         </node>
+         <node uri="HED-Presentation_modality-Visual-Environmental">
+            <name>Environmental</name>
+         </node>
+      </node>
+   </node>
+   <node extensionAllowed="true" uri="HED-Participant">
+      <name>Participant</name>
+      <node uri="HED-Participant-Effect">
+         <name>Effect</name>
+         <description>How the stimulus effects the participants</description>
+         <node uri="HED-Participant-Effect-Cognitive">
+            <name>Cognitive</name>
+            <node uri="HED-Participant-Effect-Cognitive-Meaningful">
+               <name>Meaningful</name>
+            </node>
+            <node uri="HED-Participant-Effect-Cognitive-Not_meaningful">
+               <name>Not meaningful</name>
+            </node>
+            <node uri="HED-Participant-Effect-Cognitive-Newly_learned_meaning">
+               <name>Newly learned meaning</name>
+            </node>
+            <node uri="HED-Participant-Effect-Cognitive-Reward">
+               <name>Reward</name>
+               <node uri="HED-Participant-Effect-Cognitive-Reward-Low">
+                  <name>Low</name>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Reward-Medium">
+                  <name>Medium</name>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Reward-High">
+                  <name>High</name>
+               </node>
+               <node isNumeric="true" takesValue="true" unitClass="currency" uri="HED-Participant-Effect-Cognitive-Reward-#">
+                  <name>#</name>
+                  <description>Monetary values in some currency such as $10, or the ratio of the reward to the maximum possible (3 of max 10 becomes 0.3), or number Points</description>
+               </node>
+            </node>
+            <node uri="HED-Participant-Effect-Cognitive-Penalty">
+               <name>Penalty</name>
+               <node uri="HED-Participant-Effect-Cognitive-Penalty-Low">
+                  <name>Low</name>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Penalty-Medium">
+                  <name>Medium</name>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Penalty-High">
+                  <name>High</name>
+               </node>
+               <node isNumeric="true" takesValue="true" unitClass="currency" uri="HED-Participant-Effect-Cognitive-Penalty-#">
+                  <name>#</name>
+                  <description>Absolute monetary values in some currency, for example $1, or the ratio of the reward to the maximum possible (3 of max 10 becomes 0.3), or number of Points</description>
+               </node>
+            </node>
+            <node uri="HED-Participant-Effect-Cognitive-Error">
+               <name>Error</name>
+               <node uri="HED-Participant-Effect-Cognitive-Error-Self_originated">
+                  <name>Self originated</name>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Error-Other_originated">
+                  <name>Other originated</name>
+                  <node uri="HED-Participant-Effect-Cognitive-Error-Other_originated-Human">
+                     <name>Human</name>
+                  </node>
+                  <node uri="HED-Participant-Effect-Cognitive-Error-Other_originated-Non-human">
+                     <name>Non-human</name>
+                  </node>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Error-Expected">
+                  <name>Expected</name>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Error-Unexpected">
+                  <name>Unexpected</name>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Error-Planned">
+                  <name>Planned</name>
+                  <description>The error feedback was given regardless of the validity of subject response as in a yoked design</description>
+               </node>
+            </node>
+            <node uri="HED-Participant-Effect-Cognitive-Threat">
+               <name>Threat</name>
+               <node uri="HED-Participant-Effect-Cognitive-Threat-To_self">
+                  <name>To self</name>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Threat-To_others">
+                  <name>To others</name>
+                  <node uri="HED-Participant-Effect-Cognitive-Threat-To_others-Close">
+                     <name>Close</name>
+                  </node>
+               </node>
+            </node>
+            <node uri="HED-Participant-Effect-Cognitive-Warning">
+               <name>Warning</name>
+               <description>As in a warning message that you are getting too close to the shoulder in a driving task</description>
+            </node>
+            <node uri="HED-Participant-Effect-Cognitive-Oddball">
+               <name>Oddball</name>
+               <description>Unexpected or infrequent</description>
+               <node uri="HED-Participant-Effect-Cognitive-Oddball-One_stimulus">
+                  <name>One stimulus</name>
+                  <description>Only oddballs are present but no frequent stimuli exist. See http://dx.doi.org/10.1016/0167-8760(96)00030-X</description>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Oddball-Two_stimuli">
+                  <name>Two stimuli</name>
+                  <description>There are non-targets and targets. See http://dx.doi.org/10.1016/0167-8760(96)00030-X</description>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Oddball-Three_stimuli">
+                  <name>Three stimuli</name>
+                  <description>There are regular non-targets and targets and infrequent non-targets, see http://dx.doi.org/10.1016/0167-8760(96)00030-X</description>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Oddball-Silent_counting">
+                  <name>Silent counting</name>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Oddball-Button_pressing_for_target">
+                  <name>Button pressing for target</name>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Oddball-Button_pressing_for_all">
+                  <name>Button pressing for all</name>
+               </node>
+            </node>
+            <node uri="HED-Participant-Effect-Cognitive-Target">
+               <name>Target</name>
+               <description>Something the subject is looking for</description>
+            </node>
+            <node uri="HED-Participant-Effect-Cognitive-Non-target">
+               <name>Non-target</name>
+               <description>Make sure to tag Expected if the Non-target is frequent</description>
+            </node>
+            <node uri="HED-Participant-Effect-Cognitive-Novel">
+               <name>Novel</name>
+               <description>Genuinely novel such as an event occurring once or so per experiment</description>
+            </node>
+            <node uri="HED-Participant-Effect-Cognitive-Expected">
+               <name>Expected</name>
+               <description>Of low information value, for example frequent Non-targets in an RSVP paradigm</description>
+               <node uri="HED-Participant-Effect-Cognitive-Expected-Standard">
+                  <name>Standard</name>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Expected-Distractor">
+                  <name>Distractor</name>
+               </node>
+            </node>
+            <node uri="HED-Participant-Effect-Cognitive-Valid">
+               <name>Valid</name>
+               <description>Something that is understood to be valid such as an ID matches the person being displayed and it has all the  correct information</description>
+            </node>
+            <node uri="HED-Participant-Effect-Cognitive-Invalid">
+               <name>Invalid</name>
+               <description>Something that is understood to not be valid such as like an ID with an impossible date-of-birth, or a photo not matching the person presenting it</description>
+            </node>
+            <node uri="HED-Participant-Effect-Cognitive-Congruence">
+               <name>Congruence</name>
+               <node uri="HED-Participant-Effect-Cognitive-Congruence-Congruent">
+                  <name>Congruent</name>
+                  <description>Like in Stroop paradigm when blue colored text displays the word blue</description>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Congruence-Incongruent">
+                  <name>Incongruent</name>
+                  <description>Like in Stroop paradigm whena blue colored text reading displays the word red</description>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Congruence-Temporal_synchrony">
+                  <name>Temporal synchrony</name>
+                  <node uri="HED-Participant-Effect-Cognitive-Congruence-Temporal_synchrony-Synchronous">
+                     <name>Synchronous</name>
+                     <description>When a mouse click sound happens right after clicking it</description>
+                  </node>
+                  <node uri="HED-Participant-Effect-Cognitive-Congruence-Temporal_synchrony-Asynchronous">
+                     <name>Asynchronous</name>
+                     <description>When a mouse click sound happens with significant delay which give could the person a strange feeling. Or if in a movie the sound of the explosion is heard before it appears visually.</description>
+                  </node>
+               </node>
+            </node>
+            <node uri="HED-Participant-Effect-Cognitive-Feedback">
+               <name>Feedback</name>
+               <node uri="HED-Participant-Effect-Cognitive-Feedback-Correct">
+                  <name>Correct</name>
+                  <description>Confirm something went well and last action was correct</description>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Feedback-Incorrect">
+                  <name>Incorrect</name>
+                  <description>Confirm something went wrong and last action was incorrect</description>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Feedback-Non-informative">
+                  <name>Non-informative</name>
+                  <description>Feedback that provides no information in regards to correct, incorrect, etc.</description>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Feedback-Expected">
+                  <name>Expected</name>
+                  <description>Feedback was expected as in a positive feedback after a response that was expected to be correct.</description>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Feedback-Unexpected">
+                  <name>Unexpected</name>
+                  <description>Feedback was unexpected as when positive feedback was received when response was expected to be incorrect.</description>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Feedback-On_accuracy">
+                  <name>On accuracy</name>
+                  <description>Feedback was provided by evaluating response accuracy</description>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Feedback-On_reaction_time">
+                  <name>On reaction time</name>
+                  <description>Feedback was provided by evaluating subject reaction time</description>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Feedback-To_self">
+                  <name>To self</name>
+                  <description>Default</description>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Feedback-To_other">
+                  <name>To other</name>
+                  <description>Observed feedback to another person such as in a social paradigm</description>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Feedback-Deterministic">
+                  <name>Deterministic</name>
+                  <description>Feedback has a fixed relationship to what happened before</description>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Feedback-Stochastic">
+                  <name>Stochastic</name>
+                  <description>Feedback is non-deterministic and does not have fixed relationship with what has happened before in the experiment</description>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Feedback-False_feedback">
+                  <name>False feedback</name>
+                  <description>Feedback that was not honest for example as in feedback of correct on an incorrect response or vice versa</description>
+                  <node uri="HED-Participant-Effect-Cognitive-Feedback-False_feedback-Negative">
+                     <name>Negative</name>
+                     <description>Negative feedback was provided when it was not deserved</description>
+                  </node>
+                  <node uri="HED-Participant-Effect-Cognitive-Feedback-False_feedback-Positive">
+                     <name>Positive</name>
+                     <description>Positive feedback was provided when it was not deserved</description>
+                  </node>
+               </node>
+            </node>
+            <node uri="HED-Participant-Effect-Cognitive-Cue">
+               <name>Cue</name>
+               <description>An indicator of a future event, e.g. a sound cue that in 2-5 seconds a perturbation in driving will occur. Use (... Participant/Effect/Cognitive/Cue ~ hed tags for the event to follow, or main aspect of the event to follow) syntax.</description>
+               <node uri="HED-Participant-Effect-Cognitive-Cue-Constant_delay">
+                  <name>Constant delay</name>
+                  <description>The cue is for an event that will happen after a constant delay.</description>
+                  <node isNumeric="true" takesValue="true" unitClass="time" uri="HED-Participant-Effect-Cognitive-Cue-Constant_delay-#">
+                     <name>#</name>
+                     <description>The delay, e.g. in seconds.</description>
+                  </node>
+               </node>
+               <node uri="HED-Participant-Effect-Cognitive-Cue-Variable_delay">
+                  <name>Variable delay</name>
+                  <description>The cue is for an event that will happen after a variable delay.</description>
+                  <node takesValue="true" uri="HED-Participant-Effect-Cognitive-Cue-Variable_delay-#">
+                     <name>#</name>
+                     <description>The interval, e.g. between 2-5 seconds, of the variable delay.</description>
+                  </node>
+               </node>
+            </node>
+         </node>
+         <node uri="HED-Participant-Effect-Visual">
+            <name>Visual</name>
+            <node uri="HED-Participant-Effect-Visual-Foveal">
+               <name>Foveal</name>
+            </node>
+            <node uri="HED-Participant-Effect-Visual-Peripheral">
+               <name>Peripheral</name>
+            </node>
+            <node uri="HED-Participant-Effect-Visual-Perturbation">
+               <name>Perturbation</name>
+               <description>Sudden movement or perturbation of the virtual environment in a car driving or other scenario</description>
+            </node>
+         </node>
+         <node uri="HED-Participant-Effect-Auditory">
+            <name>Auditory</name>
+            <node uri="HED-Participant-Effect-Auditory-Stereo">
+               <name>Stereo</name>
+            </node>
+            <node uri="HED-Participant-Effect-Auditory-Mono">
+               <name>Mono</name>
+               <node uri="HED-Participant-Effect-Auditory-Mono-Left">
+                  <name>Left</name>
+               </node>
+               <node uri="HED-Participant-Effect-Auditory-Mono-Right">
+                  <name>Right</name>
+               </node>
+            </node>
+         </node>
+         <node uri="HED-Participant-Effect-TMS">
+            <name>TMS</name>
+            <node uri="HED-Participant-Effect-TMS-With_SPGS">
+               <name>With SPGS</name>
+               <description>SPGS stands for spatial position guiding system</description>
+            </node>
+            <node uri="HED-Participant-Effect-TMS-Without_SPGS">
+               <name>Without SPGS</name>
+               <description>SPGS stands for spatial position guiding system</description>
+            </node>
+         </node>
+         <node uri="HED-Participant-Effect-Tactile">
+            <name>Tactile</name>
+            <node uri="HED-Participant-Effect-Tactile-Vibration">
+               <name>Vibration</name>
+            </node>
+            <node uri="HED-Participant-Effect-Tactile-Acupuncture">
+               <name>Acupuncture</name>
+            </node>
+            <node uri="HED-Participant-Effect-Tactile-Eye_puff">
+               <name>Eye puff</name>
+            </node>
+            <node uri="HED-Participant-Effect-Tactile-Swab">
+               <name>Swab</name>
+               <description>Mouth swab</description>
+            </node>
+         </node>
+         <node uri="HED-Participant-Effect-Vestibular">
+            <name>Vestibular</name>
+            <node uri="HED-Participant-Effect-Vestibular-Shaking">
+               <name>Shaking</name>
+               <description>being shaken or jerked around</description>
+            </node>
+         </node>
+         <node uri="HED-Participant-Effect-Pain">
+            <name>Pain</name>
+            <node uri="HED-Participant-Effect-Pain-Heat">
+               <name>Heat</name>
+            </node>
+            <node uri="HED-Participant-Effect-Pain-Cold">
+               <name>Cold</name>
+            </node>
+            <node uri="HED-Participant-Effect-Pain-Pressure">
+               <name>Pressure</name>
+            </node>
+            <node uri="HED-Participant-Effect-Pain-Electric_shock">
+               <name>Electric shock</name>
+            </node>
+            <node uri="HED-Participant-Effect-Pain-Laser-evoked">
+               <name>Laser-evoked</name>
+            </node>
+         </node>
+         <node uri="HED-Participant-Effect-Taste">
+            <name>Taste</name>
+         </node>
+         <node uri="HED-Participant-Effect-Smell">
+            <name>Smell</name>
+         </node>
+         <node uri="HED-Participant-Effect-Body_part">
+            <name>Body part</name>
+            <node uri="HED-Participant-Effect-Body_part-Whole_Body">
+               <name>Whole Body</name>
+            </node>
+            <node uri="HED-Participant-Effect-Body_part-Eye">
+               <name>Eye</name>
+            </node>
+            <node uri="HED-Participant-Effect-Body_part-Arm">
+               <name>Arm</name>
+               <node uri="HED-Participant-Effect-Body_part-Arm-Hand">
+                  <name>Hand</name>
+                  <node uri="HED-Participant-Effect-Body_part-Arm-Hand-Finger">
+                     <name>Finger</name>
+                     <node uri="HED-Participant-Effect-Body_part-Arm-Hand-Finger-Index">
+                        <name>Index</name>
+                     </node>
+                     <node uri="HED-Participant-Effect-Body_part-Arm-Hand-Finger-Thumb">
+                        <name>Thumb</name>
+                     </node>
+                     <node uri="HED-Participant-Effect-Body_part-Arm-Hand-Finger-Ring">
+                        <name>Ring</name>
+                     </node>
+                     <node uri="HED-Participant-Effect-Body_part-Arm-Hand-Finger-Middle">
+                        <name>Middle</name>
+                     </node>
+                     <node uri="HED-Participant-Effect-Body_part-Arm-Hand-Finger-Small">
+                        <name>Small</name>
+                        <description>Pinkie or little finger</description>
+                     </node>
+                  </node>
+               </node>
+            </node>
+            <node uri="HED-Participant-Effect-Body_part-Leg">
+               <name>Leg</name>
+               <node uri="HED-Participant-Effect-Body_part-Leg-Feet">
+                  <name>Feet</name>
+                  <node uri="HED-Participant-Effect-Body_part-Leg-Feet-Toes">
+                     <name>Toes</name>
+                  </node>
+               </node>
+            </node>
+            <node uri="HED-Participant-Effect-Body_part-Head">
+               <name>Head</name>
+               <node uri="HED-Participant-Effect-Body_part-Head-Face">
+                  <name>Face</name>
+                  <node uri="HED-Participant-Effect-Body_part-Head-Face-Eyebrow">
+                     <name>Eyebrow</name>
+                  </node>
+                  <node uri="HED-Participant-Effect-Body_part-Head-Face-Lip">
+                     <name>Lip</name>
+                  </node>
+                  <node uri="HED-Participant-Effect-Body_part-Head-Face-Forehead">
+                     <name>Forehead</name>
+                  </node>
+                  <node uri="HED-Participant-Effect-Body_part-Head-Face-Mouth">
+                     <name>Mouth</name>
+                  </node>
+                  <node uri="HED-Participant-Effect-Body_part-Head-Face-Nose">
+                     <name>Nose</name>
+                  </node>
+                  <node uri="HED-Participant-Effect-Body_part-Head-Face-Chin">
+                     <name>Chin</name>
+                  </node>
+                  <node uri="HED-Participant-Effect-Body_part-Head-Face-Cheek">
+                     <name>Cheek</name>
+                  </node>
+               </node>
+            </node>
+            <node uri="HED-Participant-Effect-Body_part-Torso">
+               <name>Torso</name>
+            </node>
+         </node>
+      </node>
+      <node requireChild="true" uri="HED-Participant-State">
+         <name>State</name>
+         <node requireChild="true" uri="HED-Participant-State-Level_of_consciousness">
+            <name>Level of consciousness</name>
+            <node uri="HED-Participant-State-Level_of_consciousness-Awake">
+               <name>Awake</name>
+            </node>
+            <node uri="HED-Participant-State-Level_of_consciousness-Drowsy">
+               <name>Drowsy</name>
+            </node>
+            <node uri="HED-Participant-State-Level_of_consciousness-Sleep">
+               <name>Sleep</name>
+               <node requireChild="true" uri="HED-Participant-State-Level_of_consciousness-Sleep-Stage">
+                  <name>Stage</name>
+                  <node takesValue="true" uri="HED-Participant-State-Level_of_consciousness-Sleep-Stage-#">
+                     <name>#</name>
+                     <description>a number between 1 to 4, or 'REM'</description>
+                  </node>
+               </node>
+            </node>
+            <node uri="HED-Participant-State-Level_of_consciousness-Drunk">
+               <name>Drunk</name>
+            </node>
+            <node uri="HED-Participant-State-Level_of_consciousness-Anesthesia">
+               <name>Anesthesia</name>
+            </node>
+            <node uri="HED-Participant-State-Level_of_consciousness-Locked-in">
+               <name>Locked-in</name>
+            </node>
+            <node uri="HED-Participant-State-Level_of_consciousness-Coma">
+               <name>Coma</name>
+            </node>
+            <node uri="HED-Participant-State-Level_of_consciousness-Vegetative">
+               <name>Vegetative</name>
+            </node>
+            <node uri="HED-Participant-State-Level_of_consciousness-Brain-dead">
+               <name>Brain-dead</name>
+            </node>
+         </node>
+         <node requireChild="true" uri="HED-Participant-State-Emotion">
+            <name>Emotion</name>
+            <node uri="HED-Participant-State-Emotion-Awe">
+               <name>Awe</name>
+            </node>
+            <node uri="HED-Participant-State-Emotion-Frustration">
+               <name>Frustration</name>
+            </node>
+            <node uri="HED-Participant-State-Emotion-Joy">
+               <name>Joy</name>
+            </node>
+            <node uri="HED-Participant-State-Emotion-Anger">
+               <name>Anger</name>
+            </node>
+            <node uri="HED-Participant-State-Emotion-Happiness">
+               <name>Happiness</name>
+            </node>
+            <node uri="HED-Participant-State-Emotion-Sadness">
+               <name>Sadness</name>
+            </node>
+            <node uri="HED-Participant-State-Emotion-Love">
+               <name>Love</name>
+            </node>
+            <node uri="HED-Participant-State-Emotion-Fear">
+               <name>Fear</name>
+            </node>
+            <node uri="HED-Participant-State-Emotion-Compassion">
+               <name>Compassion</name>
+            </node>
+            <node uri="HED-Participant-State-Emotion-Jealousy">
+               <name>Jealousy</name>
+            </node>
+            <node uri="HED-Participant-State-Emotion-Contentment">
+               <name>Contentment</name>
+            </node>
+            <node uri="HED-Participant-State-Emotion-Grief">
+               <name>Grief</name>
+            </node>
+            <node uri="HED-Participant-State-Emotion-Relief">
+               <name>Relief</name>
+            </node>
+            <node uri="HED-Participant-State-Emotion-Excitement">
+               <name>Excitement</name>
+            </node>
+            <node uri="HED-Participant-State-Emotion-Disgust">
+               <name>Disgust</name>
+            </node>
+            <node uri="HED-Participant-State-Emotion-Neutral">
+               <name>Neutral</name>
+               <description>None of the above</description>
+            </node>
+         </node>
+         <node uri="HED-Participant-State-Sense_of_community">
+            <name>Sense of community</name>
+            <description>Primed to have an emotion such as patriotism</description>
+            <node isNumeric="true" takesValue="true" uri="HED-Participant-State-Sense_of_community-#">
+               <name>#</name>
+               <description>SCI stands for Sense of Community Index</description>
+            </node>
+         </node>
+         <node uri="HED-Participant-State-Sense_of_social_justice">
+            <name>Sense of social justice</name>
+            <node uri="HED-Participant-State-Sense_of_social_justice-Distributive">
+               <name>Distributive</name>
+            </node>
+            <node uri="HED-Participant-State-Sense_of_social_justice-Poverty">
+               <name>Poverty</name>
+            </node>
+            <node uri="HED-Participant-State-Sense_of_social_justice-Inequality">
+               <name>Inequality</name>
+            </node>
+            <node uri="HED-Participant-State-Sense_of_social_justice-Procedural">
+               <name>Procedural</name>
+            </node>
+            <node uri="HED-Participant-State-Sense_of_social_justice-Interpersonal">
+               <name>Interpersonal</name>
+            </node>
+            <node uri="HED-Participant-State-Sense_of_social_justice-Informational">
+               <name>Informational</name>
+            </node>
+         </node>
+         <node requireChild="true" uri="HED-Participant-State-Stress_level">
+            <name>Stress level</name>
+            <node isNumeric="true" takesValue="true" uri="HED-Participant-State-Stress_level-#">
+               <name>#</name>
+               <description>A number between 0 and 1</description>
+            </node>
+         </node>
+         <node requireChild="true" uri="HED-Participant-State-Task_load">
+            <name>Task load</name>
+            <node isNumeric="true" takesValue="true" uri="HED-Participant-State-Task_load-#">
+               <name>#</name>
+               <description>A number between 0 and 1</description>
+            </node>
+         </node>
+         <node uri="HED-Participant-State-Under_time_pressure">
+            <name>Under time pressure</name>
+            <node uri="HED-Participant-State-Under_time_pressure-Response_window">
+               <name>Response window</name>
+               <node isNumeric="true" takesValue="true" unitClass="time" uri="HED-Participant-State-Under_time_pressure-Response_window-#">
+                  <name>#</name>
+                  <description>Default time is seconds</description>
+               </node>
+            </node>
+            <node uri="HED-Participant-State-Under_time_pressure-Competitive">
+               <name>Competitive</name>
+               <description>Subject is competing against an opponent as for example when the faster respondent wins</description>
+            </node>
+         </node>
+         <node uri="HED-Participant-State-Social_interaction">
+            <name>Social interaction</name>
+            <description>Social</description>
+            <node uri="HED-Participant-State-Social_interaction-Pseudo">
+               <name>Pseudo</name>
+               <description>Instructed so but actually not as when the other person may not exist in real world such as the case of a computer program agent</description>
+            </node>
+         </node>
+         <node uri="HED-Participant-State-Passive">
+            <name>Passive</name>
+            <description>There is a stimulus presentation but no behavioral measurements are collected from the subject. Subject is instructed not to make any behavioral outputs for example when told to carefully watch/listen/sense. The resting state is not considered passive.</description>
+         </node>
+         <node uri="HED-Participant-State-Resting">
+            <name>Resting</name>
+            <description>State when there is no stimulus presentation and no behavioral outputs</description>
+         </node>
+         <node uri="HED-Participant-State-Attention">
+            <name>Attention</name>
+            <node uri="HED-Participant-State-Attention-Top-down">
+               <name>Top-down</name>
+               <description>Instructed to pay attention to something explicitly</description>
+            </node>
+            <node uri="HED-Participant-State-Attention-Bottom-up">
+               <name>Bottom-up</name>
+               <description>something captures your attention, like a big bang or your name</description>
+               <node uri="HED-Participant-State-Attention-Bottom-up-Orienting">
+                  <name>Orienting</name>
+                  <description>The lower state of the bottom-up  or the pre-bottom up state</description>
+               </node>
+            </node>
+            <node uri="HED-Participant-State-Attention-Covert">
+               <name>Covert</name>
+               <description>Implicit</description>
+            </node>
+            <node uri="HED-Participant-State-Attention-Overt">
+               <name>Overt</name>
+               <description>Explicit</description>
+            </node>
+            <node uri="HED-Participant-State-Attention-Selective">
+               <name>Selective</name>
+               <description>If you have two circles but asked to pay attention to only one of them</description>
+               <node uri="HED-Participant-State-Attention-Selective-Divided">
+                  <name>Divided</name>
+                  <description>Attending to more than one object or location</description>
+               </node>
+            </node>
+            <node uri="HED-Participant-State-Attention-Focused">
+               <name>Focused</name>
+               <description>Paying a lot of attention</description>
+            </node>
+            <node uri="HED-Participant-State-Attention-Sustained">
+               <name>Sustained</name>
+               <description>Paying attention for a continuous time</description>
+            </node>
+            <node uri="HED-Participant-State-Attention-Auditory">
+               <name>Auditory</name>
+            </node>
+            <node uri="HED-Participant-State-Attention-Visual">
+               <name>Visual</name>
+            </node>
+            <node uri="HED-Participant-State-Attention-Tactile">
+               <name>Tactile</name>
+            </node>
+            <node uri="HED-Participant-State-Attention-Taste">
+               <name>Taste</name>
+            </node>
+            <node uri="HED-Participant-State-Attention-Smell">
+               <name>Smell</name>
+            </node>
+            <node uri="HED-Participant-State-Attention-To_a_location">
+               <name>To a location</name>
+               <description>Spatial -- use the location attribute to specify to where the attention is directed</description>
+            </node>
+            <node requireChild="true" uri="HED-Participant-State-Attention-Arousal">
+               <name>Arousal</name>
+            </node>
+            <node uri="HED-Participant-State-Attention-Alerting">
+               <name>Alerting</name>
+               <description>Keeping the arousal up in order to respond quickly</description>
+            </node>
+            <node uri="HED-Participant-State-Attention-Drowsy">
+               <name>Drowsy</name>
+            </node>
+            <node uri="HED-Participant-State-Attention-Excited">
+               <name>Excited</name>
+            </node>
+            <node uri="HED-Participant-State-Attention-Neutral">
+               <name>Neutral</name>
+            </node>
+         </node>
+      </node>
+   </node>
+   <node ID="text" uri="HED-Item">
+      <name>Item</name>
+      <node color="text" uri="HED-Item-Object">
+         <name>Object</name>
+         <description>Visually discernable objects. This item excludes sounds that are Items but not objects</description>
+         <node uri="HED-Item-Object-Vehicle">
+            <name>Vehicle</name>
+            <node uri="HED-Item-Object-Vehicle-Bicycle">
+               <name>Bicycle</name>
+            </node>
+            <node uri="HED-Item-Object-Vehicle-Car">
+               <name>Car</name>
+            </node>
+            <node uri="HED-Item-Object-Vehicle-Truck">
+               <name>Truck</name>
+            </node>
+            <node uri="HED-Item-Object-Vehicle-Cart">
+               <name>Cart</name>
+            </node>
+            <node uri="HED-Item-Object-Vehicle-Boat">
+               <name>Boat</name>
+            </node>
+            <node uri="HED-Item-Object-Vehicle-Tractor">
+               <name>Tractor</name>
+            </node>
+            <node uri="HED-Item-Object-Vehicle-Train">
+               <name>Train</name>
+            </node>
+            <node uri="HED-Item-Object-Vehicle-Aircraft">
+               <name>Aircraft</name>
+               <node uri="HED-Item-Object-Vehicle-Aircraft-Airplane">
+                  <name>Airplane</name>
+               </node>
+               <node uri="HED-Item-Object-Vehicle-Aircraft-Helicopter">
+                  <name>Helicopter</name>
+               </node>
+            </node>
+         </node>
+         <node uri="HED-Item-Object-Person">
+            <name>Person</name>
+            <node uri="HED-Item-Object-Person-Pedestrian">
+               <name>Pedestrian</name>
+            </node>
+            <node uri="HED-Item-Object-Person-Cyclist">
+               <name>Cyclist</name>
+            </node>
+            <node uri="HED-Item-Object-Person-Mother-child">
+               <name>Mother-child</name>
+            </node>
+            <node uri="HED-Item-Object-Person-Experimenter">
+               <name>Experimenter</name>
+            </node>
+         </node>
+         <node uri="HED-Item-Object-Animal">
+            <name>Animal</name>
+         </node>
+         <node uri="HED-Item-Object-Plant">
+            <name>Plant</name>
+            <node uri="HED-Item-Object-Plant-Flower">
+               <name>Flower</name>
+            </node>
+            <node uri="HED-Item-Object-Plant-Tree">
+               <name>Tree</name>
+               <node uri="HED-Item-Object-Plant-Tree-Branch">
+                  <name>Branch</name>
+               </node>
+               <node uri="HED-Item-Object-Plant-Tree-Root">
+                  <name>Root</name>
+               </node>
+            </node>
+         </node>
+         <node uri="HED-Item-Object-Building">
+            <name>Building</name>
+         </node>
+         <node uri="HED-Item-Object-Food">
+            <name>Food</name>
+            <node uri="HED-Item-Object-Food-Water">
+               <name>Water</name>
+            </node>
+         </node>
+         <node uri="HED-Item-Object-Clothing">
+            <name>Clothing</name>
+            <node uri="HED-Item-Object-Clothing-Personal">
+               <name>Personal</name>
+               <description>clothing that is on the body of the subject</description>
+            </node>
+         </node>
+         <node uri="HED-Item-Object-Road_sign">
+            <name>Road sign</name>
+         </node>
+         <node uri="HED-Item-Object-Barrel">
+            <name>Barrel</name>
+         </node>
+         <node uri="HED-Item-Object-Cone">
+            <name>Cone</name>
+         </node>
+         <node uri="HED-Item-Object-Speedometer">
+            <name>Speedometer</name>
+         </node>
+         <node uri="HED-Item-Object-Construction_zone">
+            <name>Construction zone</name>
+         </node>
+         <node uri="HED-Item-Object-3D_shape">
+            <name>3D shape</name>
+         </node>
+         <node uri="HED-Item-Object-Sphere">
+            <name>Sphere</name>
+         </node>
+         <node uri="HED-Item-Object-Box">
+            <name>Box</name>
+            <node uri="HED-Item-Object-Box-Cube">
+               <name>Cube</name>
+            </node>
+         </node>
+      </node>
+      <node background-color="/Attribute/Color" uri="HED-Item-2D_shape">
+         <name>2D shape</name>
+         <description>Geometric shapes</description>
+         <node uri="HED-Item-2D_shape-Ellipse">
+            <name>Ellipse</name>
+            <node uri="HED-Item-2D_shape-Ellipse-Circle">
+               <name>Circle</name>
+            </node>
+         </node>
+         <node uri="HED-Item-2D_shape-Rectangle">
+            <name>Rectangle</name>
+            <node uri="HED-Item-2D_shape-Rectangle-Square">
+               <name>Square</name>
+            </node>
+         </node>
+         <node uri="HED-Item-2D_shape-Star">
+            <name>Star</name>
+         </node>
+         <node uri="HED-Item-2D_shape-Triangle">
+            <name>Triangle</name>
+         </node>
+         <node uri="HED-Item-2D_shape-Gabor_patch">
+            <name>Gabor patch</name>
+         </node>
+         <node uri="HED-Item-2D_shape-Cross">
+            <name>Cross</name>
+            <description>By default a vertical-horizontal cross. For a rotated cross add Attribute/Object orientation/Rotated/ tag</description>
+         </node>
+         <node uri="HED-Item-2D_shape-Single_point">
+            <name>Single point</name>
+         </node>
+         <node uri="HED-Item-2D_shape-Clock_face">
+            <name>Clock face</name>
+            <description>Used to study things like hemispheric neglect. The tag is related to the clock-drawing-test</description>
+            <node takesValue="true" unitClass="time" uri="HED-Item-2D_shape-Clock_face-#">
+               <name>#</name>
+               <description>Hour:min</description>
+            </node>
+         </node>
+      </node>
+      <node uri="HED-Item-Pattern">
+         <name>Pattern</name>
+         <node uri="HED-Item-Pattern-Checkerboard">
+            <name>Checkerboard</name>
+         </node>
+         <node uri="HED-Item-Pattern-Abstract">
+            <name>Abstract</name>
+         </node>
+         <node uri="HED-Item-Pattern-Fractal">
+            <name>Fractal</name>
+         </node>
+         <node uri="HED-Item-Pattern-LED">
+            <name>LED</name>
+         </node>
+         <node uri="HED-Item-Pattern-Dots">
+            <name>Dots</name>
+            <node uri="HED-Item-Pattern-Dots-Random_dot">
+               <name>Random dot</name>
+            </node>
+         </node>
+         <node uri="HED-Item-Pattern-Complex">
+            <name>Complex</name>
+         </node>
+      </node>
+      <node uri="HED-Item-Face">
+         <name>Face</name>
+         <node uri="HED-Item-Face-Whole_face_with_hair">
+            <name>Whole face with hair</name>
+         </node>
+         <node uri="HED-Item-Face-Whole_face_without_hair">
+            <name>Whole face without hair</name>
+         </node>
+         <node uri="HED-Item-Face-Cut-out">
+            <name>Cut-out</name>
+         </node>
+         <node uri="HED-Item-Face-Parts_only">
+            <name>Parts only</name>
+            <node uri="HED-Item-Face-Parts_only-Nose">
+               <name>Nose</name>
+            </node>
+            <node uri="HED-Item-Face-Parts_only-Lips">
+               <name>Lips</name>
+            </node>
+            <node uri="HED-Item-Face-Parts_only-Chin">
+               <name>Chin</name>
+            </node>
+            <node uri="HED-Item-Face-Parts_only-Eyes">
+               <name>Eyes</name>
+               <node uri="HED-Item-Face-Parts_only-Eyes-Left_only">
+                  <name>Left only</name>
+               </node>
+               <node uri="HED-Item-Face-Parts_only-Eyes-Right_only">
+                  <name>Right only</name>
+               </node>
+            </node>
+         </node>
+      </node>
+      <node uri="HED-Item-Symbolic">
+         <name>Symbolic</name>
+         <description>Something that has a meaning, could be linguistic or not such as a stop signs.</description>
+         <node uri="HED-Item-Symbolic-Braille_character">
+            <name>Braille character</name>
+         </node>
+         <node uri="HED-Item-Symbolic-Sign">
+            <name>Sign</name>
+            <description>Like the icon on a stop sign. This should not to be confused with the actual object itself.</description>
+            <node uri="HED-Item-Symbolic-Sign-Traffic">
+               <name>Traffic</name>
+               <node uri="HED-Item-Symbolic-Sign-Traffic-Speed_limit">
+                  <name>Speed limit</name>
+                  <node isNumeric="true" takesValue="true" unitClass="speed" uri="HED-Item-Symbolic-Sign-Traffic-Speed_limit-#">
+                     <name>#</name>
+                     <description>Always give units e.g. mph or kph</description>
+                  </node>
+               </node>
+            </node>
+         </node>
+         <node uri="HED-Item-Symbolic-Character">
+            <name>Character</name>
+            <node uri="HED-Item-Symbolic-Character-Digit">
+               <name>Digit</name>
+            </node>
+            <node uri="HED-Item-Symbolic-Character-Pseudo-character">
+               <name>Pseudo-character</name>
+               <description>Alphabet-like but not really</description>
+            </node>
+            <node uri="HED-Item-Symbolic-Character-Letter">
+               <name>Letter</name>
+               <description>Authograph or valid letters and numbers such as A or 5</description>
+               <node takesValue="true" uri="HED-Item-Symbolic-Character-Letter-#">
+                  <name>#</name>
+               </node>
+            </node>
+         </node>
+         <node uri="HED-Item-Symbolic-Composite">
+            <name>Composite</name>
+         </node>
+      </node>
+      <node uri="HED-Item-Natural_scene">
+         <name>Natural scene</name>
+         <node uri="HED-Item-Natural_scene-Aerial">
+            <name>Aerial</name>
+            <node uri="HED-Item-Natural_scene-Aerial-Satellite">
+               <name>Satellite</name>
+            </node>
+         </node>
+      </node>
+      <node uri="HED-Item-Drawing">
+         <name>Drawing</name>
+         <description>Cartoon or sketch</description>
+         <node uri="HED-Item-Drawing-Line_drawing">
+            <name>Line drawing</name>
+         </node>
+      </node>
+      <node uri="HED-Item-Film_clip">
+         <name>Film clip</name>
+         <node uri="HED-Item-Film_clip-Commercial_TV">
+            <name>Commercial TV</name>
+         </node>
+         <node uri="HED-Item-Film_clip-Animation">
+            <name>Animation</name>
+         </node>
+      </node>
+      <node uri="HED-Item-IAPS">
+         <name>IAPS</name>
+         <description>International Affective Picture System</description>
+      </node>
+      <node uri="HED-Item-IADS">
+         <name>IADS</name>
+         <description>International Affective Digital Sounds</description>
+      </node>
+      <node uri="HED-Item-SAM">
+         <name>SAM</name>
+         <description>The Self-Assessment Manikin</description>
+      </node>
+   </node>
+   <node actor="/Item" target="Thing" uri="HED-Action">
+      <name>Action</name>
+      <description>May or may not be associated with a prior stimulus.</description>
+      <node uri="HED-Action-Involuntary">
+         <name>Involuntary</name>
+         <description>Like sneezing or tripping on something or hiccuping</description>
+         <node uri="HED-Action-Involuntary-Hiccup">
+            <name>Hiccup</name>
+         </node>
+         <node uri="HED-Action-Involuntary-Cough">
+            <name>Cough</name>
+         </node>
+         <node uri="HED-Action-Involuntary-Sneeze">
+            <name>Sneeze</name>
+         </node>
+         <node uri="HED-Action-Involuntary-Stumble">
+            <name>Stumble</name>
+            <description>Temporary and involuntary loss of balance</description>
+         </node>
+         <node uri="HED-Action-Involuntary-Fall">
+            <name>Fall</name>
+         </node>
+         <node uri="HED-Action-Involuntary-Tether_Jerk">
+            <name>Tether Jerk</name>
+            <description>When a tether attached to the subject is stuck/snagged and forces the participant to involuntary accommodate/react to it</description>
+         </node>
+         <node uri="HED-Action-Involuntary-Clear_Throat">
+            <name>Clear Throat</name>
+         </node>
+         <node uri="HED-Action-Involuntary-Yawn">
+            <name>Yawn</name>
+         </node>
+         <node uri="HED-Action-Involuntary-Sniffle">
+            <name>Sniffle</name>
+         </node>
+         <node uri="HED-Action-Involuntary-Burp">
+            <name>Burp</name>
+         </node>
+         <node uri="HED-Action-Involuntary-Drop">
+            <name>Drop</name>
+            <description>For example something  drops from subject’s hand</description>
+         </node>
+      </node>
+      <node uri="HED-Action-Make_fist">
+         <name>Make fist</name>
+         <node uri="HED-Action-Make_fist-Open_and_close">
+            <name>Open and close</name>
+            <description>Continue to open and close the fist, for example in motor imagery paradigms.</description>
+         </node>
+      </node>
+      <node uri="HED-Action-Curl_toes">
+         <name>Curl toes</name>
+         <node uri="HED-Action-Curl_toes-Open_and_close">
+            <name>Open and close</name>
+            <description>Continue to curl and uncurl toes, for example in motor imagery paradigms.</description>
+         </node>
+      </node>
+      <node extensionAllowed="true" uri="HED-Action-Button_press">
+         <name>Button press</name>
+         <node uri="HED-Action-Button_press-Touch_screen">
+            <name>Touch screen</name>
+         </node>
+         <node uri="HED-Action-Button_press-Keyboard">
+            <name>Keyboard</name>
+         </node>
+         <node uri="HED-Action-Button_press-Mouse">
+            <name>Mouse</name>
+         </node>
+         <node uri="HED-Action-Button_press-Joystick">
+            <name>Joystick</name>
+         </node>
+      </node>
+      <node uri="HED-Action-Button_hold">
+         <name>Button hold</name>
+         <description>Press a button and keep it pressed</description>
+      </node>
+      <node uri="HED-Action-Button_release">
+         <name>Button release</name>
+      </node>
+      <node uri="HED-Action-Cross_boundary">
+         <name>Cross boundary</name>
+         <node uri="HED-Action-Cross_boundary-Arrive">
+            <name>Arrive</name>
+         </node>
+         <node uri="HED-Action-Cross_boundary-Depart">
+            <name>Depart</name>
+         </node>
+      </node>
+      <node uri="HED-Action-Speech">
+         <name>Speech</name>
+      </node>
+      <node uri="HED-Action-Hum">
+         <name>Hum</name>
+      </node>
+      <node uri="HED-Action-Eye_saccade">
+         <name>Eye saccade</name>
+         <description>Use Attribute/Peak for the middle of saccade and Attribute/Onset for the start of a saccade</description>
+      </node>
+      <node uri="HED-Action-Eye_fixation">
+         <name>Eye fixation</name>
+      </node>
+      <node uri="HED-Action-Eye_blink">
+         <name>Eye blink</name>
+         <node uri="HED-Action-Eye_blink-Left_base">
+            <name>Left base</name>
+            <description>The time of the first detectable eyelid movement on closing.</description>
+         </node>
+         <node uri="HED-Action-Eye_blink-Left_zero">
+            <name>Left zero</name>
+            <description>The last time at which the EEG/EOG signal crosses zero during eyelid closing.</description>
+         </node>
+         <node uri="HED-Action-Eye_blink-Left_half_height">
+            <name>Left half height</name>
+            <description>The time at which the EEG/EOG signal reaches half maximum height during eyelid closing.</description>
+         </node>
+         <node uri="HED-Action-Eye_blink-Max">
+            <name>Max</name>
+            <description>The time at which the eyelid is the most closed.</description>
+         </node>
+         <node uri="HED-Action-Eye_blink-Right_half_height">
+            <name>Right half height</name>
+            <description>The time at which the EEG/EOG signal reaches half maximum height during eyelid opening.</description>
+         </node>
+         <node uri="HED-Action-Eye_blink-Right_zero">
+            <name>Right zero</name>
+            <description>The first time at which the EEG/EOG signal crosses zero during eyelid opening.</description>
+         </node>
+         <node uri="HED-Action-Eye_blink-Right_base">
+            <name>Right base</name>
+            <description>The time of the last detectable eyelid movement on opening.</description>
+         </node>
+      </node>
+      <node uri="HED-Action-Eye_close">
+         <name>Eye close</name>
+         <description>Close eyes and keep closed for more than approximately 0.1 s</description>
+         <node uri="HED-Action-Eye_close-Keep">
+            <name>Keep</name>
+            <description>Keep the eye closed. If a value is provided it indicates the duration for this.</description>
+            <node isNumeric="true" takesValue="true" unitClass="time" uri="HED-Action-Eye_close-Keep-#">
+               <name>#</name>
+               <description>the duration (by default in seconds) that they keep their eye closed.</description>
+            </node>
+         </node>
+      </node>
+      <node uri="HED-Action-Eye_open">
+         <name>Eye open</name>
+         <description>Open eyes and keep open for more than approximately 0.1 s</description>
+         <node uri="HED-Action-Eye_open-Keep">
+            <name>Keep</name>
+            <description>Keep the eye open. If a value is provided it indicates the duration for this.</description>
+            <node isNumeric="true" takesValue="true" unitClass="time" uri="HED-Action-Eye_open-Keep-#">
+               <name>#</name>
+               <description>the duration (by default in seconds) that they keep their eye open.</description>
+            </node>
+            <node uri="HED-Action-Eye_open-Keep-With_blinking">
+               <name>With blinking</name>
+               <description>Default. Allow blinking during the eye-open period.</description>
+            </node>
+            <node uri="HED-Action-Eye_open-Keep-Without_blinking">
+               <name>Without blinking</name>
+               <description>Without blinking during the eye-open period.</description>
+            </node>
+         </node>
+      </node>
+      <node uri="HED-Action-Turn">
+         <name>Turn</name>
+         <description>Change in direction of movement or orientation. This includes both turn during movement on a path and also rotations such as head turns</description>
+      </node>
+      <node uri="HED-Action-Point">
+         <name>Point</name>
+      </node>
+      <node uri="HED-Action-Push">
+         <name>Push</name>
+      </node>
+      <node uri="HED-Action-Grab">
+         <name>Grab</name>
+      </node>
+      <node uri="HED-Action-Tap">
+         <name>Tap</name>
+         <description>When there is nothing to be pressed for example like tapping a finger on a chair surface to follow a rhythm</description>
+      </node>
+      <node uri="HED-Action-Lift">
+         <name>Lift</name>
+      </node>
+      <node uri="HED-Action-Reach">
+         <name>Reach</name>
+         <description>Requires a goal such as reaching to touch a button or to grab something. Stretching your body does not count as reach.</description>
+         <node uri="HED-Action-Reach-To_Grab">
+            <name>To Grab</name>
+         </node>
+         <node uri="HED-Action-Reach-To_Touch">
+            <name>To Touch</name>
+         </node>
+      </node>
+      <node uri="HED-Action-Course_correction">
+         <name>Course correction</name>
+         <description>Change the direction of a reach in the middle to adjust for a moving target.</description>
+      </node>
+      <node uri="HED-Action-Interact">
+         <name>Interact</name>
+         <node uri="HED-Action-Interact-With_human">
+            <name>With human</name>
+         </node>
+      </node>
+      <node uri="HED-Action-Take_survey">
+         <name>Take survey</name>
+      </node>
+      <node uri="HED-Action-Stretch">
+         <name>Stretch</name>
+         <description>Stretch your body such as when you wake up</description>
+      </node>
+      <node uri="HED-Action-Bend">
+         <name>Bend</name>
+      </node>
+      <node uri="HED-Action-Deep_breath">
+         <name>Deep breath</name>
+      </node>
+      <node uri="HED-Action-Laugh">
+         <name>Laugh</name>
+      </node>
+      <node uri="HED-Action-Sigh">
+         <name>Sigh</name>
+      </node>
+      <node uri="HED-Action-Groan">
+         <name>Groan</name>
+      </node>
+      <node uri="HED-Action-Scratch">
+         <name>Scratch</name>
+      </node>
+      <node uri="HED-Action-Switch_attention">
+         <name>Switch attention</name>
+         <node uri="HED-Action-Switch_attention-Intramodal">
+            <name>Intramodal</name>
+            <description>In the same modality but with a change in details  such as changing from paying attention to red dots and instead of blue dots</description>
+            <node uri="HED-Action-Switch_attention-Intramodal-Visual">
+               <name>Visual</name>
+            </node>
+            <node uri="HED-Action-Switch_attention-Intramodal-Auditory">
+               <name>Auditory</name>
+            </node>
+            <node uri="HED-Action-Switch_attention-Intramodal-Tactile">
+               <name>Tactile</name>
+            </node>
+            <node uri="HED-Action-Switch_attention-Intramodal-Taste">
+               <name>Taste</name>
+            </node>
+            <node uri="HED-Action-Switch_attention-Intramodal-Smell">
+               <name>Smell</name>
+            </node>
+         </node>
+         <node uri="HED-Action-Switch_attention-Intermodal">
+            <name>Intermodal</name>
+            <description>Between modalities such as changing from audio to visual</description>
+            <node uri="HED-Action-Switch_attention-Intermodal-From_modality">
+               <name>From modality</name>
+               <node uri="HED-Action-Switch_attention-Intermodal-From_modality-Visual">
+                  <name>Visual</name>
+               </node>
+               <node uri="HED-Action-Switch_attention-Intermodal-From_modality-Auditory">
+                  <name>Auditory</name>
+               </node>
+               <node uri="HED-Action-Switch_attention-Intermodal-From_modality-Tactile">
+                  <name>Tactile</name>
+               </node>
+               <node uri="HED-Action-Switch_attention-Intermodal-From_modality-Taste">
+                  <name>Taste</name>
+               </node>
+               <node uri="HED-Action-Switch_attention-Intermodal-From_modality-Smell">
+                  <name>Smell</name>
+               </node>
+            </node>
+            <node uri="HED-Action-Switch_attention-Intermodal-To_modality">
+               <name>To modality</name>
+               <node uri="HED-Action-Switch_attention-Intermodal-To_modality-Visual">
+                  <name>Visual</name>
+               </node>
+               <node uri="HED-Action-Switch_attention-Intermodal-To_modality-Auditory">
+                  <name>Auditory</name>
+               </node>
+               <node uri="HED-Action-Switch_attention-Intermodal-To_modality-Tactile">
+                  <name>Tactile</name>
+               </node>
+               <node uri="HED-Action-Switch_attention-Intermodal-To_modality-Taste">
+                  <name>Taste</name>
+               </node>
+               <node uri="HED-Action-Switch_attention-Intermodal-To_modality-Smell">
+                  <name>Smell</name>
+               </node>
+            </node>
+         </node>
+      </node>
+      <node uri="HED-Action-Walk">
+         <name>Walk</name>
+         <node uri="HED-Action-Walk-Stride">
+            <name>Stride</name>
+            <description>Use onset and offset attributes to indicate different walking stride stages</description>
+         </node>
+         <node uri="HED-Action-Walk-Faster">
+            <name>Faster</name>
+            <description>increasing the speed of walking</description>
+         </node>
+         <node uri="HED-Action-Walk-Slower">
+            <name>Slower</name>
+            <description>decreasing the speed of walking</description>
+         </node>
+      </node>
+      <node uri="HED-Action-Control_vehicle">
+         <name>Control vehicle</name>
+         <description>Controlling an object that you are aboard</description>
+         <node uri="HED-Action-Control_vehicle-Drive">
+            <name>Drive</name>
+            <description>Driving a vehicle such as a car</description>
+            <node uri="HED-Action-Control_vehicle-Drive-Correct">
+               <name>Correct</name>
+               <description>Correct for a perturbation</description>
+            </node>
+            <node uri="HED-Action-Control_vehicle-Drive-Near_miss">
+               <name>Near miss</name>
+            </node>
+            <node uri="HED-Action-Control_vehicle-Drive-Collide">
+               <name>Collide</name>
+            </node>
+         </node>
+         <node uri="HED-Action-Control_vehicle-Stop">
+            <name>Stop</name>
+            <description>Brake a car</description>
+         </node>
+         <node uri="HED-Action-Control_vehicle-Pilot">
+            <name>Pilot</name>
+            <description>Pilot a vehicle such as an airplane</description>
+         </node>
+      </node>
+      <node uri="HED-Action-Teleoperate">
+         <name>Teleoperate</name>
+         <description>Control an object that you are not aboard</description>
+      </node>
+      <node uri="HED-Action-Allow">
+         <name>Allow</name>
+         <description>Allow access to something such as allowing a car to pass</description>
+      </node>
+      <node uri="HED-Action-Deny">
+         <name>Deny</name>
+         <description>Deny access to something such as preventing someone to pass</description>
+      </node>
+      <node uri="HED-Action-Step_around">
+         <name>Step around</name>
+      </node>
+      <node uri="HED-Action-Step_over">
+         <name>Step over</name>
+      </node>
+      <node uri="HED-Action-Step_on">
+         <name>Step on</name>
+      </node>
+      <node uri="HED-Action-Swallow">
+         <name>Swallow</name>
+      </node>
+      <node uri="HED-Action-Flex">
+         <name>Flex</name>
+      </node>
+      <node uri="HED-Action-Evade">
+         <name>Evade</name>
+      </node>
+      <node uri="HED-Action-Shrug">
+         <name>Shrug</name>
+      </node>
+      <node uri="HED-Action-Dance">
+         <name>Dance</name>
+      </node>
+      <node uri="HED-Action-Open_mouth">
+         <name>Open mouth</name>
+      </node>
+      <node uri="HED-Action-Whistle">
+         <name>Whistle</name>
+      </node>
+      <node uri="HED-Action-Read">
+         <name>Read</name>
+      </node>
+      <node uri="HED-Action-Attend">
+         <name>Attend</name>
+      </node>
+      <node uri="HED-Action-Recall">
+         <name>Recall</name>
+      </node>
+      <node uri="HED-Action-Generate">
+         <name>Generate</name>
+      </node>
+      <node uri="HED-Action-Repeat">
+         <name>Repeat</name>
+      </node>
+      <node uri="HED-Action-Hold_breath">
+         <name>Hold breath</name>
+      </node>
+      <node uri="HED-Action-Breathe">
+         <name>Breathe</name>
+      </node>
+      <node uri="HED-Action-Rest">
+         <name>Rest</name>
+      </node>
+      <node uri="HED-Action-Count">
+         <name>Count</name>
+      </node>
+      <node uri="HED-Action-Move">
+         <name>Move</name>
+         <node uri="HED-Action-Move-Upper_torso">
+            <name>Upper torso</name>
+         </node>
+         <node uri="HED-Action-Move-Lower_torso">
+            <name>Lower torso</name>
+         </node>
+         <node uri="HED-Action-Move-Whole_body">
+            <name>Whole body</name>
+         </node>
+      </node>
+      <node uri="HED-Action-Speak">
+         <name>Speak</name>
+      </node>
+      <node uri="HED-Action-Sing">
+         <name>Sing</name>
+      </node>
+      <node uri="HED-Action-Detect">
+         <name>Detect</name>
+      </node>
+      <node uri="HED-Action-Name">
+         <name>Name</name>
+      </node>
+      <node uri="HED-Action-Smile">
+         <name>Smile</name>
+      </node>
+      <node uri="HED-Action-Discriminate">
+         <name>Discriminate</name>
+      </node>
+      <node uri="HED-Action-Track">
+         <name>Track</name>
+      </node>
+      <node uri="HED-Action-Encode">
+         <name>Encode</name>
+      </node>
+      <node uri="HED-Action-Eye-blink_inhibit">
+         <name>Eye-blink inhibit</name>
+      </node>
+   </node>
+   <node extensionAllowed="true" requireChild="true" uri="HED-Attribute">
+      <name>Attribute</name>
+      <node requireChild="true" uri="HED-Attribute-ID">
+         <name>ID</name>
+         <description>Tag to identify any aspect of an event. Use parentheses to group an ID Value tag with an ID Type tag to qualify the kind of ID that the value represents.</description>
+         <node requireChild="true" uri="HED-Attribute-ID-Value">
+            <name>Value</name>
+            <description>Use this tag by itself or in a parenthesized expression with an ID Type tag.</description>
+            <node takesValue="true" uri="HED-Attribute-ID-Value-#">
+               <name>#</name>
+            </node>
+         </node>
+         <node requireChild="true" uri="HED-Attribute-ID-Type">
+            <name>Type</name>
+            <description>Use this tag to define the type of ID in more detail.</description>
+            <node uri="HED-Attribute-ID-Type-Group">
+               <name>Group</name>
+               <description>ID that identifies a group of events associated with each other.</description>
+            </node>
+            <node uri="HED-Attribute-ID-Type-Local">
+               <name>Local</name>
+               <description>For IDs only defined in the scope of a single event. The local ID 5 in events 1 and 2 may refer to two different objects. The global IDs  directly under ID tag refer to the same object through the whole experiment</description>
+            </node>
+            <node uri="HED-Attribute-ID-Type-Participant">
+               <name>Participant</name>
+               <description>ID identifies a subject.</description>
+            </node>
+            <node uri="HED-Attribute-ID-Type-Permutation">
+               <name>Permutation</name>
+               <description>ID is used to identify an ordering as for example to indicate block order in an experimental design.</description>
+            </node>
+            <node uri="HED-Attribute-ID-Type-Reference_object">
+               <name>Reference object</name>
+               <description>ID is used to a reference object to specify location with respect to.</description>
+            </node>
+            <node uri="HED-Attribute-ID-Type-State">
+               <name>State</name>
+               <description>ID is used to identify a group of events that are changing the state of a variable as for example when the onset means the offset of any other and a change in the state</description>
+            </node>
+            <node uri="HED-Attribute-ID-Type-Synchronization">
+               <name>Synchronization</name>
+               <description>ID is used to tag an event for synchronizing data streams.</description>
+            </node>
+         </node>
+      </node>
+      <node requireChild="true" uri="HED-Attribute-Spatial">
+         <name>Spatial</name>
+         <node requireChild="true" uri="HED-Attribute-Spatial-Direction">
+            <name>Direction</name>
+            <description>Coordinate system is inferred from Attribute/Location. To specify a vector combine subnodes with number --- for example Attribute/Top/10, Attribute/Direction/Left/5 to create a vector with coordinates 10 and 5</description>
+            <node uri="HED-Attribute-Spatial-Direction-Bottom">
+               <name>Bottom</name>
+               <node isNumeric="true" takesValue="true" unitClass="angle,physicalLength,pixels" uri="HED-Attribute-Spatial-Direction-Bottom-#">
+                  <name>#</name>
+               </node>
+            </node>
+            <node uri="HED-Attribute-Spatial-Direction-Left">
+               <name>Left</name>
+               <node isNumeric="true" takesValue="true" unitClass="angle,physicalLength,pixels" uri="HED-Attribute-Spatial-Direction-Left-#">
+                  <name>#</name>
+               </node>
+            </node>
+            <node uri="HED-Attribute-Spatial-Direction-Right">
+               <name>Right</name>
+               <node isNumeric="true" takesValue="true" unitClass="angle,physicalLength,pixels" uri="HED-Attribute-Spatial-Direction-Right-#">
+                  <name>#</name>
+               </node>
+            </node>
+            <node uri="HED-Attribute-Spatial-Direction-Top">
+               <name>Top</name>
+               <description>Combine Attribute/Direction/Top and Attribute/Direction/Left to mean the upper left</description>
+               <node isNumeric="true" takesValue="true" unitClass="angle,physicalLength,pixels" uri="HED-Attribute-Spatial-Direction-Top-#">
+                  <name>#</name>
+               </node>
+            </node>
+            <node uri="HED-Attribute-Spatial-Direction-Angle">
+               <name>Angle</name>
+               <description>Clockwise angle in degrees from vertical</description>
+               <node isNumeric="true" takesValue="true" unitClass="angle" uri="HED-Attribute-Spatial-Direction-Angle-#">
+                  <name>#</name>
+                  <description>Clockwise angle in degrees from vertical</description>
+               </node>
+            </node>
+            <node uri="HED-Attribute-Spatial-Direction-North">
+               <name>North</name>
+               <node isNumeric="true" takesValue="true" unitClass="angle,physicalLength,pixels" uri="HED-Attribute-Spatial-Direction-North-#">
+                  <name>#</name>
+               </node>
+            </node>
+            <node uri="HED-Attribute-Spatial-Direction-South">
+               <name>South</name>
+               <node isNumeric="true" takesValue="true" unitClass="angle,physicalLength,pixels" uri="HED-Attribute-Spatial-Direction-South-#">
+                  <name>#</name>
+               </node>
+            </node>
+            <node uri="HED-Attribute-Spatial-Direction-East">
+               <name>East</name>
+               <node isNumeric="true" takesValue="true" unitClass="angle,physicalLength,pixels" uri="HED-Attribute-Spatial-Direction-East-#">
+                  <name>#</name>
+               </node>
+            </node>
+            <node uri="HED-Attribute-Spatial-Direction-West">
+               <name>West</name>
+               <node isNumeric="true" takesValue="true" unitClass="angle,physicalLength,pixels" uri="HED-Attribute-Spatial-Direction-West-#">
+                  <name>#</name>
+               </node>
+            </node>
+            <node uri="HED-Attribute-Spatial-Direction-Forward">
+               <name>Forward</name>
+               <description>Like a car moving forward</description>
+            </node>
+            <node uri="HED-Attribute-Spatial-Direction-Backward">
+               <name>Backward</name>
+               <description>Like a car moving backward</description>
+            </node>
+         </node>
+         <node requireChild="true" uri="HED-Attribute-Spatial-Location">
+            <name>Location</name>
+            <description>Spot or center of an area. Use Area were you are referring to something with significant extent and emphasizing its boundaries, like a city</description>
+            <node takesValue="true" uri="HED-Attribute-Spatial-Location-#">
+               <name>#</name>
+               <description>location label</description>
+            </node>
+            <node uri="HED-Attribute-Spatial-Location-Lane">
+               <name>Lane</name>
+               <description>For example a car lane</description>
+               <node uri="HED-Attribute-Spatial-Location-Lane-Cruising">
+                  <name>Cruising</name>
+               </node>
+               <node uri="HED-Attribute-Spatial-Location-Lane-Leftmost">
+                  <name>Leftmost</name>
+               </node>
+               <node uri="HED-Attribute-Spatial-Location-Lane-Left_of_expected">
+                  <name>Left of expected</name>
+               </node>
+               <node uri="HED-Attribute-Spatial-Location-Lane-Oncoming">
+                  <name>Oncoming</name>
+               </node>
+               <node uri="HED-Attribute-Spatial-Location-Lane-Passing">
+                  <name>Passing</name>
+                  <description>The lane that cars use to take over other cars</description>
+               </node>
+               <node uri="HED-Attribute-Spatial-Location-Lane-Rightmost">
+                  <name>Rightmost</name>
+               </node>
+               <node uri="HED-Attribute-Spatial-Location-Lane-Right_of_expected">
+                  <name>Right of expected</name>
+               </node>
+            </node>
+            <node requireChild="true" uri="HED-Attribute-Spatial-Location-Real-world_coordinates">
+               <name>Real-world coordinates</name>
+               <node uri="HED-Attribute-Spatial-Location-Real-world_coordinates-Room">
+                  <name>Room</name>
+                  <node requireChild="true" uri="HED-Attribute-Spatial-Location-Real-world_coordinates-Room-xyz">
+                     <name>xyz</name>
+                     <description>have a subnode, e.g. Attribute/Location/Real-world coordinates/Room/xyz/10 50 30</description>
+                     <node takesValue="true" uri="HED-Attribute-Spatial-Location-Real-world_coordinates-Room-xyz-#">
+                        <name>#</name>
+                     </node>
+                  </node>
+               </node>
+            </node>
+            <node requireChild="true" uri="HED-Attribute-Spatial-Location-Reference_frame">
+               <name>Reference frame</name>
+               <node uri="HED-Attribute-Spatial-Location-Reference_frame-Relative_to_participant">
+                  <name>Relative to participant</name>
+                  <node requireChild="true" uri="HED-Attribute-Spatial-Location-Reference_frame-Relative_to_participant-Azimuth">
+                     <name>Azimuth</name>
+                     <node isNumeric="true" takesValue="true" unitClass="angle" uri="HED-Attribute-Spatial-Location-Reference_frame-Relative_to_participant-Azimuth-#">
+                        <name>#</name>
+                        <description>Clockwise with units preferably in degrees</description>
+                     </node>
+                  </node>
+                  <node uri="HED-Attribute-Spatial-Location-Reference_frame-Relative_to_participant-Back">
+                     <name>Back</name>
+                  </node>
+                  <node requireChild="true" uri="HED-Attribute-Spatial-Location-Reference_frame-Relative_to_participant-Distance">
+                     <name>Distance</name>
+                     <node isNumeric="true" takesValue="true" unitClass="physicalLength" uri="HED-Attribute-Spatial-Location-Reference_frame-Relative_to_participant-Distance-#">
+                        <name>#</name>
+                        <description>Distance is in meters by default</description>
+                     </node>
+                     <node uri="HED-Attribute-Spatial-Location-Reference_frame-Relative_to_participant-Distance-Far">
+                        <name>Far</name>
+                     </node>
+                     <node uri="HED-Attribute-Spatial-Location-Reference_frame-Relative_to_participant-Distance-Moderate">
+                        <name>Moderate</name>
+                     </node>
+                     <node uri="HED-Attribute-Spatial-Location-Reference_frame-Relative_to_participant-Distance-Near">
+                        <name>Near</name>
+                     </node>
+                  </node>
+                  <node requireChild="true" uri="HED-Attribute-Spatial-Location-Reference_frame-Relative_to_participant-Elevation">
+                     <name>Elevation</name>
+                     <node isNumeric="true" takesValue="true" unitClass="angle" uri="HED-Attribute-Spatial-Location-Reference_frame-Relative_to_participant-Elevation-#">
+                        <name>#</name>
+                        <description>Preferably in degrees</description>
+                     </node>
+                  </node>
+                  <node uri="HED-Attribute-Spatial-Location-Reference_frame-Relative_to_participant-Front">
+                     <name>Front</name>
+                  </node>
+                  <node uri="HED-Attribute-Spatial-Location-Reference_frame-Relative_to_participant-Left">
+                     <name>Left</name>
+                  </node>
+                  <node uri="HED-Attribute-Spatial-Location-Reference_frame-Relative_to_participant-Right">
+                     <name>Right</name>
+                  </node>
+               </node>
+               <node uri="HED-Attribute-Spatial-Location-Reference_frame-Specified_absolute_reference">
+                  <name>Specified absolute reference</name>
+               </node>
+            </node>
+            <node uri="HED-Attribute-Spatial-Location-Screen">
+               <name>Screen</name>
+               <description>Specify displacements from each subnode in pixels or degrees or meters. Specify units such as Attribute/Spatial/Location/Screen/Top/12 px</description>
+               <node uri="HED-Attribute-Spatial-Location-Screen-Angle">
+                  <name>Angle</name>
+                  <node isNumeric="true" takesValue="true" unitClass="angle" uri="HED-Attribute-Spatial-Location-Screen-Angle-#">
+                     <name>#</name>
+                     <description>Clockwise angle in degrees from vertical</description>
+                  </node>
+               </node>
+               <node uri="HED-Attribute-Spatial-Location-Screen-Bottom">
+                  <name>Bottom</name>
+                  <node isNumeric="true" takesValue="true" unitClass="angle,physicalLength,pixels" uri="HED-Attribute-Spatial-Location-Screen-Bottom-#">
+                     <name>#</name>
+                  </node>
+               </node>
+               <node uri="HED-Attribute-Spatial-Location-Screen-Center">
+                  <name>Center</name>
+                  <node isNumeric="true" takesValue="true" unitClass="angle,physicalLength,pixels" uri="HED-Attribute-Spatial-Location-Screen-Center-#">
+                     <name>#</name>
+                  </node>
+               </node>
+               <node uri="HED-Attribute-Spatial-Location-Screen-Center_displacement">
+                  <name>Center displacement</name>
+                  <node isNumeric="true" takesValue="true" unitClass="angle,physicalLength" uri="HED-Attribute-Spatial-Location-Screen-Center_displacement-#">
+                     <name>#</name>
+                     <description>Displacement from screen center, in any direction, in degrees, cm, or other lengths</description>
+                  </node>
+                  <node uri="HED-Attribute-Spatial-Location-Screen-Center_displacement-Horizontal">
+                     <name>Horizontal</name>
+                     <node isNumeric="true" takesValue="true" unitClass="angle,physicalLength" uri="HED-Attribute-Spatial-Location-Screen-Center_displacement-Horizontal-#">
+                        <name>#</name>
+                        <description>Displacement from screen center in any direction</description>
+                     </node>
+                  </node>
+                  <node uri="HED-Attribute-Spatial-Location-Screen-Center_displacement-Vertical">
+                     <name>Vertical</name>
+                     <node isNumeric="true" takesValue="true" unitClass="angle,physicalLength" uri="HED-Attribute-Spatial-Location-Screen-Center_displacement-Vertical-#">
+                        <name>#</name>
+                        <description>Displacement from screen center in any direction</description>
+                     </node>
+                  </node>
+               </node>
+               <node uri="HED-Attribute-Spatial-Location-Screen-Left">
+                  <name>Left</name>
+                  <node isNumeric="true" takesValue="true" unitClass="angle,physicalLength,pixels" uri="HED-Attribute-Spatial-Location-Screen-Left-#">
+                     <name>#</name>
+                  </node>
+               </node>
+               <node uri="HED-Attribute-Spatial-Location-Screen-Right">
+                  <name>Right</name>
+               </node>
+               <node isNumeric="true" takesValue="true" unitClass="angle,physicalLength,pixels" uri="HED-Attribute-Spatial-Location-Screen-#">
+                  <name>#</name>
+               </node>
+               <node uri="HED-Attribute-Spatial-Location-Screen-Top">
+                  <name>Top</name>
+                  <description>You can combine Attribute/Location/Top and Attribute/Location/Left to designate UpperLeft and so on</description>
+                  <node isNumeric="true" takesValue="true" unitClass="angle,physicalLength,pixels" uri="HED-Attribute-Spatial-Location-Screen-Top-#">
+                     <name>#</name>
+                  </node>
+               </node>
+            </node>
+         </node>
+         <node requireChild="true" uri="HED-Attribute-Spatial-Object_orientation">
+            <name>Object orientation</name>
+            <node uri="HED-Attribute-Spatial-Object_orientation-Rotated">
+               <name>Rotated</name>
+               <node requireChild="true" uri="HED-Attribute-Spatial-Object_orientation-Rotated-Degrees">
+                  <name>Degrees</name>
+                  <node isNumeric="true" takesValue="true" unitClass="angle" uri="HED-Attribute-Spatial-Object_orientation-Rotated-Degrees-#">
+                     <name>#</name>
+                     <description>Preferably in degrees</description>
+                  </node>
+               </node>
+            </node>
+         </node>
+         <node requireChild="true" uri="HED-Attribute-Spatial-Object_side">
+            <name>Object side</name>
+            <description>Could be the left,  right, or both sides of a person or a vehicle</description>
+            <node uri="HED-Attribute-Spatial-Object_side-Back">
+               <name>Back</name>
+            </node>
+            <node uri="HED-Attribute-Spatial-Object_side-Bottom">
+               <name>Bottom</name>
+            </node>
+            <node uri="HED-Attribute-Spatial-Object_side-Bow">
+               <name>Bow</name>
+               <description>Front of a ship</description>
+            </node>
+            <node uri="HED-Attribute-Spatial-Object_side-Driver_side">
+               <name>Driver side</name>
+               <description>Side of a car</description>
+            </node>
+            <node uri="HED-Attribute-Spatial-Object_side-Front">
+               <name>Front</name>
+            </node>
+            <node uri="HED-Attribute-Spatial-Object_side-Left">
+               <name>Left</name>
+            </node>
+            <node uri="HED-Attribute-Spatial-Object_side-Passenger_side">
+               <name>Passenger side</name>
+               <description>Side of a car</description>
+            </node>
+            <node uri="HED-Attribute-Spatial-Object_side-Port">
+               <name>Port</name>
+            </node>
+            <node uri="HED-Attribute-Spatial-Object_side-Right">
+               <name>Right</name>
+            </node>
+            <node uri="HED-Attribute-Spatial-Object_side-Stern">
+               <name>Stern</name>
+               <description>Back of the ship</description>
+            </node>
+            <node uri="HED-Attribute-Spatial-Object_side-Starboard">
+               <name>Starboard</name>
+            </node>
+            <node uri="HED-Attribute-Spatial-Object_side-Top">
+               <name>Top</name>
+            </node>
+         </node>
+         <node requireChild="true" uri="HED-Attribute-Spatial-Size">
+            <name>Size</name>
+            <node requireChild="true" uri="HED-Attribute-Spatial-Size-Angle">
+               <name>Angle</name>
+               <node isNumeric="true" takesValue="true" unitClass="angle" uri="HED-Attribute-Spatial-Size-Angle-#">
+                  <name>#</name>
+                  <description>In degrees or other units of angle</description>
+               </node>
+            </node>
+            <node requireChild="true" uri="HED-Attribute-Spatial-Size-Area">
+               <name>Area</name>
+               <node isNumeric="true" takesValue="true" unitClass="area" uri="HED-Attribute-Spatial-Size-Area-#">
+                  <name>#</name>
+               </node>
+            </node>
+            <node uri="HED-Attribute-Spatial-Size-Height">
+               <name>Height</name>
+               <node isNumeric="true" takesValue="true" unitClass="physicalLength" uri="HED-Attribute-Spatial-Size-Height-#">
+                  <name>#</name>
+                  <description>Default units are meters</description>
+               </node>
+            </node>
+            <node requireChild="true" uri="HED-Attribute-Spatial-Size-Length">
+               <name>Length</name>
+               <node isNumeric="true" takesValue="true" unitClass="physicalLength" uri="HED-Attribute-Spatial-Size-Length-#">
+                  <name>#</name>
+                  <description>In meters or other units of length</description>
+               </node>
+            </node>
+            <node requireChild="true" uri="HED-Attribute-Spatial-Size-Volume">
+               <name>Volume</name>
+               <node isNumeric="true" takesValue="true" unitClass="volume" uri="HED-Attribute-Spatial-Size-Volume-#">
+                  <name>#</name>
+                  <description>In cubic-meters or other units of volume</description>
+               </node>
+            </node>
+            <node uri="HED-Attribute-Spatial-Size-Width">
+               <name>Width</name>
+               <node isNumeric="true" takesValue="true" unitClass="physicalLength" uri="HED-Attribute-Spatial-Size-Width-#">
+                  <name>#</name>
+                  <description>in meters</description>
+               </node>
+            </node>
+         </node>
+      </node>
+      <node requireChild="true" uri="HED-Attribute-Temporal">
+         <name>Temporal</name>
+         <node requireChild="true" uri="HED-Attribute-Temporal-Duration">
+            <name>Duration</name>
+            <description>An offset that is implicit after duration time passed from the onset</description>
+            <node isNumeric="true" takesValue="true" unitClass="time" uri="HED-Attribute-Temporal-Duration-#">
+               <name>#</name>
+            </node>
+         </node>
+         <node uri="HED-Attribute-Temporal-Onset">
+            <name>Onset</name>
+            <description>Default</description>
+         </node>
+         <node uri="HED-Attribute-Temporal-Offset">
+            <name>Offset</name>
+         </node>
+         <node requireChild="true" uri="HED-Attribute-Temporal-Repetition">
+            <name>Repetition</name>
+            <description>When the same type of event such as a fixation on the exact same object happens multiple times and it might be necessary to distinguish the first look vs. others</description>
+            <node isNumeric="true" takesValue="true" uri="HED-Attribute-Temporal-Repetition-#">
+               <name>#</name>
+               <description>Number starting from 1 where 1 indicates the first occurrence and 2 indicates the second occurrence</description>
+            </node>
+         </node>
+         <node uri="HED-Attribute-Temporal-Response_start_delay">
+            <name>Response start delay</name>
+            <description>The time interval between this (stimulus) event and the start of the response event specified, usually by grouping with the event ID of the response start event.</description>
+            <node takesValue="true" unitClass="time" uri="HED-Attribute-Temporal-Response_start_delay-#">
+               <name>#</name>
+            </node>
+         </node>
+         <node uri="HED-Attribute-Temporal-Response_end_delay">
+            <name>Response end delay</name>
+            <description>The time interval between this (stimulus) event and the end of the response event specified, usually by grouping with the event ID of the response end event.</description>
+            <node takesValue="true" unitClass="time" uri="HED-Attribute-Temporal-Response_end_delay-#">
+               <name>#</name>
+            </node>
+         </node>
+         <node predicateType="propertyOf" uri="HED-Attribute-Temporal-Temporal_rate">
+            <name>Temporal rate</name>
+            <node isNumeric="true" takesValue="true" unitClass="frequency" uri="HED-Attribute-Temporal-Temporal_rate-#">
+               <name>#</name>
+               <description>In Hz</description>
+            </node>
+         </node>
+         <node requireChild="true" uri="HED-Attribute-Temporal-Temporal_uncertainty">
+            <name>Temporal uncertainty</name>
+            <description>Use to specify the amount of uncertainty in the timing of the event. Please notice that this is different from Attribute/Probability tag which relates to the occurrence of event and can be interpretative as the integral of probability density across a distribution whose shape (temporal extent) is specified by Attribute/Temporal uncertainty</description>
+            <node isNumeric="true" takesValue="true" unitClass="time" uri="HED-Attribute-Temporal-Temporal_uncertainty-#">
+               <name>#</name>
+            </node>
+            <node requireChild="true" uri="HED-Attribute-Temporal-Temporal_uncertainty-Standard_deviation">
+               <name>Standard deviation</name>
+               <description>implies that the distribution of temporal uncertainty is Gaussian with the provided standard deviation (in seconds).</description>
+               <node isNumeric="true" takesValue="true" unitClass="time" uri="HED-Attribute-Temporal-Temporal_uncertainty-Standard_deviation-#">
+                  <name>#</name>
+               </node>
+            </node>
+         </node>
+      </node>
+      <node uri="HED-Attribute-Imagined">
+         <name>Imagined</name>
+         <description>This is used to identity that the (sub)event only happened in participant's imagination, e.g.  imagined movements in motor imagery paradigms.</description>
+      </node>
+      <node requireChild="true" uri="HED-Attribute-Condition">
+         <name>Condition</name>
+         <description>Specifies the value of an independent variable (number of letters, N, in an N-back task) or function of independent variables that is varied or controlled for in the experiment.  This attribute is often specified at the task level and can be associated with specification of an experimental stimulus or an experiment context (e.g. 1-back, 2-back conditions in an N-back task, or changing the target type from faces to houses in a Rapid Serial Visual Presentation, or RSVP, task.)</description>
+         <node takesValue="true" uri="HED-Attribute-Condition-#">
+            <name>#</name>
+            <description>the condition</description>
+         </node>
+      </node>
+      <node uri="HED-Attribute-Action_judgment">
+         <name>Action judgment</name>
+         <description>External judgment (assumed to be ground truth, e.g. from an experiment control software or an annotator) about participant actions such as answering a question, failing to answer in time, etc.</description>
+         <node uri="HED-Attribute-Action_judgment-Correct">
+            <name>Correct</name>
+         </node>
+         <node uri="HED-Attribute-Action_judgment-Incorrect">
+            <name>Incorrect</name>
+            <description>Wrong choice but not time out</description>
+         </node>
+         <node uri="HED-Attribute-Action_judgment-Indeterminate">
+            <name>Indeterminate</name>
+            <description>It cannot be determined that the action was correct or incorrect.</description>
+         </node>
+         <node uri="HED-Attribute-Action_judgment-Time_out">
+            <name>Time out</name>
+            <node uri="HED-Attribute-Action_judgment-Time_out-Missed">
+               <name>Missed</name>
+               <description>Participant failed or could not have perceived the instruction due to their eyes being off-screen or a similar reason. Not easy to deduce this but it is possible</description>
+            </node>
+         </node>
+         <node uri="HED-Attribute-Action_judgment-Inappropriate">
+            <name>Inappropriate</name>
+            <description>A choice that is not allowed such as moving a chess piece to a location it should not go based on game rules</description>
+         </node>
+      </node>
+      <node uri="HED-Attribute-Social">
+         <name>Social</name>
+         <description>Involving interactions among multiple agents such as humans or dogs or robots</description>
+      </node>
+      <node uri="HED-Attribute-Peak">
+         <name>Peak</name>
+         <description>Peak velocity or  acceleration or jerk</description>
+      </node>
+      <node requireChild="true" uri="HED-Attribute-Item_count">
+         <name>Item count</name>
+         <description>Number of items for example when there are 3 cars and they are identified as a single item</description>
+         <node isNumeric="true" takesValue="true" uri="HED-Attribute-Item_count-#">
+            <name>#</name>
+            <description>Numeric value of number of items #</description>
+         </node>
+         <node isNumeric="true" takesValue="true" uri="HED-Attribute-Item_count-&lt;=#">
+            <name>&lt;=#</name>
+            <description>Number of items less than or equal to #</description>
+         </node>
+         <node isNumeric="true" takesValue="true" uri="HED-Attribute-Item_count-&gt;=#">
+            <name>&gt;=#</name>
+            <description>Number of items  more than or equal to #</description>
+         </node>
+      </node>
+      <node uri="HED-Attribute-Auditory">
+         <name>Auditory</name>
+         <node requireChild="true" uri="HED-Attribute-Auditory-Frequency">
+            <name>Frequency</name>
+            <node isNumeric="true" takesValue="true" unitClass="frequency" uri="HED-Attribute-Auditory-Frequency-#">
+               <name>#</name>
+               <description>In HZ</description>
+            </node>
+         </node>
+         <node requireChild="true" uri="HED-Attribute-Auditory-Loudness">
+            <name>Loudness</name>
+            <node isNumeric="true" takesValue="true" unitClass="intensity" uri="HED-Attribute-Auditory-Loudness-#">
+               <name>#</name>
+               <description>in dB</description>
+            </node>
+         </node>
+         <node uri="HED-Attribute-Auditory-Wave_form">
+            <name>Wave form</name>
+            <node uri="HED-Attribute-Auditory-Wave_form-Sine">
+               <name>Sine</name>
+            </node>
+         </node>
+         <node uri="HED-Attribute-Auditory-Ramp_up">
+            <name>Ramp up</name>
+            <description>Increasing in amplitude</description>
+         </node>
+         <node uri="HED-Attribute-Auditory-Ramp_down">
+            <name>Ramp down</name>
+            <description>Decreasing in amplitude</description>
+         </node>
+      </node>
+      <node uri="HED-Attribute-Blink">
+         <name>Blink</name>
+         <node requireChild="true" uri="HED-Attribute-Blink-Time_shut">
+            <name>Time shut</name>
+            <description>The amount of time the eyelid remains closed (typically measured as 90% of the blink amplitude), in seconds.</description>
+            <node default="s" isNumeric="true" takesValue="true" unitClass="time" uri="HED-Attribute-Blink-Time_shut-#">
+               <name>#</name>
+            </node>
+         </node>
+         <node requireChild="true" uri="HED-Attribute-Blink-Duration">
+            <name>Duration</name>
+            <description>Duration of blink, usually the half-height blink duration in seconds taken either from base or zero of EEG signal. For eye-trackers, usually denotes interval when pupil covered by eyelid.</description>
+            <node default="s" isNumeric="true" takesValue="true" unitClass="time" uri="HED-Attribute-Blink-Duration-#">
+               <name>#</name>
+            </node>
+         </node>
+         <node requireChild="true" uri="HED-Attribute-Blink-PAVR">
+            <name>PAVR</name>
+            <description>Amplitude-Velocity ratio, in centiseconds</description>
+            <node default="centiseconds" isNumeric="true" takesValue="true" unitClass="time" uri="HED-Attribute-Blink-PAVR-#">
+               <name>#</name>
+            </node>
+         </node>
+         <node requireChild="true" uri="HED-Attribute-Blink-NAVR">
+            <name>NAVR</name>
+            <description>Negative Amplitude-Velocity ratio, in centiseconds</description>
+            <node default="centiseconds" isNumeric="true" takesValue="true" unitClass="time" uri="HED-Attribute-Blink-NAVR-#">
+               <name>#</name>
+            </node>
+         </node>
+      </node>
+      <node color="/Attribute/Visual/Color" uri="HED-Attribute-Visual">
+         <name>Visual</name>
+         <node uri="HED-Attribute-Visual-Rendering">
+            <name>Rendering</name>
+            <node ID="text" background="/Attribute/Visual/Background" display="text" distance="text" size="text" topology="text" uri="HED-Attribute-Visual-Rendering-Screen" viewing-angle="text">
+               <name>Screen</name>
+               <node uri="HED-Attribute-Visual-Rendering-Screen-Viewport">
+                  <name>Viewport</name>
+               </node>
+            </node>
+         </node>
+         <node uri="HED-Attribute-Visual-Bistable">
+            <name>Bistable</name>
+         </node>
+         <node uri="HED-Attribute-Visual-Background">
+            <name>Background</name>
+         </node>
+         <node uri="HED-Attribute-Visual-Foreground">
+            <name>Foreground</name>
+         </node>
+         <node uri="HED-Attribute-Visual-Up-down_separated">
+            <name>Up-down separated</name>
+            <description>Stimuli presented both at the top and the bottom of fovea</description>
+            <node isNumeric="true" takesValue="true" unitClass="angle" uri="HED-Attribute-Visual-Up-down_separated-#">
+               <name>#</name>
+               <description>Angle of separation in degrees by default</description>
+            </node>
+         </node>
+         <node uri="HED-Attribute-Visual-Bilateral">
+            <name>Bilateral</name>
+            <description>For bilateral visual field stimulus presentations</description>
+            <node isNumeric="true" takesValue="true" unitClass="angle" uri="HED-Attribute-Visual-Bilateral-#">
+               <name>#</name>
+               <description>Angle of separation in degrees by default</description>
+            </node>
+         </node>
+         <node uri="HED-Attribute-Visual-Motion">
+            <name>Motion</name>
+            <node uri="HED-Attribute-Visual-Motion-Down">
+               <name>Down</name>
+               <node isNumeric="true" takesValue="true" unitClass="speed" uri="HED-Attribute-Visual-Motion-Down-#">
+                  <name>#</name>
+                  <description>e.g. 3 degrees-per-second</description>
+               </node>
+            </node>
+            <node uri="HED-Attribute-Visual-Motion-Up">
+               <name>Up</name>
+               <node isNumeric="true" takesValue="true" unitClass="speed" uri="HED-Attribute-Visual-Motion-Up-#">
+                  <name>#</name>
+                  <description>e.g. 3 degrees-per-second</description>
+               </node>
+            </node>
+            <node uri="HED-Attribute-Visual-Motion-Horizontal">
+               <name>Horizontal</name>
+               <node uri="HED-Attribute-Visual-Motion-Horizontal-Right">
+                  <name>Right</name>
+                  <node isNumeric="true" takesValue="true" unitClass="speed" uri="HED-Attribute-Visual-Motion-Horizontal-Right-#">
+                     <name>#</name>
+                     <description>e.g. 3 degrees-per-second</description>
+                  </node>
+               </node>
+               <node uri="HED-Attribute-Visual-Motion-Horizontal-Left">
+                  <name>Left</name>
+                  <node isNumeric="true" takesValue="true" unitClass="speed" uri="HED-Attribute-Visual-Motion-Horizontal-Left-#">
+                     <name>#</name>
+                     <description>e.g. 3 degrees-per-second</description>
+                  </node>
+               </node>
+            </node>
+            <node uri="HED-Attribute-Visual-Motion-Oblique">
+               <name>Oblique</name>
+               <node uri="HED-Attribute-Visual-Motion-Oblique-Clock_face">
+                  <name>Clock face</name>
+                  <node takesValue="true" unitClass="time" uri="HED-Attribute-Visual-Motion-Oblique-Clock_face-#">
+                     <name>#</name>
+                     <description>For example  4:30</description>
+                  </node>
+               </node>
+            </node>
+         </node>
+         <node uri="HED-Attribute-Visual-Fixation_point">
+            <name>Fixation point</name>
+         </node>
+         <node requireChild="true" uri="HED-Attribute-Visual-Luminance">
+            <name>Luminance</name>
+            <node isNumeric="true" takesValue="true" unitClass="luminousIntensity" uri="HED-Attribute-Visual-Luminance-#">
+               <name>#</name>
+               <description>In candelas by default</description>
+            </node>
+         </node>
+         <node requireChild="true" uri="HED-Attribute-Visual-Color">
+            <name>Color</name>
+            <node uri="HED-Attribute-Visual-Color-Dark">
+               <name>Dark</name>
+            </node>
+            <node uri="HED-Attribute-Visual-Color-Light">
+               <name>Light</name>
+            </node>
+            <node uri="HED-Attribute-Visual-Color-Aqua">
+               <name>Aqua</name>
+               <description>These are CSS 3 basic color names</description>
+            </node>
+            <node uri="HED-Attribute-Visual-Color-Black">
+               <name>Black</name>
+            </node>
+            <node uri="HED-Attribute-Visual-Color-Fuchsia">
+               <name>Fuchsia</name>
+            </node>
+            <node uri="HED-Attribute-Visual-Color-Gray">
+               <name>Gray</name>
+            </node>
+            <node uri="HED-Attribute-Visual-Color-Lime">
+               <name>Lime</name>
+            </node>
+            <node uri="HED-Attribute-Visual-Color-Maroon">
+               <name>Maroon</name>
+            </node>
+            <node uri="HED-Attribute-Visual-Color-Navy">
+               <name>Navy</name>
+            </node>
+            <node uri="HED-Attribute-Visual-Color-Olive">
+               <name>Olive</name>
+            </node>
+            <node uri="HED-Attribute-Visual-Color-Purple">
+               <name>Purple</name>
+            </node>
+            <node uri="HED-Attribute-Visual-Color-Silver">
+               <name>Silver</name>
+            </node>
+            <node uri="HED-Attribute-Visual-Color-Teal">
+               <name>Teal</name>
+            </node>
+            <node uri="HED-Attribute-Visual-Color-White">
+               <name>White</name>
+            </node>
+            <node uri="HED-Attribute-Visual-Color-Yellow">
+               <name>Yellow</name>
+            </node>
+            <node uri="HED-Attribute-Visual-Color-Red">
+               <name>Red</name>
+               <node isNumeric="true" takesValue="true" uri="HED-Attribute-Visual-Color-Red-#">
+                  <name>#</name>
+                  <description>R value of RGB between 0 and 1</description>
+               </node>
+            </node>
+            <node uri="HED-Attribute-Visual-Color-Blue">
+               <name>Blue</name>
+               <node isNumeric="true" takesValue="true" uri="HED-Attribute-Visual-Color-Blue-#">
+                  <name>#</name>
+                  <description>B value of RGB between 0 and 1</description>
+               </node>
+            </node>
+            <node uri="HED-Attribute-Visual-Color-Green">
+               <name>Green</name>
+               <node isNumeric="true" takesValue="true" uri="HED-Attribute-Visual-Color-Green-#">
+                  <name>#</name>
+                  <description>G value of RGB between 0 and 1</description>
+               </node>
+            </node>
+            <node requireChild="true" uri="HED-Attribute-Visual-Color-Hue">
+               <name>Hue</name>
+               <node isNumeric="true" takesValue="true" uri="HED-Attribute-Visual-Color-Hue-#">
+                  <name>#</name>
+                  <description>H value of HSV between 0 and 1</description>
+               </node>
+            </node>
+            <node requireChild="true" uri="HED-Attribute-Visual-Color-Saturation">
+               <name>Saturation</name>
+               <node isNumeric="true" takesValue="true" uri="HED-Attribute-Visual-Color-Saturation-#">
+                  <name>#</name>
+                  <description>S value of HSV between 0 and 1</description>
+               </node>
+            </node>
+            <node requireChild="true" uri="HED-Attribute-Visual-Color-Value">
+               <name>Value</name>
+               <node isNumeric="true" takesValue="true" uri="HED-Attribute-Visual-Color-Value-#">
+                  <name>#</name>
+                  <description>V value of HSV between 0 and 1</description>
+               </node>
+            </node>
+            <node uri="HED-Attribute-Visual-Color-Achromatic">
+               <name>Achromatic</name>
+               <description>Indicates gray scale</description>
+               <node isNumeric="true" takesValue="true" uri="HED-Attribute-Visual-Color-Achromatic-#">
+                  <name>#</name>
+                  <description>White intensity between 0 and 1</description>
+               </node>
+            </node>
+         </node>
+      </node>
+      <node uri="HED-Attribute-Nonlinguistic">
+         <name>Nonlinguistic</name>
+         <description>Something that conveys meaning without using words such as the iconic pictures of a man or a woman on the doors of restrooms. Another example is a deer crossing sign with just a picture of jumping deer.</description>
+      </node>
+      <node uri="HED-Attribute-Semantic">
+         <name>Semantic</name>
+         <description>Like in priming or in congruence</description>
+      </node>
+      <node uri="HED-Attribute-Language">
+         <name>Language</name>
+         <node predicateType="passThrough" uri="HED-Attribute-Language-Unit">
+            <name>Unit</name>
+            <node uri="HED-Attribute-Language-Unit-Phoneme">
+               <name>Phoneme</name>
+            </node>
+            <node uri="HED-Attribute-Language-Unit-Syllable">
+               <name>Syllable</name>
+            </node>
+            <node uri="HED-Attribute-Language-Unit-Word">
+               <name>Word</name>
+               <node uri="HED-Attribute-Language-Unit-Word-Noun">
+                  <name>Noun</name>
+                  <node uri="HED-Attribute-Language-Unit-Word-Noun-Proper">
+                     <name>Proper</name>
+                     <description>A proper noun that  refers to a unique entity  such as London or Jupiter</description>
+                  </node>
+                  <node uri="HED-Attribute-Language-Unit-Word-Noun-Common">
+                     <name>Common</name>
+                     <description>A noun that refers to a class of entities such as cities or planets or corporations  such as a Dog or a Skyscraper</description>
+                  </node>
+               </node>
+               <node uri="HED-Attribute-Language-Unit-Word-Verb">
+                  <name>Verb</name>
+               </node>
+               <node uri="HED-Attribute-Language-Unit-Word-Adjective">
+                  <name>Adjective</name>
+               </node>
+               <node uri="HED-Attribute-Language-Unit-Word-Pseudoword">
+                  <name>Pseudoword</name>
+               </node>
+               <node takesValue="true" uri="HED-Attribute-Language-Unit-Word-#">
+                  <name>#</name>
+                  <description>Actual word</description>
+               </node>
+            </node>
+            <node uri="HED-Attribute-Language-Unit-Sentence">
+               <name>Sentence</name>
+               <node uri="HED-Attribute-Language-Unit-Sentence-Full">
+                  <name>Full</name>
+               </node>
+               <node uri="HED-Attribute-Language-Unit-Sentence-Partial">
+                  <name>Partial</name>
+               </node>
+               <node takesValue="true" uri="HED-Attribute-Language-Unit-Sentence-#">
+                  <name>#</name>
+                  <description>Actual sentence</description>
+               </node>
+            </node>
+            <node uri="HED-Attribute-Language-Unit-Paragraph">
+               <name>Paragraph</name>
+               <node takesValue="true" uri="HED-Attribute-Language-Unit-Paragraph-#">
+                  <name>#</name>
+                  <description>Actual paragraph</description>
+               </node>
+            </node>
+            <node uri="HED-Attribute-Language-Unit-Story">
+               <name>Story</name>
+               <description>Multiple paragraphs making a detailed account</description>
+            </node>
+         </node>
+         <node predicateType="passThrough" uri="HED-Attribute-Language-Family">
+            <name>Family</name>
+            <node uri="HED-Attribute-Language-Family-Asian">
+               <name>Asian</name>
+               <node uri="HED-Attribute-Language-Family-Asian-Chinese">
+                  <name>Chinese</name>
+               </node>
+               <node uri="HED-Attribute-Language-Family-Asian-Japanese">
+                  <name>Japanese</name>
+               </node>
+            </node>
+            <node uri="HED-Attribute-Language-Family-Latin">
+               <name>Latin</name>
+               <node uri="HED-Attribute-Language-Family-Latin-English">
+                  <name>English</name>
+               </node>
+               <node uri="HED-Attribute-Language-Family-Latin-German">
+                  <name>German</name>
+               </node>
+               <node uri="HED-Attribute-Language-Family-Latin-French">
+                  <name>French</name>
+               </node>
+            </node>
+         </node>
+      </node>
+      <node uri="HED-Attribute-Induced">
+         <name>Induced</name>
+         <description>Such as inducing emotions or keeping someone awake or in a coma with an external intervention</description>
+      </node>
+      <node uri="HED-Attribute-Emotional">
+         <name>Emotional</name>
+         <node uri="HED-Attribute-Emotional-Arousal">
+            <name>Arousal</name>
+            <description>Only in the context of 2D emotion representation</description>
+            <node isNumeric="true" takesValue="true" uri="HED-Attribute-Emotional-Arousal-#">
+               <name>#</name>
+               <description>A value between -1 and 1</description>
+            </node>
+         </node>
+         <node uri="HED-Attribute-Emotional-Positive_valence">
+            <name>Positive valence</name>
+            <description>Valence by itself can be the name of an emotion such as sadness so this tag distinguishes the type of emotion</description>
+            <node isNumeric="true" takesValue="true" uri="HED-Attribute-Emotional-Positive_valence-#">
+               <name>#</name>
+               <description>Ranges from 0 to 1</description>
+            </node>
+         </node>
+         <node uri="HED-Attribute-Emotional-Negative_valence">
+            <name>Negative valence</name>
+            <node isNumeric="true" takesValue="true" uri="HED-Attribute-Emotional-Negative_valence-#">
+               <name>#</name>
+               <description>Ranges from 0 to 1</description>
+            </node>
+         </node>
+      </node>
+      <node uri="HED-Attribute-Priming">
+         <name>Priming</name>
+         <node uri="HED-Attribute-Priming-Motoric">
+            <name>Motoric</name>
+         </node>
+         <node uri="HED-Attribute-Priming-Emotional">
+            <name>Emotional</name>
+         </node>
+         <node uri="HED-Attribute-Priming-Perceptual">
+            <name>Perceptual</name>
+         </node>
+      </node>
+      <node uri="HED-Attribute-Subliminal">
+         <name>Subliminal</name>
+         <node uri="HED-Attribute-Subliminal-Unmasked">
+            <name>Unmasked</name>
+         </node>
+         <node uri="HED-Attribute-Subliminal-Masked">
+            <name>Masked</name>
+            <node uri="HED-Attribute-Subliminal-Masked-Forward">
+               <name>Forward</name>
+            </node>
+            <node uri="HED-Attribute-Subliminal-Masked-Backward">
+               <name>Backward</name>
+            </node>
+         </node>
+      </node>
+      <node uri="HED-Attribute-Supraliminal">
+         <name>Supraliminal</name>
+         <description>By default this is assumed about each stimulus</description>
+      </node>
+      <node uri="HED-Attribute-Liminal">
+         <name>Liminal</name>
+         <description>At the 75%-25% perception threshold</description>
+      </node>
+      <node uri="HED-Attribute-Probability">
+         <name>Probability</name>
+         <description>Use to specify the level of certainty about the occurrence of the event. Use either numerical values as the child node or 'low', 'high', etc.</description>
+      </node>
+      <node requireChild="true" uri="HED-Attribute-Presentation">
+         <name>Presentation</name>
+         <description>Attributes associated with visual, auditory, tactile, etc. presentation of an stimulus</description>
+         <node requireChild="true" uri="HED-Attribute-Presentation-Fraction">
+            <name>Fraction</name>
+            <description>the fraction of presentation of an Oddball or Expected stimuli to the total number of same-class presentations, e.g. 10% of images in an RSVP being targets</description>
+            <node isNumeric="true" takesValue="true" uri="HED-Attribute-Presentation-Fraction-#">
+               <name>#</name>
+            </node>
+         </node>
+         <node uri="HED-Attribute-Presentation-Cued">
+            <name>Cued</name>
+            <description>what is presented is cued to the presentation of something else</description>
+         </node>
+         <node uri="HED-Attribute-Presentation-Background">
+            <name>Background</name>
+            <description>presented in the background such as background music, background image, etc. The main factor here is that background presentations are to be ignored, e.g. ignore math question auditory stimuli.</description>
+         </node>
+      </node>
+      <node uri="HED-Attribute-Intended_effect">
+         <name>Intended effect</name>
+         <description>This tag is to be grouped with Participant/Effect/Cognitive to specify the intended cognitive effect (of the experimenter). This is to differentiate the resulting group with Participant/Effect which specifies the actual effect on the participant. For example, in an RSVP experiment if an image is intended to be perceived as a target, (Participant/Effect/Cognitive/Target, Attribute/Intended effect) group is added. If the image was perceived by the subject as a target (e.g. they pressed a button to indicate so), then the tag Participant/Effect/Cognitive/Target is also added: Participant/Effect/Cognitive/Target, (Participant/Effect/Cognitive/Target, Attribute/Intended effect). otherwise the Participant/Effect/Cognitive/Target tag is not included outside of the group.</description>
+      </node>
+      <node uri="HED-Attribute-Instruction">
+         <name>Instruction</name>
+         <description>This tag is placed in events of type Event/Category/Experimental stimulus/Instruction, grouped with one or more Action/ tags to replace the detailed specification XXX in Event/Category/Experimental stimulus/Instruction/XXX) in previous versions. Usage example:  Event/Category/Experimental stimulus/Instruction, (Action/Fixate, Attribute/Instruction)</description>
+      </node>
+      <node uri="HED-Attribute-Participant_indication">
+         <name>Participant indication</name>
+         <description>This tag is placed in events of type Event/Category/Participant response and grouped with Participant/Effect/Cognitive/.. tags to specify the type of cognitive effect the participant has experienced. For example, in an RSVP paradigm, the subject can indicate the detection of a target with a button press. The HED string associated with this button press must include (Attribute/Participant indication, Participant/Effect/Cognitive/Target,...)</description>
+      </node>
+      <node requireChild="true" uri="HED-Attribute-Path">
+         <name>Path</name>
+         <node uri="HED-Attribute-Path-Velocity">
+            <name>Velocity</name>
+            <description>Use Attribute/Onset or Attribute/Offset to specify onset or offset</description>
+            <node isNumeric="true" takesValue="true" unitClass="speed" uri="HED-Attribute-Path-Velocity-#">
+               <name>#</name>
+               <description>Numeric value with default units of m-per-s</description>
+            </node>
+         </node>
+         <node uri="HED-Attribute-Path-Acceleration">
+            <name>Acceleration</name>
+            <node isNumeric="true" takesValue="true" unitClass="acceleration" uri="HED-Attribute-Path-Acceleration-#">
+               <name>#</name>
+               <description>Numeric value with default units of m-per-s2</description>
+            </node>
+         </node>
+         <node uri="HED-Attribute-Path-Jerk">
+            <name>Jerk</name>
+            <node isNumeric="true" takesValue="true" unitClass="jerk" uri="HED-Attribute-Path-Jerk-#">
+               <name>#</name>
+               <description>Numeric value with default units of m-per-s3</description>
+            </node>
+         </node>
+         <node uri="HED-Attribute-Path-Constrained">
+            <name>Constrained</name>
+            <description>For example a path cannot cross some region</description>
+         </node>
+      </node>
+      <node requireChild="true" uri="HED-Attribute-File">
+         <name>File</name>
+         <description>File attributes</description>
+         <node uri="HED-Attribute-File-Name">
+            <name>Name</name>
+         </node>
+         <node uri="HED-Attribute-File-Size">
+            <name>Size</name>
+            <node isNumeric="true" takesValue="true" unitClass="memorySize" uri="HED-Attribute-File-Size-#">
+               <name>#</name>
+               <description>Numeric value with default units of mb</description>
+            </node>
+         </node>
+         <node isNumeric="true" takesValue="true" uri="HED-Attribute-File-#">
+            <name>#</name>
+            <description>Number of files</description>
+         </node>
+      </node>
+      <node requireChild="true" uri="HED-Attribute-Object_control">
+         <name>Object control</name>
+         <description>Specifies control such as for a vehicle</description>
+         <node uri="HED-Attribute-Object_control-Perturb">
+            <name>Perturb</name>
+         </node>
+         <node uri="HED-Attribute-Object_control-Collide">
+            <name>Collide</name>
+         </node>
+         <node uri="HED-Attribute-Object_control-Near_miss">
+            <name>Near miss</name>
+            <description>Almost having an accident resulting in negative consequences</description>
+         </node>
+         <node uri="HED-Attribute-Object_control-Correct_position">
+            <name>Correct position</name>
+            <description>After a lane deviation or side of the walkway</description>
+         </node>
+         <node uri="HED-Attribute-Object_control-Halt">
+            <name>Halt</name>
+            <description>Time at which speed becomes exactly zero</description>
+         </node>
+         <node uri="HED-Attribute-Object_control-Brake">
+            <name>Brake</name>
+         </node>
+         <node uri="HED-Attribute-Object_control-Shift_lane">
+            <name>Shift lane</name>
+         </node>
+         <node uri="HED-Attribute-Object_control-Cross">
+            <name>Cross</name>
+            <description>Crossing in front of another object such as a vehicle</description>
+         </node>
+         <node uri="HED-Attribute-Object_control-Pass_by">
+            <name>Pass by</name>
+            <description>Passing by another object or the participant</description>
+         </node>
+         <node uri="HED-Attribute-Object_control-Accelerate">
+            <name>Accelerate</name>
+         </node>
+         <node uri="HED-Attribute-Object_control-Decelerate">
+            <name>Decelerate</name>
+         </node>
+      </node>
+      <node requireChild="true" uri="HED-Attribute-Association">
+         <name>Association</name>
+         <node uri="HED-Attribute-Association-Another_person">
+            <name>Another person</name>
+            <description>Item such as a cup belonging to another person</description>
+         </node>
+         <node uri="HED-Attribute-Association-Same_person">
+            <name>Same person</name>
+            <description>Item such as a cup belonging to the participant</description>
+         </node>
+      </node>
+      <node uri="HED-Attribute-Extraneous">
+         <name>Extraneous</name>
+         <description>Button presses that are not meaningful for example due to intrinsic mechanical causes after a meaningful press</description>
+      </node>
+      <node requireChild="true" uri="HED-Attribute-Role">
+         <name>Role</name>
+         <description>The role of the agent (participant, character, AI..)</description>
+         <node uri="HED-Attribute-Role-Leader">
+            <name>Leader</name>
+         </node>
+         <node uri="HED-Attribute-Role-Follower">
+            <name>Follower</name>
+         </node>
+         <node takesValue="true" uri="HED-Attribute-Role-#">
+            <name>#</name>
+         </node>
+      </node>
+   </node>
+</HED>
