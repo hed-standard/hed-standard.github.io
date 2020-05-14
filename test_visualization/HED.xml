@@ -2,85 +2,60 @@
 <HED version="v1.6.1-restruct">
    <node>
       <name>Event</name>
-      <node position="1" requireChild="true" required="true">
-         <name>Category</name>
-         <description>This is meant to designate the basic nature of the event. Every event should have at least one category, but might have multiple categories.</description>
-         <node>
-            <name>Sensory presentation</name>
-            <description>Something perceivable by the participant.</description>
-            <node extensionAllowed="true">
-               <name>Experimental</name>
-               <description>Primary category for task-or-condition-related stimulus events.</description>
-            </node>
-            <node extensionAllowed="true">
-               <name>Environmental</name>
-               <description>An unplanned or environment-determined event occurring in the environment of the participant, for example, a change in experimental context such as beginning to walk on dirt versus sidewalk or a loud noise occurring in the next room.</description>
-            </node>
-         </node>
-         <node>
-            <name>Participant action</name>
-            <description>Any motor action engaged in by the participant.</description>
-            <node extensionAllowed="true">
-               <name>Task-related</name>
-               <description>A task-related action taken by a participant in response to task demands, such as making a button press in response to a Sensory presentation event or tapping out a rhythm following a Condition cue presentation.</description>
-            </node>
-            <node extensionAllowed="true">
-               <name>Non task-related</name>
-               <description>A non-task-related action taken by the participant -- for example yawning, shifting in their chair, or responding to an Environmental event</description>
-            </node>
+      <node>
+         <name>Sensory presentation</name>
+         <description>Something perceivable by the participant.</description>
+         <node extensionAllowed="true">
+            <name>Experimental</name>
+            <description>Primary category for task-or-condition-related stimulus events.</description>
          </node>
          <node extensionAllowed="true">
-            <name>Data feature</name>
-            <description>An event derived from the data itself, possibly inserted in a post-hoc fashion, for example an interictal spike or alpha burst.</description>
+            <name>Environmental</name>
+            <description>An unplanned or environment-determined event occurring in the environment of the participant, for example, a change in experimental context such as beginning to walk on dirt versus sidewalk or a loud noise occurring in the next room.</description>
+         </node>
+      </node>
+      <node>
+         <name>Participant action</name>
+         <description>Any motor action engaged in by the participant.</description>
+         <node extensionAllowed="true">
+            <name>Task-related</name>
+            <description>A task-related action taken by a participant in response to task demands, such as making a button press in response to a Sensory presentation event or tapping out a rhythm following a Condition cue presentation.</description>
          </node>
          <node extensionAllowed="true">
-            <name>Experiment Control</name>
-            <description>An event pertaining to the setup and/or control of the experiment.</description>
-            <node>
-               <name>Condition</name>
-               <description>An event used to indicate a shift to a new experimental and/or task condition. Use (Attribute/Temporal/Onset, Attribute/Temporal/Duration) or Attribute/Temporal/Onset and, in another Event, Attribute/Temporal/Offset to specify start and end. Use Attribute/ID/Index/# to designate a condition identifier.</description>
-            </node>
-            <node>
-               <name>Instruction</name>
-               <description>Experimenter (or experimental control application) gives an instruction to the participant.</description>
-            </node>
-            <node>
-               <name>Pause</name>
-               <description>An event indicating a stop in recording. Use (Attribute/Temporal/Onset, Attribute/Temporal/Duration) or Attribute/Temporal/Onset and, in another Event, Attribute/Temporal/Offset to specify the length of the pause.</description>
-            </node>
-            <node>
-               <name>Timesync</name>
-               <description>A marker value or pattern inserted into the recorded data to allow post hoc synchronization of concurrently recorded data streams.</description>
-            </node>
-            <node>
-               <name>Procedure</name>
-               <description>An event marking the Onset or Offset of an experimental procedure, for example doing a saliva swab on the person, during the experiment. Use Attribute/Temporal/Onset and, in another Event, Attribute/Temporal/Offset to specify the start and end of the procedure. Use Attribute/ID/Index/# to designate a procedure identifier.</description>
-            </node>
-            <node extensionAllowed="true">
-               <name>Mishap</name>
-               <description>Unplanned disruptive event such as an equipment or experiment control abnormality or experimenter error.</description>
-            </node>
+            <name>Non task-related</name>
+            <description>A non-task-related action taken by the participant -- for example yawning, shifting in their chair, or responding to an Environmental event</description>
          </node>
       </node>
-      <node position="3" predicateType="propertyOf" requireChild="true" required="true" unique="true">
-         <name>Description</name>
-         <description>Human-readable text description of the event.</description>
-         <node takesValue="true">
-            <name>#</name>
-         </node>
+      <node extensionAllowed="true">
+         <name>Data feature</name>
+         <description>An event derived from the data itself, possibly inserted in a post-hoc fashion, for example an interictal spike or alpha burst.</description>
       </node>
-      <node position="0" predicateType="propertyOf" requireChild="true" required="true" unique="true">
-         <name>Label</name>
-         <description>A label for the event with less than 20 characters, for example, Event/Label/Accept button press. Please note that the information in this tag is provided for analyst guidance in referring to this and similar events in the context of the study, rather than for direct use in the analysis process. Please use tag stem Event/Category/Custom to define custom event description hierarchies not meant for inclusion in this main HED schema. Also, please do not use the words Onset or Offset in the Event/Label. These should only be placed in Attribute/Temporal/Onset and Attribute/Temporal/Offset attribute descriptors. This makes it easier to automatically find onsets and offsets for the same event.</description>
-         <node takesValue="true">
-            <name>#</name>
+      <node extensionAllowed="true">
+         <name>Experiment Control</name>
+         <description>An event pertaining to the setup and/or control of the experiment.</description>
+         <node>
+            <name>Condition</name>
+            <description>An event used to indicate a shift to a new experimental and/or task condition. Use (Attribute/Temporal/Onset, Attribute/Temporal/Duration) or Attribute/Temporal/Onset and, in another Event, Attribute/Temporal/Offset to specify start and end. Use Attribute/ID/Index/# to designate a condition identifier.</description>
          </node>
-      </node>
-      <node position="2" predicateType="propertyOf" requireChild="true" unique="true">
-         <name>Long label</name>
-         <description>A longer (than 20 characters) label for the event that may contain | characters as separators. Long names are used to encode detailed information in a single string such as Scenario | VehiclePassing | TravelLaneBLocked | Onset</description>
-         <node takesValue="true">
-            <name>#</name>
+         <node>
+            <name>Instruction</name>
+            <description>Experimenter (or experimental control application) gives an instruction to the participant.</description>
+         </node>
+         <node>
+            <name>Pause</name>
+            <description>An event indicating a stop in recording. Use (Attribute/Temporal/Onset, Attribute/Temporal/Duration) or Attribute/Temporal/Onset and, in another Event, Attribute/Temporal/Offset to specify the length of the pause.</description>
+         </node>
+         <node>
+            <name>Timesync</name>
+            <description>A marker value or pattern inserted into the recorded data to allow post hoc synchronization of concurrently recorded data streams.</description>
+         </node>
+         <node>
+            <name>Procedure</name>
+            <description>An event marking the Onset or Offset of an experimental procedure, for example doing a saliva swab on the person, during the experiment. Use Attribute/Temporal/Onset and, in another Event, Attribute/Temporal/Offset to specify the start and end of the procedure. Use Attribute/ID/Index/# to designate a procedure identifier.</description>
+         </node>
+         <node extensionAllowed="true">
+            <name>Mishap</name>
+            <description>Unplanned disruptive event such as an equipment or experiment control abnormality or experimenter error.</description>
          </node>
       </node>
    </node>
@@ -747,22 +722,84 @@
    </node>
    <node extensionAllowed="true" requireChild="true">
       <name>Attribute</name>
-      <node requireChild="true">
-         <name>ID</name>
-         <description>Tag to identify any aspect of an event. Use parentheses to group an ID Value tag with an ID Type tag to qualify the kind of ID that the value represents.</description>
-      </node>
-      <node predicateType="propertyOf">
-         <name>Parameters</name>
-         <node takesValue="true">
-            <name>#</name>
-            <description>Experiment parameters in some a string. Do not used quotes.</description>
+      <node>
+         <name>Informational</name>
+         <node requireChild="true">
+            <name>ID</name>
+            <description>Tag to identify any aspect of an event. Use parentheses to group an ID Value tag with an ID Type tag to qualify the kind of ID that the value represents.</description>
+         </node>
+         <node>
+            <name>Parameters</name>
+            <node takesValue="true">
+               <name>#</name>
+               <description>Experiment parameters in some a string. Do not used quotes.</description>
+            </node>
+         </node>
+         <node requireChild="true">
+            <name>Description</name>
+            <description>Human-readable text description of the event.</description>
+            <node takesValue="true">
+               <name>#</name>
+            </node>
+         </node>
+         <node requireChild="true">
+            <name>Label</name>
+            <description>A label for the event with less than 20 characters, for example, Event/Label/Accept button press. Please note that the information in this tag is provided for analyst guidance in referring to this and similar events in the context of the study, rather than for direct use in the analysis process. Please use tag stem Event/Category/Custom to define custom event description hierarchies not meant for inclusion in this main HED schema. Also, please do not use the words Onset or Offset in the Event/Label. These should only be placed in Attribute/Temporal/Onset and Attribute/Temporal/Offset attribute descriptors. This makes it easier to automatically find onsets and offsets for the same event.</description>
+            <node takesValue="true">
+               <name>#</name>
+            </node>
+         </node>
+         <node requireChild="true">
+            <name>Long label</name>
+            <description>A longer (than 20 characters) label for the event that may contain | characters as separators. Long names are used to encode detailed information in a single string such as Scenario | VehiclePassing | TravelLaneBLocked | Onset</description>
+            <node takesValue="true">
+               <name>#</name>
+            </node>
+         </node>
+         <node requireChild="true">
+            <name>Condition</name>
+            <description>Specifies the value of an independent variable (number of letters, N, in an N-back task) or function of independent variables that is varied or controlled for in the experiment.  This attribute is often specified at the task level and can be associated with specification of an experimental stimulus or an experiment context (e.g. 1-back, 2-back conditions in an N-back task, or changing the target type from faces to houses in a Rapid Serial Visual Presentation, or RSVP, task.)</description>
+            <node takesValue="true">
+               <name>#</name>
+               <description>the condition</description>
+            </node>
          </node>
       </node>
-      <node requireChild="true">
-         <name>Modality</name>
-         <description>Presentation modality by which the object was manifested.</description>
+      <node>
+         <name>Quantitative</name>
+         <node>
+            <name>Peak</name>
+         </node>
+         <node>
+            <name>Item count</name>
+         </node>
+         <node>
+            <name>Probability</name>
+            <description>Use to specify the level of certainty about the occurrence of the event. Use either numerical values as the child node or low, high, etc.</description>
+         </node>
+         <node requireChild="true">
+            <name>Fraction</name>
+            <description>the fraction of presentation of an Oddball or Expected stimuli to the total number of same-class presentations, e.g. 10% of images in an RSVP being targets</description>
+         </node>
+      </node>
+      <node>
+         <name>Sensory</name>
          <node>
             <name>Auditory</name>
+            <node requireChild="true">
+               <name>Frequency</name>
+            </node>
+            <node requireChild="true">
+               <name>Loudness</name>
+            </node>
+            <node>
+               <name>Ramp up</name>
+               <description>Increasing in amplitude</description>
+            </node>
+            <node>
+               <name>Ramp down</name>
+               <description>Decreasing in amplitude</description>
+            </node>
          </node>
          <node>
             <name>Olfactory</name>
@@ -775,6 +812,12 @@
          </node>
          <node>
             <name>Visual</name>
+            <node requireChild="true">
+               <name>Luminance</name>
+            </node>
+            <node requireChild="true">
+               <name>Color</name>
+            </node>
             <node predicateType="passThrough" requireChild="true">
                <name>Rendering type</name>
             </node>
@@ -792,6 +835,10 @@
          </node>
          <node requireChild="true">
             <name>Size</name>
+         </node>
+         <node>
+            <name>Constrained</name>
+            <description>For example a path cannot cross some region</description>
          </node>
       </node>
       <node requireChild="true">
@@ -826,6 +873,34 @@
          <node requireChild="true">
             <name>Uncertainty</name>
             <description>Use to specify the amount of uncertainty in the timing of the event. Please notice that this is different from Attribute/Probability tag which relates to the occurrence of event and can be interpretative as the integral of probability density across a distribution whose shape (temporal extent) is specified by Attribute/Temporal uncertainty</description>
+         </node>
+         <node>
+            <name>Time out</name>
+         </node>
+         <node>
+            <name>Velocity</name>
+            <description>Use Attribute/Temporal/Onset or Attribute/Temporal/Offset to specify onset or offset</description>
+         </node>
+         <node>
+            <name>Acceleration</name>
+         </node>
+         <node>
+            <name>Jerk</name>
+         </node>
+         <node>
+            <name>Change</name>
+            <description>Use onset and offset attributes to indicate different walking stride phases</description>
+            <node>
+               <name>Faster</name>
+               <description>Increasing the speed of walking</description>
+            </node>
+            <node>
+               <name>Slower</name>
+               <description>Decreasing the speed of walking</description>
+            </node>
+            <node>
+               <name>Halt</name>
+            </node>
          </node>
       </node>
       <node>
@@ -891,318 +966,151 @@
                <description>Something that is understood to not be valid such as like an ID with an impossible date-of-birth, or a photo not matching the person presenting it</description>
             </node>
             <node>
-               <name>Congruence</name>
+               <name>Congruent</name>
             </node>
             <node>
                <name>Feedback</name>
             </node>
          </node>
-      </node>
-      <node requireChild="true">
-         <name>Condition</name>
-         <description>Specifies the value of an independent variable (number of letters, N, in an N-back task) or function of independent variables that is varied or controlled for in the experiment.  This attribute is often specified at the task level and can be associated with specification of an experimental stimulus or an experiment context (e.g. 1-back, 2-back conditions in an N-back task, or changing the target type from faces to houses in a Rapid Serial Visual Presentation, or RSVP, task.)</description>
-         <node takesValue="true">
-            <name>#</name>
-            <description>the condition</description>
-         </node>
-      </node>
-      <node>
-         <name>Action judgment</name>
-         <description>External judgment (assumed to be ground truth, e.g. from an experiment control software or an annotator) about participant actions such as answering a question, failing to answer in time, etc.</description>
          <node>
-            <name>Correct</name>
-         </node>
-         <node>
-            <name>Incorrect</name>
-            <description>Wrong choice but not time out</description>
-         </node>
-         <node>
-            <name>Indeterminate</name>
-            <description>It cannot be determined that the action was correct or incorrect.</description>
-         </node>
-         <node>
-            <name>Time out</name>
+            <name>Action judgment</name>
+            <description>External judgment (assumed to be ground truth, e.g. from an experiment control software or an annotator) about participant actions such as answering a question, failing to answer in time, etc.</description>
             <node>
-               <name>Missed</name>
-               <description>Participant failed or could not have perceived the instruction due to their eyes being off-screen or a similar reason. Not easy to deduce this but it is possible</description>
+               <name>Correct</name>
             </node>
-         </node>
-         <node>
-            <name>Inappropriate</name>
-            <description>A choice that is not allowed such as moving a chess piece to a location it should not go based on game rules</description>
-         </node>
-      </node>
-      <node>
-         <name>Social</name>
-         <description>Involving interactions among multiple agents such as humans or dogs or robots</description>
-      </node>
-      <node>
-         <name>Peak</name>
-         <description>Peak velocity or  acceleration or jerk</description>
-      </node>
-      <node requireChild="true">
-         <name>Item count</name>
-         <description>Number of items for example when there are 3 cars and they are identified as a single item</description>
-      </node>
-      <node>
-         <name>Auditory</name>
-         <node requireChild="true">
-            <name>Frequency</name>
-         </node>
-         <node requireChild="true">
-            <name>Loudness</name>
-         </node>
-         <node>
-            <name>Ramp up</name>
-            <description>Increasing in amplitude</description>
-         </node>
-         <node>
-            <name>Ramp down</name>
-            <description>Decreasing in amplitude</description>
-         </node>
-      </node>
-      <node>
-         <name>Blink</name>
-         <node requireChild="true">
-            <name>Time shut</name>
-            <description>The amount of time the eyelid remains closed (typically measured as 90% of the blink amplitude), in seconds.</description>
-            <node default="s" isNumeric="true" takesValue="true" unitClass="time">
-               <name>#</name>
+            <node>
+               <name>Incorrect</name>
+               <description>Wrong choice but not time out</description>
             </node>
-         </node>
-         <node requireChild="true">
-            <name>Duration</name>
-            <description>Duration of blink, usually the half-height blink duration in seconds taken either from base or zero of EEG signal. For eye-trackers, usually denotes interval when pupil covered by eyelid.</description>
-            <node default="s" isNumeric="true" takesValue="true" unitClass="time">
-               <name>#</name>
-            </node>
-         </node>
-         <node requireChild="true">
-            <name>PAVR</name>
-            <description>Amplitude-Velocity ratio, in centiseconds</description>
-            <node default="centiseconds" isNumeric="true" takesValue="true" unitClass="time">
-               <name>#</name>
-            </node>
-         </node>
-         <node requireChild="true">
-            <name>NAVR</name>
-            <description>Negative Amplitude-Velocity ratio, in centiseconds</description>
-            <node default="centiseconds" isNumeric="true" takesValue="true" unitClass="time">
-               <name>#</name>
+            <node>
+               <name>Indeterminate</name>
+               <description>It cannot be determined that the action was correct or incorrect.</description>
                <node>
-                  <name>Change</name>
-                  <description>Use onset and offset attributes to indicate different walking stride phases</description>
-                  <node>
-                     <name>Faster</name>
-                     <description>Increasing the speed of walking</description>
-                  </node>
-                  <node>
-                     <name>Slower</name>
-                     <description>Decreasing the speed of walking</description>
-                  </node>
-                  <node>
-                     <name>Halt</name>
-                  </node>
+                  <name>Missed</name>
+                  <description>Participant failed or could not have perceived the instruction due to their eyes being off-screen or a similar reason. Not easy to deduce this but it is possible</description>
+               </node>
+            </node>
+            <node>
+               <name>Inappropriate</name>
+               <description>A choice that is not allowed such as moving a chess piece to a location it should not go based on game rules</description>
+            </node>
+         </node>
+         <node>
+            <name>Social</name>
+            <description>Involving interactions among multiple agents such as humans or dogs or robots</description>
+            <node requireChild="true">
+               <name>Role</name>
+               <description>The role of the agent (participant, character, AI..)</description>
+               <node>
+                  <name>Leader</name>
+               </node>
+               <node>
+                  <name>Follower</name>
+               </node>
+               <node takesValue="true">
+                  <name>#</name>
+               </node>
+            </node>
+            <node requireChild="true">
+               <name>Association</name>
+               <node>
+                  <name>Another person</name>
+                  <description>Item such as a cup belonging to another person</description>
+               </node>
+               <node>
+                  <name>Same person</name>
+                  <description>Item such as a cup belonging to the participant</description>
                </node>
             </node>
          </node>
-      </node>
-      <node>
-         <name>Visual</name>
-         <node>
-            <name>Bistable</name>
-         </node>
-         <node>
-            <name>Background</name>
-         </node>
-         <node>
-            <name>Foreground</name>
-         </node>
-         <node>
-            <name>Up-down separated</name>
-            <description>Stimuli presented both at the top and the bottom of fovea</description>
-         </node>
-         <node>
-            <name>Bilateral</name>
-            <description>For bilateral visual field stimulus presentations</description>
-         </node>
-         <node>
-            <name>Motion</name>
-         </node>
-         <node>
-            <name>Fixation point</name>
-         </node>
-         <node requireChild="true">
-            <name>Luminance</name>
-         </node>
-         <node requireChild="true">
-            <name>Color</name>
-         </node>
-      </node>
-      <node>
-         <name>Nonlinguistic</name>
-         <description>Something that conveys meaning without using words such as the iconic pictures of a man or a woman on the doors of restrooms. Another example is a deer crossing sign with just a picture of jumping deer.</description>
-      </node>
-      <node>
-         <name>Semantic</name>
-         <description>Like in priming or in congruence</description>
-      </node>
-      <node>
-         <name>Language</name>
-         <node predicateType="passThrough">
-            <name>Unit</name>
-         </node>
-         <node predicateType="passThrough">
-            <name>Family</name>
-         </node>
-      </node>
-      <node>
-         <name>Induced</name>
-         <description>Such as inducing emotions or keeping someone awake or in a coma with an external intervention</description>
-      </node>
-      <node>
-         <name>Emotional</name>
-         <node>
-            <name>Arousal</name>
-            <description>Only in the context of 2D emotion representation</description>
-         </node>
-         <node>
-            <name>Positive valence</name>
-            <description>Valence by itself can be the name of an emotion such as sadness so this tag distinguishes the type of emotion</description>
-         </node>
-         <node>
-            <name>Negative valence</name>
-         </node>
-      </node>
-      <node>
-         <name>Priming</name>
-         <node>
-            <name>Motoric</name>
-         </node>
          <node>
             <name>Emotional</name>
+            <node>
+               <name>Arousal</name>
+               <description>Only in the context of 2D emotion representation</description>
+            </node>
+            <node>
+               <name>Positive valence</name>
+               <description>Valence by itself can be the name of an emotion such as sadness so this tag distinguishes the type of emotion</description>
+            </node>
+            <node>
+               <name>Negative valence</name>
+            </node>
          </node>
          <node>
-            <name>Perceptual</name>
+            <name>Priming</name>
+            <node>
+               <name>Motoric</name>
+            </node>
+            <node>
+               <name>Emotional</name>
+            </node>
+            <node>
+               <name>Perceptual</name>
+            </node>
          </node>
-      </node>
-      <node>
-         <name>Subliminal</name>
          <node>
-            <name>Unmasked</name>
+            <name>Subliminal</name>
+            <node>
+               <name>Unmasked</name>
+            </node>
+            <node>
+               <name>Masked</name>
+            </node>
          </node>
          <node>
-            <name>Masked</name>
+            <name>Supraliminal</name>
+            <description>By default this is assumed about each stimulus</description>
+         </node>
+         <node>
+            <name>Liminal</name>
+            <description>At the 75%-25% perception threshold</description>
+         </node>
+         <node>
+            <name>Communicative</name>
+            <node>
+               <name>Nonlinguistic</name>
+               <description>Something that conveys meaning without using words such as the iconic pictures of a man or a woman on the doors of restrooms. Another example is a deer crossing sign with just a picture of jumping deer.</description>
+            </node>
+            <node>
+               <name>Semantic</name>
+               <description>Like in priming or in congruence</description>
+            </node>
+            <node>
+               <name>Linguistic</name>
+            </node>
          </node>
       </node>
       <node>
-         <name>Supraliminal</name>
-         <description>By default this is assumed about each stimulus</description>
-      </node>
-      <node>
-         <name>Liminal</name>
-         <description>At the 75%-25% perception threshold</description>
-      </node>
-      <node>
-         <name>Probability</name>
-         <description>Use to specify the level of certainty about the occurrence of the event. Use either numerical values as the child node or low, high, etc.</description>
-      </node>
-      <node requireChild="true">
-         <name>Presentation</name>
-         <description>Attributes associated with visual, auditory, tactile, etc. presentation of an stimulus</description>
+         <name>Miscellaneous</name>
          <node requireChild="true">
-            <name>Fraction</name>
-            <description>the fraction of presentation of an Oddball or Expected stimuli to the total number of same-class presentations, e.g. 10% of images in an RSVP being targets</description>
+            <name>Presentation</name>
+            <description>Attributes associated with visual, auditory, tactile, etc. presentation of an stimulus</description>
+            <node>
+               <name>Cued</name>
+               <description>what is presented is cued to the presentation of something else</description>
+            </node>
+            <node>
+               <name>Background</name>
+               <description>presented in the background such as background music, background image, etc. The main factor here is that background presentations are to be ignored, e.g. ignore math question auditory stimuli.</description>
+            </node>
          </node>
          <node>
-            <name>Cued</name>
-            <description>what is presented is cued to the presentation of something else</description>
+            <name>Participant indication</name>
+            <description>This tag is placed in events of type Event/Category/Participant response and grouped with Participant/Effect/Cognitive/.. tags to specify the type of cognitive effect the participant has experienced. For example, in an RSVP paradigm, the subject can indicate the detection of a target with a button press. The HED string associated with this button press must include (Attribute/Participant indication, Participant/Effect/Cognitive/Target,...)</description>
+         </node>
+         <node requireChild="true">
+            <name>Object control</name>
+            <description>Specifies control such as for a vehicle</description>
          </node>
          <node>
-            <name>Background</name>
-            <description>presented in the background such as background music, background image, etc. The main factor here is that background presentations are to be ignored, e.g. ignore math question auditory stimuli.</description>
-         </node>
-      </node>
-      <node>
-         <name>Intended effect</name>
-         <description>This tag is to be grouped with Participant/Effect/Cognitive to specify the intended cognitive effect (of the experimenter). This is to differentiate the resulting group with Participant/Effect which specifies the actual effect on the participant. For example, in an RSVP experiment if an image is intended to be perceived as a target, (Participant/Effect/Cognitive/Target, Attribute/Intended effect) group is added. If the image was perceived by the subject as a target (e.g. they pressed a button to indicate so), then the tag Participant/Effect/Cognitive/Target is also added: Participant/Effect/Cognitive/Target, (Participant/Effect/Cognitive/Target, Attribute/Intended effect). otherwise the Participant/Effect/Cognitive/Target tag is not included outside of the group.</description>
-      </node>
-      <node>
-         <name>Instruction</name>
-         <description>This tag is placed in events of type Event/Category/Experiment Control/Instruction, grouped with one or more Action/ tags to replace the detailed specification XXX in Event/Category/Experimental Control/Instruction/XXX) in previous versions. Usage example:  Event/Category/Experimental Control/Instruction, (Action/Fixate, Attribute/Instruction)</description>
-      </node>
-      <node>
-         <name>Participant indication</name>
-         <description>This tag is placed in events of type Event/Category/Participant response and grouped with Participant/Effect/Cognitive/.. tags to specify the type of cognitive effect the participant has experienced. For example, in an RSVP paradigm, the subject can indicate the detection of a target with a button press. The HED string associated with this button press must include (Attribute/Participant indication, Participant/Effect/Cognitive/Target,...)</description>
-      </node>
-      <node requireChild="true">
-         <name>Path</name>
-         <node>
-            <name>Velocity</name>
-            <description>Use Attribute/Temporal/Onset or Attribute/Temporal/Offset to specify onset or offset</description>
+            <name>Extraneous</name>
+            <description>Button presses that are not meaningful for example due to intrinsic mechanical causes after a meaningful press</description>
          </node>
          <node>
-            <name>Acceleration</name>
+            <name>Teleoperate</name>
+            <description>Control an object that you are not aboard</description>
          </node>
-         <node>
-            <name>Jerk</name>
-         </node>
-         <node>
-            <name>Constrained</name>
-            <description>For example a path cannot cross some region</description>
-         </node>
-      </node>
-      <node requireChild="true">
-         <name>File</name>
-         <description>File attributes</description>
-         <node>
-            <name>Name</name>
-         </node>
-         <node>
-            <name>Size</name>
-         </node>
-         <node>
-            <name>Number</name>
-         </node>
-      </node>
-      <node requireChild="true">
-         <name>Object control</name>
-         <description>Specifies control such as for a vehicle</description>
-      </node>
-      <node requireChild="true">
-         <name>Association</name>
-         <node>
-            <name>Another person</name>
-            <description>Item such as a cup belonging to another person</description>
-         </node>
-         <node>
-            <name>Same person</name>
-            <description>Item such as a cup belonging to the participant</description>
-         </node>
-      </node>
-      <node>
-         <name>Extraneous</name>
-         <description>Button presses that are not meaningful for example due to intrinsic mechanical causes after a meaningful press</description>
-      </node>
-      <node requireChild="true">
-         <name>Role</name>
-         <description>The role of the agent (participant, character, AI..)</description>
-         <node>
-            <name>Leader</name>
-         </node>
-         <node>
-            <name>Follower</name>
-         </node>
-         <node takesValue="true">
-            <name>#</name>
-         </node>
-         <node>
-            <name>Miscellaneous</name>
-         </node>
-      </node>
-      <node>
-         <name>Teleoperate</name>
-         <description>Control an object that you are not aboard</description>
       </node>
    </node>
    <node extensionAllowed="true">
