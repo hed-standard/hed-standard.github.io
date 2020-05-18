@@ -415,6 +415,10 @@
                      <name>Radio</name>
                   </node>
                </node>
+               <node>
+                  <name>Teleoperate</name>
+                  <description>Control an object that you are not aboard</description>
+               </node>
             </node>
          </node>
          <node>
@@ -728,13 +732,6 @@
             <name>ID</name>
             <description>Tag to identify any aspect of an event. Use parentheses to group an ID Value tag with an ID Type tag to qualify the kind of ID that the value represents.</description>
          </node>
-         <node>
-            <name>Parameters</name>
-            <node takesValue="true">
-               <name>#</name>
-               <description>Experiment parameters in some a string. Do not used quotes.</description>
-            </node>
-         </node>
          <node requireChild="true">
             <name>Description</name>
             <description>Human-readable text description of the event.</description>
@@ -756,14 +753,6 @@
                <name>#</name>
             </node>
          </node>
-         <node requireChild="true">
-            <name>Condition</name>
-            <description>Specifies the value of an independent variable (number of letters, N, in an N-back task) or function of independent variables that is varied or controlled for in the experiment.  This attribute is often specified at the task level and can be associated with specification of an experimental stimulus or an experiment context (e.g. 1-back, 2-back conditions in an N-back task, or changing the target type from faces to houses in a Rapid Serial Visual Presentation, or RSVP, task.)</description>
-            <node takesValue="true">
-               <name>#</name>
-               <description>the condition</description>
-            </node>
-         </node>
       </node>
       <node>
          <name>Quantitative</name>
@@ -781,6 +770,14 @@
             <name>Fraction</name>
             <description>the fraction of presentation of an Oddball or Expected stimuli to the total number of same-class presentations, e.g. 10% of images in an RSVP being targets</description>
          </node>
+         <node requireChild="true">
+            <name>Repetition</name>
+            <description>When the same type of event such as a fixation on the exact same object happens multiple times and it might be necessary to distinguish the first look vs. others</description>
+         </node>
+         <node requireChild="true">
+            <name>Uncertainty</name>
+            <description>Use to specify the amount of uncertainty in the timing of the event. Please notice that this is different from Attribute/Probability tag which relates to the occurrence of event and can be interpretative as the integral of probability density across a distribution whose shape (temporal extent) is specified by Attribute/Temporal uncertainty</description>
+         </node>
       </node>
       <node>
          <name>Sensory</name>
@@ -790,25 +787,33 @@
                <name>Frequency</name>
             </node>
             <node requireChild="true">
-               <name>Loudness</name>
+               <name>Volume</name>
             </node>
             <node>
-               <name>Ramp up</name>
+               <name>Ramp-up</name>
                <description>Increasing in amplitude</description>
             </node>
             <node>
-               <name>Ramp down</name>
+               <name>Ramp-down</name>
                <description>Decreasing in amplitude</description>
+            </node>
+            <node>
+               <name>Ramp-down</name>
+               <description>Decreasing in amplitude</description>
+            </node>
+            <node>
+               <name>Timbre</name>
+               <description>Sound quality</description>
             </node>
          </node>
          <node>
             <name>Olfactory</name>
          </node>
          <node>
-            <name>Tactile</name>
+            <name>Haptic</name>
          </node>
          <node>
-            <name>Taste</name>
+            <name>Gustatory</name>
          </node>
          <node>
             <name>Visual</name>
@@ -819,7 +824,10 @@
                <name>Color</name>
             </node>
             <node predicateType="passThrough" requireChild="true">
-               <name>Rendering type</name>
+               <name>Rendering</name>
+               <node takesValue="true">
+                  <name>#</name>
+               </node>
             </node>
          </node>
       </node>
@@ -854,28 +862,9 @@
          <node>
             <name>Offset</name>
          </node>
-         <node requireChild="true">
-            <name>Repetition</name>
-            <description>When the same type of event such as a fixation on the exact same object happens multiple times and it might be necessary to distinguish the first look vs. others</description>
-         </node>
-         <node>
-            <name>Response start delay</name>
-            <description>The time interval between this (stimulus) event and the start of the response event specified, usually by grouping with the event ID of the response start event.</description>
-         </node>
-         <node>
-            <name>Response end delay</name>
-            <description>The time interval between this (stimulus) event and the end of the response event specified, usually by grouping with the event ID of the response end event.</description>
-         </node>
          <node>
             <name>Rate</name>
             <description>Number of occurrences in a unit of time.</description>
-         </node>
-         <node requireChild="true">
-            <name>Uncertainty</name>
-            <description>Use to specify the amount of uncertainty in the timing of the event. Please notice that this is different from Attribute/Probability tag which relates to the occurrence of event and can be interpretative as the integral of probability density across a distribution whose shape (temporal extent) is specified by Attribute/Temporal uncertainty</description>
-         </node>
-         <node>
-            <name>Time out</name>
          </node>
          <node>
             <name>Velocity</name>
@@ -886,21 +875,6 @@
          </node>
          <node>
             <name>Jerk</name>
-         </node>
-         <node>
-            <name>Change</name>
-            <description>Use onset and offset attributes to indicate different walking stride phases</description>
-            <node>
-               <name>Faster</name>
-               <description>Increasing the speed of walking</description>
-            </node>
-            <node>
-               <name>Slower</name>
-               <description>Decreasing the speed of walking</description>
-            </node>
-            <node>
-               <name>Halt</name>
-            </node>
          </node>
       </node>
       <node>
@@ -971,10 +945,38 @@
             <node>
                <name>Feedback</name>
             </node>
+            <node>
+               <name>Priming</name>
+               <node>
+                  <name>Motoric</name>
+               </node>
+               <node>
+                  <name>Emotional</name>
+               </node>
+               <node>
+                  <name>Perceptual</name>
+               </node>
+            </node>
+            <node>
+               <name>Subliminal</name>
+               <node>
+                  <name>Unmasked</name>
+               </node>
+               <node>
+                  <name>Masked</name>
+               </node>
+            </node>
+            <node>
+               <name>Supraliminal</name>
+               <description>By default this is assumed about each stimulus</description>
+            </node>
+            <node>
+               <name>Liminal At the 75</name>
+            </node>
          </node>
          <node>
             <name>Action judgment</name>
-            <description>External judgment (assumed to be ground truth, e.g. from an experiment control software or an annotator) about participant actions such as answering a question, failing to answer in time, etc.</description>
+            <description>External judgment assumed to be ground truth such as from an experiment control software or an annotator about participant actions such as answering a question, failing to answer in time, etc. Related to participant indication</description>
             <node>
                <name>Correct</name>
             </node>
@@ -993,6 +995,10 @@
             <node>
                <name>Inappropriate</name>
                <description>A choice that is not allowed such as moving a chess piece to a location it should not go based on game rules</description>
+            </node>
+            <node>
+               <name>Extraneous</name>
+               <description>Button presses that are not meaningful for example due to intrinsic mechanical causes after a meaningful press</description>
             </node>
          </node>
          <node>
@@ -1036,80 +1042,6 @@
             <node>
                <name>Negative valence</name>
             </node>
-         </node>
-         <node>
-            <name>Priming</name>
-            <node>
-               <name>Motoric</name>
-            </node>
-            <node>
-               <name>Emotional</name>
-            </node>
-            <node>
-               <name>Perceptual</name>
-            </node>
-         </node>
-         <node>
-            <name>Subliminal</name>
-            <node>
-               <name>Unmasked</name>
-            </node>
-            <node>
-               <name>Masked</name>
-            </node>
-         </node>
-         <node>
-            <name>Supraliminal</name>
-            <description>By default this is assumed about each stimulus</description>
-         </node>
-         <node>
-            <name>Liminal</name>
-            <description>At the 75%-25% perception threshold</description>
-         </node>
-         <node>
-            <name>Communicative</name>
-            <node>
-               <name>Nonlinguistic</name>
-               <description>Something that conveys meaning without using words such as the iconic pictures of a man or a woman on the doors of restrooms. Another example is a deer crossing sign with just a picture of jumping deer.</description>
-            </node>
-            <node>
-               <name>Semantic</name>
-               <description>Like in priming or in congruence</description>
-            </node>
-            <node>
-               <name>Linguistic</name>
-            </node>
-         </node>
-      </node>
-      <node>
-         <name>Miscellaneous</name>
-         <node requireChild="true">
-            <name>Presentation</name>
-            <description>Attributes associated with visual, auditory, tactile, etc. presentation of an stimulus</description>
-            <node>
-               <name>Cued</name>
-               <description>what is presented is cued to the presentation of something else</description>
-            </node>
-            <node>
-               <name>Background</name>
-               <description>presented in the background such as background music, background image, etc. The main factor here is that background presentations are to be ignored, e.g. ignore math question auditory stimuli.</description>
-            </node>
-         </node>
-         <node>
-            <name>Participant indication</name>
-            <description>This tag is placed in events of type Event/Category/Participant response and grouped with Participant/Effect/Cognitive/.. tags to specify the type of cognitive effect the participant has experienced. For example, in an RSVP paradigm, the subject can indicate the detection of a target with a button press. The HED string associated with this button press must include (Attribute/Participant indication, Participant/Effect/Cognitive/Target,...)</description>
-         </node>
-         <node requireChild="true">
-            <name>Object control</name>
-            <description>Specifies control such as for a vehicle</description>
-         </node>
-         <node>
-            <name>Extraneous</name>
-            <description>Button presses that are not meaningful for example due to intrinsic mechanical causes after a meaningful press</description>
-         </node>
-         <node>
-            <name>Teleoperate</name>
-            <description>Control an object that you are not aboard</description>
          </node>
       </node>
    </node>
