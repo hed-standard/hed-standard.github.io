@@ -86,23 +86,24 @@
     </script>
 </head>
 <body onload="displayResult()">
-    <h1>HED Schema</h1>
-
-
-        <div class="container-fluid">
+    <div class="container-fluid">
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col-3"></div>
-                <div class="col-3">
-                </div>
+                <div class="col-3"></div>
             </div>
-        </div>
     </div>
-    <button type="button" class="btn btn-primary" onclick="showHideAll()">Expand/Collapse all</button>
+
 
     <div class="container-fluid">
+	<div class="row">
+            <div class="col col-lg">
+    	    	<h1 style="font-family:ultra, sans-serif;color:#1ab2ff">HED-reduced <button type="button" class="btn btn-light" onclick="showHideAll()">Expand/Collapse all</button></h1>
+	    </div>
+	</div>
+		
         <div class="row">
-            <div class="col col-lg-3">
+            <div class="col col-md-4">
                 <div id="example" class="list-group list-group-root well" status="show"></div>
             </div>
             <div class="col col-lg-4">
