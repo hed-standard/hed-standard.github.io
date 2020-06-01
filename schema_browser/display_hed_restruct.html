@@ -25,7 +25,7 @@
 	}
         function displayResult()
         {
-            xml = loadXMLDoc("HEDLatest.xml");
+            xml = loadXMLDoc("HED-restruct.xml");
             xsl = loadXMLDoc("hed-schema.xsl");
             // code for IE
             if (window.ActiveXObject || xhttp.responseType == "msxml-document")
@@ -56,7 +56,7 @@
                 $("p#description").text(selected.attr("description"));
                 $("div#metadata").html(finalText);
             })
-	    $("#hed").html("HED v" + $("#hed-version").text() + ' <button type="button" class="btn btn-light" onclick="showHideAll()">Expand/Collapse all</button>');
+	    $("#hed").html("HED " + $("#hed-version").text() + ' <button type="button" class="btn btn-light" onclick="showHideAll()">Expand/Collapse all</button>');
         }
 
         /* Get full path of tag node */

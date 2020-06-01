@@ -69,6 +69,12 @@
 		</xsl:for-each>
 	</div>
 </xsl:template>
+
+<xsl:template match="/HED">
+	<div id="hed-version" style="display: none;"><xsl:value-of select="@version"/></div>
+	<xsl:apply-templates select="node"/>
+</xsl:template>
+
 <xsl:template match="/">
 	<xsl:apply-templates />
 </xsl:template>
