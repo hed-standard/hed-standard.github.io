@@ -4,9 +4,17 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="hed-collapsible.css">
+    <!--<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-        function loadXMLDoc(filename)
+        function loadXML(url)
         {
+	    $.get(url, function(data,status) {
+		xml = $.parseXML(data);
+		displayResult(xml);
+	    });
+        }
+	function loadXSL(filename) {
             if (window.ActiveXObject)
             {
                 xhttp = new ActiveXObject("Msxml2.XMLHTTP");
@@ -19,14 +27,10 @@
             try {xhttp.responseType = "msxml-document"} catch(err) {} // Helping IE11
             xhttp.send("");
             return xhttp.responseXML;
-        }
-	function downloadFile(url) {
-	    window.open(url);
 	}
-        function displayResult()
+        function displayResult(xml)
         {
-            xml = loadXMLDoc("HEDLatest.xml");
-            xsl = loadXMLDoc("hed-schema.xsl");
+            xsl = loadXSL("hed-schema.xsl");
             // code for IE
             if (window.ActiveXObject || xhttp.responseType == "msxml-document")
             {
@@ -39,7 +43,7 @@
                 xsltProcessor = new XSLTProcessor();
                 xsltProcessor.importStylesheet(xsl);
                 resultDocument = xsltProcessor.transformToFragment(xml, document);
-                document.getElementById("example").appendChild(resultDocument);
+		$("#example").html(resultDocument);
             }
 
             $("a").mouseover(function() {
@@ -84,9 +88,21 @@
                 $("#example").attr("status","show");
             }
         }
+	function getSchemaVersions() {
+	    $('#schemaDropdown').empty();
+	    $.getJSON("https://api.github.com/repos/hed-standard/hed-specification/contents/hedxml",function(data) {
+		data.forEach(function(item,index) {
+		    var version = item["name"].split('*.xml')[0];
+		    var link = item["download_url"];
+		    var html = '<a class="dropdown-item" id="schema' + version + '" onclick="loadXML(\'' + link + '\')">' + version + '</a>';
+		    $("#schemaDropdown").append(html);
+		});
+		
+	    });
+	}
     </script>
 </head>
-<body onload="displayResult()">
+<body onload="loadXML('https://raw.githubusercontent.com/hed-standard/hed-specification/HED-restructure/hedxml/HEDLatest.xml')">
     <div class="container-fluid">
             <div class="row">
                 <div class="col-3"></div>
@@ -103,6 +119,15 @@
     			<button type="button" class="btn btn-light" onclick="showHideAll()">Expand/Collapse all</button>
 		</h1>
 	    </div>
+	   <div class="col col-lg-3">
+		<div class="dropdown" style="padding-top:10px;padding-bottom:10px;">
+  		    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="getSchemaVersions()">
+    		    Other schema version
+  		    </button>
+  		    <div class="dropdown-menu" id="schemaDropdown" aria-labelledby="dropdownMenuButton">
+  	            </div>
+		</div>
+	   </div>
 	</div>
 		
         <div class="row">
@@ -124,7 +149,6 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script>
