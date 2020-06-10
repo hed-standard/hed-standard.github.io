@@ -12,7 +12,7 @@ The HED framework has been developed for application to EEG brain imaging, but m
 
 ## The HED Schema
 
-The HED Schema (check the latest version [here](http://www.hedtags.org/display_hed.html)) contains allowed HED tags and describes their properties. It is partially adopted from BrainMap/NeuroLex ontologies and organized hierarchically. You can click on the image below for an interactive visualization of HED hierarchy:
+The HED Schema (check the latest version [here](http://www.hedtags.org/schema_browser/display_hed.html)) contains allowed HED tags and describes their properties. It is partially adopted from BrainMap/NeuroLex ontologies and organized hierarchically. You can click on the image below for an interactive visualization of HED hierarchy:
 
 [<img src="/images/HED_tree_brief.png">](/interactive)
 
