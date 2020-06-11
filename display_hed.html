@@ -7,7 +7,7 @@
     <!--<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-        function loadXML(url)
+        function loadSchema(url)
         {
 	    $.get(url, function(data,status) {
 		xml = $.parseXML(data);
@@ -94,7 +94,7 @@
 		data.forEach(function(item,index) {
 		    var version = item["name"].split('*.xml')[0];
 		    var link = item["download_url"];
-		    var html = '<a class="dropdown-item" id="schema' + version + '" onclick="loadXML(\'' + link + '\')">' + version + '</a>';
+		    var html = '<a class="dropdown-item" id="schema' + version + '" onclick="loadSchema(\'' + link + '\')">' + version + '</a>';
 		    $("#schemaDropdown").append(html);
 		});
 		
@@ -102,7 +102,7 @@
 	}
     </script>
 </head>
-<body onload="loadXML('https://raw.githubusercontent.com/hed-standard/hed-specification/HED-restructure/hedxml/HED7.1.1.xml')">
+<body onload="loadSchema('https://raw.githubusercontent.com/hed-standard/hed-specification/HED-restructure/hedxml/HED7.1.1.xml')">
     <div class="container-fluid">
 	<div class="row" name="header-section">
 	    <div class="col col-lg-12">
@@ -129,11 +129,11 @@
 	    </div>
 	</div>
 		
-        <div class="row" name="schema-section">
-            <div class="col col-lg-3">
+        <div class="row">
+            <div class="col col-lg-3" name="schema-section">
                 <div id="schema" class="list-group list-group-root well" status="show"></div>
             </div>
-            <div class="col col-lg-4" name="info-board">
+            <div class="col col-lg-4" name="info-board-section">
                 <div id="infoBoard" class="border border-primary rounded">
                     <div>
                         <h4 id="title">Title</h4>

@@ -34,9 +34,7 @@ a.list-group-item:last-of-type + div + div::after {
     border-style: none;
 }
 
-/**
-Draw line for list-group-item
- */
+/*Draw tree line*/
 .list-group-item {
     position: relative;
     background-color: transparent;
@@ -71,80 +69,9 @@ Draw line for list-group-item
     overflow: hidden;
 }
 
-
-/*Tooltip container*/
-/* Tooltip container */
-/*.tooltip {*/
-/*    position: relative;*/
-/*    display: inline-block;*/
-/*    border-bottom: 1px dotted black; !* If you want dots under the hoverable text *!*/
-/*}*/
-
-/* Tooltip text */
-/*.tooltip {*/
-/*    position: -webkit-sticky; !* Safari *!*/
-/*    position: sticky;*/
-/*    top: 0;*/
-/*    background-color: green;*/
-/*    border: 2px solid #4CAF50;*/
-/*}*/
-/*a .tooltiptext {*/
-/*    !*top: -5px;*!*/
-/*    !*left: 105%;*!*/
-/*    visibility: hidden;*/
-/*    width: 120px;*/
-/*    background-color: black;*/
-/*    color: #fff;*/
-/*    text-align: center;*/
-/*    padding: 5px 0;*/
-/*    border-radius: 6px;*/
-
-
-/*    !* Position the tooltip text - see examples below! *!*/
-/*    position: absolute;*/
-/*    z-index: 1;*/
-/*    left: 100px;*/
-/*}*/
-/* Show the tooltip text when you mouse over the tooltip container */
-/*.list-group-item:hover .tooltiptext {*/
-/*    visibility: visible;*/
-/*}*/
-
 #infoBoard {
     /*z-index: -1;*/
     position: sticky;
     top: 50px;
     padding: 15px;
-}
-/* Draw tree structure credit: https://two-wrongs.com/draw-a-tree-structure-with-only-css*/
-
-ul {
-    position: relative;
-    list-style: none;
-    padding-left: 32px;
-}
-
-li {
-    position: relative;
-}
-
-li::before, li::after {
-    content: "";
-    position: absolute;
-    left: -12px;
-}
-li::before {
-    border-top: 1px solid black;
-    top: 9px;
-    width: 8px;
-    height: 0;
-}
-li::after {
-    border-left: 1px solid #000;
-    height: 100%;
-    width: 0px;
-    top: 2px;
-}
-ul > li:last-of-type::after {
-    height: 8px;
 }
