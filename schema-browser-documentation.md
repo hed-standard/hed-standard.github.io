@@ -4,7 +4,7 @@ This documentation explains what goes into the HTML HED schema browser (display_
 
 For development, it would be convenient to be able to view the [display_hed.html](http://www.hedtags.org/display_hed.html) page locally. You'll need to have a local web server running. Here's how to set up a local server:  https://gist.github.com/jgravois/5e73b56fa7756fd00b89. Once your server is up, clone the [Github repository](https://github.com/hed-standard/hed-standard.github.io) into your server's root folder. Then you should be able to access the display file using
 
-http://localhost/hed-standard.github.io/schema_browser/display_hed.html
+http://localhost/hed-standard.github.io/display_hed.html
 
 
 
@@ -51,4 +51,4 @@ The static structure of the info board is specified under *info-board-section* d
 
 # Push and check changes
 
-Commit and push your changes to origin Github repo and check http://www.hedtags.org/display_hed.html to make sure the changes you made are reflected correctly on the public page. You might need to wait couple minutes before the changes is reflected on the remote server.
+Commit and push your changes to the Github repo and check http://www.hedtags.org/display_hed.html to make sure the changes you made are reflected correctly on the public page. You might need to wait couple minutes before the changes is reflected on the remote server.
