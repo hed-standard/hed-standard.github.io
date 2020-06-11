@@ -35,7 +35,7 @@
             if (window.ActiveXObject || xhttp.responseType == "msxml-document")
             {
                 ex = xml.transformNode(xsl);
-                document.getElementById("example").innerHTML = ex;
+                document.getElementById("schema").innerHTML = ex;
             }
             // code for Chrome, Firefox, Opera, etc.
             else if (document.implementation && document.implementation.createDocument)
@@ -43,7 +43,7 @@
                 xsltProcessor = new XSLTProcessor();
                 xsltProcessor.importStylesheet(xsl);
                 resultDocument = xsltProcessor.transformToFragment(xml, document);
-		$("#example").html(resultDocument);
+		$("#schema").html(resultDocument);
             }
 
             $("a").mouseover(function() {
@@ -79,13 +79,13 @@
             return "/" + path;
         }
         function showHideAll() {
-            if ($("#example").attr("status") == "show") {
-                $("#example").find(".collapse").removeClass("show");
-                $("#example").attr("status","hide");
+            if ($("#schema").attr("status") == "show") {
+                $("#schema").find(".collapse").removeClass("show");
+                $("#schema").attr("status","hide");
             }
             else {
-                $("#example").find(".collapse").addClass("show");
-                $("#example").attr("status","show");
+                $("#schema").find(".collapse").addClass("show");
+                $("#schema").attr("status","show");
             }
         }
 	function getSchemaVersions() {
@@ -104,14 +104,14 @@
 </head>
 <body onload="loadXML('https://raw.githubusercontent.com/hed-standard/hed-specification/HED-restructure/hedxml/HED7.1.1.xml')">
     <div class="container-fluid">
-	<div class="row">
+	<div class="row" name="header-section">
 	    <div class="col col-lg-12">
 	    	<h1 class="display-4 mt-4 text-center text-primary" style="font-family:'Helvetica'">HED Schema Browser</h1>
 	    	<p class="lead text-center text-secondary">HED (Hierarchical Event Descriptor) is a structured vocabulary for annotating events. For more information, see <a href="http://www.hedtags.org">hedtags.org</a>.</p>
 	    	<hr class="my-4">
 	    </div>
 	</div>
-	<div class="row">
+	<div class="row" name="button-section">
 	    <div class="col col-lg-8">
 		<div class="dropdown">
     	    	<button type="button" class="btn btn-light" onclick="showHideAll()">Expand/Collapse all</button>
@@ -123,17 +123,17 @@
 		</div>
 	    </div>
 	</div>
-	<div class="row">
+	<div class="row" name="hed-version">
             <div class="col col-lg-3">
     	    	<h1 id="hed" style="font-family:ultra, sans-serif;color:#0099ff">HED</h1>
 	    </div>
 	</div>
 		
-        <div class="row">
+        <div class="row" name="schema-section">
             <div class="col col-lg-3">
-                <div id="example" class="list-group list-group-root well" status="show"></div>
+                <div id="schema" class="list-group list-group-root well" status="show"></div>
             </div>
-            <div class="col col-lg-4">
+            <div class="col col-lg-4" name="info-board">
                 <div id="infoBoard" class="border border-primary rounded">
                     <div>
                         <h4 id="title">Title</h4>
