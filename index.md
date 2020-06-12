@@ -35,7 +35,7 @@ that contains allowed HED tags and describes their properties.
 The tree structure of HED allows top-level vocabulary to be
 standardized and hence shared across the community. However, HED is extensible at lower levels in the 
 hierarchy to permit more experiment-specific annotations.
-(See for a browsible version of the [Latest HED Schema](display_hed.html).
+(See [Latest HED Schema](display_hed.html) for a browsable version.)
 
 HED validation tools allow users to specify the version of the HED schema used to annotate the data. This flexibility
 allows communities to develop specialized annotation schema.
