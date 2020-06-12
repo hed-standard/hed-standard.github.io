@@ -1,4 +1,3 @@
-![](/images/HED_connected_logo_100.png)
 
 ## What is HED?
 
