@@ -32,10 +32,10 @@ to be combined in a transparent way for downstream analysis.
 
 The controlled vocabulary in HED annotation is determined by a HED Schema
 that contains allowed HED tags and describes their properties.
-(See for a browsible version of the [Latest HED Schema](http://www.hedtags.org/schema_browser/display_hed.html).
 The tree structure of HED allows top-level vocabulary to be
 standardized and hence shared across the community. However, HED is extensible at lower levels in the 
 hierarchy to permit more experiment-specific annotations.
+(See for a browsible version of the [Latest HED Schema](display_hed.html).
 
 HED validation tools allow users to specify the version of the HED schema used to annotate the data. This flexibility
 allows communities to develop specialized annotation schema.
