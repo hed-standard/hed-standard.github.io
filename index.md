@@ -7,7 +7,7 @@ using a controlled, extensible vocabulary. Users annotate their events and their
 HED tags, which are comma-separated path strings. Allowed path strings are assigned from a tree-structured
 vocabulary called a **HED schema**. 
 
-The HED framework has been developed for application to EEG brain imaging, but may also be applied to other brain
+The HED framework was originally developed to annotate EEG brain imaging data, but may also be applied to other brain
 imaging (MEG, fNIRS), multimodal (a.k.a, mobile brain/body imaging), physiological (ECG, EMG, GSR), or purely
 behavioral data. HED has recently been adopted as part of the BIDS ([Brain Imaging Data Structure](http://bids.neuroimaging.io))
 standard for brain imaging.  
@@ -32,10 +32,10 @@ to be combined in a transparent way for downstream analysis.
 
 The controlled vocabulary in HED annotation is determined by a HED Schema
 that contains allowed HED tags and describes their properties.
-(See [Latest HED Schema](http://www.hedtags.org/schema_browser/display_hed.html).)
+See [Latest HED Schema](www.hedtags.org/schema_browser/display_hed.html) for the latest scheam.
 The tree structure of HED allows top-level vocabulary to be
-standardized and hence shared across the community. However, HED allows allowing extension at lower levels in the 
-hierarchies to permit more experiment-specific annotations.
+standardized and hence shared across the community. However, HED is extensible at lower levels in the 
+hierarchy to permit more experiment-specific annotations.
 
 HED validation tools allow users to specify the version of the HED schema used to annotate the data. This flexibility
 allows communities to develop specialized annotation schema.
