@@ -7,7 +7,7 @@ The HED framework was first developed by Nima Bigdely-Shamlo to annotate EEG bra
 
 ## Why use HED?
 
-Some compelling reasons for using HED are to insure the continued usability and reusability of data, and to provide compatibility among recorded event descriptions for different experiments, all while retaining flexibility to extend HED descriptive vocabulary to describe events of interest to any research community.
+Some compelling reasons for using HED are to ensure the continued usability and reusability of data, and to provide compatibility among recorded event descriptions for different experiments, all while retaining flexibility to extend HED descriptive vocabulary to describe events of interest to any research community.
 
 By providing a standardized documentation framework, a controlled vocabulary, and easy-to-use HED string selection and validation tools, HED allows users to annotate their data in a consistent way that preserves its original meaning – in a format that is both human and machine readable. Using a common vocabulary to describe experiment events and organization also enables new meta-analysis across studies, with a goal of better identifying common data features. 
 
@@ -20,26 +20,29 @@ By providing a standardized documentation framework, a controlled vocabulary, an
 > Experiment 3 (Lab C): Count the number of times you see the black square.”
 > Experiment 4   ….
 >
-> By contrasting the brain responses evoked by these ‘visual sensory presentation’ events, one can begin to ask, What task/stimulus features produce robust differences in the event-related brain dynamics? or in a given feature or measure of the event-related brain dynamics? 
+> By contrasting the brain responses evoked by these ‘visual sensory presentation’ events, one can begin to ask: What task/stimulus features produce robust differences in the event-related brain dynamics or in a given feature/measure of the event-related brain dynamics? 
 >
-> Currently, sophisticated ‘machine learning’ algorithms can to made to combine information from many such records so as to give new insights that could not be obtained by contrasting a small number of experiment conditions. 
+> Currently, sophisticated ‘machine learning’ algorithms can be made to combine information from many such records so as to give new insights that could not be obtained by contrasting a small number of experiment conditions. 
+>
 > To make this mode of discovery possible for brain imaging or behavioral experiments, (1) the nature of the participant sensory experiences and actions need to be recorded in sufficient detail, using a common vocabulary and format, and (2) the data need to be co-located or co-registered in a way that allows selective ‘meta-‘ or ‘large scale’ analysis.
 
 
 
-The path string format of HED annotation allows data search and analysis focused at any level of detail (example: Collect all visual sensory presentation events. Collect all ‘target’ visual sensory presentation events. Collect all *audio*visual sensory presentation events, … ).
+The path string format of HED annotation allows data search and analysis focused at any level of detail (for example: collect all visual sensory presentation events, collect all ‘target’ visual sensory presentation events, or collect all *audio*visual sensory presentation events, … ).
 
-HED also allows researchers to add annotations in layers. A researcher might provide an initial set of event annotations. Later, an additional layer of event descriptors might document finer aspects of those events, or might annotate additional ‘data feature’ events discovered through *post hoc* review or analysis. HED tools allow these annotation layers to be combined in a transparent way for use in a particular analysis.
+HED also allows researchers to add annotations in layers. A researcher might provide an initial set of event annotations. Later, an additional layer of HED tags might document finer aspects of those events, or might annotate additional ‘data feature’ events discovered through *post hoc* review or analysis. HED tools allow these annotation layers to be combined in a transparent way for use in a particular analysis.
 
 ## The HED Schema
 
-The controlled vocabulary in HED annotation is contained in a central, top-level (root) HED Schema that contains allowed HED tags and describes their properties. This root schema allows major category labels and other vocabulary used in HED tags to be standardized and shared across the whole research community. Browse [the current root (top-level) HED Schema](http://www.hedtags.org/display_hed.html).
+The HED schema contains tags and tag properties allowed in HED annotation, organized in a tree-like structure in which an item of a lower level particularizes its predecessor. The top-level (root) categories are fixed so as to be standardized and shared across the whole research community. 
 
-At lower levels of the schema hierarchy (leaves and smaller branches) HED is extensible so as to permit and encourage more research community-specific annotation. 
+[Browse the current HED Schema](http://www.hedtags.org/display_hed.html).
+
+Lower levels of the schema hierarchy (leaves and smaller branches) are extensible so as to permit and encourage more research community-specific annotation. 
 
 > For example, a community of music/brain researchers might want to annotate experimental events using musical terms (B-flat minor, legato, semidemiquaver, …) that would not be created by nor meaningful to other research communities. 
 >
-> Clinical neurophysiologists might annotate EEG data using a shared set of standard clinical terms (sleep spindle, interictal spike, …). Etc.
+> Clinical neurophysiologists might annotate EEG data using a shared set of standard clinical terms (sleep spindle, interictal spike, …), etc.
 
 HED validation tools allow users to specify the version of the HED schema used to annotate the data. This flexibility allows communities to develop specialized HED schema to fit their needs.
 
