@@ -11,23 +11,21 @@ Some compelling reasons for using HED are to insure the continued usability and 
 
 By providing a standardized documentation framework, a controlled vocabulary, and easy-to-use HED string selection and validation tools, HED allows users to annotate their data in a consistent way that preserves its original meaning – in a format that is both human and machine readable. Using a common vocabulary to describe experiment events and organization also enables new meta-analysis across studies, with a goal of better identifying common data features. 
 
-For example
+> For example
+>
+> Given HED-tagged data from a number of fairly similar EEG experiments:
+>
+> Experiment 1 (Lab A): “Press the button when you see a red circle.”
+> Experiment 2 (Lab B): “Press the button when you see a black triangle.”
+> Experiment 3 (Lab C): Count the number of times you see the black square.”
+> Experiment 4   ….
+>
+> By contrasting the brain responses evoked by these ‘visual sensory presentation’ events, one can begin to ask, What task/stimulus features produce robust differences in the event-related brain dynamics? or in a given feature or measure of the event-related brain dynamics? 
+>
+> Currently, sophisticated ‘machine learning’ algorithms can to made to combine information from many such records so as to give new insights that could not be obtained by contrasting a small number of experiment conditions. 
+> To make this mode of discovery possible for brain imaging or behavioral experiments, (1) the nature of the participant sensory experiences and actions need to be recorded in sufficient detail, using a common vocabulary and format, and (2) the data need to be co-located or co-registered in a way that allows selective ‘meta-‘ or ‘large scale’ analysis.
 
-Given HED-tagged data from a number of fairly similar EEG experiments:
 
-Experiment 1 (Lab A): “Press the button when you see a red circle.”
-
-Experiment 2 (Lab B): “Press the button when you see a black triangle.”
-
-Experiment 3 (Lab C): Count the number of times you see the black square.”
-
-Experiment 4   ….
-
-By contrasting the brain responses evoked by these ‘visual sensory presentation’ events, one can begin to ask, What task/stimulus features produce robust differences in the event-related brain dynamics? or in a given feature or measure of the event-related brain dynamics? 
-
-Currently, sophisticated ‘machine learning’ algorithms can to made to combine information from many such records so as to give new insights that could not be obtained by contrasting a small number of experiment conditions. 
-
-To make this mode of discovery possible for brain imaging or behavioral experiments, (1) the nature of the participant sensory experiences and actions need to be recorded in sufficient detail, using a common vocabulary and format, and (2) the data need to be co-located or co-registered in a way that allows selective ‘meta-‘ or ‘large scale’ analysis. 
 
 The path string format of HED annotation allows data search and analysis focused at any level of detail (example: Collect all visual sensory presentation events. Collect all ‘target’ visual sensory presentation events. Collect all *audio*visual sensory presentation events, … ).
 
@@ -39,9 +37,9 @@ The controlled vocabulary in HED annotation is contained in a central, top-level
 
 At lower levels of the schema hierarchy (leaves and smaller branches) HED is extensible so as to permit and encourage more research community-specific annotation. 
 
-For example, a community of music/brain researchers might want to annotate experimental events using musical terms (B-flat minor, legato, semidemiquaver, …) that would not be created by nor meaningful to other research communities. 
-
-Clinical neurophysiologists might annotate EEG data using a shared set of standard clinical terms (sleep spindle, interictal spike, …). Etc.
+> For example, a community of music/brain researchers might want to annotate experimental events using musical terms (B-flat minor, legato, semidemiquaver, …) that would not be created by nor meaningful to other research communities. 
+>
+> Clinical neurophysiologists might annotate EEG data using a shared set of standard clinical terms (sleep spindle, interictal spike, …). Etc.
 
 HED validation tools allow users to specify the version of the HED schema used to annotate the data. This flexibility allows communities to develop specialized HED schema to fit their needs.
 
