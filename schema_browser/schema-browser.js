@@ -1,3 +1,63 @@
+var githubSchema = {"version": [], "download_link": []};
+getGithubSchema(); // call outside of onload event to reduce latency
+
+/**
+ * Onload call. Build schema selection dropdown
+ * and load default schema accordingly to url params
+ */
+function start() {
+    // build schema dropdown
+    for (var i=0; i < githubSchema["version"].length; i++) {
+        var html = '<a class="dropdown-item" id="schema' + githubSchema["version"][i] + '" onclick="loadSchema(\'' + githubSchema["download_link"][i] + '\')">' + githubSchema["version"][i] + '</a>';
+        $("#schemaDropdown").append(html);
+    }
+
+    // load default schema accordingly
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('version')) {
+        var schema_url = getSchemaURL(urlParams.get('version'));
+        loadSchema(schema_url);
+    }
+    else {
+        loadSchema('https://raw.githubusercontent.com/hed-standard/hed-specification/HED-restructure/hedxml/HED7.1.1.xml')
+    }
+}
+
+/**
+ * Get all schema versions currently hosted on
+ * https://github.com/hed-standard/hed-specification/tree/master/hedxml
+ * and build githubSchema global variable
+ */
+function getGithubSchema() {
+    $.ajax({dataType: "json", url: "https://api.github.com/repos/hed-standard/hed-specification/contents/hedxml", async: false, success: function(data) {
+        data.forEach(function(item,index) {
+            var version = item["name"].split('*.xml')[0];
+            var link = item["download_url"];
+            // add to global dict
+            githubSchema["version"].push(version);
+            githubSchema["download_link"].push(link);
+        })
+    }});
+}
+
+/**
+ * Get download link of the schema given hedVersion
+ * @param hedVersion    schema version number
+ * @returns     schema download link
+ */
+function getSchemaURL(hedVersion) {
+    for (var i=0; i < githubSchema["version"].length; i++) {
+        if (githubSchema["version"][i].includes(hedVersion)) {
+            return githubSchema["download_link"][i];
+        }
+    }
+}
+
+/**
+ * Download the schema given the schema's download link url
+ * and reload the html browser with the new schema
+ * @param url   schema download link
+ */
 function loadSchema(url)
 {
     $.get(url, function(data,status) {
@@ -5,6 +65,12 @@ function loadSchema(url)
         displayResult(xml);
     });
 }
+
+/**
+ * Load XSL file
+ * @param filename
+ * @returns {Document}
+ */
 function loadXSL(filename) {
     if (window.ActiveXObject)
     {
@@ -19,6 +85,11 @@ function loadXSL(filename) {
     xhttp.send("");
     return xhttp.responseXML;
 }
+
+/**
+ * Reload html browser with new schema
+ * @param xml   XML content of new schema
+ */
 function displayResult(xml)
 {
     xsl = loadXSL("schema_browser/hed-schema.xsl");
@@ -54,7 +125,10 @@ function displayResult(xml)
     $("#hed").html("HED v" + $("#hed-version").text());
 }
 
-/* Get full path of tag node */
+/**
+ *  Get full path of tag node
+ *  @param node     a tag node
+ */
 function getPath(node) {
     var path = node.text();
     node = node.parent();
@@ -69,6 +143,10 @@ function getPath(node) {
     }
     return "/" + path;
 }
+
+/**
+ * Button listener for collapse/hide all button
+ */
 function showHideAll() {
     if ($("#schema").attr("status") == "show") {
         $("#schema").find(".collapse").removeClass("show");
@@ -78,16 +156,4 @@ function showHideAll() {
         $("#schema").find(".collapse").addClass("show");
         $("#schema").attr("status","show");
     }
-}
-function getSchemaVersions() {
-    $('#schemaDropdown').empty();
-    $.getJSON("https://api.github.com/repos/hed-standard/hed-specification/contents/hedxml",function(data) {
-        data.forEach(function(item,index) {
-            var version = item["name"].split('*.xml')[0];
-            var link = item["download_url"];
-            var html = '<a class="dropdown-item" id="schema' + version + '" onclick="loadSchema(\'' + link + '\')">' + version + '</a>';
-            $("#schemaDropdown").append(html);
-        });
-
-    });
 }

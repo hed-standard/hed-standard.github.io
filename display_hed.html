@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="schema_browser/schema-browser.js"></script>
 </head>
-<body onload="loadSchema('https://raw.githubusercontent.com/hed-standard/hed-specification/HED-restructure/hedxml/HED7.1.1.xml')">
+<body onload="start()">
     <div class="container-fluid">
 	<div class="row" name="header-section">
 	    <div class="col col-lg-12">
@@ -21,7 +21,7 @@
 	    <div class="btn-group col col-lg-3">
     	    	<button type="button" class="btn btn-light mr-4" onclick="showHideAll()">Expand/Collapse all</button>
 		<div class="dropdown">
-  		    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="getSchemaVersions()">
+  		    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
     		    Show another version
   		    </button>
   		    <div class="dropdown-menu" id="schemaDropdown" aria-labelledby="dropdownMenuButton">
