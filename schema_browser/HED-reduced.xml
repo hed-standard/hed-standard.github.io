@@ -3,14 +3,14 @@
    <node>
       <name>Event</name>
       <node>
-         <name>Sensory presentation</name>
+         <name>Sensory presentation event</name>
          <description>Something perceivable by the participant.</description>
          <node extensionAllowed="true">
-            <name>Experimental</name>
+            <name>Task-related stimulus</name>
             <description>Primary category for task-or-condition-related stimulus events.</description>
          </node>
          <node extensionAllowed="true">
-            <name>Extraneous</name>
+            <name>Non-task related stimulus</name>
             <description>An unplanned or environment-determined event occurring in the environment of the participant, for example, a change in experimental context such as beginning to walk on dirt versus sidewalk or a loud noise occurring in the next room.</description>
          </node>
       </node>
@@ -18,11 +18,11 @@
          <name>Participant action</name>
          <description>Any motor action engaged in by the participant.</description>
          <node extensionAllowed="true">
-            <name>Task-related</name>
+            <name>Task-related action</name>
             <description>A task-related action taken by a participant in response to task demands, such as making a button press in response to a Sensory presentation event or tapping out a rhythm following a Condition cue presentation.</description>
          </node>
          <node extensionAllowed="true">
-            <name>Non task-related</name>
+            <name>Non task-related action</name>
             <description>A non-task-related action taken by the participant -- for example yawning, shifting in their chair, or responding to an Environmental event</description>
          </node>
       </node>
@@ -55,7 +55,7 @@
          </node>
       </node>
       <node extensionAllowed="true">
-         <name>Experimental organization</name>
+         <name>Experimental structure</name>
          <description>An event describing the structure of the experiment.</description>
          <node>
             <name>Context</name>
@@ -146,7 +146,7 @@
                   <name>Painting</name>
                </node>
                <node>
-                  <name>Installation</name>
+                  <name>Art installation</name>
                </node>
                <node>
                   <name>Photograph</name>
@@ -224,7 +224,7 @@
             <name>Animal</name>
          </node>
          <node>
-            <name>Robotic</name>
+            <name>Robot</name>
          </node>
       </node>
       <node>
@@ -232,9 +232,6 @@
          <description>Perceivable in a visual or auditory (spoken) sensory presentation</description>
          <node>
             <name>Diphthong</name>
-         </node>
-         <node>
-            <name>Letter</name>
          </node>
          <node>
             <name>Word</name>
@@ -270,11 +267,11 @@
             <name>Noise</name>
          </node>
          <node>
-            <name>Cocktail party</name>
+            <name>Crowd sound</name>
             <description>Multiple speech streams at once</description>
          </node>
          <node>
-            <name>Environmental</name>
+            <name>Environmental sound</name>
             <description>A background sound from the surrounding environment. For example machine operating or people walking</description>
             <node takesValue="true">
                <name>#</name>
@@ -287,163 +284,195 @@
       <name>Action</name>
       <description>May or may not be in response to a previous Sensory presentation event.</description>
       <node>
-         <name>Motor</name>
+         <name>Breathe</name>
          <node>
-            <name>Intentional</name>
+            <name>Inhale</name>
+            <description>A deliberate inbreath, e.g. in response to a task instruction. If incidental, group it with Attribute/Cognitive modifier/Incidental. E.g. (Action/Move/Breathe/Inhale, Attribute/Cognitive modifier/Incidental).</description>
+         </node>
+         <node>
+            <name>Exhale</name>
+            <description>A deliberate outbreath, e.g. in response to a task instruction. If incidental, group it with Attribute/Cognitive modifier/Incidental. E.g. (Action/Move/Breathe/Exhale, Attribute/Cognitive modifier/Incidental).</description>
+         </node>
+         <node>
+            <name>Hold breath</name>
+         </node>
+      </node>
+      <node>
+         <name>Locomote</name>
+         <node>
+            <name>Move body</name>
             <node>
-               <name>Breathe</name>
+               <name>Nod</name>
+            </node>
+            <node>
+               <name>Step</name>
                <node>
-                  <name>Inhale</name>
-                  <description>A deliberate inbreath, e.g. in response to a task instruction. If incidental, use Action/Movement/Incidental/Inspiration</description>
+                  <name>Strike heel</name>
+                  <description>Takes attribute Attribute/Spatial/Object side/Left or Attribute/Spatial/Object side/Right.</description>
                </node>
                <node>
-                  <name>Exhale</name>
-                  <description>A deliberate outbreath, e.g. in response to a task instruction. If incidental, use Action/Movement/Incidental/Expiration</description>
-               </node>
-               <node>
-                  <name>Hold</name>
+                  <name>Toe off</name>
+                  <description>Takes attribute Attribute/Spatial/Object side/Left or Attribute/Spatial/Object side/Right.</description>
                </node>
             </node>
             <node>
-               <name>Head</name>
-               <node>
-                  <name>Nod</name>
-               </node>
+               <name>Flex</name>
             </node>
             <node>
-               <name>Pedal</name>
-               <node>
-                  <name>Step</name>
-                  <node>
-                     <name>Heel strike</name>
-                     <description>Takes attribute Attribute/Spatial/Object side/Left or Attribute/Spatial/Object side/Right.</description>
-                  </node>
-                  <node>
-                     <name>Toe off</name>
-                     <description>Takes attribute Attribute/Spatial/Object side/Left or Attribute/Spatial/Object side/Right.</description>
-                  </node>
-               </node>
-               <node>
-                  <name>Run</name>
-               </node>
-               <node>
-                  <name>Walk</name>
-               </node>
-               <node>
-                  <name>Trot</name>
-               </node>
-               <node>
-                  <name>Jog</name>
-               </node>
-               <node>
-                  <name>Jump</name>
-               </node>
-               <node>
-                  <name>Kick</name>
-               </node>
-               <node>
-                  <name>Tab</name>
-               </node>
-               <node>
-                  <name>Press</name>
-               </node>
-               <node>
-                  <name>Dance</name>
-               </node>
+               <name>Jerk</name>
+               <description>When some force applied to the participant causes them to involuntary accommodate or react to it.</description>
             </node>
             <node>
-               <name>Manual</name>
-               <node>
-                  <name>Drop</name>
-                  <description>For example the participant drops a handheld ball</description>
-               </node>
-               <node>
-                  <name>Press</name>
-                  <description>As in pressing a button. Release may be quick or delayed. This can be used also for other types of pushing actions and can be grouped with Item/Object/Human/Body part tag to indicate which part of the body was used to press the button.</description>
-               </node>
-               <node>
-                  <name>Release</name>
-                  <description>As in releasing a pressed button. Release events are not frequently recorded as Participant action events unless their timing is task-relevant.</description>
-               </node>
-               <node>
-                  <name>Retract</name>
-               </node>
-               <node>
-                  <name>Tap</name>
-                  <description>A quick press, followed by a quick release</description>
-               </node>
-               <node>
-                  <name>Reach</name>
-                  <description>Requires a spatial goal such as reaching to touch a button or to grasp something. A body stretch is not a reach.</description>
-               </node>
-               <node>
-                  <name>Touch</name>
-                  <description>May follow a Reach event</description>
-               </node>
-               <node>
-                  <name>Grasp</name>
-                  <description>Grasp an object in one or both hands</description>
-               </node>
-               <node>
-                  <name>Point</name>
-                  <description>Should be grouped with Item/Agent/Human/Body part/Hand/Finger tag to specify which finger was used for the action.</description>
-               </node>
+               <name>Stumble</name>
+               <description>Temporary and involuntary loss of balance</description>
             </node>
             <node>
-               <name>Operate</name>
-               <node>
-                  <name>Steer</name>
-               </node>
-               <node>
-                  <name>Accelerate</name>
-               </node>
-               <node>
-                  <name>Brake</name>
-               </node>
-               <node>
-                  <name>Stop</name>
-               </node>
-               <node>
-                  <name>Engage</name>
-                  <node>
-                     <name>Turn signal</name>
-                  </node>
-                  <node>
-                     <name>Headlights</name>
-                  </node>
-                  <node>
-                     <name>Horn</name>
-                  </node>
-                  <node>
-                     <name>Radio</name>
-                  </node>
-               </node>
-               <node>
-                  <name>Teleoperate</name>
-                  <description>Control an object that you are not aboard</description>
-               </node>
+               <name>Recover balance</name>
+               <description>A movement made in response to a stumble or unforeseen loss of balance</description>
+            </node>
+            <node>
+               <name>Fall down</name>
+               <description>Involuntary fall to floor or ground</description>
+            </node>
+            <node>
+               <name>Stretch</name>
+               <description>Stretching the body or body part</description>
+            </node>
+            <node>
+               <name>Bend</name>
+            </node>
+            <node>
+               <name>Scratch</name>
+            </node>
+            <node>
+               <name>Lift</name>
+            </node>
+            <node>
+               <name>Run</name>
+            </node>
+            <node>
+               <name>Walk</name>
+            </node>
+            <node>
+               <name>Trot</name>
+            </node>
+            <node>
+               <name>Jog</name>
+            </node>
+            <node>
+               <name>Jump</name>
+            </node>
+            <node>
+               <name>Kick</name>
+            </node>
+            <node>
+               <name>Depress pedal</name>
+            </node>
+            <node>
+               <name>Dance</name>
+            </node>
+            <node>
+               <name>Shudder</name>
+            </node>
+            <node>
+               <name>Tic</name>
             </node>
          </node>
          <node>
-            <name>Ocular</name>
+            <name>Move hand</name>
+            <node>
+               <name>Drop</name>
+               <description>For example the participant drops a handheld ball</description>
+            </node>
+            <node>
+               <name>Press</name>
+               <description>As in pressing a button. Release may be quick or delayed. This can be used also for other types of pushing actions and can be grouped with Item/Object/Human/Body part tag to indicate which part of the body was used to press the button.</description>
+            </node>
+            <node>
+               <name>Release</name>
+               <description>As in releasing a pressed button. Release events are not frequently recorded as Participant action events unless their timing is task-relevant.</description>
+            </node>
+            <node>
+               <name>Retract hand</name>
+            </node>
+            <node>
+               <name>Tap finger</name>
+               <description>A quick press, followed by a quick release</description>
+            </node>
+            <node>
+               <name>Reach</name>
+               <description>Requires a spatial goal such as reaching to touch a button or to grasp something. A body stretch is not a reach.</description>
+            </node>
+            <node>
+               <name>Touch</name>
+               <description>May follow a Reach event</description>
+            </node>
+            <node>
+               <name>Grasp</name>
+               <description>Grasp an object in one or both hands</description>
+            </node>
+            <node>
+               <name>Point</name>
+               <description>Should be grouped with Item/Agent/Human/Body part/Hand/Finger tag to specify which finger was used for the action.</description>
+            </node>
+            <node>
+               <name>Tab</name>
+            </node>
+         </node>
+         <node>
+            <name>Operate</name>
+            <node>
+               <name>Steer</name>
+            </node>
+            <node>
+               <name>Accelerate</name>
+            </node>
+            <node>
+               <name>Brake</name>
+            </node>
+            <node>
+               <name>Stop</name>
+            </node>
+            <node>
+               <name>Engage mechanism</name>
+               <node>
+                  <name>Engage turn signal</name>
+               </node>
+               <node>
+                  <name>Switch on headlights</name>
+               </node>
+               <node>
+                  <name>Sound horn</name>
+               </node>
+               <node>
+                  <name>Turn on radio</name>
+               </node>
+            </node>
+            <node>
+               <name>Teleoperate</name>
+               <description>Control an object that you are not aboard</description>
+            </node>
+         </node>
+         <node>
+            <name>Move eye</name>
             <node>
                <name>Saccade</name>
             </node>
             <node>
-               <name>Fixation</name>
+               <name>Fixate</name>
             </node>
             <node>
                <name>Blink</name>
             </node>
             <node>
-               <name>Eye opening</name>
+               <name>Open eye</name>
             </node>
             <node>
-               <name>Eye closure</name>
+               <name>Close eye</name>
             </node>
          </node>
          <node>
-            <name>Incidental</name>
+            <name>Move mouth</name>
             <node>
                <name>Hiccup</name>
             </node>
@@ -468,54 +497,16 @@
             <node>
                <name>Burp</name>
             </node>
-            <node>
-               <name>Flex</name>
-            </node>
-            <node>
-               <name>Jerk</name>
-               <description>When some force applied to the participant causes them to involuntary accommodate or react to it.</description>
-            </node>
-            <node>
-               <name>Stumble</name>
-               <description>Temporary and involuntary loss of balance</description>
-            </node>
-            <node>
-               <name>Recover balance</name>
-               <description>A movement made in response to a stumble or unforeseen loss of balance</description>
-            </node>
-            <node>
-               <name>Fall</name>
-               <description>Involuntary fall to floor or ground</description>
-            </node>
-            <node>
-               <name>Stretch</name>
-               <description>Stretching the body or body part</description>
-            </node>
-            <node>
-               <name>Bend</name>
-            </node>
-            <node>
-               <name>Scratch</name>
-            </node>
-            <node>
-               <name>Lift</name>
-            </node>
-            <node>
-               <name>Tic</name>
-            </node>
          </node>
       </node>
       <node>
-         <name>Communicative</name>
+         <name>Communicate</name>
          <node>
-            <name>Verbal</name>
+            <name>Communicate verbally</name>
             <node>
                <name>Speak</name>
                <description>Communicate using spoken language.</description>
             </node>
-         </node>
-         <node>
-            <name>Interjective</name>
             <node>
                <name>Groan</name>
             </node>
@@ -530,7 +521,7 @@
             </node>
          </node>
          <node>
-            <name>Gestural</name>
+            <name>Gesture</name>
             <description>Make a expressive communicative movement of hands/arms and, often, face</description>
             <node>
                <name>Shrug</name>
@@ -539,10 +530,10 @@
                <name>Thumb(s) up</name>
             </node>
             <node>
-               <name>Fist pump</name>
+               <name>Pump fist</name>
             </node>
             <node>
-               <name>Hand spread</name>
+               <name>Spread hand</name>
             </node>
             <node>
                <name>Wave</name>
@@ -555,7 +546,7 @@
             </node>
          </node>
          <node>
-            <name>Musical</name>
+            <name>Communicate musically</name>
             <node>
                <name>Hum</name>
             </node>
@@ -575,29 +566,9 @@
          </node>
       </node>
       <node>
-         <name>Mental</name>
+         <name>Think</name>
          <node>
             <name>Switch attention</name>
-            <node>
-               <name>Intramodal</name>
-               <description>In the same modality but with a change in details  such as changing from paying attention to red dots and instead of blue dots</description>
-            </node>
-            <node>
-               <name>Intermodal</name>
-               <description>Between modalities such as changing from audio to visual</description>
-               <node requireChild="true">
-                  <name>From modality</name>
-                  <node takesValue="true">
-                     <name>#</name>
-                  </node>
-               </node>
-               <node requireChild="true">
-                  <name>To modality</name>
-                  <node takesValue="true">
-                     <name>#</name>
-                  </node>
-               </node>
-            </node>
          </node>
          <node>
             <name>Allow</name>
@@ -732,7 +703,7 @@
             <name>Disgusted</name>
          </node>
          <node>
-            <name>Neutral</name>
+            <name>Feeling neutral</name>
             <description>None of the above</description>
          </node>
       </node>
@@ -779,7 +750,7 @@
          </node>
       </node>
    </node>
-   <node extensionAllowed="true" requireChild="true">
+   <node requireChild="true">
       <name>Attribute</name>
       <node>
          <name>Informational</name>
@@ -797,8 +768,12 @@
                <name>#</name>
             </node>
          </node>
+         <node>
+            <name>Definition</name>
+            <description>Should be used in a tag group with a Label tag to indicate that the label represents that group of tags.</description>
+         </node>
       </node>
-      <node>
+      <node extensionAllowed="true">
          <name>Quantitative</name>
          <node>
             <name>Peak</name>
@@ -823,7 +798,7 @@
             <description>Use to specify the amount of uncertainty in the timing of the event. Please notice that this is different from Attribute/Probability tag which relates to the occurrence of event and can be interpretative as the integral of probability density across a distribution whose shape (temporal extent) is specified by Attribute/Temporal uncertainty</description>
          </node>
       </node>
-      <node>
+      <node extensionAllowed="true">
          <name>Sensory</name>
          <node>
             <name>Auditory</name>
@@ -836,10 +811,6 @@
             <node>
                <name>Ramp-up</name>
                <description>Increasing in amplitude</description>
-            </node>
-            <node>
-               <name>Ramp-down</name>
-               <description>Decreasing in amplitude</description>
             </node>
             <node>
                <name>Ramp-down</name>
@@ -875,7 +846,7 @@
             </node>
          </node>
       </node>
-      <node requireChild="true">
+      <node extensionAllowed="true">
          <name>Spatial</name>
          <node requireChild="true">
             <name>Direction</name>
@@ -893,7 +864,7 @@
             <description>For example a path cannot cross some region</description>
          </node>
       </node>
-      <node requireChild="true">
+      <node extensionAllowed="true">
          <name>Temporal</name>
          <node requireChild="true">
             <name>Duration</name>
@@ -918,10 +889,14 @@
             <name>Acceleration</name>
          </node>
          <node>
-            <name>Jerk</name>
+            <name>Jerk rate</name>
+            <description>Rate at which an object's acceleration changes with respect to time.</description>
+            <node isNumeric="true" takesValue="true" unitClass="jerk">
+               <name>#</name>
+            </node>
          </node>
       </node>
-      <node>
+      <node extensionAllowed="true">
          <name>Environmental</name>
          <node>
             <name>Indoors</name>
@@ -948,94 +923,103 @@
             <name>Rural</name>
          </node>
       </node>
-      <node>
+      <node extensionAllowed="true">
          <name>Cognitive modifier</name>
          <node>
             <name>Imagined</name>
             <description>This is used to identity that the (sub)event only happened in the imagination of the participant, e.g.  imagined movements in motor imagery paradigms.</description>
          </node>
          <node>
+            <name>Reflexive</name>
+         </node>
+         <node>
+            <name>Intentional</name>
+         </node>
+         <node>
+            <name>Incidental</name>
+         </node>
+         <node>
             <name>Intended effect</name>
             <description>How the stimulus is expected to effect the participants</description>
+         </node>
+         <node>
+            <name>Meaningful</name>
+         </node>
+         <node>
+            <name>Not meaningful</name>
+         </node>
+         <node>
+            <name>Newly learned meaning</name>
+         </node>
+         <node>
+            <name>Rewarding</name>
+         </node>
+         <node>
+            <name>Penalizing</name>
+         </node>
+         <node>
+            <name>Error</name>
+         </node>
+         <node>
+            <name>Threatening</name>
+         </node>
+         <node>
+            <name>Warning</name>
+            <description>As in a warning message that you are getting too close to the shoulder in a driving task</description>
+         </node>
+         <node>
+            <name>Oddball</name>
+            <description>Unexpected or infrequent</description>
+         </node>
+         <node>
+            <name>Target</name>
+            <description>Something the subject is looking for</description>
+         </node>
+         <node>
+            <name>Non-target</name>
+            <description>Make sure to tag Expected if the Non-target is frequent</description>
+         </node>
+         <node>
+            <name>Novel</name>
+            <description>Genuinely novel such as an event occurring once or so per experiment</description>
+         </node>
+         <node>
+            <name>Expected</name>
+            <description>Of low information value, for example frequent Non-targets in an RSVP paradigm</description>
+         </node>
+         <node>
+            <name>Valid</name>
+            <description>Something that is understood to be valid such as an ID matches the person being displayed and it has all the  correct information</description>
+         </node>
+         <node>
+            <name>Invalid</name>
+            <description>Something that is understood to not be valid such as like an ID with an impossible date-of-birth, or a photo not matching the person presenting it</description>
+         </node>
+         <node>
+            <name>Congruent</name>
+         </node>
+         <node>
+            <name>Feedback</name>
+         </node>
+         <node>
+            <name>Priming</name>
             <node>
-               <name>Meaningful</name>
+               <name>Motoric priming</name>
             </node>
             <node>
-               <name>Not meaningful</name>
+               <name>Emotional priming</name>
             </node>
             <node>
-               <name>Newly learned meaning</name>
+               <name>Perceptual priming</name>
+            </node>
+         </node>
+         <node>
+            <name>Subliminal</name>
+            <node>
+               <name>Unmasked subliminal</name>
             </node>
             <node>
-               <name>Reward</name>
-            </node>
-            <node>
-               <name>Penalty</name>
-            </node>
-            <node>
-               <name>Error</name>
-            </node>
-            <node>
-               <name>Threat</name>
-            </node>
-            <node>
-               <name>Warning</name>
-               <description>As in a warning message that you are getting too close to the shoulder in a driving task</description>
-            </node>
-            <node>
-               <name>Oddball</name>
-               <description>Unexpected or infrequent</description>
-            </node>
-            <node>
-               <name>Target</name>
-               <description>Something the subject is looking for</description>
-            </node>
-            <node>
-               <name>Non-target</name>
-               <description>Make sure to tag Expected if the Non-target is frequent</description>
-            </node>
-            <node>
-               <name>Novel</name>
-               <description>Genuinely novel such as an event occurring once or so per experiment</description>
-            </node>
-            <node>
-               <name>Expected</name>
-               <description>Of low information value, for example frequent Non-targets in an RSVP paradigm</description>
-            </node>
-            <node>
-               <name>Valid</name>
-               <description>Something that is understood to be valid such as an ID matches the person being displayed and it has all the  correct information</description>
-            </node>
-            <node>
-               <name>Invalid</name>
-               <description>Something that is understood to not be valid such as like an ID with an impossible date-of-birth, or a photo not matching the person presenting it</description>
-            </node>
-            <node>
-               <name>Congruent</name>
-            </node>
-            <node>
-               <name>Feedback</name>
-            </node>
-            <node>
-               <name>Priming</name>
-               <node>
-                  <name>Motoric</name>
-               </node>
-               <node>
-                  <name>Emotional</name>
-               </node>
-               <node>
-                  <name>Perceptual</name>
-               </node>
-            </node>
-            <node>
-               <name>Subliminal</name>
-               <node>
-                  <name>Unmasked</name>
-               </node>
-               <node>
-                  <name>Masked</name>
-               </node>
+               <name>Masked subliminal</name>
             </node>
             <node>
                <name>Supraliminal</name>
@@ -1049,19 +1033,19 @@
             <name>Action judgment</name>
             <description>External judgment assumed to be ground truth such as from an experiment control software or an annotator about participant actions such as answering a question, failing to answer in time, etc. Related to participant indication</description>
             <node>
-               <name>Correct</name>
+               <name>Judged correct</name>
             </node>
             <node>
-               <name>Incorrect</name>
+               <name>Judged incorrect</name>
                <description>Wrong choice but not time out</description>
             </node>
             <node>
-               <name>Indeterminate</name>
+               <name>Indeterminate outcome</name>
                <description>It cannot be determined that the action was correct or incorrect.</description>
-               <node>
-                  <name>Missed</name>
-                  <description>Participant failed or could not have perceived the instruction due to their eyes being off-screen or a similar reason. Not easy to deduce this but it is possible</description>
-               </node>
+            </node>
+            <node>
+               <name>Missed</name>
+               <description>Participant failed or could not have perceived the instruction due to their eyes being off-screen or a similar reason. Not easy to deduce this but it is possible</description>
             </node>
             <node>
                <name>Inappropriate</name>
@@ -1073,7 +1057,7 @@
             </node>
          </node>
          <node>
-            <name>Social</name>
+            <name>Social interaction</name>
             <description>Involving interactions among multiple agents such as humans or dogs or robots</description>
             <node requireChild="true">
                <name>Role</name>
@@ -1091,11 +1075,11 @@
             <node requireChild="true">
                <name>Association</name>
                <node>
-                  <name>Another person</name>
+                  <name>Associated with someone else</name>
                   <description>Item such as a cup belonging to another person</description>
                </node>
                <node>
-                  <name>Same person</name>
+                  <name>Associated with self</name>
                   <description>Item such as a cup belonging to the participant</description>
                </node>
             </node>
