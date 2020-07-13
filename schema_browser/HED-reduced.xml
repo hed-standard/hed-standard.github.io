@@ -1,32 +1,16 @@
 <?xml version="1.0" ?>
-<HED version="v1.6.1-restruct">
+<HED version="reduced">
    <node>
       <name>Event</name>
       <node>
-         <name>Sensory presentation event</name>
-         <description>Something perceivable by the participant.</description>
-         <node extensionAllowed="true">
-            <name>Task-related stimulus</name>
-            <description>Primary category for task-or-condition-related stimulus events.</description>
-         </node>
-         <node extensionAllowed="true">
-            <name>Non-task related stimulus</name>
-            <description>An unplanned or environment-determined event occurring in the environment of the participant, for example, a change in experimental context such as beginning to walk on dirt versus sidewalk or a loud noise occurring in the next room.</description>
-         </node>
+         <name>Sensory event</name>
+         <description>Something perceivable by the participant. An event meant to be an experimental stimulus should also be tagged with Attribute/Contextual/Task-related. Other events may be tagged with Attribute/Contextual/Non task-related.</description>
       </node>
       <node>
-         <name>Participant action</name>
-         <description>Any motor action engaged in by the participant.</description>
-         <node extensionAllowed="true">
-            <name>Task-related action</name>
-            <description>A task-related action taken by a participant in response to task demands, such as making a button press in response to a Sensory presentation event or tapping out a rhythm following a Condition cue presentation.</description>
-         </node>
-         <node extensionAllowed="true">
-            <name>Non task-related action</name>
-            <description>A non-task-related action taken by the participant -- for example yawning, shifting in their chair, or responding to an Environmental event</description>
-         </node>
+         <name>Subject action</name>
+         <description>Any action engaged in by the participant. An event which is a participant response to an experimental stimulus should also be tagged with Attribute/Contextual/Task-related. Other events may be tagged with Attribute/Contextual/Non task-related.</description>
       </node>
-      <node extensionAllowed="true">
+      <node>
          <name>Data feature</name>
          <description>An event derived from the data itself, possibly inserted in a post-hoc fashion, for example an interictal spike or alpha burst.</description>
       </node>
@@ -56,7 +40,7 @@
       </node>
       <node extensionAllowed="true">
          <name>Experimental structure</name>
-         <description>An event describing the structure of the experiment.</description>
+         <description>An event specifying the structure of the experiment.</description>
          <node>
             <name>Context</name>
             <description>An event describing the overall environment and setup of the experiment or a portion of the experiment. This event is often inserted into a recording at the beginning of an experimental record to describe information such as whether the experiment is conducted indoors or outdoors or whether the experiment is conducted in the real-world or in a controlled laboratory setting. Tags specifying subject metadata might also be included.</description>
@@ -320,7 +304,7 @@
             </node>
             <node>
                <name>Jerk</name>
-               <description>When some force applied to the participant causes them to involuntary accommodate or react to it.</description>
+               <description>When some force applied to the participant causes them to involuntarily accommodate or react to it.</description>
             </node>
             <node>
                <name>Stumble</name>
@@ -346,6 +330,7 @@
             </node>
             <node>
                <name>Lift</name>
+               <description>Often grouped with item being lifted.</description>
             </node>
             <node>
                <name>Run</name>
@@ -364,9 +349,11 @@
             </node>
             <node>
                <name>Kick</name>
+               <description>Often grouped with body part doing action and item being kicked.</description>
             </node>
             <node>
-               <name>Depress pedal</name>
+               <name>Press</name>
+               <description>Often grouped with body part doing action and item being pressed.</description>
             </node>
             <node>
                <name>Dance</name>
@@ -377,27 +364,33 @@
             <node>
                <name>Tic</name>
             </node>
-         </node>
-         <node>
-            <name>Move hand</name>
+            <node>
+               <name>Move</name>
+               <description>Often grouped with body part doing action.</description>
+            </node>
+            <node>
+               <name>Open</name>
+               <description>Often grouped with body part doing action such as eyes or mouth.</description>
+            </node>
+            <node>
+               <name>Close</name>
+               <description>Often grouped with body part doing action such as eyes or mouth.</description>
+            </node>
             <node>
                <name>Drop</name>
                <description>For example the participant drops a handheld ball</description>
             </node>
             <node>
-               <name>Press</name>
-               <description>As in pressing a button. Release may be quick or delayed. This can be used also for other types of pushing actions and can be grouped with Item/Object/Human/Body part tag to indicate which part of the body was used to press the button.</description>
-            </node>
-            <node>
                <name>Release</name>
-               <description>As in releasing a pressed button. Release events are not frequently recorded as Participant action events unless their timing is task-relevant.</description>
+               <description>Often grouped with item being released.</description>
             </node>
             <node>
-               <name>Retract hand</name>
+               <name>Retract</name>
+               <description>Often grouped with body part doing action and item being retracted.</description>
             </node>
             <node>
-               <name>Tap finger</name>
-               <description>A quick press, followed by a quick release</description>
+               <name>Tap</name>
+               <description>Often grouped with body part doing action.</description>
             </node>
             <node>
                <name>Reach</name>
@@ -415,39 +408,9 @@
                <name>Point</name>
                <description>Should be grouped with Item/Agent/Human/Body part/Hand/Finger tag to specify which finger was used for the action.</description>
             </node>
-            <node>
-               <name>Tab</name>
-            </node>
          </node>
          <node>
             <name>Operate</name>
-            <node>
-               <name>Steer</name>
-            </node>
-            <node>
-               <name>Accelerate</name>
-            </node>
-            <node>
-               <name>Brake</name>
-            </node>
-            <node>
-               <name>Stop</name>
-            </node>
-            <node>
-               <name>Engage mechanism</name>
-               <node>
-                  <name>Engage turn signal</name>
-               </node>
-               <node>
-                  <name>Switch on headlights</name>
-               </node>
-               <node>
-                  <name>Sound horn</name>
-               </node>
-               <node>
-                  <name>Turn on radio</name>
-               </node>
-            </node>
             <node>
                <name>Teleoperate</name>
                <description>Control an object that you are not aboard</description>
@@ -464,15 +427,6 @@
             <node>
                <name>Blink</name>
             </node>
-            <node>
-               <name>Open eye</name>
-            </node>
-            <node>
-               <name>Close eye</name>
-            </node>
-         </node>
-         <node>
-            <name>Move mouth</name>
             <node>
                <name>Hiccup</name>
             </node>
@@ -560,9 +514,6 @@
             <node>
                <name>Sing</name>
             </node>
-            <node>
-               <name>Perform</name>
-            </node>
          </node>
       </node>
       <node>
@@ -616,6 +567,9 @@
          </node>
          <node>
             <name>Encode</name>
+         </node>
+         <node>
+            <name>Imagine</name>
          </node>
       </node>
    </node>
@@ -702,10 +656,6 @@
          <node>
             <name>Disgusted</name>
          </node>
-         <node>
-            <name>Feeling neutral</name>
-            <description>None of the above</description>
-         </node>
       </node>
       <node requireChild="true">
          <name>Postural state</name>
@@ -756,7 +706,7 @@
          <name>Informational</name>
          <node requireChild="true">
             <name>Label</name>
-            <description>A string of 20 or fewer characters. Labels are used to define scopes or can be assigned to several events sharing the same characteristic (i.e., an event code).</description>
+            <description>A string of 20 or fewer characters. Labels are used to define scopes or can be assigned to several events sharing the same characteristic (an event code).</description>
             <node takesValue="true">
                <name>#</name>
             </node>
@@ -770,7 +720,26 @@
          </node>
          <node>
             <name>Definition</name>
-            <description>Should be used in a tag group with a Label tag to indicate that the label represents that group of tags.</description>
+            <description>A tag used within a tag group also containing a Label tag to indicate that the Label represents that group of tags.</description>
+         </node>
+         <node>
+            <name>Metadata</name>
+            <description>A tag used within a tag group indicate to designate information about the data such as file size or author. May also be used directly with a value.</description>
+            <node requireChild="true">
+               <name>Creation data</name>
+            </node>
+            <node takesValue="true" unitClass="datetime">
+               <name>#</name>
+            </node>
+         </node>
+      </node>
+      <node extensionAllowed="true">
+         <name>Contextual</name>
+         <node>
+            <name>Task-related</name>
+         </node>
+         <node>
+            <name>Non task-related</name>
          </node>
       </node>
       <node extensionAllowed="true">
