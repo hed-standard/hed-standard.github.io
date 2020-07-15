@@ -11,6 +11,7 @@
 </xsl:template>
 
 <xsl:template match="node[node]">
+	<!--for href, name of HED tag must be whitespace stripped and must not start with digit (e.g. "2D shape" bug)-->
 	<a href="#{translate(translate(name,' ','_'), '0123456789','zowhfvsneit')}" description="{description}" role="button" class="list-group-item" data-toggle="collapse" aria-expanded="true"><xsl:value-of select="name"/></a>
 	<div class="attribute" style="display: none">
 		<xsl:for-each select="@*">
