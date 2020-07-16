@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<HED version="reduced">
+<HED version="Reduced">
    <node>
       <name>Event</name>
       <node>
@@ -15,7 +15,7 @@
          <description>An event derived from the data itself, possibly inserted in a post-hoc fashion, for example an interictal spike or alpha burst.</description>
       </node>
       <node extensionAllowed="true">
-         <name>Experimental control</name>
+         <name>Experiment control</name>
          <description>An event pertaining to the control of the experiment during its operation.</description>
          <node>
             <name>Instruction</name>
@@ -39,20 +39,8 @@
          </node>
       </node>
       <node extensionAllowed="true">
-         <name>Experimental structure</name>
+         <name>Experiment structure</name>
          <description>An event specifying the structure of the experiment.</description>
-         <node>
-            <name>Context</name>
-            <description>An event describing the overall environment and setup of the experiment or a portion of the experiment. This event is often inserted into a recording at the beginning of an experimental record to describe information such as whether the experiment is conducted indoors or outdoors or whether the experiment is conducted in the real-world or in a controlled laboratory setting. Tags specifying subject metadata might also be included.</description>
-         </node>
-         <node>
-            <name>Condition</name>
-            <description>An event used to indicate a shift to a new experimental or task condition, usually as the result of the change of a control variable or the participant state.</description>
-         </node>
-         <node>
-            <name>Block</name>
-            <description>An event used to indicate a particular organizational part in the experimental design or plan. Usually the Block tag is used with scoping tags as well as tags describing what the block represents to assist with downstream analysis.</description>
-         </node>
       </node>
    </node>
    <node extensionAllowed="true">
@@ -66,7 +54,34 @@
                <name>Pattern</name>
             </node>
             <node>
-               <name>Shape</name>
+               <name>2D Shape</name>
+               <node>
+                  <name>Ellipse</name>
+                  <node>
+                     <name>Circle</name>
+                  </node>
+               </node>
+               <node>
+                  <name>Rectangle</name>
+                  <node>
+                     <name>Square</name>
+                  </node>
+               </node>
+               <node>
+                  <name>Triangle</name>
+               </node>
+               <node>
+                  <name>Single point</name>
+               </node>
+               <node>
+                  <name>Cross</name>
+               </node>
+               <node>
+                  <name>Star</name>
+               </node>
+            </node>
+            <node>
+               <name>3D Shape</name>
             </node>
          </node>
          <node>
@@ -136,7 +151,7 @@
                   <name>Photograph</name>
                </node>
                <node>
-                  <name>Film</name>
+                  <name>Movie</name>
                </node>
                <node>
                   <name>Sculpture</name>
@@ -282,139 +297,122 @@
          </node>
       </node>
       <node>
-         <name>Locomote</name>
+         <name>Move body</name>
          <node>
-            <name>Move body</name>
+            <name>Nod</name>
+         </node>
+         <node>
+            <name>Step</name>
             <node>
-               <name>Nod</name>
+               <name>Strike heel</name>
+               <description>Takes attribute Attribute/Spatial/Object side/Left or Attribute/Spatial/Object side/Right.</description>
             </node>
             <node>
-               <name>Step</name>
-               <node>
-                  <name>Strike heel</name>
-                  <description>Takes attribute Attribute/Spatial/Object side/Left or Attribute/Spatial/Object side/Right.</description>
-               </node>
-               <node>
-                  <name>Toe off</name>
-                  <description>Takes attribute Attribute/Spatial/Object side/Left or Attribute/Spatial/Object side/Right.</description>
-               </node>
-            </node>
-            <node>
-               <name>Flex</name>
-            </node>
-            <node>
-               <name>Jerk</name>
-               <description>When some force applied to the participant causes them to involuntarily accommodate or react to it.</description>
-            </node>
-            <node>
-               <name>Stumble</name>
-               <description>Temporary and involuntary loss of balance</description>
-            </node>
-            <node>
-               <name>Recover balance</name>
-               <description>A movement made in response to a stumble or unforeseen loss of balance</description>
-            </node>
-            <node>
-               <name>Fall down</name>
-               <description>Involuntary fall to floor or ground</description>
-            </node>
-            <node>
-               <name>Stretch</name>
-               <description>Stretching the body or body part</description>
-            </node>
-            <node>
-               <name>Bend</name>
-            </node>
-            <node>
-               <name>Scratch</name>
-            </node>
-            <node>
-               <name>Lift</name>
-               <description>Often grouped with item being lifted.</description>
-            </node>
-            <node>
-               <name>Run</name>
-            </node>
-            <node>
-               <name>Walk</name>
-            </node>
-            <node>
-               <name>Trot</name>
-            </node>
-            <node>
-               <name>Jog</name>
-            </node>
-            <node>
-               <name>Jump</name>
-            </node>
-            <node>
-               <name>Kick</name>
-               <description>Often grouped with body part doing action and item being kicked.</description>
-            </node>
-            <node>
-               <name>Press</name>
-               <description>Often grouped with body part doing action and item being pressed.</description>
-            </node>
-            <node>
-               <name>Dance</name>
-            </node>
-            <node>
-               <name>Shudder</name>
-            </node>
-            <node>
-               <name>Tic</name>
-            </node>
-            <node>
-               <name>Move</name>
-               <description>Often grouped with body part doing action.</description>
-            </node>
-            <node>
-               <name>Open</name>
-               <description>Often grouped with body part doing action such as eyes or mouth.</description>
-            </node>
-            <node>
-               <name>Close</name>
-               <description>Often grouped with body part doing action such as eyes or mouth.</description>
-            </node>
-            <node>
-               <name>Drop</name>
-               <description>For example the participant drops a handheld ball</description>
-            </node>
-            <node>
-               <name>Release</name>
-               <description>Often grouped with item being released.</description>
-            </node>
-            <node>
-               <name>Retract</name>
-               <description>Often grouped with body part doing action and item being retracted.</description>
-            </node>
-            <node>
-               <name>Tap</name>
-               <description>Often grouped with body part doing action.</description>
-            </node>
-            <node>
-               <name>Reach</name>
-               <description>Requires a spatial goal such as reaching to touch a button or to grasp something. A body stretch is not a reach.</description>
-            </node>
-            <node>
-               <name>Touch</name>
-               <description>May follow a Reach event</description>
-            </node>
-            <node>
-               <name>Grasp</name>
-               <description>Grasp an object in one or both hands</description>
-            </node>
-            <node>
-               <name>Point</name>
-               <description>Should be grouped with Item/Agent/Human/Body part/Hand/Finger tag to specify which finger was used for the action.</description>
+               <name>Toe off</name>
+               <description>Takes attribute Attribute/Spatial/Object side/Left or Attribute/Spatial/Object side/Right.</description>
             </node>
          </node>
          <node>
-            <name>Operate</name>
-            <node>
-               <name>Teleoperate</name>
-               <description>Control an object that you are not aboard</description>
-            </node>
+            <name>Flex</name>
+         </node>
+         <node>
+            <name>Jerk</name>
+            <description>When some force applied to the participant causes them to involuntarily accommodate or react to it.</description>
+         </node>
+         <node>
+            <name>Stumble</name>
+            <description>Temporary and involuntary loss of balance</description>
+         </node>
+         <node>
+            <name>Recover balance</name>
+            <description>A movement made in response to a stumble or unforeseen loss of balance</description>
+         </node>
+         <node>
+            <name>Fall down</name>
+            <description>Involuntary fall to floor or ground</description>
+         </node>
+         <node>
+            <name>Stretch</name>
+            <description>Stretching the body or body part</description>
+         </node>
+         <node>
+            <name>Bend</name>
+         </node>
+         <node>
+            <name>Scratch</name>
+         </node>
+         <node>
+            <name>Lift</name>
+            <description>Often grouped with item being lifted.</description>
+         </node>
+         <node>
+            <name>Run</name>
+         </node>
+         <node>
+            <name>Walk</name>
+         </node>
+         <node>
+            <name>Trot</name>
+         </node>
+         <node>
+            <name>Jog</name>
+         </node>
+         <node>
+            <name>Jump</name>
+         </node>
+         <node>
+            <name>Kick</name>
+            <description>Often grouped with body part doing action and item being kicked.</description>
+         </node>
+         <node>
+            <name>Press</name>
+            <description>Often grouped with body part doing action and item being pressed.</description>
+         </node>
+         <node>
+            <name>Dance</name>
+         </node>
+         <node>
+            <name>Shudder</name>
+         </node>
+         <node>
+            <name>Open</name>
+            <description>Often grouped with body part doing action such as eyes or mouth.</description>
+         </node>
+         <node>
+            <name>Close</name>
+            <description>Often grouped with body part doing action such as eyes or mouth.</description>
+         </node>
+         <node>
+            <name>Drop</name>
+            <description>For example the participant drops a handheld ball</description>
+         </node>
+         <node>
+            <name>Release</name>
+            <description>Often grouped with item being released.</description>
+         </node>
+         <node>
+            <name>Retract</name>
+            <description>Often grouped with body part doing action and item being retracted.</description>
+         </node>
+         <node>
+            <name>Tap</name>
+            <description>Often grouped with body part doing action.</description>
+         </node>
+         <node>
+            <name>Reach</name>
+            <description>Requires a spatial goal such as reaching to touch a button or to grasp something. A body stretch is not a reach.</description>
+         </node>
+         <node>
+            <name>Touch</name>
+            <description>May follow a Reach event</description>
+         </node>
+         <node>
+            <name>Grasp</name>
+            <description>Grasp an object in one or both hands</description>
+         </node>
+         <node>
+            <name>Point</name>
+            <description>Should be grouped with Item/Agent/Human/Body part/Hand/Finger tag to specify which finger was used for the action.</description>
          </node>
          <node>
             <name>Move eye</name>
@@ -427,30 +425,30 @@
             <node>
                <name>Blink</name>
             </node>
-            <node>
-               <name>Hiccup</name>
-            </node>
-            <node>
-               <name>Cough</name>
-            </node>
-            <node>
-               <name>Sneeze</name>
-            </node>
-            <node>
-               <name>Sniffle</name>
-            </node>
-            <node>
-               <name>Swallow</name>
-            </node>
-            <node>
-               <name>Clear throat</name>
-            </node>
-            <node>
-               <name>Yawn</name>
-            </node>
-            <node>
-               <name>Burp</name>
-            </node>
+         </node>
+         <node>
+            <name>Hiccup</name>
+         </node>
+         <node>
+            <name>Cough</name>
+         </node>
+         <node>
+            <name>Sneeze</name>
+         </node>
+         <node>
+            <name>Sniffle</name>
+         </node>
+         <node>
+            <name>Swallow</name>
+         </node>
+         <node>
+            <name>Clear throat</name>
+         </node>
+         <node>
+            <name>Yawn</name>
+         </node>
+         <node>
+            <name>Burp</name>
          </node>
       </node>
       <node>
@@ -711,6 +709,13 @@
                <name>#</name>
             </node>
          </node>
+         <node isNumeric="true" requireChild="true">
+            <name>ID</name>
+            <description>A numeric code usually used to identify particular objects.</description>
+            <node takesValue="true">
+               <name>#</name>
+            </node>
+         </node>
          <node requireChild="true">
             <name>Description</name>
             <description>Human-readable text description of the event.</description>
@@ -723,48 +728,83 @@
             <description>A tag used within a tag group also containing a Label tag to indicate that the Label represents that group of tags.</description>
          </node>
          <node>
+            <name>Context</name>
+            <description>A tag indicating the overall environment and setup of the experiment or a portion of the experiment. This event is often inserted into a recording at the beginning of an experimental record to describe information such as whether the experiment is conducted indoors or outdoors or whether the experiment is conducted in the real-world or in a controlled laboratory setting. Tags specifying subject metadata might also be included.</description>
+         </node>
+         <node>
+            <name>Condition</name>
+            <description>An event used to indicate a shift to a new experimental or task condition, usually as the result of the change of a control variable or the participant state.</description>
+         </node>
+         <node>
+            <name>Block</name>
+            <description>An event used to indicate a particular organizational part in the experimental design or plan. Usually the Block tag is used with scoping tags as well as tags describing what the block represents to assist with downstream analysis.</description>
+         </node>
+         <node>
             <name>Metadata</name>
             <description>A tag used within a tag group indicate to designate information about the data such as file size or author. May also be used directly with a value.</description>
-            <node requireChild="true">
-               <name>Creation data</name>
-            </node>
-            <node takesValue="true" unitClass="datetime">
+            <node takesValue="true">
                <name>#</name>
             </node>
+            <node requireChild="true">
+               <name>Creation data</name>
+               <node takesValue="true" unitClass="datetime">
+                  <name>#</name>
+               </node>
+            </node>
+            <node requireChild="true">
+               <name>Subject</name>
+               <node takesValue="true">
+                  <name>#</name>
+               </node>
+            </node>
          </node>
-      </node>
-      <node extensionAllowed="true">
-         <name>Contextual</name>
          <node>
-            <name>Task-related</name>
-         </node>
-         <node>
-            <name>Non task-related</name>
+            <name>Task</name>
+            <description>A tag used to indicate the definition of the task ideally with a linkage to the different types of events that accomplish the task as part of the description.</description>
          </node>
       </node>
       <node extensionAllowed="true">
          <name>Quantitative</name>
          <node>
-            <name>Peak</name>
-         </node>
-         <node>
             <name>Item count</name>
+            <node takesValue="true">
+               <name>#</name>
+            </node>
          </node>
          <node>
             <name>Probability</name>
-            <description>Use to specify the level of certainty about the occurrence of the event. Use either numerical values as the child node or low, high, etc.</description>
+            <description>Use to specify the level of certainty about the occurrence of the event.</description>
+            <node takesValue="true">
+               <name>#</name>
+            </node>
          </node>
          <node requireChild="true">
             <name>Fraction</name>
-            <description>the fraction of presentation of an Oddball or Expected stimuli to the total number of same-class presentations, e.g. 10% of images in an RSVP being targets</description>
+            <description>Fraction of items of a particular type.</description>
+            <node takesValue="true">
+               <name>#</name>
+            </node>
+         </node>
+         <node requireChild="true">
+            <name>Percentage</name>
+            <description>Percentage of items of a particular type.</description>
+            <node takesValue="true">
+               <name>#</name>
+            </node>
          </node>
          <node requireChild="true">
             <name>Repetition</name>
             <description>When the same type of event such as a fixation on the exact same object happens multiple times and it might be necessary to distinguish the first look vs. others</description>
+            <node takesValue="true">
+               <name>#</name>
+            </node>
          </node>
          <node requireChild="true">
             <name>Uncertainty</name>
-            <description>Use to specify the amount of uncertainty in the timing of the event. Please notice that this is different from Attribute/Probability tag which relates to the occurrence of event and can be interpretative as the integral of probability density across a distribution whose shape (temporal extent) is specified by Attribute/Temporal uncertainty</description>
+            <description>Use to specify the amount of uncertainty in the timing of the event or other item such as a data features. Please notice that this is different from Attribute/Probability tag which relates to the occurrence of event and can be interpretative as the integral of probability density across a distribution whose shape (temporal extent) is specified by Attribute/Temporal uncertainty</description>
+            <node takesValue="true">
+               <name>#</name>
+            </node>
          </node>
       </node>
       <node extensionAllowed="true">
@@ -806,11 +846,50 @@
             </node>
             <node requireChild="true">
                <name>Color</name>
+               <node>
+                  <name>Red</name>
+                  <node isNumeric="true" takesValue="true">
+                     <name>#</name>
+                     <description>R value of RGB between 0 and 1</description>
+                  </node>
+               </node>
+               <node>
+                  <name>Blue</name>
+                  <node isNumeric="true" takesValue="true">
+                     <name>#</name>
+                     <description>B value of RGB between 0 and 1</description>
+                  </node>
+               </node>
+               <node>
+                  <name>Green</name>
+                  <node isNumeric="true" takesValue="true">
+                     <name>#</name>
+                     <description>G value of RGB between 0 and 1</description>
+                  </node>
+               </node>
+               <node>
+                  <name>Grayscale</name>
+                  <description>Indicates gray scale</description>
+                  <node isNumeric="true" takesValue="true">
+                     <name>#</name>
+                     <description>White intensity between 0 and 1</description>
+                  </node>
+               </node>
             </node>
-            <node predicateType="passThrough" requireChild="true">
+            <node requireChild="true">
                <name>Rendering</name>
-               <node takesValue="true">
-                  <name>#</name>
+               <node>
+                  <name>Screen</name>
+                  <node>
+                     <name>Head-mounted display</name>
+                  </node>
+                  <node>
+                     <name>Viewport</name>
+                     <description>Two or more views on the same scene.</description>
+                  </node>
+               </node>
+               <node>
+                  <name>Real-world</name>
                </node>
             </node>
          </node>
@@ -827,10 +906,6 @@
          </node>
          <node requireChild="true">
             <name>Size</name>
-         </node>
-         <node>
-            <name>Constrained</name>
-            <description>For example a path cannot cross some region</description>
          </node>
       </node>
       <node extensionAllowed="true">
