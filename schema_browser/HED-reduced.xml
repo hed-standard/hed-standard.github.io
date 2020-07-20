@@ -297,21 +297,7 @@
          </node>
       </node>
       <node>
-         <name>Move body</name>
-         <node>
-            <name>Nod</name>
-         </node>
-         <node>
-            <name>Step</name>
-            <node>
-               <name>Strike heel</name>
-               <description>Takes attribute Attribute/Spatial/Object side/Left or Attribute/Spatial/Object side/Right.</description>
-            </node>
-            <node>
-               <name>Toe off</name>
-               <description>Takes attribute Attribute/Spatial/Object side/Left or Attribute/Spatial/Object side/Right.</description>
-            </node>
-         </node>
+         <name>Move full-body</name>
          <node>
             <name>Flex</name>
          </node>
@@ -339,6 +325,68 @@
             <name>Bend</name>
          </node>
          <node>
+            <name>Dance</name>
+         </node>
+         <node>
+            <name>Shudder</name>
+         </node>
+      </node>
+      <node>
+         <name>Move head</name>
+         <node>
+            <name>Move eyes</name>
+            <node>
+               <name>Saccade</name>
+            </node>
+            <node>
+               <name>Fixate</name>
+            </node>
+            <node>
+               <name>Blink</name>
+            </node>
+            <node>
+               <name>Open eyes</name>
+               <description>Often grouped with body part doing action such as eyes or mouth.</description>
+            </node>
+            <node>
+               <name>Close eyes</name>
+               <description>Often grouped with body part doing action such as eyes or mouth.</description>
+            </node>
+         </node>
+         <node>
+            <name>Move mouth</name>
+            <node>
+               <name>Hiccup</name>
+            </node>
+            <node>
+               <name>Cough</name>
+            </node>
+            <node>
+               <name>Sneeze</name>
+            </node>
+            <node>
+               <name>Sniffle</name>
+            </node>
+            <node>
+               <name>Swallow</name>
+            </node>
+            <node>
+               <name>Clear throat</name>
+            </node>
+            <node>
+               <name>Yawn</name>
+            </node>
+            <node>
+               <name>Burp</name>
+            </node>
+         </node>
+         <node>
+            <name>Nod</name>
+         </node>
+      </node>
+      <node>
+         <name>Move arms-hands</name>
+         <node>
             <name>Scratch</name>
          </node>
          <node>
@@ -346,41 +394,8 @@
             <description>Often grouped with item being lifted.</description>
          </node>
          <node>
-            <name>Run</name>
-         </node>
-         <node>
-            <name>Walk</name>
-         </node>
-         <node>
-            <name>Trot</name>
-         </node>
-         <node>
-            <name>Jog</name>
-         </node>
-         <node>
-            <name>Jump</name>
-         </node>
-         <node>
-            <name>Kick</name>
-            <description>Often grouped with body part doing action and item being kicked.</description>
-         </node>
-         <node>
             <name>Press</name>
             <description>Often grouped with body part doing action and item being pressed.</description>
-         </node>
-         <node>
-            <name>Dance</name>
-         </node>
-         <node>
-            <name>Shudder</name>
-         </node>
-         <node>
-            <name>Open</name>
-            <description>Often grouped with body part doing action such as eyes or mouth.</description>
-         </node>
-         <node>
-            <name>Close</name>
-            <description>Often grouped with body part doing action such as eyes or mouth.</description>
          </node>
          <node>
             <name>Drop</name>
@@ -414,41 +429,36 @@
             <name>Point</name>
             <description>Should be grouped with Item/Agent/Human/Body part/Hand/Finger tag to specify which finger was used for the action.</description>
          </node>
+      </node>
+      <node>
+         <name>Move legs-feet</name>
          <node>
-            <name>Move eye</name>
+            <name>Step</name>
             <node>
-               <name>Saccade</name>
+               <name>Heel-strike</name>
             </node>
             <node>
-               <name>Fixate</name>
-            </node>
-            <node>
-               <name>Blink</name>
+               <name>Toe-off</name>
             </node>
          </node>
          <node>
-            <name>Hiccup</name>
+            <name>Run</name>
          </node>
          <node>
-            <name>Cough</name>
+            <name>Walk</name>
          </node>
          <node>
-            <name>Sneeze</name>
+            <name>Trot</name>
          </node>
          <node>
-            <name>Sniffle</name>
+            <name>Jog</name>
          </node>
          <node>
-            <name>Swallow</name>
+            <name>Jump</name>
          </node>
          <node>
-            <name>Clear throat</name>
-         </node>
-         <node>
-            <name>Yawn</name>
-         </node>
-         <node>
-            <name>Burp</name>
+            <name>Kick</name>
+            <description>Often grouped with body part doing action and item being kicked.</description>
          </node>
       </node>
       <node>
@@ -847,24 +857,27 @@
             <node requireChild="true">
                <name>Color</name>
                <node>
-                  <name>Red</name>
-                  <node isNumeric="true" takesValue="true">
-                     <name>#</name>
-                     <description>R value of RGB between 0 and 1</description>
+                  <name>RGB color</name>
+                  <node>
+                     <name>RGB Red</name>
+                     <node isNumeric="true" takesValue="true">
+                        <name>#</name>
+                        <description>R value of RGB between 0 and 1</description>
+                     </node>
                   </node>
-               </node>
-               <node>
-                  <name>Blue</name>
-                  <node isNumeric="true" takesValue="true">
-                     <name>#</name>
-                     <description>B value of RGB between 0 and 1</description>
+                  <node>
+                     <name>RGB Blue</name>
+                     <node isNumeric="true" takesValue="true">
+                        <name>#</name>
+                        <description>B value of RGB between 0 and 1</description>
+                     </node>
                   </node>
-               </node>
-               <node>
-                  <name>Green</name>
-                  <node isNumeric="true" takesValue="true">
-                     <name>#</name>
-                     <description>G value of RGB between 0 and 1</description>
+                  <node>
+                     <name>RGB Green</name>
+                     <node isNumeric="true" takesValue="true">
+                        <name>#</name>
+                        <description>G value of RGB between 0 and 1</description>
+                     </node>
                   </node>
                </node>
                <node>
@@ -875,18 +888,63 @@
                      <description>White intensity between 0 and 1</description>
                   </node>
                </node>
+               <node>
+                  <name>CSS color</name>
+                  <description>One of 140 colors supported by all browsers.</description>
+                  <node>
+                     <name>Black</name>
+                     <description>Color #000000</description>
+                  </node>
+                  <node>
+                     <name>Blue</name>
+                     <description>Color #0000FF</description>
+                  </node>
+                  <node>
+                     <name>Cyan</name>
+                     <description>Color #00FFFF</description>
+                  </node>
+                  <node>
+                     <name>Green</name>
+                     <description>Color #00FF00</description>
+                  </node>
+                  <node>
+                     <name>Magenta</name>
+                     <description>Color #FF00FF</description>
+                  </node>
+                  <node>
+                     <name>Red</name>
+                     <description>Color #FF0000</description>
+                  </node>
+                  <node>
+                     <name>White</name>
+                     <description>Color #FFFFFF</description>
+                  </node>
+                  <node>
+                     <name>Yellow</name>
+                     <description>Color #FFFF00</description>
+                  </node>
+               </node>
             </node>
             <node requireChild="true">
                <name>Rendering</name>
                <node>
                   <name>Screen</name>
-                  <node>
-                     <name>Head-mounted display</name>
-                  </node>
-                  <node>
-                     <name>Viewport</name>
-                     <description>Two or more views on the same scene.</description>
-                  </node>
+               </node>
+               <node>
+                  <name>Head-mounted display</name>
+               </node>
+               <node>
+                  <name>Window</name>
+               </node>
+               <node>
+                  <name>Viewport</name>
+                  <description>Two or more views on the same scene.</description>
+               </node>
+               <node>
+                  <name>2D view</name>
+               </node>
+               <node>
+                  <name>3D view</name>
                </node>
                <node>
                   <name>Real-world</name>
