@@ -117,6 +117,7 @@ function displayResult(xml)
         var path = getPath($(this));
         var selected = $(event.target);
         var attrs = selected.next(".attribute").text();
+        console.log(attrs)
         parsed = attrs.split(','); // attributes are written in comma separated string
         parsed = parsed.map(x => "<p>" + x.trim() + "</p>");
         parsed = parsed.slice(0,parsed.length-1); // last item is empty (result of extra , at the end)
@@ -125,7 +126,7 @@ function displayResult(xml)
         $("h4#title").text(path);
         $("p#tag").text("Tag: " + this.textContent);
         $("p#description").text(selected.attr("description"));
-        $("div#metadata").html(finalText);
+        $("div#attribute_info").html(finalText);
     })
     $("#hed").html("HED " + $("#hed-version").text());
 }

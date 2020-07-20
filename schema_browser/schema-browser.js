@@ -120,7 +120,7 @@ function displayResult(xml)
         $("h4#title").text(path);
         $("p#tag").text("Tag: " + this.textContent);
         $("p#description").text(selected.attr("description"));
-        $("div#metadata").html(finalText);
+        $("div#attribute_info").html(finalText);
     })
     $("#hed").html("HED v" + $("#hed-version").text());
 }
