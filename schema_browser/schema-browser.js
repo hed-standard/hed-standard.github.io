@@ -19,7 +19,7 @@ function start() {
         loadSchema(schema_url);
     }
     else {
-        loadSchema('https://raw.githubusercontent.com/hed-standard/hed-specification/master/hedxml/HED7.1.1.xml')
+        loadSchema('https://raw.githubusercontent.com/hed-standard/hed-specification/master/hedxml/HEDLatest.xml')
     }
 }
 

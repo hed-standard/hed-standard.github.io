@@ -16,7 +16,7 @@ function start() {
     var urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has('version')) {
         if (urlParams.get('version').includes("reduced")) {
-            loadSchema('https://raw.githubusercontent.com/hed-standard/hed-standard.github.io/master/schema_browser/HED-reduced.xml')
+            loadSchema('https://raw.githubusercontent.com/hed-standard/hed-specification/HED-restructure/hedxml-reduced/HEDLatest-reduced.xml')
         }
         else {
             var schema_url = getSchemaURL(urlParams.get('version'));
@@ -24,7 +24,7 @@ function start() {
         }
     }
     else {
-        loadSchema('https://raw.githubusercontent.com/hed-standard/hed-specification/HED-restructure/hedxml-restruct/HEDv1.6.1-restruct.xml')
+        loadSchema('https://raw.githubusercontent.com/hed-standard/hed-specification/HED-restructure/hedxml-restruct/HEDLatest-restruct.xml')
     }
 }
 
