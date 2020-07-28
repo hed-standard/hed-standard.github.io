@@ -16,10 +16,11 @@ function start() {
     var urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has('version')) {
         if (urlParams.get('version').includes("reduced")) {
-            loadSchema('https://raw.githubusercontent.com/hed-standard/hed-specification/HED-restructure/hedxml-reduced/HEDLatest-reduced.xml')
+            var schema_url = getSchemaURL(urlParams.get('version'), true);
+            loadSchema(schema_url);
         }
         else {
-            var schema_url = getSchemaURL(urlParams.get('version'));
+            var schema_url = getSchemaURL(urlParams.get('version'), false);
             loadSchema(schema_url);
         }
     }
@@ -43,6 +44,15 @@ function getGithubSchema() {
             githubSchema["download_link"].push(link);
         })
     }});
+    $.ajax({dataType: "json", url: "https://api.github.com/repos/hed-standard/hed-specification/contents/hedxml-reduced?ref=HED-restructure", async: false, success: function(data) {
+        data.forEach(function(item,index) {
+            var version = item["name"].split('*.xml')[0];
+            var link = item["download_url"];
+            // add to global dict
+            githubSchema["version"].push(version);
+            githubSchema["download_link"].push(link);
+        })
+    }});
 }
 
 /**
@@ -50,9 +60,19 @@ function getGithubSchema() {
  * @param hedVersion    schema version number
  * @returns     schema download link
  */
-function getSchemaURL(hedVersion) {
+function getSchemaURL(hedVersion, isReduced) {
+    var hedName = '';
+    if (isReduced == true) {
+        if (hedVersion == "reduced")
+            hedName = "Latest-reduced";
+        else
+            hedName = hedVersion;
+    }
+    else {
+        hedName = hedVersion + "-restruct";
+    }
     for (var i=0; i < githubSchema["version"].length; i++) {
-        if (githubSchema["version"][i].includes(hedVersion)) {
+        if (githubSchema["version"][i].includes(hedName)) {
             return githubSchema["download_link"][i];
         }
     }
