@@ -1,11 +1,12 @@
 var githubSchema = {"version": [], "download_link": []};
-getGithubSchema(); // call outside of onload event to reduce latency
 
 /**
  * Onload call. Build schema selection dropdown
  * and load default schema accordingly to url params
  */
-function start() {
+function load(repo_path, default_xml_path) {
+    getGithubSchema(repo_path); // call outside of onload event to reduce latency
+    var schema_link = "https://raw.githubusercontent.com/hed-standard/" + default_xml_path;
     // build schema dropdown
     for (var i=0; i < githubSchema["version"].length; i++) {
         var html = '<a class="dropdown-item" id="schema' + githubSchema["version"][i] + '" onclick="loadSchema(\'' + githubSchema["download_link"][i] + '\')">' + githubSchema["version"][i] + '</a>';
@@ -19,7 +20,7 @@ function start() {
         loadSchema(schema_url);
     }
     else {
-        loadSchema('https://raw.githubusercontent.com/hed-standard/hed-specification/master/hedxml/HEDLatest.xml')
+        loadSchema(schema_link)
     }
 }
 
@@ -28,8 +29,9 @@ function start() {
  * https://github.com/hed-standard/hed-specification/tree/master/hedxml
  * and build githubSchema global variable
  */
-function getGithubSchema() {
-    $.ajax({dataType: "json", url: "https://api.github.com/repos/hed-standard/hed-specification/contents/hedxml", async: false, success: function(data) {
+function getGithubSchema(repo_path) {
+    var hedxml_url = "https://api.github.com/repos/hed-standard/" + repo_path;
+    $.ajax({dataType: "json", url: hedxml_url, async: false, success: function(data) {
         data.forEach(function(item,index) {
             var version = item["name"].split('*.xml')[0];
             var link = item["download_url"];
