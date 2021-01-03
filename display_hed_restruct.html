@@ -18,14 +18,22 @@
 	</div>
 	<div class="row" name="button-section">
 	    <div class="btn-group col col-lg-3">
-    	    	<button type="button" class="btn btn-light mr-4" onclick="showHideAll()">Expand/Collapse all</button>
-		<div class="dropdown">
-  		    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-    		    Show another version
-  		    </button>
-  		    <div class="dropdown-menu" id="schemaDropdown" aria-labelledby="dropdownMenuButton">
-  	            </div>
-		</div>
+            <button type="button" class="btn btn-light" onclick="showHideAll()">Expand/Collapse all</button>
+            <div class="col-md-4">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon">Expand to level</span>
+                    </div>
+                    <input type="text" class="form-control" id="basic-url" oninput="toLevel(this.value)" aria-describedby="basic-addon">
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                    Show another version
+                </button>
+                <div class="dropdown-menu" id="schemaDropdown" aria-labelledby="dropdownMenuButton">
+                    </div>
+            </div>
 	    </div>
 	</div>
 	<div class="row" name="hed-version">

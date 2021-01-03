@@ -175,11 +175,25 @@ function getPath(node) {
  */
 function showHideAll() {
     if ($("#schema").attr("status") == "show") {
-        $("#schema").find(".collapse").removeClass("show");
-        $("#schema").attr("status","hide");
+        hideAll()
     }
     else {
-        $("#schema").find(".collapse").addClass("show");
-        $("#schema").attr("status","show");
+        showAll()
     }
+}
+function showAll() {
+    $("#schema").find(".collapse").addClass("show");
+    $("#schema").attr("status","show");
+}
+function hideAll() {
+    $("#schema").find(".collapse").removeClass("show");
+    $("#schema").attr("status","hide");
+}
+function toLevel(level) {
+    hideAll()
+    for (var i=1; i < level; i++) {
+        console.log($("#schema").find(`.level-${i}`))
+        $("#schema").find(`.level-${i}`).addClass("show");
+    }
+    $("#schema").attr("status","show");
 }

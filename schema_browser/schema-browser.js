@@ -92,7 +92,8 @@ function loadXSL(filename) {
  */
 function displayResult(xml)
 {
-    xsl = loadXSL("schema_browser/hed-schema.xsl");
+    xsl = loadXSL("/schema_browser/hed-schema.xsl");
+    console.log(xsl)
     // code for IE
     if (window.ActiveXObject || xhttp.responseType == "msxml-document")
     {
@@ -149,11 +150,25 @@ function getPath(node) {
  */
 function showHideAll() {
     if ($("#schema").attr("status") == "show") {
-        $("#schema").find(".collapse").removeClass("show");
-        $("#schema").attr("status","hide");
+        hideAll()
     }
     else {
-        $("#schema").find(".collapse").addClass("show");
-        $("#schema").attr("status","show");
+        showAll()
     }
+}
+function showAll() {
+    $("#schema").find(".collapse").addClass("show");
+    $("#schema").attr("status","show");
+}
+function hideAll() {
+    $("#schema").find(".collapse").removeClass("show");
+    $("#schema").attr("status","hide");
+}
+function toLevel(level) {
+    hideAll()
+    for (var i=1; i < level; i++) {
+        console.log($("#schema").find(`.level-${i}`))
+        $("#schema").find(`.level-${i}`).addClass("show");
+    }
+    $("#schema").attr("status","show");
 }
