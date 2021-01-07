@@ -125,7 +125,7 @@ function displayResult(xml)
         $("p#description").text(selected.attr("description"));
         $("div#attribute_info").html(finalText);
     })
-    $("#hed").html("HED v" + $("#hed-version").text());
+    $("#hed").html("HED " + $("#hed-version").text());
 }
 
 /**
