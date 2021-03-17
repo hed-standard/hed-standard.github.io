@@ -16,8 +16,7 @@ versions 8.0.0-alpha.1 and above.
 ### Publications and preprints HED-(3G)
 
 > K. Robbins, D. Truong, A. Jones, I. Callanan and S. Makeig (2020, August 1).  
-> Building FAIR functionality:  
-> Annotating event-related imaging data using Hierarchical Event Descriptors (HED).  
+> Building FAIR functionality: Annotating event-related imaging data using Hierarchical Event Descriptors (HED).  
 > https://doi.org/10.31219/osf.io/5fg73
 
 ### Documentation and guides HED-(3G)
@@ -34,12 +33,12 @@ HED-(2G) includes HED versions between 4.x.x and 7.x.x.
 ### Publications and preprints HED-(2G)
 
 > N. Bigdely-Shamlo, J. Touryan, A. Ojeda, C. Kothe, T. Mullen, K. Robbins (2019).  
-> [Automated EEG mega-analysis II: Cognitive aspects of event-related features](https://www.ncbi.nlm.nih.gov/pubmed/31491523) 
-> NeuroImage vol. 107, February 15, 2020, DOI:10.1016/j.neuroimage.2019.116054.  
+> [Automated EEG mega-analysis II: Cognitive aspects of event-related features](https://www.ncbi.nlm.nih.gov/pubmed/31491523)  
+> NeuroImage vol. 107, February 15, 2020.  
+> DOI:10.1016/j.neuroimage.2019.116054.  
 
 > N. Bigdely-Shamlo, J. Cockfield, S. Makeig, T. Rognon, C. La Valle, M. Miyakoshi, K.A. Robbins (2016).  
-> [Hierarchical Event Descriptors (HED):  
->  Semi-structured tagging for real-world events in large-scale EEG.](http://journal.frontiersin.org/article/10.3389/fninf.2016.00042/full)  
+> [Hierarchical Event Descriptors (HED): Semi-structured tagging for real-world events in large-scale EEG.](http://journal.frontiersin.org/article/10.3389/fninf.2016.00042/full)  
 > Frontiers in Neuroinformatics, vol. 10, DOI=10.3389/fninf.2016.00042.
 
 ### Documentation and guides HED-(2G)
@@ -55,17 +54,14 @@ that have been annotated using HED-(1G).
 
 ### Publications and preprints HED-(1G)
 
-> N. Bigdely-Shamlo, K. Kreutz-Delgado, K. Robbins, M. Miyakoshi, W. Westerfield,    
-> T. Bel-Bahar, C. Kothe, J. Hsi and S. Makeig (2013).   
+> N. Bigdely-Shamlo, K. Kreutz-Delgado, K. Robbins, M. Miyakoshi, W. Westerfield, T. Bel-Bahar, C. Kothe, J. Hsi and S. Makeig (2013).   
 > Hierarchical Event Descriptor (HED) tags for analysis of event-related EEG studies.  
 > 2013 IEEE Global Conference on Signal and Information Processing, 1–4.  
 > [https://doi.org/10.1109/GlobalSIP.2013.6736796](https://doi.org/10.1109/GlobalSIP.2013.6736796).  
   
 
-> T. Rognon, R. Strautman, L. Jett, N. Bigdely-Shamlo, S. Makeig,  
-> T. Johnson and K. Robbins (2013).  
-> CTAGGER: Semi-structured community tagging for annotation and data-mining  
-> in event-rich contexts.  
+> T. Rognon, R. Strautman, L. Jett, N. Bigdely-Shamlo, S. Makeig, T. Johnson and K. Robbins (2013).  
+> CTAGGER: Semi-structured community tagging for annotation and data-mining in event-rich contexts.  
 > 2013 IEEE Global Conference on Signal and Information Processing, 5–8.  
 > [https://doi.org/10.1109/GlobalSIP.2013.6736797](https://doi.org/10.1109/GlobalSIP.2013.6736797).
 
