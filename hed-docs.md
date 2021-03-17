@@ -1,4 +1,4 @@
-#HED documentation and other information
+# HED documentation and other information
 
 This page contains links to various publications and guides for HED tagging. 
 HED has undergone two major transformations from its original form. HEG-(3G)
