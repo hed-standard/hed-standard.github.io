@@ -25,12 +25,11 @@
     <header class="page-header" role="banner">
       <a href="{{ site.url }}" style="text-decoration: none; color: inherit;"><h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1></a>
       <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
-        <a href="index.md" class="btn">HED home</a>
-        <!-- <a href="{{ site.url }}/hed-docs" class="btn">Documentation</a> -->
-        <a href="display_hed.html" class="btn">HED schema browser</a>
-        <a href="https://hedtools.ucsd.edu/hed" class="btn">HED online tools</a>
         <a href="{{ site.organization_github_repo_url }}" class="btn">View on GitHub</a>
-        <a href="/hed-docs" class="btn">Documentation</a>
+        <a href="{{ site.url }}/hed-docs" class="btn">Documentation</a>
+        <a href="http://visual.cs.utsa.edu/hed/validation" class="btn">HED Validator</a>
+        <a href="display_hed.html" class="btn">HED Schema Browser</a>
+        <a href="/publications" class="btn">Publications</a>
       {% if site.show_downloads %}
         <a href="{{ site.github.zip_url }}" class="btn">Download .zip</a>
         <a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
