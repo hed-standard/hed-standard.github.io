@@ -9,20 +9,20 @@ function load(repo_path, default_xml_path) {
     var schema_link = "https://raw.githubusercontent.com/hed-standard/" + default_xml_path;
     // build schema dropdown
     for (var i=0; i < githubSchema["version"].length; i++) {
-        if (githubSchema["version"][i].includes('1.3')) {
-            var html = '<a class="dropdown-header"><b>' + 'HED1G' + '</b></a>';
+        if (!githubSchema["version"][i].includes('Latest')) {
+            if (githubSchema["version"][i].includes('1.3')) {
+                var html = '<a class="dropdown-header"><b>' + 'HED1G' + '</b></a>';
+                $("#schemaDropdown").append(html);
+            } else if (githubSchema['version'][i].includes('4.0.5')) {
+                var html = '<a class="dropdown-header"><b>' + 'HED2G' + '</b></a>';
+                $("#schemaDropdown").append(html);
+            } else if (githubSchema['version'][i].includes('8.0.0-alpha.1')) {
+                var html = '<a class="dropdown-header"><b>' + 'HED3G' + '</b></a>';
+                $("#schemaDropdown").append(html);
+            }
+            var html = '<a class="dropdown-item" id="schema' + githubSchema["version"][i] + '" onclick="loadSchema(\'' + githubSchema["download_link"][i] + '\')">' + githubSchema["version"][i] + '</a>';
             $("#schemaDropdown").append(html);
         }
-        else if (githubSchema['version'][i].includes('4.0.5')) {
-            var html = '<a class="dropdown-header"><b>' + 'HED2G' + '</b></a>';
-            $("#schemaDropdown").append(html);
-        }
-        else if (githubSchema['version'][i].includes('8.0.0-alpha.1')) {
-            var html = '<a class="dropdown-header"><b>' + 'HED3G' + '</b></a>';
-            $("#schemaDropdown").append(html);
-        }
-        var html = '<a class="dropdown-item" id="schema' + githubSchema["version"][i] + '" onclick="loadSchema(\'' + githubSchema["download_link"][i] + '\')">' + githubSchema["version"][i] + '</a>';
-        $("#schemaDropdown").append(html);
     }
 
     // load default schema accordingly
