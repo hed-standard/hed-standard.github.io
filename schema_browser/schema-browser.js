@@ -1,4 +1,4 @@
-var githubSchema = {"version": [], "download_link": []};
+var githubSchema = {"version": [], "download_link": [], "useNewSchemaFormat":[]};
 
 /**
  * Onload call. Build schema selection dropdown
@@ -45,7 +45,7 @@ function getGithubSchema(repo_path) {
     var hedxml_url = "https://api.github.com/repos/hed-standard/" + repo_path;
     $.ajax({dataType: "json", url: hedxml_url, async: false, success: function(data) {
         data.forEach(function(item,index) {
-            var version = item["name"].split('*.xml')[0];
+            var version = item["name"].split('(.*)(.xml)')[0];
             var link = item["download_url"];
             // add to global dict
             githubSchema["version"].push(version);
@@ -74,9 +74,17 @@ function getSchemaURL(hedVersion) {
  */
 function loadSchema(url)
 {
+    var splitted = url.split("/");
+    var schemaName = splitted[splitted.length-1].split('.');
+    schemaName.pop();
+    var schemaVersion = schemaName.join('.');
+    if (schemaVersion.charAt(3) < "8") // assuming schemaVersion has form 'HEDx.x.x.*'
+	var useNewFormat = false;
+    else
+	var useNewFormat = true;
     $.get(url, function(data,status) {
         xml = $.parseXML(data);
-        displayResult(xml);
+        displayResult(xml, useNewFormat);
     });
 }
 
@@ -103,11 +111,14 @@ function loadXSL(filename) {
 /**
  * Reload html browser with new schema
  * @param xml   XML content of new schema
+ * @param useNewFormat   boolean to indicate whether the schema is in new format (>= 8.0.0-alpha.3)
  */
-function displayResult(xml)
+function displayResult(xml, useNewFormat)
 {
-    xsl = loadXSL("/schema_browser/hed-schema.xsl");
-    console.log(xsl)
+    if (useNewFormat)
+    	xsl = loadXSL("/schema_browser/hed-schema.xsl");
+    else
+    	xsl = loadXSL("/schema_browser/hed-schema-old.xsl");
     // code for IE
     if (window.ActiveXObject || xhttp.responseType == "msxml-document")
     {
@@ -126,11 +137,26 @@ function displayResult(xml)
     $("a").mouseover(function() {
         var path = getPath($(this));
         var selected = $(event.target);
-        var attrs = selected.next(".attribute").text();
-        parsed = attrs.split(','); // attributes are written in comma separated string
-        parsed = parsed.map(x => "<p>" + x.trim() + "</p>");
-        parsed = parsed.slice(0,parsed.length-1); // last item is empty (result of extra , at the end)
-        var finalText = parsed.join("");
+	var nodeName = selected.text();
+	var finalText = "";
+	if (useNewFormat) {
+        	selected.nextAll(`.attribute[name='${nodeName}']`).each(function(index) {
+		var parsed = $(this).text();
+		if (parsed.includes(",")) {
+			var trimmed = parsed.trim();
+			finalText += "<p>" + trimmed.substring(0,trimmed.length-1) + "</p";
+		}
+		else
+			finalText += "<p>" + parsed.trim() + "</p>";
+		});
+	}
+	else {
+		var attrs = selected.next(".attribute").text();
+        	parsed = attrs.split(','); // attributes are written in comma separated string
+        	parsed = parsed.map(x => "<p>" + x.trim() + "</p>");
+        	parsed = parsed.slice(0,parsed.length-1); // last item is empty (result of extra , at the end)
+        	finalText = parsed.join("");
+	}
         finalText = finalText == null || finalText.length == 0 ? "" : "<p><i>Attribute</i></p>"+finalText;
         $("h4#title").text(path);
         $("p#tag").text("Tag: " + this.textContent);
