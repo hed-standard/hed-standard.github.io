@@ -74,14 +74,18 @@ function getSchemaURL(hedVersion) {
  */
 function loadSchema(url)
 {
+    /*
     var splitted = url.split("/");
     var schemaName = splitted[splitted.length-1].split('.');
     schemaName.pop();
     var schemaVersion = schemaName.join('.');
     if (schemaVersion.charAt(3) < "8") // assuming schemaVersion has form 'HEDx.x.x.*'
 	var useNewFormat = false;
-    else
+    else {
 	var useNewFormat = true;
+    }
+    */
+    var useNewFormat = url.includes('test');
     $.get(url, function(data,status) {
         xml = $.parseXML(data);
         displayResult(xml, useNewFormat);
