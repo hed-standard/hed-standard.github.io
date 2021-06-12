@@ -90,11 +90,15 @@
 
 <xsl:param name="level"/>
 <xsl:param name="nodeName"/>
-<xsl:template match="/HED">
-	<div id="hed-version" style="display: none;"><xsl:value-of select="@version"/></div>
+<xsl:template match="schema">
 	<xsl:apply-templates select="node">
 		<xsl:with-param name="level" select='1'/>
 	</xsl:apply-templates>
+</xsl:template>
+
+<xsl:template match="/HED">
+	<div id="hed-version" style="display: none;"><xsl:value-of select="@version"/></div>
+	<xsl:apply-templates select="schema"/>
 </xsl:template>
 
 <xsl:template match="/">
