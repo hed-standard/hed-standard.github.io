@@ -7,7 +7,7 @@ var githubSchema = {"version": [], "download_link": [], "useNewSchemaFormat":[]}
 function load(repo_path, default_xml_path) {
     getGithubSchema(repo_path); // call outside of onload event to reduce latency
     var schema_link = "https://raw.githubusercontent.com/hed-standard/" + default_xml_path;
-    // build schema dropdown
+    // build schema dropdown from Github repo
     for (var i=0; i < githubSchema["version"].length; i++) {
         if (!githubSchema["version"][i].includes('Latest')) {
             if (githubSchema["version"][i].includes('1.3')) {
@@ -74,18 +74,13 @@ function getSchemaURL(hedVersion) {
  */
 function loadSchema(url)
 {
-    /*
-    var splitted = url.split("/");
-    var schemaName = splitted[splitted.length-1].split('.');
-    schemaName.pop();
-    var schemaVersion = schemaName.join('.');
-    if (schemaVersion.charAt(3) < "8") // assuming schemaVersion has form 'HEDx.x.x.*'
-	var useNewFormat = false;
-    else {
+    let re = /HED.*xml/;
+    let schemaVersion = url.match(re)[0];
+    if ((schemaVersion.charAt(3) >= "8" && !schemaVersion.includes('alpha')) || url.includes('test')) // assuming schemaVersion has form 'HEDx.x.x.*'
 	var useNewFormat = true;
+    else {
+	var useNewFormat = false;
     }
-    */
-    var useNewFormat = url.includes('test');
     $.get(url, function(data,status) {
         xml = $.parseXML(data);
         displayResult(xml, useNewFormat);
