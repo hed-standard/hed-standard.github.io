@@ -13,7 +13,7 @@ function load(repo_path, default_xml_path) {
             if (githubSchema["version"][i].includes('1.3')) {
                 var html = '<a class="dropdown-header"><b>' + 'HED1G' + '</b></a>';
                 $("#schemaDropdown").append(html);
-            } else if (githubSchema['version'][i].includes('4.0.5')) {
+            } else if (githubSchema['version'][i].includes('7.0.5')) {
                 var html = '<a class="dropdown-header"><b>' + 'HED2G' + '</b></a>';
                 $("#schemaDropdown").append(html);
             } else if (githubSchema['version'][i].includes('8.0.0-alpha.1')) {
@@ -45,11 +45,13 @@ function getGithubSchema(repo_path) {
     var hedxml_url = "https://api.github.com/repos/hed-standard/" + repo_path;
     $.ajax({dataType: "json", url: hedxml_url, async: false, success: function(data) {
         data.forEach(function(item,index) {
-            var version = item["name"].split('(.*)(.xml)')[0];
-            var link = item["download_url"];
-            // add to global dict
-            githubSchema["version"].push(version);
-            githubSchema["download_link"].push(link);
+	    if (item["name"].includes('xml')) {
+                var version = item["name"].split('(.*)(.xml)')[0];
+                var link = item["download_url"];
+                // add to global dict
+                githubSchema["version"].push(version);
+                githubSchema["download_link"].push(link);
+	    }
         })
     }});
 }
