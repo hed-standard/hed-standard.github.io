@@ -30,7 +30,7 @@ Draw line for list-group
 }
 
 /*Remove left border line for last list-group div*/
-a.list-group-item:last-of-type + div + div::after {
+a.list-group-item:last-of-type + div::after {
     border-style: none;
 }
 
