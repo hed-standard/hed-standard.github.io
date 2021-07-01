@@ -33,6 +33,9 @@ Draw line for list-group
 a.list-group-item:last-of-type + div::after {
     border-style: none;
 }
+a.list-group-item:last-of-type + div.attribute + div::after {
+    border-style: none;
+}
 
 /*Draw tree line*/
 .list-group-item {
