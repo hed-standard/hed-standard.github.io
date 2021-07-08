@@ -132,10 +132,19 @@ function displayResult(xml, useNewFormat)
         xsltProcessor = new XSLTProcessor();
         xsltProcessor.importStylesheet(xsl);
         resultDocument = xsltProcessor.transformToFragment(xml, document);
-        $("#schema").html(resultDocument.getElementById("schema").innerHTML);
-        $("#unitClassDefinitions").html(resultDocument.getElementById("unitClassDefinitions").innerHTML);
-        $("#unitModifierDefinitions").html(resultDocument.getElementById("unitModifierDefinitions").innerHTML);
-        $("#schemaAttributeDefinitions").html(resultDocument.getElementById("schemaAttributeDefinitions").innerHTML);
+	if (useNewFormat) {
+            $("#schema").html(resultDocument.getElementById("schema").innerHTML);
+	    $("#schemaDefinitions").show();
+            $("#unitClassDefinitions").html(resultDocument.getElementById("unitClassDefinitions").innerHTML);
+            $("#unitModifierDefinitions").html(resultDocument.getElementById("unitModifierDefinitions").innerHTML);
+            $("#schemaAttributeDefinitions").html(resultDocument.getElementById("schemaAttributeDefinitions").innerHTML);
+    	    $("#hed").html("HED " + resultDocument.getElementById("hed-version").innerHTML);
+	}
+	else {
+	    $("#schema").html(resultDocument);
+	    $("#schemaDefinitions").hide();
+    	    $("#hed").html("HED " + $("#hed-version").text());
+	}
     }
 
     $("a").mouseover(function() {
@@ -175,7 +184,6 @@ function displayResult(xml, useNewFormat)
         $("div#attribute_info").html(finalText);
 	}
     })
-    $("#hed").html("HED " + resultDocument.getElementById("hed-version").innerHTML);
 }
 
 /**
@@ -219,7 +227,6 @@ function hideAll() {
 function toLevel(level) {
     hideAll()
     for (var i=1; i < level; i++) {
-        console.log($("#schema").find(`.level-${i}`))
         $("#schema").find(`.level-${i}`).addClass("show");
     }
     $("#schema").attr("status","show");
