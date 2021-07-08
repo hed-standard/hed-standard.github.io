@@ -132,7 +132,10 @@ function displayResult(xml, useNewFormat)
         xsltProcessor = new XSLTProcessor();
         xsltProcessor.importStylesheet(xsl);
         resultDocument = xsltProcessor.transformToFragment(xml, document);
-        $("#schema").html(resultDocument);
+        $("#schema").html(resultDocument.getElementById("schema").innerHTML);
+        $("#unitClassDefinitions").html(resultDocument.getElementById("unitClassDefinitions").innerHTML);
+        $("#unitModifierDefinitions").html(resultDocument.getElementById("unitModifierDefinitions").innerHTML);
+        $("#schemaAttributeDefinitions").html(resultDocument.getElementById("schemaAttributeDefinitions").innerHTML);
     }
 
     $("a").mouseover(function() {
@@ -159,12 +162,20 @@ function displayResult(xml, useNewFormat)
         	finalText = parsed.join("");
 	}
         finalText = finalText == null || finalText.length == 0 ? "" : "<p><i>Attribute</i></p>"+finalText;
+	if (selected.attr('name') === "schemaNode") {
         $("h4#title").text(path);
-        $("p#tag").text("Tag: " + this.textContent);
+        $("p#tag").text("Short form: " + this.textContent);
         $("p#description").text(selected.attr("description"));
         $("div#attribute_info").html(finalText);
+	}
+	else {
+        $("h4#title").text(this.textContent);
+        $("p#tag").text("");
+        $("p#description").text(selected.attr("description"));
+        $("div#attribute_info").html(finalText);
+	}
     })
-    $("#hed").html("HED " + $("#hed-version").text());
+    $("#hed").html("HED " + resultDocument.getElementById("hed-version").innerHTML);
 }
 
 /**
