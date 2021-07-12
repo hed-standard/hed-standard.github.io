@@ -86,6 +86,7 @@ function loadSchema(url)
     $.get(url, function(data,status) {
         xml = $.parseXML(data);
         displayResult(xml, useNewFormat);
+	toLevel(2);
     });
 }
 
@@ -137,7 +138,9 @@ function displayResult(xml, useNewFormat)
 	    $("#schemaDefinitions").show();
             $("#unitClassDefinitions").html(resultDocument.getElementById("unitClassDefinitions").innerHTML);
             $("#unitModifierDefinitions").html(resultDocument.getElementById("unitModifierDefinitions").innerHTML);
+            $("#valueClassDefinitions").html(resultDocument.getElementById("valueClassDefinitions").innerHTML);
             $("#schemaAttributeDefinitions").html(resultDocument.getElementById("schemaAttributeDefinitions").innerHTML);
+            $("#propertyDefinitions").html(resultDocument.getElementById("propertyDefinitions").innerHTML);
     	    $("#hed").html("HED " + resultDocument.getElementById("hed-version").innerHTML);
 	}
 	else {

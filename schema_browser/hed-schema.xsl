@@ -69,6 +69,15 @@
 	</xsl:apply-templates>
 </xsl:template>
 
+<xsl:template match="valueClassDefinition">
+	<xsl:param name="level"/>
+	<xsl:param name="nodeName"/>
+	<a description="{description}" role="button" class="list-group-item" name="unitModifierDef"><xsl:value-of select="name"/></a>
+	<xsl:apply-templates select="attribute">
+		<xsl:with-param name="nodeName" select="name"/>
+	</xsl:apply-templates>
+</xsl:template>
+
 <xsl:template match="property">
 	<xsl:param name="nodeName"/>
 	<div class="attribute" style="display: none" name="{$nodeName}">
@@ -92,6 +101,15 @@
 	</xsl:apply-templates>
 </xsl:template>
 
+<xsl:template match="propertyDefinition">
+	<xsl:param name="level"/>
+	<xsl:param name="nodeName"/>
+	<a description="{description}" role="button" class="list-group-item" name="unitModifierDef"><xsl:value-of select="name"/></a>
+	<xsl:apply-templates select="attribute">
+		<xsl:with-param name="nodeName" select="name"/>
+	</xsl:apply-templates>
+</xsl:template>
+
 <xsl:param name="level"/>
 <xsl:param name="nodeName"/>
 <xsl:template match="schema">
@@ -105,8 +123,14 @@
 <xsl:template match="unitModifierDefinitions">
 	<xsl:apply-templates select="unitModifierDefinition"/>
 </xsl:template>
+<xsl:template match="valueClassDefinitions">
+	<xsl:apply-templates select="valueClassDefinition"/>
+</xsl:template>
 <xsl:template match="schemaAttributeDefinitions">
 	<xsl:apply-templates select="schemaAttributeDefinition"/>
+</xsl:template>
+<xsl:template match="propertyDefinitions">
+	<xsl:apply-templates select="propertyDefinition"/>
 </xsl:template>
 
 <xsl:template match="/HED">
@@ -120,8 +144,14 @@
 	<div id="unitModifierDefinitions">
 	<xsl:apply-templates select="unitModifierDefinitions"/>
 	</div>
+	<div id="valueClassDefinitions">
+	<xsl:apply-templates select="valueClassDefinitions"/>
+	</div>
 	<div id="schemaAttributeDefinitions">
 	<xsl:apply-templates select="schemaAttributeDefinitions"/>
+	</div>
+	<div id="propertyDefinitions">
+	<xsl:apply-templates select="propertyDefinitions"/>
 	</div>
 </xsl:template>
 

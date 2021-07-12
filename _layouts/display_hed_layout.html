@@ -48,6 +48,7 @@
         <div class="row">
             <div class="col-6" name="schema-section">
                 <div id="schema" class="list-group list-group-root well" status="show"></div>
+    	    	<h2 id="hed" style="font-family:ultra, sans-serif;color:#0099ff">Additional schema properties</h2>
 		<div class="accordion" id="schemaDefinitions" style="display:none">
   		    <div class="card">
     		    	<div class="card-header" id="headingOne">
@@ -67,11 +68,27 @@
 		    </div>
   		    <div class="card">
     		    	<div class="card-header" id="headingThree">
+      		    	<button href="#valueClassDefinitions" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseThree">
+				Value class definitions
+      		    	</button>
+		    	</div>
+                    	<div id="valueClassDefinitions" class="list-group collapse multi-collapse"></div>
+		    </div>
+  		    <div class="card">
+    		    	<div class="card-header" id="headingFour">
       		    	<button href="#schemaAttributeDefinitions" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseThree">
 				Schema attribute definitions
       		    	</button>
 		    	</div>
                     	<div id="schemaAttributeDefinitions" class="list-group collapse multi-collapse"></div>
+		    </div>
+  		    <div class="card">
+    		    	<div class="card-header" id="headingFive">
+      		    	<button href="#propertyDefinitions" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseThree">
+				Property definitions
+      		    	</button>
+		    	</div>
+                    	<div id="propertyDefinitions" class="list-group collapse multi-collapse"></div>
 		    </div>
 		</div>
             </div>
