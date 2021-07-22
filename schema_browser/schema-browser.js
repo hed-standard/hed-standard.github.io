@@ -160,7 +160,10 @@ function displayResult(xml, useNewFormat)
 		var parsed = $(this).text();
 		if (parsed.includes(",")) {
 			var trimmed = parsed.trim();
-			finalText += "<p>" + trimmed.substring(0,trimmed.length-1) + "</p";
+			console.log(trimmed);
+			var trimmed = trimmed.replace(/(^,)|(,$)/g, "")
+			console.log(trimmed);
+			finalText += "<p>" + trimmed + "</p>";
 		}
 		else
 			finalText += "<p>" + parsed.trim() + "</p>";

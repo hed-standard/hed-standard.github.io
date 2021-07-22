@@ -23,7 +23,6 @@
 			<xsl:with-param name="level" select="$level + 1"/>
 		</xsl:apply-templates>
 	</div>
-
 </xsl:template>
 
 <xsl:template match="attribute">
@@ -44,14 +43,14 @@
 <xsl:template match="unit">
 	<xsl:param name="level"/>
 	<xsl:param name="nodeName"/>
-	<a description="" role="button" class="list-group-item" name="unitClassDef"><xsl:value-of select="name"/></a>
+	<a description="{description}" role="button" class="list-group-item" name="unitClassDef"><xsl:value-of select="name"/></a>
 	<xsl:apply-templates select="attribute">
 		<xsl:with-param name="nodeName" select="name"/>
 	</xsl:apply-templates>
 </xsl:template>
 
 <xsl:template match="unitClassDefinition[unit]">
-	<a description="" href="#{translate(translate(name,' ','_'), '0123456789','zowhfvsneit')}" role="button" class="list-group-item" data-toggle="collapse" aria-expanded="true" name="unitClassDef"><xsl:value-of select="name"/></a>
+	<a description="{description}" href="#{translate(translate(name,' ','_'), '0123456789','zowhfvsneit')}" role="button" class="list-group-item" data-toggle="collapse" aria-expanded="true" name="unitClassDef"><xsl:value-of select="name"/></a>
 	<xsl:apply-templates select="attribute">
 		<xsl:with-param name="nodeName" select="name"/>
 	</xsl:apply-templates>
