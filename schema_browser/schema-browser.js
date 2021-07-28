@@ -1,10 +1,27 @@
 var githubSchema = {"version": [], "download_link": [], "useNewSchemaFormat":[]};
 var schemaNodes = [];
+
+
+//Get the button
+let scrollToTopBtn = null;
+
 /**
  * Onload call. Build schema selection dropdown
  * and load default schema accordingly to url params
  */
 function load(repo_path, default_xml_path) {
+    /* Set up scroll to top button
+    * https://mdbootstrap.com/docs/standard/extended/back-to-top/
+    */
+    scrollToTopBtn = document.getElementById("btn-back-to-top");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () {
+      scrollFunction();
+    };
+    // When the user clicks on the button, scroll to the top of the document
+    scrollToTopBtn.addEventListener("click", backToTop);
+
     getGithubSchema(repo_path); // call outside of onload event to reduce latency
     var schema_link = "https://raw.githubusercontent.com/hed-standard/" + default_xml_path;
     // build schema dropdown from Github repo
@@ -274,4 +291,20 @@ function getSchemaNodes() {
       }
     });
   } );
+}
+
+/* For scroll to top button */
+function scrollFunction() {
+  if (
+    document.body.scrollTop > 20 ||
+    document.documentElement.scrollTop > 20
+  ) {
+    scrollToTopBtn.style.display = "block";
+  } else {
+    scrollToTopBtn.style.display = "none";
+  }
+}
+function backToTop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 }
