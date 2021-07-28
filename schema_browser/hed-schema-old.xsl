@@ -3,7 +3,7 @@
 
 <xsl:template match="node[not(node)]">
 	<xsl:param name="level"/>
-	<a description="{description}" role="button" class="list-group-item"><xsl:value-of select="name"/></a>
+	<a description="{description}" role="button" class="list-group-item level-{$level}" tag="{translate(translate(name,' ','_'), '0123456789','zowhfvsneit')}" name="schemaNode"><xsl:value-of select="name"/></a>
 	<div class="attribute" style="display: none">
 	<xsl:for-each select="@*">
 		<xsl:value-of select="name(.)"/>: <xsl:value-of select="."/>,
@@ -14,7 +14,7 @@
 <xsl:template match="node[node]">
 	<xsl:param name="level"/>
 	<!--for href, name of HED tag must be whitespace stripped and must not start with digit (e.g. "2D shape" bug)-->
-	<a href="#{translate(translate(name,' ','_'), '0123456789','zowhfvsneit')}" description="{description}" role="button" class="list-group-item" data-toggle="collapse" aria-expanded="true"><xsl:value-of select="name"/></a>
+	<a href="#{translate(translate(name,' ','_'), '0123456789','zowhfvsneit')}" tag="{translate(translate(name,' ','_'), '0123456789','zowhfvsneit')}" description="{description}" role="button" class="list-group-item level-{$level}" data-toggle="collapse" aria-expanded="true" name="schemaNode"><xsl:value-of select="name"/></a>
 	<div class="attribute" style="display: none">
 		<xsl:for-each select="@*">
 			<xsl:value-of select="name(.)"/>: <xsl:value-of select="."/>,

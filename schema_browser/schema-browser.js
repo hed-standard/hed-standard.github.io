@@ -1,5 +1,5 @@
 var githubSchema = {"version": [], "download_link": [], "useNewSchemaFormat":[]};
-
+var schemaNodes = [];
 /**
  * Onload call. Build schema selection dropdown
  * and load default schema accordingly to url params
@@ -87,6 +87,7 @@ function loadSchema(url)
         xml = $.parseXML(data);
         displayResult(xml, useNewFormat);
 	toLevel(2);
+	getSchemaNodes();
     });
 }
 
@@ -160,9 +161,7 @@ function displayResult(xml, useNewFormat)
 		var parsed = $(this).text();
 		if (parsed.includes(",")) {
 			var trimmed = parsed.trim();
-			console.log(trimmed);
 			var trimmed = trimmed.replace(/(^,)|(,$)/g, "")
-			console.log(trimmed);
 			finalText += "<p>" + trimmed + "</p>";
 		}
 		else
@@ -236,4 +235,43 @@ function toLevel(level) {
         $("#schema").find(`.level-${i}`).addClass("show");
     }
     $("#schema").attr("status","show");
+}
+function searchNode(input) {
+    input = processNodeNameInput(input);
+    if (schemaNodes.includes(input)) {
+	toNode(input);
+    }
+}
+function processNodeNameInput(input) {
+    input = capitalizeFirstLetter(input);
+    return input;
+}
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+function toNode(nodeName) {
+    let node = $("a[tag='"+nodeName+"'");
+    let attrs = node.attr("class");
+    const levelReg = /(?<=level-)\d?/g;
+    toLevel(attrs.match(levelReg)[0]);
+    $("html").animate(
+      {
+        scrollTop: node.offset().top
+      },
+      500 //speed
+    );
+    node.effect("highlight", {}, 3000);
+}
+function getSchemaNodes() {
+    $("a[name='schemaNode']").each(function() {
+	schemaNodes.push($(this).attr("tag"));
+    });    
+    $( function() {
+    $( "#searchTags" ).autocomplete({
+      source: schemaNodes,
+      select: function(event, ui) {
+	toNode(ui.item.value);
+      }
+    });
+  } );
 }

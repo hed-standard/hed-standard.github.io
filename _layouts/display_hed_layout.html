@@ -5,8 +5,9 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="schema_browser/hed-collapsible.css">
-    <!--<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>-->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="/schema_browser/schema-browser.js"></script>
   </head>
   <body>
@@ -27,9 +28,17 @@
 	    	</div>
                 <div class="input-group mr-2">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon">Expand to level</span>
+                        <span class="input-group-text" id="searchTagLabel">Search term</span>
                     </div>
-                    <input type="text" class="form-control" id="basic-url" oninput="toLevel(this.value)" aria-describedby="basic-addon">
+		<div class="ui-widget">
+                    <input type="text" class="form-control" id="searchTags" aria-describedby="searchTag">
+		</div>
+                </div>
+                <div class="input-group mr-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="toLevelLabel">Expand to level</span>
+                    </div>
+                    <input type="text" class="form-control" id="toLevel" oninput="toLevel(this.value)" aria-describedby="toLevel">
                 </div>
             	<div class="dropdown mr-2">
                     <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
