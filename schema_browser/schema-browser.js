@@ -306,9 +306,12 @@ function toNode(nodeName) {
     node.effect("highlight", {}, 3000);
 }
 function getSchemaNodes() {
+/* Initialize schema nodes list and set behavior of search box */
     $("a[name='schemaNode']").each(function() {
 	schemaNodes.push($(this).attr("tag"));
     });    
+    
+    /* add autocomplete and search */
     $( function() {
     $( "#searchTags" ).autocomplete({
       source: schemaNodes,
@@ -317,8 +320,20 @@ function getSchemaNodes() {
       }
     });
   } );
+    /* search on enter key press */
+    $("#searchTags").on('keyup', function (e) {
+        if (e.key === 'Enter' || e.keyCode === 13) {
+	    const searchText = $("#searchTags").val();
+	    const capitalized = capitalizeFirstLetter(searchText);
+	    if (schemaNodes.includes(capitalized))
+		toNode(capitalized);
+        }
+    });
 }
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 /* For scroll to top button */
 function scrollFunction() {
   if (
