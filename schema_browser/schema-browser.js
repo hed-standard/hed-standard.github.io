@@ -294,8 +294,9 @@ function capitalizeFirstLetter(string) {
 function toNode(nodeName) {
     let node = $("a[tag='"+nodeName+"'");
     let attrs = node.attr("class");
-    const levelReg = /(?:level-)\d?/g;
-    toLevel(attrs.match(levelReg)[0]);
+    const levelString = attrs.match(/level-\d?/g)[0];
+    const levelNum = levelString.split('-')[1];
+    toLevel(levelNum);
     $("html").animate(
       {
         scrollTop: node.offset().top
