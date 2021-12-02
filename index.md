@@ -7,7 +7,7 @@ HED tags may also be use to annotate to other brain imaging (MEG, fNIRS), multim
 
 ## How do I start?
 
-Check out the [Documentation page](https://hed-docs.readthedocs.io/en/latest/) (still under construction) to start using HED tools to tag your data.  
+Check out the [Documentation page](https://hed-specification.readthedocs.io/en/latest/index.html) (still under construction) to start using HED tools to tag your data.  
 
 ## The HED community
 
