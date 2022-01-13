@@ -132,8 +132,18 @@
 	<xsl:apply-templates select="propertyDefinition"/>
 </xsl:template>
 
+
 <xsl:template match="/HED">
-	<div id="hed-version" style="display: none;"><xsl:value-of select="@version"/></div>
+    <!--<div id="hed-version" style="display: none;"><xsl:value-of select="@version"/></div>-->
+    <xsl:choose>
+        <xsl:when test="@library">
+            <div id="hed-version" style="display: none;"><xsl:value-of select="@library"/>_<xsl:value-of select="@version"/></div>
+        </xsl:when>
+        <xsl:otherwise>
+            <div id="hed-version" style="display: none;"><xsl:value-of select="@version"/></div>
+        </xsl:otherwise>
+    </xsl:choose>
+
 	<div id="schema">
 	<xsl:apply-templates select="schema"/>
 	</div>
