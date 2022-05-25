@@ -14,11 +14,11 @@
 	<xsl:param name="level"/>
 	<xsl:param name="nodeName"/>
 	<!--for href, name of HED tag must be whitespace stripped and must not start with digit (e.g. "2D shape" bug)-->
-	<a href="#{translate(translate(name,' ','_'), '0123456789','zowhfvsneit')}" tag="{translate(translate(name,' ','_'), '0123456789','zowhfvsneit')}" description="{description}" role="button" class="list-group-item level-{$level}" data-toggle="collapse" aria-expanded="true" name="schemaNode"><xsl:value-of select="name"/></a>
+	<a href="#{translate(translate(name,' ','_'), '0123456789','zowhfvsneit')}" tag="{name}" description="{description}" role="button" class="list-group-item level-{$level}" data-toggle="collapse" aria-expanded="true" name="schemaNode"><xsl:value-of select="name"/></a>
 	<xsl:apply-templates select="attribute">
 		<xsl:with-param name="nodeName" select="name"/>
 	</xsl:apply-templates>
-	<div class="list-group collapse multi-collapse level-{$level} show" id="{translate(translate(name,' ','_'),'0123456789','zowhfvsneit')}">
+    <div class="list-group collapse multi-collapse level-{$level} show" id="{name}">
 		<xsl:apply-templates select="node">
 			<xsl:with-param name="level" select="$level + 1"/>
 		</xsl:apply-templates>
