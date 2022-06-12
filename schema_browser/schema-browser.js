@@ -22,29 +22,66 @@ function load(repo_path, default_xml_path) {
     // When the user clicks on the button, scroll to the top of the document
     scrollToTopBtn.addEventListener("click", backToTop);
 
-    getGithubSchema(repo_path); // call outside of onload event to reduce latency
-    var schema_link = "https://raw.githubusercontent.com/hed-standard/" + default_xml_path;
-    var isDeprecatedTitleAdded = false;
-    // build schema dropdown from Github repo
-    for (var i=0; i < githubSchema["version"].length; i++) {
-            if (githubSchema["isDeprecated"][i] && !isDeprecatedTitleAdded) {
-                var html = '<a class="dropdown-header"><b>' + 'Deprecated' + '</b></a>';
-                $("#schemaDropdown").append(html);
-		isDeprecatedTitleAdded = true;
-            } 
-            var html = '<a class="dropdown-item" id="schema' + githubSchema["version"][i] + '" onclick="loadSchema(\'' + githubSchema["download_link"][i] + '\')">' + githubSchema["version"][i] + '</a>';
-            $("#schemaDropdown").append(html);
-    }
-
-    // load default schema accordingly
-    var urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('version')) {
-        var schema_url = getSchemaURL(urlParams.get('version'));
-        loadSchema(schema_url);
-    }
-    else {
+    // Get and load schema according to official or prerelease
+    if (repo_path.includes('prerelease')) {
+        var schema_link = getPrereleaseXml(repo_path);
+        // load default schema accordingly
         loadSchema(schema_link)
     }
+    else {
+        getGithubSchema(repo_path); // call outside of onload event to reduce latency
+        var schema_link = "https://raw.githubusercontent.com/hed-standard/" + default_xml_path;
+        var isDeprecatedTitleAdded = false;
+        // build schema dropdown from Github repo
+        for (var i=0; i < githubSchema["version"].length; i++) {
+                if (githubSchema["isDeprecated"][i] && !isDeprecatedTitleAdded) {
+                    var html = '<a class="dropdown-header"><b>' + 'Deprecated' + '</b></a>';
+                    $("#schemaDropdown").append(html);
+            isDeprecatedTitleAdded = true;
+                } 
+                var html = '<a class="dropdown-item" id="schema' + githubSchema["version"][i] + '" onclick="loadSchema(\'' + githubSchema["download_link"][i] + '\')">' + githubSchema["version"][i] + '</a>';
+                $("#schemaDropdown").append(html);
+        }
+
+        // load default schema accordingly. Check if there's a version
+        // specifically requested in the url
+        var urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('version')) {
+            var schema_url = getSchemaURL(urlParams.get('version'));
+            loadSchema(schema_url);
+        }
+        else {
+            loadSchema(schema_link)
+        }
+    }
+
+    // set synonym getter behaviors
+    $("#syn_getter_btn").click(function() {
+	let host = "http://127.0.0.1:5000/";
+	let query = host + "synonym?word=" + $("#searchTags").val();
+	var synonyms = null;
+        $.ajax({dataType: "json", url: query, async: false, 
+		success: function(data) {
+		    synonyms = [];
+		    synonyms.push($("#searchTags").val());
+		    synonyms = synonyms.concat(data["synonyms"]);
+        	},
+		error: function(err) {
+		    console.log(err);
+		}
+	});
+	if (synonyms != null) {
+	    $("#syn_getter").empty();
+	    synonyms.forEach(function(syn) {
+	    	const capitalized = capitalizeFirstLetter(syn);
+		let matched_node = schemaNodes.filter(elem => elem.includes(capitalized) || elem.includes(syn));
+		if (matched_node.length !== 0) {
+		    matched_node.forEach(node => $("#syn_getter").append(`<option value="${node}" style="font-size:40px;">${node}</option>`));
+		}
+	    });
+	}
+    });
+    $("#syn_getter").change(function() { toNode($(this).val()) });
 }
 
 /**
@@ -87,6 +124,22 @@ function getGithubSchema(repo_path) {
     Object.keys(deprecated).forEach(key => {
 	deprecated[key].forEach(elem => githubSchema[key].push(elem))
     });
+}
+
+/**
+ * Get the unique prerelease schema xml from prerelease dir
+ */
+function getPrereleaseXml(prerelease_repo) {
+    var hedxml_url = "https://api.github.com/repos/hed-standard/" + prerelease_repo;
+    var download_url = "";
+    $.ajax({dataType: "json", url: hedxml_url, async: false, success: function(data) {
+        data.forEach(function(item,index) {
+            if (item["name"].includes('xml') && download_url === "") {
+                download_url = item["download_url"];
+            }
+        })
+    }});
+    return download_url;
 }
 
 /**
