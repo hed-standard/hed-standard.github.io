@@ -1,6 +1,6 @@
 var githubSchema = {"version": [], "download_link": [], "isDeprecated": []};
 var schemaNodes = [];
-
+var useNewFormat = true;
 
 //Get the button
 let scrollToTopBtn = null;
@@ -82,6 +82,22 @@ function load(repo_path, default_xml_path) {
 	}
     });
     $("#syn_getter").change(function() { toNode($(this).val()) });
+
+    // set lock window key press behavior
+    $( document ).keypress(function(event) {
+        if (event.which == 13) { // enter key
+            if ($("div#infoBoard").attr('editable') == 'true') {
+                $("div#infoBoard").attr('editable', 'false');
+                $("a").off( "mouseover" ); //.mouseover(function(){});
+                $("#freezeInfo").html("<i>*Press enter/return to unfreeze info board</i>");
+            }
+            else {
+                $("div#infoBoard").attr('editable', 'true');
+                $("a").mouseover({format: useNewFormat},infoBoardMouseoverEvent);
+                $("#freezeInfo").html("<i>*Press enter/return to freeze info board</i>");
+            }
+        }
+    });
 }
 
 /**
@@ -165,9 +181,9 @@ function loadSchema(url)
     let re = /HED.*xml/;
     let schemaVersion = url.match(re)[0];
     if ((schemaVersion.charAt(3) >= "8" && !schemaVersion.includes('alpha')) || url.includes('test')) // assuming schemaVersion has form 'HEDx.x.x.*'
-	var useNewFormat = true;
+	useNewFormat = true;
     else {
-	var useNewFormat = false;
+	useNewFormat = false;
     }
     if (url.includes('deprecated')) // schema link will be */deprecated/*.xml if deprecated
 	var isDeprecated = true;
@@ -245,47 +261,49 @@ function displayResult(xml, useNewFormat, isDeprecated)
     	    $("#hed").html(versionText);
 	}
     }
-
-    $("a").mouseover(function() {
-        var path = getPath($(this));
-        var selected = $(event.target);
-	var nodeName = selected.text();
-	var finalText = "";
-	if (useNewFormat) {
-        	selected.nextAll(`.attribute[name='${nodeName}']`).each(function(index) {
-		var parsed = $(this).text();
-		if (parsed.includes(",")) {
-			var trimmed = parsed.trim();
-			var trimmed = trimmed.replace(/(^,)|(,$)/g, "")
-			finalText += "<p>" + trimmed + "</p>";
-		}
-		else
-			finalText += "<p>" + parsed.trim() + "</p>";
-		});
-	}
-	else {
-		var attrs = selected.next(".attribute").text();
-        	parsed = attrs.split(','); // attributes are written in comma separated string
-        	parsed = parsed.map(x => "<p>" + x.trim() + "</p>");
-        	parsed = parsed.slice(0,parsed.length-1); // last item is empty (result of extra , at the end)
-        	finalText = parsed.join("");
-	}
-        finalText = finalText == null || finalText.length == 0 ? "" : "<p><i>Attribute</i></p>"+finalText;
-	if (selected.attr('name') === "schemaNode") {
-        $("h4#title").text(path);
-        $("p#tag").text("Short form: " + this.textContent);
-        $("p#description").text(selected.attr("description"));
-        $("div#attribute_info").html(finalText);
-	}
-	else {
-        $("h4#title").text(this.textContent);
-        $("p#tag").text("");
-        $("p#description").text(selected.attr("description"));
-        $("div#attribute_info").html(finalText);
-	}
-    })
+    $("a").mouseover({format: useNewFormat},infoBoardMouseoverEvent);
 }
 
+function infoBoardMouseoverEvent(event) {
+        var useNewFormat = event.data.format;
+        var selected = $(event.target);
+        var node = selected;
+        var path = getPath(selected);
+        var nodeName = selected.text();
+        var finalText = "";
+        if (useNewFormat) {
+                selected.nextAll(`.attribute[name='${nodeName}']`).each(function(index) {
+            var parsed = $(this).text();
+            if (parsed.includes(",")) {
+                var trimmed = parsed.trim();
+                var trimmed = trimmed.replace(/(^,)|(,$)/g, "")
+                finalText += "<p>" + trimmed + "</p>";
+            }
+            else
+                finalText += "<p>" + parsed.trim() + "</p>";
+            });
+        }
+        else {
+            var attrs = selected.next(".attribute").text();
+                parsed = attrs.split(','); // attributes are written in comma separated string
+                parsed = parsed.map(x => "<p>" + x.trim() + "</p>");
+                parsed = parsed.slice(0,parsed.length-1); // last item is empty (result of extra , at the end)
+                finalText = parsed.join("");
+        }
+            finalText = finalText == null || finalText.length == 0 ? "" : "<p><i>Attribute</i></p>"+finalText;
+        if (selected.attr('name') === "schemaNode") {
+            $("h4#title").text(path);
+            $("p#tag").text("Short form: " + node.textContent);
+            $("p#description").text(selected.attr("description"));
+            $("div#attribute_info").html(finalText);
+        }
+        else {
+            $("h4#title").text(node.textContent);
+            $("p#tag").text("");
+            $("p#description").text(selected.attr("description"));
+            $("div#attribute_info").html(finalText);
+        }
+}
 /**
  *  Get full path of tag node
  *  @param node     a tag node
