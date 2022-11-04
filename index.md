@@ -1,20 +1,27 @@
 
 ## What is HED?
+- **HED** (‘**Hierarchical Event Descriptors**’, pronounced either as /hed/ or /H//E//D/) is a framework for using a controlled yet extensible vocabulary to systematically describe experiment events of all types (perceptual, action, experiment control, task, etc.).
 
-HED (for ‘Hierarchical Event Descriptors’) is a framework for systematically describing laboratory and real-world events using a controlled but extensible vocabulary. HED tags are comma-separated path strings assigned from a tree-structured vocabulary called a **HED schema**. HED tags give information about experiment organization and detail the nature of each experiment event, thus creating a permanent record accompanying the data for use in any analysis, later re-analysis, or meta-analysis.
+- The **goals of HED** are to enable and support its users to **store and share** recorded data in a fully **analysis-ready** format, and to support efficient data **search and analysis**. 
+- HED enables users to use a standard method to **detail** **the nature** of each experiment event, and to record information about **experiment organization**, thus creating a permanent, both human- and machine-readable record embedded in the data record for use in any further **analysis, re-analysis, and meta/mega-analysis**.
+- HED may be used to annotate **any time series data** – in particular data acquired in brain imaging (EEG, MEG, fNIRS, fMRI), multimodal (aka MoBI, mobile brain/body imaging), psychophysiological (ECG, EMG, GSR), or purely behavioral experiments. 
+- HED string **event markers** are composed of comma-separated **tags** that use a formally **specified syntax** and multi-tree **structured vocabulary** (maintained in the base **HED schema)**. 
+- HED vocabulary extensions for use in individual research subfields are housed in **HED library schemas**.
+- The **HED working group** is an ongoing open-source organization to maintain and extend [**the HED standards site**](https://github.com/hed-standard) on Github. Visit this site for information on how to join the HED community of users and developers.
 
-HED tags may also be use to annotate to other brain imaging (MEG, fNIRS), multimodal (a.k.a, mobile brain/body imaging), physiological (ECG, EMG, GSR), or purely behavioral experiment data. HED has recently been adopted as part of the BIDS ([Brain Imaging Data Structure](http://bids.neuroimaging.io/)) standard at the top level, thus becoming a part of the BIDS data saving standards for an increasing number of brain imaging modalities. Annotation, validation, and data search tools using HED are currently available for use online and/or for use in the [EEGLAB](https://sccn.ucsd.edu/eeglab)/MATLAB environment.
+## HED and BIDS
 
-## How do I start?
+- HED was accepted (2019) into the top-level BIDS ([**Brain Imaging Data Structure**](http://bids.neuroimaging.io/)) standard, thus becoming an integral part of the BIDS data storage standards for an ever increasing number of brain imaging data modalities. 
+- An efficient approach to integrating HED information into BIDS metadata has been demonstrated [here](https://hed-examples.readthedocs.io/en/latest/BidsAnnotationQuickstart.html#).
 
-Check out the [Documentation page](https://hed-examples.readthedocs.io/en/latest/index.html) to start using HED tools to tag your data.  
+## HED Tools
 
-## The HED community
+Data annotation, validation, search, and extraction tools using HED are currently **available for use online**, as well as for use in the [EEGLAB](https://sccn.ucsd.edu/eeglab) environment running on Matlab.
 
-The HED project is an ongoing open-source organization whose repositories can be found at
-[the HED standards Github site](https://github.com/hed-standard). Visit this site for more information on how to join the HED
-community of developers and users.
+## Where to begin?
 
-## Support 
+To begin using HED tools to tag, search, and analyze data, browse the [HED documentation page](https://hed-examples.readthedocs.io/en/latest/index.html).
 
-HED was originally developed by Nima Bigdely-Shamlo with Scott Makeig under the HeadIT.org project at the Swartz Center for Computational Neuroscience (SCCN) of the University of California, San Diego and funded by U.S. National Institutes of Health grants R01-MH084819 (Makeig, Grethe PIs) and R01-NS047293 (Makeig PI). Further HED development was supported by The Cognition and Neuroergonomics Collaborative Technology Alliance (CaN CTA) program of U.S Army Research Laboratory (ARL) under Cooperative Agreement Number W911NF-10-2-0022, with strong and continuing contributions by Kay Robbins of the University of Texas San Antonio. HED is currently (2020) maintained by [Scott Makeig](http://smakeig@ucsd.edu) and Dung Truong at the Swartz Center, UCSD. 
+## History and Support 
+
+HED was first proposed and developed (*Gen 1*) by Nima Bigdely-Shamlo within the HeadIT.org project at the Swartz Center for Computational Neuroscience (SCCN) of the University of California San Diego (UCSD) under funding by The Swartz Foundation and by U.S. National Institutes of Health (NIH) grants R01-MH084819 (Makeig, Grethe PIs) and R01-NS047293 (Makeig PI). Further HED development (*Gen 2*) lead by Kay Robbins of the University of Texas San Antonio was funded by The Cognition and Neuroergonomics Collaborative Technology Alliance (CaN CTA) program of U.S Army Research Laboratory (ARL) under Cooperative Agreement Number W911NF-10-2-0022,. HED (*Gen 3, versions 8.0.0.0+*) is now maintained and further developed by the HED Working Group lead by Kay Robbins and [Scott Makeig](http://smakeig@ucsd.edu/) with Dung Truong, Monique Denissen, Dora Hermes Miller, Tal Pal Attia, and Arnaud Delorme, with funding from NIH grant ([RF1-MH126700](https://public.era.nih.gov/grantfolder/viewCommonsStatus.era?applId=10480619&urlsignature=v1$27768473$1$cdf_MTDSKGTA2fESnRFNkygaGq9n5hhCVluTv6drBaP6ly3k2kFS267D1gX0PHR-KrenMa7iOCTh88cks7FyJvvaI9lW7GFl3BpqZfRolKZjmfnICECgp89D_9BUOCiyI8UDSiOZXsNnJb01GkxiJk4Eu-AIvUYDeU1VojxFaHlCgakC8sjX1b7tLLaIQqWxL_Ay0GMQZZzp7y3rkUi-8KFIOd5_6rxHRLx1wYM-ZYmWEKx5udF7W4HWODMxwF-D1_lhC24ET8R9MhRUJEWJ1v5zwkr-adsuRYHNNqVblP-HocHW3L8KhxL4JUf-xe5Rnmyu3wiUJnbLEWLmNwzc4g..)). HED is an open research community effort; others interested are invited to participate and contribute.
