@@ -147,6 +147,12 @@
 	<div id="schema">
 	<xsl:apply-templates select="schema"/>
 	</div>
+	<div id="prologue">
+	<xsl:value-of select="prologue"/>
+	</div>
+	<div id="epilogue">
+	<xsl:value-of select="epilogue"/>
+	</div>
 	<div id="unitClassDefinitions">
 	<xsl:apply-templates select="unitClassDefinitions"/>
 	</div>

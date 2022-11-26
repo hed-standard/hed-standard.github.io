@@ -241,9 +241,14 @@ function displayResult(xml, useNewFormat, isDeprecated)
         xsltProcessor = new XSLTProcessor();
         xsltProcessor.importStylesheet(xsl);
         resultDocument = xsltProcessor.transformToFragment(xml, document);
+    }
 	if (useNewFormat) {
             $("#schema").html(resultDocument.getElementById("schema").innerHTML);
-	    $("#schemaDefinitions").show();
+            var prologue = resultDocument.getElementById("prologue").innerHTML;
+            $("#prologue").html(prologue.replace("\n", "<br>"));
+            var epilogue = resultDocument.getElementById("epilogue").innerHTML;
+            $("#epilogue").html(epilogue.replace("\n", "<br>"));
+	        $("#schemaDefinitions").show();
             $("#unitClassDefinitions").html(resultDocument.getElementById("unitClassDefinitions").innerHTML);
             $("#unitModifierDefinitions").html(resultDocument.getElementById("unitModifierDefinitions").innerHTML);
             $("#valueClassDefinitions").html(resultDocument.getElementById("valueClassDefinitions").innerHTML);
@@ -260,7 +265,6 @@ function displayResult(xml, useNewFormat, isDeprecated)
 	    versionText = isDeprecated ? versionText + " (deprecated)" : versionText;
     	    $("#hed").html(versionText);
 	}
-    }
     $("a").mouseover({format: useNewFormat},infoBoardMouseoverEvent);
 }
 
