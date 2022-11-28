@@ -245,9 +245,9 @@ function displayResult(xml, useNewFormat, isDeprecated)
 	if (useNewFormat) {
             $("#schema").html(resultDocument.getElementById("schema").innerHTML);
             var prologue = resultDocument.getElementById("prologue").innerHTML;
-            $("#prologue").html(prologue.replace("\n", "<br>"));
+            $("#prologue").html(prologue.replaceAll("\n", "<br>"));
             var epilogue = resultDocument.getElementById("epilogue").innerHTML;
-            $("#epilogue").html(epilogue.replace("\n", "<br>"));
+            $("#epilogue").html(epilogue.replaceAll("\n", "<br>"));
 	        $("#schemaDefinitions").show();
             $("#unitClassDefinitions").html(resultDocument.getElementById("unitClassDefinitions").innerHTML);
             $("#unitModifierDefinitions").html(resultDocument.getElementById("unitModifierDefinitions").innerHTML);
