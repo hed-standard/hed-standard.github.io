@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>HED - Hierarchical Event Descriptors</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container px-5">
+                <a class="navbar-brand" href="/">HED</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://hed-examples.readthedocs.io/en/latest/">Documentation</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Features section-->
+        <section class="py-5 border-bottom" id="features">
+            <div class="container px-5 my-5">
+                <div class="row gx-5">
+                    <div class="col-lg-12 mb-5 mb-lg-0">
+                        <p>HED (Hierarchical Event Descriptors) is a framework for annotating event data. This site hosts HED documentation
+and some examples of annotation.</p>
+                        <h2 id="how-do-i-annotate-my-data-in-hed-">How do I annotate my data in HED?</h2>
+                        <p>A simple workflow for annotation is to create a spreadsheet containing events and their corresponding HED annotations.
+                        Researchers can then use an <a href="https://hedtools.ucsd.edu/hed">online validator</a> to validate their annotations without installing
+                        other tools. The <a href="https://github.com/hed-standard/CTagger">CTagger</a> tool provides a graphical user
+                        interface for doing annotation. HED validators
+                        are also available in <a href="https://github.com/hed-standard/hed-python">Python</a> and 
+                        <a href="https://github.com/hed-standard/hed-javascript">JavaScript</a>.  </p>
+                        <p>Event annotation typically two forms: code-specific and event-specific. In <strong>code-specific annotation</strong>, researchers
+                        identify a small number of event classes or categories and annotate the categories with HED tags. Downstream tools
+                        then map the HED tags to event instances during analysis. In <strong>event-specific annotation</strong>, researchers tag
+                        individual event instances. One can combine these approaches, using code-specific annotation to describe common
+                        properties, for example that events with this code represent visual target events. An additional event-specific
+                        layer might be provided to label the location of the target in each individual event. Researchers can choose the
+                        layers of interest during downstream analysis. HED also supports data feature annotations.  </p>
+                        <h2 id="using-hedtools-plug-in-for-eeglab">Using HEDTools plug-in for EEGLAB</h2>
+                        <p>HED annotation is integrated into <a href="https://sccn.ucsd.edu/eeglab">EEGLAB</a>, a MATLAB toolbox for processing EEG brain
+                        imaging data. There are two ways to install the HEDTools EEGLAB plug-in:</p>
+                        <ol>
+                        <li>In EEGLAB, go to File &gt; Manage EEGLAB extensions. Look for HEDTools and install it.</li>
+                        <li>Alternatively, you can download the <a href="https://github.com/hed-standard/hed-matlab/tree/master/EEGLABPlugin">plug-in zip file</a> and extract it into EEGLAB <em>plugins</em> folder. Restart EEGLAB.</li>
+                        </ol>
+                        <p>Check out the <a href="quick-guide.md">Quick guide</a> to start tagging your EEG data.</p>
+                        <h2 id="using-spreadsheet-and-hed-validators">Using spreadsheet and HED validators</h2>
+                        <p>Follow the instructions on the <a href="https://hedtools.ucsd.edu/hed/spreadsheet">HED validator page</a> to prepare your event-HED
+                        tag spreadsheet and to validate it with the HED validator.</p>
+                        <h2 id="tagging-strategy-guide">Tagging Strategy Guide</h2>
+                        <p>Once you are familiar HED basics, check out the
+                        <a href="HEDTaggingStrategyGuide.pdf">HED Tagging Strategy Guide</a> for some practical annotation strategies.</p>
+                        <h2 id="other-links">Other links</h2>
+                        <p><a href="https://hedtags.org">hedtags.org</a> is the home page for HED tag users.  </p>
+                        <p><a href="https://github.com/hed-standard">hed-standard</a> is the HED community organization repository for HED development.</p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container px-5">
+                <div class="row gx-5">
+                    <div class="col-lg-12 mb-5 mb-lg-0">
+                        <a class="m-0 text-left text-white" href="#">Contact us</a>
+                        <p class="m-0 text-left text-white">Copyright &copy; Your Website 2022</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>
