@@ -1,4 +1,7 @@
 _site
+vendor/
+.bundle/
+.AWSCLIV2.pkg.icloud
 
 #################
 ## Eclipse
