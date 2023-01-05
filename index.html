@@ -23,6 +23,7 @@
 <body>
   <!-- Navigational Header -->
   <nav class="navbar navbar-expand-lg navbar-light bg-custom bg-gradient">
+    <div class="container-fluid">
     <a class="navbar-brand text-white mx-2" href="/"><img src="assets/images/hed-logo.jpg" class="img-fluid img-thumbnail" width="60" height="60" alt="Logo image"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -49,7 +50,11 @@
             </div>
         </li>
       </ul>
-      <a class="btn btn-info me-2" type="button" href="https://www.hed-resources.org/en/latest/search.html"><span><i class="bi bi-search"></i>  Search documentation</span></a>
+      <div class="d-flex" role="search">
+        <input class="form-control me-2" id="searchInput" type="search" placeholder="Search documentation" aria-label="Search">
+        <button class="btn btn-success" onclick="searchDoc()">Search</button>
+      </div>
+
     </div>
   </nav>
 
