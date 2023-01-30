@@ -14,7 +14,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <style>
         .bg-custom {
-            background-color: #267026;
+            background-color: #000080;
+        }
+        .text-success {
+            color: #0000CD;
         }
     </style>
 
@@ -65,12 +68,12 @@
     <div class="row">
         <div class="col-md-4">
             <i class="fas fa-chart-bar fa-5x"></i>
-            <h3 class="text-success">Why HED?</h3>
+            <h3 class="text-success" style="color=#0000CD">Why HED?</h3>
             <p class="mx-5">A very important question, for any neuroimaging time series data - <strong>What exactly happened during this recording?</strong><br>HED annotations record and store detailed answers to this question with the data - in a form readable by both human and machines.</p>
         </div>
         <div class="col-md-4">
             <i class="fas fa-globe fa-5x"></i>
-            <img src="assets/images/human-brain-icon-green-0.png" class="img-fluid" alt="Responsive image">
+            <img src="assets/images/blue_head.png" class="img-fluid" alt="Responsive image">
         </div>
         <div class="col-md-4">
             <i class="fas fa-globe fa-5x"></i>
@@ -84,28 +87,28 @@
         <h1 class="text-success">Who can use HED?</h1>
         <div class="row">
             <div class="col-md-1 col-sm-4 col-12 text-center py-3"></div>
-            <div class="col-md-2 col-sm-4 col-12 text-center py-3">
-                <div class="feature bg-custom bg-gradient text-white rounded-3 mb-3"><a style="color: inherit" href="https://www.hed-resources.org/en/latest/HowCanYouUseHed.html#span-style-color-229955-as-an-experimenter-span"><i class="bi bi-sliders" style="font-size: 2rem;"></i></a></div>
+            <div class="col-md-2 col-sm-4 col-12 text-center py-3" style="cursor:pointer;" onclick="window.location='https://www.hed-resources.org/en/latest/HowCanYouUseHed.html#span-style-color-229955-as-an-experimenter-span';">
+                <div class="feature bg-custom bg-gradient text-white rounded-3 mb-3"><i class="bi bi-sliders" style="font-size: 2rem;"></i></div>
                 <h2 class="h4 fw-bolder text-success">Experimenter</h2>
                 <p>performing experiments that acquire data</p>
             </div>
-            <div class="col-md-2 col-sm-4 col-12 text-center py-3">
-                <div class="feature bg-custom bg-gradient text-white rounded-3 mb-3"><a style="color:inherit" href="https://www.hed-resources.org/en/latest/HowCanYouUseHed.html#span-style-color-229955-as-a-data-curator-span"><i class="bi bi-tags-fill" style="font-size: 2rem;"></i></a></div>
+            <div class="col-md-2 col-sm-4 col-12 text-center py-3" style="cursor:pointer;" onclick="window.location='https://www.hed-resources.org/en/latest/HowCanYouUseHed.html#span-style-color-229955-as-a-data-curator-span';">
+                <div class="feature bg-custom bg-gradient text-white rounded-3 mb-3"><i class="bi bi-tags-fill" style="font-size: 2rem;"></i></div>
                 <h2 class="h4 fw-bolder text-success">Data curator</h2>
                 <p>organizing data for sharing and analysis</p>
             </div>
-            <div class="col-md-2 col-sm-4 col-12 text-center py-3">
-                <div class="feature bg-custom bg-gradient text-white rounded-3 mb-3"><a style="color:inherit" href="https://www.hed-resources.org/en/latest/HowCanYouUseHed.html#span-style-color-229955-as-a-data-analyst-span"><i class="bi bi-clipboard2-data-fill" style="font-size: 2rem;"></i></a></div>
+            <div class="col-md-2 col-sm-4 col-12 text-center py-3" style="cursor:pointer;" onclick="window.location='https://www.hed-resources.org/en/latest/HowCanYouUseHed.html#span-style-color-229955-as-a-data-analyst-span';">
+                <div class="feature bg-custom bg-gradient text-white rounded-3 mb-3"><i class="bi bi-clipboard2-data-fill" style="font-size: 2rem;"></i></div>
                 <h2 class="h4 fw-bolder text-success">Data analyst</h2>
                 <p>applying HED tools to find and analyze the data</p>
             </div>
-            <div class="col-md-2 col-sm-4 col-12 text-center py-3">
-                <div class="feature bg-custom bg-gradient text-white rounded-3 mb-3"><a style="color:inherit" href="https://www.hed-resources.org/en/latest/HowCanYouUseHed.html#span-style-color-229955-as-a-tool-developer-span"><i class="bi bi-database-fill" style="font-size: 2rem;"></i></a></div>
+            <div class="col-md-2 col-sm-4 col-12 text-center py-3" style="cursor:pointer;" onclick="window.location='https://www.hed-resources.org/en/latest/HowCanYouUseHed.html#span-style-color-229955-as-a-tool-developer-span';">
+                <div class="feature bg-custom bg-gradient text-white rounded-3 mb-3"><i class="bi bi-database-fill" style="font-size: 2rem;"></i></div>
                 <h2 class="h4 fw-bolder text-success">Tool developer</h2>
                 <p>contributing to the growing HED toolkit</p>
             </div>
-            <div class="col-md-2 col-sm-4 col-12 text-center py-3">
-                <div class="feature bg-custom bg-gradient text-white rounded-3 mb-3"><a style="color:inherit" href="https://www.hed-resources.org/en/latest/HowCanYouUseHed.html#span-style-color-229955-as-a-schema-designer-span"><i class="bi bi-diagram-3-fill" style="font-size: 2rem;"></i></a></div>
+            <div class="col-md-2 col-sm-4 col-12 text-center py-3" style="cursor:pointer;" onclick="window.location='https://www.hed-resources.org/en/latest/HowCanYouUseHed.html#span-style-color-229955-as-a-schema-designer-span';">
+                <div class="feature bg-custom bg-gradient text-white rounded-3 mb-3"><i class="bi bi-diagram-3-fill" style="font-size: 2rem;"></i></div>
                 <h2 class="h4 fw-bolder text-success">Designer</h2>
                 <p>extending HED vocabulary in new directions</p>
             </div>
