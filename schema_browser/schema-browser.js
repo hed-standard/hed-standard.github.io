@@ -89,12 +89,12 @@ function load(repo_path, default_xml_path) {
             if ($("div#infoBoard").attr('editable') == 'true') {
                 $("div#infoBoard").attr('editable', 'false');
                 $("a").off( "mouseover" ); //.mouseover(function(){});
-                $("#freezeInfo").html("<i>*Press enter/return to unfreeze info board</i>");
+                $("#freezeInfo").html("Press enter/return to unfreeze info board");
             }
             else {
                 $("div#infoBoard").attr('editable', 'true');
                 $("a").mouseover({format: useNewFormat},infoBoardMouseoverEvent);
-                $("#freezeInfo").html("<i>*Press enter/return to freeze info board</i>");
+                $("#freezeInfo").html("Press enter/return to freeze info board");
             }
         }
     });
