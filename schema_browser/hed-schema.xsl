@@ -43,7 +43,7 @@
 <xsl:template match="unit">
 	<xsl:param name="level"/>
 	<xsl:param name="nodeName"/>
-	<a description="{description}" role="button" class="list-group-item" name="unitClassDef"><xsl:value-of select="name"/></a>
+    <a description="{description}" role="button" class="list-group-item" tag="{name}" name="unitClassDef"><xsl:value-of select="name"/></a>
 	<xsl:apply-templates select="attribute">
 		<xsl:with-param name="nodeName" select="name"/>
 	</xsl:apply-templates>
