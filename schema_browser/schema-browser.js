@@ -1,15 +1,15 @@
-var githubSchema = {"version": [], "download_link": [], "isDeprecated": []};
 var schemaNodes = [];
 var useNewFormat = true;
-
+var github_endpoint = "https://api.github.com/repos/hed-standard/hed-schemas/contents";
+var github_raw_endpoint = "https://raw.githubusercontent.com/hed-standard/hed-schemas/main";
 //Get the button
 let scrollToTopBtn = null;
 
 /**
- * Onload call. Build schema selection dropdown
+ * Onload call. Build schema selection and schema versions dropdown
  * and load default schema accordingly to url params
  */
-function load(repo_path, default_xml_path) {
+function load() {
     /* Set up scroll to top button
     * https://mdbootstrap.com/docs/standard/extended/back-to-top/
     */
@@ -23,35 +23,53 @@ function load(repo_path, default_xml_path) {
     scrollToTopBtn.addEventListener("click", backToTop);
 
     // Get and load schema according to official or prerelease
-    if (repo_path.includes('prerelease')) {
-        var schema_link = getPrereleaseXml(repo_path);
+    schema_repo_path = 'hed-schemas/contents'; // Github API link
+    standard_schema_api_path = github_endpoint + "/standard_schema";
+    library_schema_api_path = github_endpoint + "/library_schemas";
+    if (schema_repo_path.includes('prerelease')) {
+        var schema_link = getPrereleaseXml(schema_repo_path);
         // load default schema accordingly
         loadSchema(schema_link)
     }
     else {
-        getGithubSchema(repo_path); // call outside of onload event to reduce latency
-        var schema_link = "https://raw.githubusercontent.com/hed-standard/" + default_xml_path;
-        var isDeprecatedTitleAdded = false;
-        // build schema dropdown from Github repo
-        for (var i=0; i < githubSchema["version"].length; i++) {
-                if (githubSchema["isDeprecated"][i] && !isDeprecatedTitleAdded) {
-                    var html = '<a class="dropdown-header"><b>' + 'Deprecated' + '</b></a>';
-                    $("#schemaDropdown").append(html);
-            isDeprecatedTitleAdded = true;
-                } 
-                var html = '<a class="dropdown-item" id="schema' + githubSchema["version"][i] + '" onclick="loadSchema(\'' + githubSchema["download_link"][i] + '\')">' + githubSchema["version"][i] + '</a>';
-                $("#schemaDropdown").append(html);
+        // add schema names to schema dropdown button
+        var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="schemaNameSelected(\'standard\')">Standard</a>';
+        $("#schemaDropdown").append(html);
+        library_schemas = getLibarySchemas();
+        for (var i=0; i < library_schemas.length; i++) {
+            var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="schemaNameSelected(\'' + library_schemas[i] + '\')">' + library_schemas[i].toUpperCase() + '</a>';
+            $("#schemaDropdown").append(html);
         }
+        
+        // default to standard schema. 
+        $('#dropdownSchemaButton').text('Schema: standard');
+        $('#dropdownSchemaVersionButton').text('Version: HED_Latest');
+        // Retrieve its versions and add to version dropdown button
+        buildSchemaVersionDropdown('standard');
+        // githubSchema = getGithubSchema("standard"); // call outside of onload event to reduce latency
+        // 
+        // var isDeprecatedTitleAdded = false;
+        // // build schema dropdown from Github repo
+        // for (var i=0; i < githubSchema["version"].length; i++) {
+        //     if (githubSchema["isDeprecated"][i] && !isDeprecatedTitleAdded) {
+        //         var html = '<a class="dropdown-header"><b>' + 'Deprecated' + '</b></a>';
+        //         $("#schemaVersionDropdown").append(html);
+        //         isDeprecatedTitleAdded = true;
+        //     } 
+        //     var html = '<a class="dropdown-item" id="schema' + githubSchema["version"][i] + '" onclick="loadSchema(\'' + githubSchema["download_link"][i] + '\')">' + githubSchema["version"][i] + '</a>';
+        //     $("#schemaVersionDropdown").append(html);
+        // }
 
-        // load default schema accordingly. Check if there's a version
+        // load default standard schema, checking for version urlparam
         // specifically requested in the url
+        var standard_schema_link = github_raw_endpoint + "/standard_schema/hedxml/HEDLatest.xml";
         var urlParams = new URLSearchParams(window.location.search);
         if (urlParams.has('version')) {
             var schema_url = getSchemaURL(urlParams.get('version'));
             loadSchema(schema_url);
         }
         else {
-            loadSchema(schema_link)
+            loadSchema(standard_schema_link);
         }
     }
 
@@ -101,14 +119,37 @@ function load(repo_path, default_xml_path) {
 }
 
 /**
+ * Get all currently available library schemas
+ */
+function getLibarySchemas() {
+    libray_schemas_endpoint = github_endpoint + "/library_schemas";
+    library_schemas = [];
+
+    $.ajax({dataType: "json", url: libray_schemas_endpoint, async: false, success: function(data) {
+        data.forEach(function(item,index) {
+            if (item["name"] != "testlib")
+                library_schemas.push(item["name"]);
+        })
+    }});
+    return library_schemas;
+}
+
+/**
  * Get all schema versions currently hosted on
  * https://github.com/hed-standard/hed-specification/tree/master/hedxml
  * and build githubSchema global variable
  * While building, reverse order for nice display in the dropdown
  */
-function getGithubSchema(repo_path) {
-    var hedxml_url = "https://api.github.com/repos/hed-standard/" + repo_path;
-    $.ajax({dataType: "json", url: hedxml_url, async: false, success: function(data) {
+function getGithubSchema(schema_name) {
+    var githubSchema = {"version": [], "download_link": [], "isDeprecated": []};
+    if (schema_name == "standard") {
+        xml_path = github_endpoint + "/standard_schema/hedxml";
+    }
+    else {
+        xml_path = github_endpoint + "/library_schemas/" + schema_name + "/hedxml";
+    }
+
+    $.ajax({dataType: "json", url: xml_path, async: false, success: function(data) {
         data.forEach(function(item,index) {
 	    if (item["name"].includes('xml')) {
                 var version = item["name"].split('(.*)(.xml)')[0];
@@ -122,7 +163,7 @@ function getGithubSchema(repo_path) {
     }});
     Object.keys(githubSchema).forEach(key => githubSchema[key].reverse());
     // get deprecated schemas
-    var hedxml_url = "https://api.github.com/repos/hed-standard/" + repo_path + "/deprecated";
+    var hedxml_url = xml_path + "/deprecated";
     var deprecated = {"version": [], "download_link": [], "isDeprecated": []};
     $.ajax({dataType: "json", url: hedxml_url, async: false, success: function(data) {
         data.forEach(function(item,index) {
@@ -140,13 +181,36 @@ function getGithubSchema(repo_path) {
     Object.keys(deprecated).forEach(key => {
 	deprecated[key].forEach(elem => githubSchema[key].push(elem))
     });
+    return githubSchema;
+}
+
+/**
+ *  Retrieve schema versions and add to version dropdown button
+ */
+function buildSchemaVersionDropdown(schema_name) {
+    // clear existing versions
+    $("#schemaVersionDropdown").empty();
+
+    // get versions based on provided schema name
+    githubSchema = getGithubSchema(schema_name);
+    var isDeprecatedTitleAdded = false;
+    // build schema dropdown from Github repo
+    for (var i=0; i < githubSchema["version"].length; i++) {
+        if (githubSchema["isDeprecated"][i] && !isDeprecatedTitleAdded) {
+            var html = '<a class="dropdown-header"><b>' + 'Deprecated' + '</b></a>';
+            $("#schemaVersionDropdown").append(html);
+            isDeprecatedTitleAdded = true;
+        } 
+        var html = '<a class="dropdown-item" id="schema' + githubSchema["version"][i] + '" onclick="loadSchema(\'' + githubSchema["download_link"][i] + '\')">' + githubSchema["version"][i] + '</a>';
+        $("#schemaVersionDropdown").append(html);
+    }
 }
 
 /**
  * Get the unique prerelease schema xml from prerelease dir
  */
 function getPrereleaseXml(prerelease_repo) {
-    var hedxml_url = "https://api.github.com/repos/hed-standard/" + prerelease_repo;
+    var hedxml_url = github_endpoint + "/" + prerelease_repo;
     var download_url = "";
     $.ajax({dataType: "json", url: hedxml_url, async: false, success: function(data) {
         data.forEach(function(item,index) {
@@ -196,6 +260,25 @@ function loadSchema(url)
 	toLevel(2);
 	getSchemaNodes();
     });
+    $('#dropdownSchemaVersionButton').text('Version: ' + schemaVersion.split('.xml')[0]);
+}
+
+function schemaNameSelected(schema_name) {
+    $('#dropdownSchemaButton').text('Schema: ' + schema_name);
+    // build schema version dropdown
+    buildSchemaVersionDropdown(schema_name);
+
+    // load default schema
+    if (schema_name == "standard") {
+        xml_path = github_raw_endpoint + "/standard_schema/hedxml/HEDLatest.xml";
+        $('#dropdownSchemaVersionButton').text("Version: HED_Latest");
+    }
+    else {
+        xml_path = github_raw_endpoint + "/library_schemas/" + schema_name + "/hedxml/HED_" + schema_name.toLowerCase() + "_Latest.xml";
+        $('#dropdownSchemaVersionButton').text("Version: " + schema_name + "_Latest");
+    }
+    
+    loadSchema(xml_path);
 }
 
 /**
