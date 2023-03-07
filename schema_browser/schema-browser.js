@@ -33,44 +33,28 @@ function load() {
     }
     else {
         // add schema names to schema dropdown button
-        var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="schemaNameSelected(\'standard\')">Standard</a>';
+        var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="loadDefaultSchema(\'standard\')">Standard</a>';
         $("#schemaDropdown").append(html);
         library_schemas = getLibarySchemas();
         for (var i=0; i < library_schemas.length; i++) {
-            var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="schemaNameSelected(\'' + library_schemas[i] + '\')">' + library_schemas[i].toUpperCase() + '</a>';
+            var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="loadDefaultSchema(\'' + library_schemas[i] + '\')">' + library_schemas[i].toUpperCase() + '</a>';
             $("#schemaDropdown").append(html);
         }
         
-        // default to standard schema. 
-        $('#dropdownSchemaButton').text('Schema: standard');
-        $('#dropdownSchemaVersionButton').text('Version: HED_Latest');
-        // Retrieve its versions and add to version dropdown button
-        buildSchemaVersionDropdown('standard');
-        // githubSchema = getGithubSchema("standard"); // call outside of onload event to reduce latency
-        // 
-        // var isDeprecatedTitleAdded = false;
-        // // build schema dropdown from Github repo
-        // for (var i=0; i < githubSchema["version"].length; i++) {
-        //     if (githubSchema["isDeprecated"][i] && !isDeprecatedTitleAdded) {
-        //         var html = '<a class="dropdown-header"><b>' + 'Deprecated' + '</b></a>';
-        //         $("#schemaVersionDropdown").append(html);
-        //         isDeprecatedTitleAdded = true;
-        //     } 
-        //     var html = '<a class="dropdown-item" id="schema' + githubSchema["version"][i] + '" onclick="loadSchema(\'' + githubSchema["download_link"][i] + '\')">' + githubSchema["version"][i] + '</a>';
-        //     $("#schemaVersionDropdown").append(html);
-        // }
-
-        // load default standard schema, checking for version urlparam
-        // specifically requested in the url
-        var standard_schema_link = github_raw_endpoint + "/standard_schema/hedxml/HEDLatest.xml";
         var urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.has('version')) {
-            var schema_url = getSchemaURL(urlParams.get('version'));
-            loadSchema(schema_url);
+        if (urlParams.has('schema')) {
+            schema_name = urlParams.get('schema');
+            if (urlParams.has('version')) {
+                version = urlParams.get('version');
+                url = getSchemaURL(schema_name, version);
+                loadSchema(url);
+                setDropdownBtnText(schema_name, version);
+            } 
+            else
+                loadDefaultSchema(schema_name);
         }
-        else {
-            loadSchema(standard_schema_link);
-        }
+        else // default to standard schema. 
+            loadDefaultSchema('standard');
     }
 
     // set synonym getter behaviors
@@ -227,12 +211,16 @@ function getPrereleaseXml(prerelease_repo) {
  * @param hedVersion    schema version number
  * @returns     schema download link
  */
-function getSchemaURL(hedVersion) {
-    for (var i=0; i < githubSchema["version"].length; i++) {
-        if (githubSchema["version"][i].includes(hedVersion)) {
-            return githubSchema["download_link"][i];
-        }
+function getSchemaURL(schema_name, version) {
+    console.log(schema_name);
+    console.log(version);
+    if (schema_name == "standard") {
+        xml_path = github_raw_endpoint + "/standard_schema/hedxml/HED" + version + ".xml";
     }
+    else
+        xml_path = github_raw_endpoint + "/library_schemas/" + schema_name + "/hedxml/HED_" + schema_name.toLowerCase() + "_" + version + ".xml";
+    console.log(xml_path);
+    return xml_path;
 }
 
 /**
@@ -263,24 +251,31 @@ function loadSchema(url)
     $('#dropdownSchemaVersionButton').text('Version: ' + schemaVersion.split('.xml')[0]);
 }
 
-function schemaNameSelected(schema_name) {
-    $('#dropdownSchemaButton').text('Schema: ' + schema_name);
+function loadDefaultSchema(schema_name) {
     // build schema version dropdown
     buildSchemaVersionDropdown(schema_name);
 
     // load default schema
     if (schema_name == "standard") {
         xml_path = github_raw_endpoint + "/standard_schema/hedxml/HEDLatest.xml";
-        $('#dropdownSchemaVersionButton').text("Version: HED_Latest");
     }
     else {
         xml_path = github_raw_endpoint + "/library_schemas/" + schema_name + "/hedxml/HED_" + schema_name.toLowerCase() + "_Latest.xml";
-        $('#dropdownSchemaVersionButton').text("Version: " + schema_name + "_Latest");
     }
     
     loadSchema(xml_path);
+    setDropdownBtnText(schema_name, "Latest");
 }
 
+function setDropdownBtnText(schema_name, version) {
+    $('#dropdownSchemaButton').text('Schema: ' + schema_name);
+    if (schema_name == "standard") {
+        $('#dropdownSchemaVersionButton').text("Version: HED_Latest");
+    }
+    else {
+        $('#dropdownSchemaVersionButton').text("Version: HED_" + schema_name + "_Latest");
+    }
+}
 /**
  * Load XSL file
  * @param filename
