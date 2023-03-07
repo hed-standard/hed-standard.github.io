@@ -9,7 +9,7 @@ let scrollToTopBtn = null;
  * Onload call. Build schema selection and schema versions dropdown
  * and load default schema accordingly to url params
  */
-function load() {
+function load(schema_name) {
     /* Set up scroll to top button
     * https://mdbootstrap.com/docs/standard/extended/back-to-top/
     */
@@ -43,18 +43,19 @@ function load() {
         
         var urlParams = new URLSearchParams(window.location.search);
         if (urlParams.has('schema')) {
-            schema_name = urlParams.get('schema');
+            url_schema_name = urlParams.get('schema');
             if (urlParams.has('version')) {
                 version = urlParams.get('version');
-                url = getSchemaURL(schema_name, version);
+                url = getSchemaURL(url_schema_name, version);
                 loadSchema(url);
-                setDropdownBtnText(schema_name, version);
+                setDropdownBtnText(url_schema_name, version);
             } 
             else
-                loadDefaultSchema(schema_name);
+                loadDefaultSchema(url_schema_name);
         }
-        else // default to standard schema. 
-            loadDefaultSchema('standard');
+        else {
+            loadDefaultSchema(schema_name);
+        }
     }
 
     // set synonym getter behaviors
