@@ -71,7 +71,7 @@
 <xsl:template match="valueClassDefinition">
 	<xsl:param name="level"/>
 	<xsl:param name="nodeName"/>
-	<a description="{description}" role="button" class="list-group-item" name="unitModifierDef"><xsl:value-of select="name"/></a>
+	<a description="{description}" role="button" class="list-group-item" name="valueClassDef"><xsl:value-of select="name"/></a>
 	<xsl:apply-templates select="attribute">
 		<xsl:with-param name="nodeName" select="name"/>
 	</xsl:apply-templates>
@@ -95,7 +95,7 @@
 	<xsl:param name="level"/>
 	<xsl:param name="nodeName"/>
 	<a description="{description}" role="button" class="list-group-item" name="attributeDef"><xsl:value-of select="name"/></a>
-	<xsl:apply-templates select="property">
+	<xsl:apply-templates select="attribute">
 		<xsl:with-param name="nodeName" select="name"/>
 	</xsl:apply-templates>
 </xsl:template>
@@ -103,7 +103,7 @@
 <xsl:template match="propertyDefinition">
 	<xsl:param name="level"/>
 	<xsl:param name="nodeName"/>
-	<a description="{description}" role="button" class="list-group-item" name="unitModifierDef"><xsl:value-of select="name"/></a>
+	<a description="{description}" role="button" class="list-group-item" name="propertyDef"><xsl:value-of select="name"/></a>
 	<xsl:apply-templates select="attribute">
 		<xsl:with-param name="nodeName" select="name"/>
 	</xsl:apply-templates>

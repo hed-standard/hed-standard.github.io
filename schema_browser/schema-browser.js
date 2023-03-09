@@ -374,7 +374,7 @@ function infoBoardMouseoverEvent(event) {
                 finalText = parsed.join("");
         }
             finalText = finalText == null || finalText.length == 0 ? "" : "<p><i>Attribute</i></p>"+finalText;
-        var disp_div = ["schemaNode", "unitClassDef", "unitModifierDef", "valueClassDef", "schemaAttributeDef", "propertyDef"];
+        var disp_div = ["schemaNode", "unitClassDef", "unitModifierDef", "valueClassDef", "attributeDef", "propertyDef"];
         if (disp_div.includes(selected.attr('name'))) {
             $("h4#title").text(path);
             $("p#tag").text("Short form: " + node.text());
