@@ -404,7 +404,7 @@ function getPath(node) {
         else
             break;
     }
-    return "/" + path;
+    return path;
 }
 
 /**
