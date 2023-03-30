@@ -23,11 +23,10 @@ function load(schema_name) {
     scrollToTopBtn.addEventListener("click", backToTop);
 
     // Get and load schema according to official or prerelease
-    schema_repo_path = 'hed-schemas/contents'; // Github API link
     standard_schema_api_path = github_endpoint + "/standard_schema";
     library_schema_api_path = github_endpoint + "/library_schemas";
-    if (schema_repo_path.includes('prerelease')) {
-        var schema_link = getPrereleaseXml(schema_repo_path);
+    if (schema_name.includes('prerelease')) {
+        var schema_link = getPrereleaseXml(standard_schema_api_path + "/prerelease");
         // load default schema accordingly
         loadSchema(schema_link)
     }
@@ -194,10 +193,9 @@ function buildSchemaVersionDropdown(schema_name) {
 /**
  * Get the unique prerelease schema xml from prerelease dir
  */
-function getPrereleaseXml(prerelease_repo) {
-    var hedxml_url = github_endpoint + "/" + prerelease_repo;
+function getPrereleaseXml(prerelease_endpoint) {
     var download_url = "";
-    $.ajax({dataType: "json", url: hedxml_url, async: false, success: function(data) {
+    $.ajax({dataType: "json", url: prerelease_endpoint, async: false, success: function(data) {
         data.forEach(function(item,index) {
             if (item["name"].includes('xml') && download_url === "") {
                 download_url = item["download_url"];
