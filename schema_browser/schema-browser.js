@@ -111,8 +111,7 @@ function getLibarySchemas() {
 
     $.ajax({dataType: "json", url: libray_schemas_endpoint, async: false, success: function(data) {
         data.forEach(function(item,index) {
-            if (item["name"] != "testlib")
-                library_schemas.push(item["name"]);
+            library_schemas.push(item["name"]);
         })
     }});
     return library_schemas;
