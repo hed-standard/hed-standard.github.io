@@ -371,11 +371,10 @@ function infoBoardMouseoverEvent(event) {
                 parsed = parsed.slice(0,parsed.length-1); // last item is empty (result of extra , at the end)
                 finalText = parsed.join("");
         }
-            finalText = finalText == null || finalText.length == 0 ? "" : "<p><i>Attribute</i></p>"+finalText;
+            finalText = finalText == null || finalText.length == 0 ? "" : finalText;
         var disp_div = ["schemaNode", "unitClassDef", "unitModifierDef", "valueClassDef", "attributeDef", "propertyDef"];
         if (disp_div.includes(selected.attr('name'))) {
             $("h4#title").text(path);
-            $("p#tag").text("Short form: " + node.text());
             $("p#description").text(selected.attr("description"));
             $("div#attribute_info").html(finalText);
         }
@@ -434,7 +433,7 @@ function toLevel(level) {
 function searchNode(input) {
     input = processNodeNameInput(input);
     if (schemaNodes.includes(input)) {
-	toNode(input);
+	    toNode(input);
     }
 }
 function processNodeNameInput(input) {
@@ -479,7 +478,7 @@ function getSchemaNodes() {
 	    const searchText = $("#searchTags").val();
 	    const capitalized = capitalizeFirstLetter(searchText);
 	    if (schemaNodes.includes(capitalized))
-		toNode(capitalized);
+		    toNode(capitalized);
         }
     });
 }
