@@ -34,6 +34,7 @@ function load(schema_name) {
             var schema_link = getPrereleaseXml(library_schema_api_path + "/" + name_without_prerelease + "/prerelease");
         }
         // load preprelease schema accordingly
+        console.log(schema_link)
         loadSchema(schema_link)
 
         // add schema names to schema dropdown button
