@@ -391,7 +391,8 @@ function infoBoardMouseoverEvent(event) {
             finalText = finalText == null || finalText.length == 0 ? "" : finalText;
         var disp_div = ["schemaNode", "unitClassDef", "unitModifierDef", "valueClassDef", "attributeDef", "propertyDef"];
         if (disp_div.includes(selected.attr('name'))) {
-            $("h4#title").text(path);
+            $("h4#title").text(node.text());
+            $("p#tag").text("Long form: " + path);
             $("p#description").text(selected.attr("description"));
             $("div#attribute_info").html(finalText);
         }
