@@ -481,25 +481,25 @@ function getSchemaNodes() {
 	schemaNodes.push($(this).attr("tag"));
     });    
     
-//     /* add autocomplete and search */
-//     $( function() {
-//     $( "#searchTags" ).autocomplete({
-//       source: schemaNodes,
-//       select: function(event, ui) {
-// 	toNode(ui.item.value);
-//       }
-//     });
-//   } );
-    autocomplete(document.getElementById("searchTags"), schemaNodes);
-    /* search on enter key press */
-    $("#searchTags").on('keyup', function (e) {
-        if (e.key === 'Enter' || e.keyCode === 13) {
-	    const searchText = $("#searchTags").val();
-	    const capitalized = capitalizeFirstLetter(searchText);
-	    if (schemaNodes.includes(capitalized))
-		    toNode(capitalized);
-        }
-    });
+    /* add autocomplete and search */
+    $( function() {
+        $( "#searchTags" ).autocomplete({
+          source: schemaNodes,
+          select: function(event, ui) {
+            toNode(ui.item.value);
+            }
+          });
+    } );
+    //autocomplete(document.getElementById("searchTags"), schemaNodes);
+    ///* search on enter key press */
+    //$("#searchTags").on('keyup', function (e) {
+        //if (e.key === 'Enter' || e.keyCode === 13) {
+	    //const searchText = $("#searchTags").val();
+	    //const capitalized = capitalizeFirstLetter(searchText);
+	    //if (schemaNodes.includes(capitalized))
+		    //toNode(capitalized);
+        //}
+    //});
 }
 
 function capitalizeFirstLetter(string) {
