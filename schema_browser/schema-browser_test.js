@@ -36,7 +36,7 @@ function load(schema_name) {
         $("#schemaDropdown").append(html);
         library_schemas = getLibarySchemas();
         for (var i=0; i < library_schemas.length; i++) {
-            var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="loadDefaultSchema(\'' + library_schemas[i] + '\')">' + library_schemas[i].toUpperCase() + '</a>';
+            var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="loadDefaultSchema(\'' + library_schemas[i] + '\')">' + library_schemas[i] + '</a>';
             $("#schemaDropdown").append(html);
         }
         
