@@ -30,12 +30,12 @@
 	<div class="attribute" style="display: none" name="{$nodeName}">
 	<xsl:value-of select="name"/>: 
 	<xsl:choose>
-        	<xsl:when test="value">
+        <xsl:when test="value">
 			<xsl:for-each select="value">
 				<xsl:value-of select="."/>,
 			</xsl:for-each> 
 		</xsl:when>
-        	<xsl:otherwise>true</xsl:otherwise> 
+        <xsl:otherwise>true</xsl:otherwise> 
 	</xsl:choose>
 	</div>
 </xsl:template>

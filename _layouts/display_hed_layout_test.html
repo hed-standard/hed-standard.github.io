@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en-US'}}">
+   <head>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="schema_browser/hed-collapsible.css">
+      <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <script src="/schema_browser/schema-browser_test.js"></script>
+      <style>
+        .autocomplete {
+        /*the container must be positioned relative:*/
+        position: relative;
+        display: inline-block;
+        }
+        input {
+        border: 1px solid transparent;
+        padding: 10px;
+        font-size: 16px;
+        }
+        input[type=text] {
+        width: 100%;
+        }
+        input[type=submit] {
+        background-color: DodgerBlue;
+        color: #fff;
+        }
+        .autocomplete-items {
+        position: absolute;
+        border: 1px solid #d4d4d4;
+        border-bottom: none;
+        border-top: none;
+        z-index: 99;
+        /*position the autocomplete items to be the same width as the container:*/
+        top: 100%;
+        left: 0;
+        right: 0;
+        }
+        .autocomplete-items div {
+        padding: 10px;
+        cursor: pointer;
+        background-color: #fff;
+        border-bottom: 1px solid #d4d4d4;
+        }
+        .autocomplete-items div:hover {
+        /*when hovering an item:*/
+        background-color: #e9e9e9;
+        }
+        .autocomplete-active {
+        /*when navigating through the items using the arrow keys:*/
+        background-color: DodgerBlue !important;
+        color: #ffffff;
+        }
+      </style>
+   </head>
+   <body>
+      <div class="container-fluid">
+         <div class="row" name="header-section">
+            <div class="col col-lg-12">
+               <h1 class="display-4 mt-4 text-center text-primary" style="font-family:'Helvetica'">{{ page.title }}</h1>
+               <div class="accordion" id="accordionExample">
+                  <div class="card">
+                     <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                           <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#schemaDesc" aria-expanded="true" aria-controls="schemaDesc">
+                              Schema information
+                           </button>
+                        </h5>
+                     </div>
+                     <div id="schemaDesc" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                           <p class="text-justify fw-light" id="prologue"></p>
+                           <p class="text-justify fw-light" id="epilogue"></p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <hr class="my-4">
+            </div>
+         </div>
+         <div class="row" name="button-section">
+            <div class="btn-toolbar mb-2" role="toolbar" aria-label="Toolbar with button groups">
+               <div class="dropdown mr-2">
+                  <button class="btn btn-light dropdown-toggle" type="button" id="dropdownSchemaButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                  Schema
+                  </button>
+                  <div class="dropdown-menu" id="schemaDropdown" aria-labelledby="dropdownSchemaButton"></div>
+               </div>
+               <div class="dropdown mr-2">
+                  <button class="btn btn-light dropdown-toggle" type="button" id="dropdownSchemaVersionButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                  Schema version
+                  </button>
+                  <div class="dropdown-menu" id="schemaVersionDropdown" aria-labelledby="dropdownSchemaVersionButton"></div>
+               </div>
+            </div>
+         </div>
+         <div class="row" name="button-section">
+            <div class="btn-toolbar mb-2" role="toolbar" aria-label="Toolbar with button groups">
+               <div class="btn-group mr-2">
+                  <button type="button" class="btn btn-light" onclick="showHideAll()">Expand/Collapse all</button>
+               </div>
+               <div class="input-group mr-2">
+                  <div class="input-group-prepend">
+                     <span class="input-group-text" id="searchTagLabel">Search term</span>
+                  </div>
+                  <div class="ui-widget">
+                     <input type="text" class="form-control" id="searchTags" aria-describedby="searchTag">
+                  </div>
+               </div>
+               <div class="input-group mr-2">
+                  <div class="input-group-prepend">
+                     <span class="input-group-text" id="toLevelLabel">Expand to level</span>
+                  </div>
+                  <input type="text" class="form-control" id="toLevel" oninput="toLevel(this.value)" aria-describedby="toLevel">
+               </div>
+            </div>
+         </div>
+         <div class="row" name="hed-version">
+            <div class="col col-lg-3">
+               <h1 id="hed" style="font-family:ultra, sans-serif;color:#0099ff">HED</h1>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-6" name="schema-section">
+               <div id="schema" class="list-group list-group-root well" status="show"></div>
+               <h2 id="hed" style="font-family:ultra, sans-serif;color:#0099ff">Additional schema properties</h2>
+               <div class="accordion" id="schemaDefinitions" style="display:none">
+                  <div class="card">
+                     <div class="card-header" id="headingOne">
+                        <button href="#unitClassDefinitions" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne">
+                        Unit class definitions
+                        </button>
+                     </div>
+                     <div id="unitClassDefinitions" class="list-group collapse multi-collapse"></div>
+                  </div>
+                  <div class="card">
+                     <div class="card-header" id="headingTwo">
+                        <button href="#unitModifierDefinitions" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseTwo">
+                        Unit modifier definitions
+                        </button>
+                     </div>
+                     <div id="unitModifierDefinitions" class="list-group collapse multi-collapse"></div>
+                  </div>
+                  <div class="card">
+                     <div class="card-header" id="headingThree">
+                        <button href="#valueClassDefinitions" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseThree">
+                        Value class definitions
+                        </button>
+                     </div>
+                     <div id="valueClassDefinitions" class="list-group collapse multi-collapse"></div>
+                  </div>
+                  <div class="card">
+                     <div class="card-header" id="headingFour">
+                        <button href="#schemaAttributeDefinitions" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseThree">
+                        Schema attribute definitions
+                        </button>
+                     </div>
+                     <div id="schemaAttributeDefinitions" class="list-group collapse multi-collapse"></div>
+                  </div>
+                  <div class="card">
+                     <div class="card-header" id="headingFive">
+                        <button href="#propertyDefinitions" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseThree">
+                        Property definitions
+                        </button>
+                     </div>
+                     <div id="propertyDefinitions" class="list-group collapse multi-collapse"></div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-5" name="info-board-section">
+               <div id="infoBoard" class="border border-primary rounded" editable="true">
+                  <div>
+                     <p id="freezeInfo">Press enter/return to freeze the info board</p>
+                     <h4 id="title"><i>Hover a tag for more information</i></h4>
+                     <p id="tag"></p>
+                     <p id="description"></p>
+                     <div id="attribute_info"></div>
+                     <p></p>
+                  </div>
+               </div>
+            </div>
+            <div class="col"></div>
+         </div>
+      </div>
+      <!-- Back to top button -->
+      <button
+         type="button"
+         class="btn btn-primary btn-floating btn-lg"
+         id="btn-back-to-top"
+         >Scroll to top
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+      </button>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      <script>
+         load("{{ page.schema_name }}");
+      </script>
+   </body>
+</html>
