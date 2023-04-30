@@ -46,6 +46,7 @@
                     <li><a class="dropdown-item" href="https://www.hedtags.org/display_hed.html">HED schema browser</a></li>
                     <li><a class="dropdown-item" href="https://hedtools.ucsd.edu/hed">HED online tools</a></li>
                     <li><a class="dropdown-item" href="https://github.com/hed-standard">HED on GitHub</a></li>
+                    <li><a class="dropdown-item" href="https://www.youtube.com/playlist?list=PLeII6cRFsP6L5S6icwRrJp0DHkhOHtbp-">HED on YouTube</a></li>
                 </ul>
             </div>
         </li>
@@ -56,6 +57,7 @@
       </div>
 
     </div>
+    </div>
   </nav>
 
   <!-- Icon Section -->
@@ -65,29 +67,36 @@
             <h2 class="text-success">HED History</h2>
             <p class="indigo-text">The system of Hierarchical Event Descriptors (HED) was first developed by Nima Bigdely-Shamlo, during his dissertation work at the Swartz Center at the University of California San Diego (<a href="https://ieeexplore.ieee.org/document/6736796">Bigdely-Shamlo et al., 2013</a>), to support a proposed EEG measure search engine. This <b>first-generation HED</b> used a strictly hierarchical term schema (structured vocabulary), making HED event descriptions ('HED strings') each a single term hierarchy (simplified example: <i>shape/square/red</i>).</p>
             <p>Within a subsequent U.S. ARL project, Kay Robbins of University of Texas San Antonio pointed out that this would lead to many duplications of terms in the schema tree (a simplified example, the distinct hierarchic strings: <i>Shape/Square/Red; Shape/Triangle/Red</i>). <b>Second-generation HED</b> (<a href="https://www.frontiersin.org/articles/10.3389/fninf.2016.00042/full">Bigdely-Shamlo et al. 2016</a>) therefore made HED strings <i>heterarchical</i> (comma-separated collections of schema hierarchies) -- a simplified example: <i>(Shape/Square, Color/Red), (Shape/Triangle, Color/Red)</i>; here the term red needs appear in only one place in the HED schema, in its native (<i>Color</i>) hierarchy.</p>
-            <p>Most recently, <b>third-generation HED</b> incorporated some key design advances to ease the process of data annotation, improve the efficiency of HED tools for event search, and create a convenient way to marry HED annotation to BIDS event specification (<a href="https://www.sciencedirect.com/science/article/pii/S1053811921010387">Robbins et al., 2021</a>). HED (Gen 3) also includes the concept of extending the HED vocabulary by adding field-specialized <b>HED Library Schema</b>.</p>
-            <p>HED is now maintained and developed by the volunteer <b>HED Working Group</b>, whose work is currently funded in part by a grant from the US National Institute of Mental Health (NIMH,  <a href="https://reporter.nih.gov/search/rPekcZLackOVl5wd7mIO0w/project-details/10480619">RF1-MH126700</a>). HED data are housed online in its <a href="https://github.com/hed-standard">Github hed-standard</a> site; its public-facing website is <a href="https://hedtags.org">hedtags.org</a>. HED Tools for performing HED annotation and event search are available online, for use in Python scripts, and for MATLAB, in particular within the <a href="https://sccn.ucsd.edu/eeglab/index.php">EEGLAB</a> environment. HED annotation is now formally accepted for use with data formatted according to the <a href="https://bids.neuroimaging.io/">BIDS</a> standards.</p>
+            <p>Most recently, <b>third-generation HED</b> incorporated some key design advances to ease the process of data annotation, improve the efficiency of HED tools for event search, and create a convenient way to marry HED annotation to BIDS event specification (<a href="https://www.sciencedirect.com/science/article/pii/S1053811921010387">Robbins et al., 2021</a>, <a href="https://pubmed.ncbi.nlm.nih.gov/34970709/">Robbins et al., 2022</a>). HED (Gen 3) also includes the concept of extending the HED vocabulary by adding field-specialized <b>HED Library Schema</b>.</p>
+            <p>HED is now maintained and developed by the volunteer <b>HED Working Group</b>, whose work is currently funded in part by a grant from the US National Institute of Mental Health (NIMH,  <a href="https://reporter.nih.gov/search/rPekcZLackOVl5wd7mIO0w/project-details/10480619">RF1-MH126700</a>). HED data are housed online in its <a href="https://github.com/hed-standard">Github hed-standard</a> site; its public-facing website is <a href="https://www.hedtags.org">www.hedtags.org</a>. HED Tools for performing HED annotation and event search are available online, for use in Python scripts, and for MATLAB, in particular within the <a href="https://sccn.ucsd.edu/eeglab/index.php">EEGLAB</a> environment. HED annotation is now formally accepted for use with data formatted according to the <a href="https://bids.neuroimaging.io/">BIDS</a> standards.</p>
             <p>To inquire about contributing to further HED development or joining the HED Working Group, follow links on the <a href="https://hedtags.org">HEDtags</a> site.</p>
 
             <h4 class="text">HED Working Group (01/23 -)</h4>
 
-            <span>
-Scott Makeig  (smakeig@ucsd.edu)<br>
-Kay Robbins (Technical Lead) (kay.robbins@utsa.edu)<br>
-Dung Truong (dutruong@ucsd.edu)<br>
-Monique Denissen <><br>
-Yahya Shirazi (syshirazi@ucsd.edu)<br>
-Deepa Gupta <><br>
-Arnaud Delorme (adelorme@ucsd.edu)<br>
-Dora Hermes (hermes.dora@mayo.edu)<br>
-Tal Pal Attia (attia.tal@mayo.edu)<br>
-Ian Callanan (Technical Programming) (ian.callanan@utsa.edu)<br></p>
-            <span>
-        </div>
-    </div>
+<p>
+Scott Makeig (Strategic Lead) [smakeig@ucsd.edu]<br>
+Kay Robbins (Technical Lead) [kay.robbins@utsa.edu]<br>
+Dung Truong [dutruong@ucsd.edu]<br>
+Monique Denissen [monique.denissen@sbg.ac.at]<br>
+Yahya Shirazi [syshirazi@ucsd.edu]<br>
+Deepa Gupta [d2gupta@ucsd.edu]<br>
+Arnaud Delorme [adelorme@ucsd.edu]<br>
+Dora Hermes [hermes.dora@mayo.edu]<br>
+Tal Pal Attia [attia.tal@mayo.edu]<br>
+Ian Callanan [ian.callanan@utsa.edu]<br>
+Alexander Jones [alexander.jones@utsa.edu]<br/>
+</p>                
+            
+        
+<p>In addition to current support from NIH 1R01MH126700-01, 
+the HED Working Group gratefully acknowledges 
+past support from the Army Research
+Laboratory under Cooperative Agreement Number W911NF-10–2–0022NIH as well as from NIH R01 EB023297–03, R01 NS047293-l4, and
+R24 MH120037–01 and the Swartz Foundation. </p>
+</div>
+</div>
+
   </div>
-
-
     <!-- Footer-->
     <!--
         <footer class="py-3 bg-dark bg-gradient">
