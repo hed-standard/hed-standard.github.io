@@ -22,6 +22,12 @@ function load(schema_name) {
     // When the user clicks on the button, scroll to the top of the document
     scrollToTopBtn.addEventListener("click", backToTop);
 
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('schema')) {
+        schema_name = urlParams.get('schema');
+    }
+
+    console.log(schema_name)
     // Get and load schema according to official or prerelease
     standard_schema_api_path = github_endpoint + "/standard_schema";
     library_schema_api_path = github_endpoint + "/library_schemas";
@@ -52,7 +58,6 @@ function load(schema_name) {
         var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="loadDefaultSchema(\'standard\')">Standard</a>';
         $("#schemaDropdown").append(html);
         library_schemas = getLibarySchemas();
-        console.log(library_schemas);
         for (var i=0; i < library_schemas.length; i++) {
             var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="loadDefaultSchema(\'' + library_schemas[i] + '\')">' + library_schemas[i] + '</a>';
             $("#schemaDropdown").append(html);
