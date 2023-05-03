@@ -59,29 +59,29 @@ function load(schema_name) {
 
     // set synonym getter behaviors
     $("#syn_getter_btn").click(function() {
-	let host = "http://127.0.0.1:5000/";
-	let query = host + "synonym?word=" + $("#searchTags").val();
-	var synonyms = null;
+    let host = "http://127.0.0.1:5000/";
+    let query = host + "synonym?word=" + $("#searchTags").val();
+    var synonyms = null;
         $.ajax({dataType: "json", url: query, async: false, 
-		success: function(data) {
-		    synonyms = [];
-		    synonyms.push($("#searchTags").val());
-		    synonyms = synonyms.concat(data["synonyms"]);
-        	},
-		error: function(err) {
-		    console.log(err);
-		}
-	});
-	if (synonyms != null) {
-	    $("#syn_getter").empty();
-	    synonyms.forEach(function(syn) {
-	    	const capitalized = capitalizeFirstLetter(syn);
-		let matched_node = schemaNodes.filter(elem => elem.includes(capitalized) || elem.includes(syn));
-		if (matched_node.length !== 0) {
-		    matched_node.forEach(node => $("#syn_getter").append(`<option value="${node}" style="font-size:40px;">${node}</option>`));
-		}
-	    });
-	}
+        success: function(data) {
+            synonyms = [];
+            synonyms.push($("#searchTags").val());
+            synonyms = synonyms.concat(data["synonyms"]);
+            },
+        error: function(err) {
+            console.log(err);
+        }
+    });
+    if (synonyms != null) {
+        $("#syn_getter").empty();
+        synonyms.forEach(function(syn) {
+            const capitalized = capitalizeFirstLetter(syn);
+        let matched_node = schemaNodes.filter(elem => elem.includes(capitalized) || elem.includes(syn));
+        if (matched_node.length !== 0) {
+            matched_node.forEach(node => $("#syn_getter").append(`<option value="${node}" style="font-size:40px;">${node}</option>`));
+        }
+        });
+    }
     });
     $("#syn_getter").change(function() { toNode($(this).val()) });
 
@@ -134,14 +134,14 @@ function getGithubSchema(schema_name) {
 
     $.ajax({dataType: "json", url: xml_path, async: false, success: function(data) {
         data.forEach(function(item,index) {
-	    if (item["name"].includes('xml')) {
+        if (item["name"].includes('xml')) {
             var version = item["name"].split('(.*)(.xml)')[0];
             var link = item["download_url"];
             // add to global dict
             githubSchema["version"].push(version);
             githubSchema["download_link"].push(link);
             githubSchema["isDeprecated"].push(false);
-	    }
+        }
         })
     }});
     Object.keys(githubSchema).forEach(key => githubSchema[key].reverse());
@@ -150,19 +150,19 @@ function getGithubSchema(schema_name) {
     var deprecated = {"version": [], "download_link": [], "isDeprecated": []};
     $.ajax({dataType: "json", url: hedxml_url, async: false, success: function(data) {
         data.forEach(function(item,index) {
-	    if (item["name"].includes('xml')) {
+        if (item["name"].includes('xml')) {
                 var version = item["name"].split('(.*)(.xml)')[0];
                 var link = item["download_url"];
                 // add to global dict
                 deprecated["version"].push(version);
                 deprecated["download_link"].push(link);
                 deprecated["isDeprecated"].push(true);
-	    }
+        }
         })
     }});
     Object.keys(deprecated).forEach(key => deprecated[key].reverse());
     Object.keys(deprecated).forEach(key => {
-	deprecated[key].forEach(elem => githubSchema[key].push(elem))
+    deprecated[key].forEach(elem => githubSchema[key].push(elem))
     });
     return githubSchema;
 }
@@ -231,20 +231,20 @@ function loadSchema(url)
     let re = /HED.*xml/;
     let schemaVersion = url.match(re)[0];
     if ((schemaVersion.charAt(3) >= "8" && !schemaVersion.includes('alpha')) || url.includes('test')) // assuming schemaVersion has form 'HEDx.x.x.*'
-	useNewFormat = true;
+    useNewFormat = true;
     else {
-	useNewFormat = false;
+    useNewFormat = false;
     }
     if (url.includes('deprecated')) // schema link will be */deprecated/*.xml if deprecated
-	var isDeprecated = true;
+    var isDeprecated = true;
     else {
-	var isDeprecated = false;
+    var isDeprecated = false;
     }
     $.get(url, function(data,status) {
         xml = $.parseXML(data);
         displayResult(xml, useNewFormat, isDeprecated);
-	toLevel(2);
-	getSchemaNodes();
+    toLevel(2);
+    getSchemaNodes();
     });
     $('#dropdownSchemaVersionButton').text('Version: ' + schemaVersion.split('.xml')[0]);
 }
@@ -302,9 +302,9 @@ function loadXSL(filename) {
 function displayResult(xml, useNewFormat, isDeprecated)
 {
     if (useNewFormat)
-    	xsl = loadXSL("/schema_browser/hed-schema.xsl");
+        xsl = loadXSL("/schema_browser/hed-schema.xsl");
     else
-    	xsl = loadXSL("/schema_browser/hed-schema-old.xsl");
+        xsl = loadXSL("/schema_browser/hed-schema-old.xsl");
     // code for IE
     if (window.ActiveXObject || xhttp.responseType == "msxml-document")
     {
@@ -318,29 +318,29 @@ function displayResult(xml, useNewFormat, isDeprecated)
         xsltProcessor.importStylesheet(xsl);
         resultDocument = xsltProcessor.transformToFragment(xml, document);
     }
-	if (useNewFormat) {
+    if (useNewFormat) {
             $("#schema").html(resultDocument.getElementById("schema").innerHTML);
             var prologue = resultDocument.getElementById("prologue").innerHTML;
             $("#prologue").html(prologue.replaceAll("\n", "<br>"));
             var epilogue = resultDocument.getElementById("epilogue").innerHTML;
             $("#epilogue").html(epilogue.replaceAll("\n", "<br>"));
-	        $("#schemaDefinitions").show();
+            $("#schemaDefinitions").show();
             $("#unitClassDefinitions").html(resultDocument.getElementById("unitClassDefinitions").innerHTML);
             $("#unitModifierDefinitions").html(resultDocument.getElementById("unitModifierDefinitions").innerHTML);
             $("#valueClassDefinitions").html(resultDocument.getElementById("valueClassDefinitions").innerHTML);
             $("#schemaAttributeDefinitions").html(resultDocument.getElementById("schemaAttributeDefinitions").innerHTML);
             $("#propertyDefinitions").html(resultDocument.getElementById("propertyDefinitions").innerHTML);
             var versionText = "HED " + resultDocument.getElementById("hed-version").innerHTML;
-	    versionText = isDeprecated ? versionText + " (deprecated)" : versionText;
-    	    $("#hed").html(versionText);
-	}
-	else {
-	    $("#schema").html(resultDocument);
-	    $("#schemaDefinitions").hide();
-    	    var versionText = "HED " + $("#hed-version").text();
-	    versionText = isDeprecated ? versionText + " (deprecated)" : versionText;
-    	    $("#hed").html(versionText);
-	}
+        versionText = isDeprecated ? versionText + " (deprecated)" : versionText;
+            $("#hed").html(versionText);
+    }
+    else {
+        $("#schema").html(resultDocument);
+        $("#schemaDefinitions").hide();
+            var versionText = "HED " + $("#hed-version").text();
+        versionText = isDeprecated ? versionText + " (deprecated)" : versionText;
+            $("#hed").html(versionText);
+    }
     $("a").mouseover({format: useNewFormat},infoBoardMouseoverEvent);
 }
 
@@ -432,7 +432,7 @@ function toLevel(level) {
 function searchNode(input) {
     input = processNodeNameInput(input);
     if (schemaNodes.includes(input)) {
-	    toNode(input);
+        toNode(input);
     }
 }
 function processNodeNameInput(input) {
@@ -462,7 +462,7 @@ function getSchemaNodes() {
     /* Initialize schema nodes list and set behavior of search box */
     $("a[name='schemaNode']").each(function() {
         var nodeName = $(this).attr("tag");
-	    schemaNodes.push(nodeName);
+        schemaNodes.push(nodeName);
 
         // build the suggestedtags dictionary
         $(this).nextAll(`.attribute[name='${nodeName}']`).each(function(index) {
@@ -476,6 +476,7 @@ function getSchemaNodes() {
                     if (element.trim().length > 0) {
                         cleaned = element.trim();
                         cleaned.replace((/[\t\n\r]/gm),"");
+                        cleaned = cleaned.toLowerCase();
                         clean_suggestedTags.push(cleaned);
                     }
                 });
@@ -505,13 +506,14 @@ function getSchemaNodes() {
     */
     autocomplete(document.getElementById("searchTags"), schemaNodes, suggestedTagsDict);
 
-    /* search on enter key press */
+    /* go to tag on enter key press */
     $("#searchTags").on('keyup', function (e) {
         if (e.key === 'Enter' || e.keyCode === 13) {
-	    const searchText = $("#searchTags").val();
-	    const capitalized = capitalizeFirstLetter(searchText);
-	    if (schemaNodes.includes(capitalized))
-		    toNode(capitalized);
+        var searchText = $("#searchTags").val();
+        searchText = searchText.toLowerCase();
+        searchText = capitalizeFirstLetter(searchText);
+        if (schemaNodes.includes(searchText))
+            toNode(searchText);
         }
     });
 }
@@ -544,6 +546,7 @@ function autocomplete(inp, arr, suggestedTagsDict) {
     /*execute a function when someone writes in the text field:*/
     inp.addEventListener("input", function(e) {
         var a, b, i, val = this.value;
+        val = val.toLowerCase(); // make uniform
         /*close any already open lists of autocompleted values*/
         closeAllLists();
         if (!val) { return false;}
@@ -557,7 +560,7 @@ function autocomplete(inp, arr, suggestedTagsDict) {
         /*for each item in the array...*/
         for (i = 0; i < arr.length; i++) {
           /*check if the item starts with the same letters as the text field value:*/
-          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          if (arr[i].substr(0, val.length).toLowerCase() == val) {
             /*create a DIV element for each matching element:*/
             b = document.createElement("DIV");
             /*make the matching letters bold:*/
