@@ -26,27 +26,9 @@ function load(schema_name) {
     standard_schema_api_path = github_endpoint + "/standard_schema";
     library_schema_api_path = github_endpoint + "/library_schemas";
     if (schema_name.includes('prerelease')) {
-        var name_without_prerelease = schema_name.replace('_prerelease', '');
-        if (name_without_prerelease == "standard") {
-            var schema_link = getPrereleaseXml(standard_schema_api_path + "/prerelease");
-        }
-        else {
-            var schema_link = getPrereleaseXml(library_schema_api_path + "/" + name_without_prerelease + "/prerelease");
-        }
-        // load preprelease schema accordingly
-        console.log(schema_link)
+        var schema_link = getPrereleaseXml(standard_schema_api_path + "/prerelease");
+        // load default schema accordingly
         loadSchema(schema_link)
-
-        // add schema names to schema dropdown button
-        var standard_prerelease_schema_link = getPrereleaseXml(standard_schema_api_path + "/prerelease");
-        var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="loadSchema(\'' + standard_prerelease_schema_link + '\')">Standard</a>';
-        $("#schemaDropdown").append(html);
-        library_schemas = getLibarySchemas();
-        for (var i=0; i < library_schemas.length; i++) {
-            var library_schema_link = getPrereleaseXml(library_schema_api_path + "/" + library_schemas[i] + "/prerelease"); 
-            var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="loadSchema(\'' + library_schema_link + '\')">' + library_schemas[i] + '</a>';
-            $("#schemaDropdown").append(html);
-        }
     }
     else {
         // add schema names to schema dropdown button
@@ -77,29 +59,29 @@ function load(schema_name) {
 
     // set synonym getter behaviors
     $("#syn_getter_btn").click(function() {
-	let host = "http://127.0.0.1:5000/";
-	let query = host + "synonym?word=" + $("#searchTags").val();
-	var synonyms = null;
+    let host = "http://127.0.0.1:5000/";
+    let query = host + "synonym?word=" + $("#searchTags").val();
+    var synonyms = null;
         $.ajax({dataType: "json", url: query, async: false, 
-		success: function(data) {
-		    synonyms = [];
-		    synonyms.push($("#searchTags").val());
-		    synonyms = synonyms.concat(data["synonyms"]);
-        	},
-		error: function(err) {
-		    console.log(err);
-		}
-	});
-	if (synonyms != null) {
-	    $("#syn_getter").empty();
-	    synonyms.forEach(function(syn) {
-	    	const capitalized = capitalizeFirstLetter(syn);
-		let matched_node = schemaNodes.filter(elem => elem.includes(capitalized) || elem.includes(syn));
-		if (matched_node.length !== 0) {
-		    matched_node.forEach(node => $("#syn_getter").append(`<option value="${node}" style="font-size:40px;">${node}</option>`));
-		}
-	    });
-	}
+        success: function(data) {
+            synonyms = [];
+            synonyms.push($("#searchTags").val());
+            synonyms = synonyms.concat(data["synonyms"]);
+            },
+        error: function(err) {
+            console.log(err);
+        }
+    });
+    if (synonyms != null) {
+        $("#syn_getter").empty();
+        synonyms.forEach(function(syn) {
+            const capitalized = capitalizeFirstLetter(syn);
+        let matched_node = schemaNodes.filter(elem => elem.includes(capitalized) || elem.includes(syn));
+        if (matched_node.length !== 0) {
+            matched_node.forEach(node => $("#syn_getter").append(`<option value="${node}" style="font-size:40px;">${node}</option>`));
+        }
+        });
+    }
     });
     $("#syn_getter").change(function() { toNode($(this).val()) });
 
@@ -152,14 +134,14 @@ function getGithubSchema(schema_name) {
 
     $.ajax({dataType: "json", url: xml_path, async: false, success: function(data) {
         data.forEach(function(item,index) {
-	    if (item["name"].includes('xml')) {
-                var version = item["name"].split('(.*)(.xml)')[0];
-                var link = item["download_url"];
-                // add to global dict
-                githubSchema["version"].push(version);
-                githubSchema["download_link"].push(link);
-                githubSchema["isDeprecated"].push(false);
-	    }
+        if (item["name"].includes('xml')) {
+            var version = item["name"].split('(.*)(.xml)')[0];
+            var link = item["download_url"];
+            // add to global dict
+            githubSchema["version"].push(version);
+            githubSchema["download_link"].push(link);
+            githubSchema["isDeprecated"].push(false);
+        }
         })
     }});
     Object.keys(githubSchema).forEach(key => githubSchema[key].reverse());
@@ -168,19 +150,19 @@ function getGithubSchema(schema_name) {
     var deprecated = {"version": [], "download_link": [], "isDeprecated": []};
     $.ajax({dataType: "json", url: hedxml_url, async: false, success: function(data) {
         data.forEach(function(item,index) {
-	    if (item["name"].includes('xml')) {
+        if (item["name"].includes('xml')) {
                 var version = item["name"].split('(.*)(.xml)')[0];
                 var link = item["download_url"];
                 // add to global dict
                 deprecated["version"].push(version);
                 deprecated["download_link"].push(link);
                 deprecated["isDeprecated"].push(true);
-	    }
+        }
         })
     }});
     Object.keys(deprecated).forEach(key => deprecated[key].reverse());
     Object.keys(deprecated).forEach(key => {
-	deprecated[key].forEach(elem => githubSchema[key].push(elem))
+    deprecated[key].forEach(elem => githubSchema[key].push(elem))
     });
     return githubSchema;
 }
@@ -249,20 +231,20 @@ function loadSchema(url)
     let re = /HED.*xml/;
     let schemaVersion = url.match(re)[0];
     if ((schemaVersion.charAt(3) >= "8" && !schemaVersion.includes('alpha')) || url.includes('test')) // assuming schemaVersion has form 'HEDx.x.x.*'
-	useNewFormat = true;
+    useNewFormat = true;
     else {
-	useNewFormat = false;
+    useNewFormat = false;
     }
     if (url.includes('deprecated')) // schema link will be */deprecated/*.xml if deprecated
-	var isDeprecated = true;
+    var isDeprecated = true;
     else {
-	var isDeprecated = false;
+    var isDeprecated = false;
     }
     $.get(url, function(data,status) {
         xml = $.parseXML(data);
         displayResult(xml, useNewFormat, isDeprecated);
-	toLevel(2);
-	getSchemaNodes();
+    toLevel(2);
+    getSchemaNodes();
     });
     $('#dropdownSchemaVersionButton').text('Version: ' + schemaVersion.split('.xml')[0]);
 }
@@ -320,9 +302,9 @@ function loadXSL(filename) {
 function displayResult(xml, useNewFormat, isDeprecated)
 {
     if (useNewFormat)
-    	xsl = loadXSL("/schema_browser/hed-schema.xsl");
+        xsl = loadXSL("/schema_browser/hed-schema.xsl");
     else
-    	xsl = loadXSL("/schema_browser/hed-schema-old.xsl");
+        xsl = loadXSL("/schema_browser/hed-schema-old.xsl");
     // code for IE
     if (window.ActiveXObject || xhttp.responseType == "msxml-document")
     {
@@ -336,29 +318,29 @@ function displayResult(xml, useNewFormat, isDeprecated)
         xsltProcessor.importStylesheet(xsl);
         resultDocument = xsltProcessor.transformToFragment(xml, document);
     }
-	if (useNewFormat) {
+    if (useNewFormat) {
             $("#schema").html(resultDocument.getElementById("schema").innerHTML);
             var prologue = resultDocument.getElementById("prologue").innerHTML;
             $("#prologue").html(prologue.replaceAll("\n", "<br>"));
             var epilogue = resultDocument.getElementById("epilogue").innerHTML;
             $("#epilogue").html(epilogue.replaceAll("\n", "<br>"));
-	        $("#schemaDefinitions").show();
+            $("#schemaDefinitions").show();
             $("#unitClassDefinitions").html(resultDocument.getElementById("unitClassDefinitions").innerHTML);
             $("#unitModifierDefinitions").html(resultDocument.getElementById("unitModifierDefinitions").innerHTML);
             $("#valueClassDefinitions").html(resultDocument.getElementById("valueClassDefinitions").innerHTML);
             $("#schemaAttributeDefinitions").html(resultDocument.getElementById("schemaAttributeDefinitions").innerHTML);
             $("#propertyDefinitions").html(resultDocument.getElementById("propertyDefinitions").innerHTML);
             var versionText = "HED " + resultDocument.getElementById("hed-version").innerHTML;
-	    versionText = isDeprecated ? versionText + " (deprecated)" : versionText;
-    	    $("#hed").html(versionText);
-	}
-	else {
-	    $("#schema").html(resultDocument);
-	    $("#schemaDefinitions").hide();
-    	    var versionText = "HED " + $("#hed-version").text();
-	    versionText = isDeprecated ? versionText + " (deprecated)" : versionText;
-    	    $("#hed").html(versionText);
-	}
+        versionText = isDeprecated ? versionText + " (deprecated)" : versionText;
+            $("#hed").html(versionText);
+    }
+    else {
+        $("#schema").html(resultDocument);
+        $("#schemaDefinitions").hide();
+            var versionText = "HED " + $("#hed-version").text();
+        versionText = isDeprecated ? versionText + " (deprecated)" : versionText;
+            $("#hed").html(versionText);
+    }
     $("a").mouseover({format: useNewFormat},infoBoardMouseoverEvent);
 }
 
@@ -370,15 +352,15 @@ function infoBoardMouseoverEvent(event) {
         var nodeName = selected.text();
         var finalText = "";
         if (useNewFormat) {
-                selected.nextAll(`.attribute[name='${nodeName}']`).each(function(index) {
-            var parsed = $(this).text();
-            if (parsed.includes(",")) {
-                var trimmed = parsed.trim();
-                var trimmed = trimmed.replace(/(^,)|(,$)/g, "")
-                finalText += "<p>" + trimmed + "</p>";
-            }
-            else
-                finalText += "<p>" + parsed.trim() + "</p>";
+            selected.nextAll(`.attribute[name='${nodeName}']`).each(function(index) {
+                var parsed = $(this).text();
+                if (parsed.includes(",")) {
+                    var trimmed = parsed.trim();
+                    var trimmed = trimmed.replace(/(^,)|(,$)/g, "")
+                    finalText += "<p>" + trimmed + "</p>";
+                }
+                else
+                    finalText += "<p>" + parsed.trim() + "</p>";
             });
         }
         else {
@@ -391,8 +373,7 @@ function infoBoardMouseoverEvent(event) {
             finalText = finalText == null || finalText.length == 0 ? "" : finalText;
         var disp_div = ["schemaNode", "unitClassDef", "unitModifierDef", "valueClassDef", "attributeDef", "propertyDef"];
         if (disp_div.includes(selected.attr('name'))) {
-            $("h4#title").text(node.text());
-            $("p#tag").text("Long form: " + path);
+            $("h4#title").text(path);
             $("p#description").text(selected.attr("description"));
             $("div#attribute_info").html(finalText);
         }
@@ -451,7 +432,7 @@ function toLevel(level) {
 function searchNode(input) {
     input = processNodeNameInput(input);
     if (schemaNodes.includes(input)) {
-	    toNode(input);
+        toNode(input);
     }
 }
 function processNodeNameInput(input) {
@@ -476,27 +457,63 @@ function toNode(nodeName) {
     node.effect("highlight", {}, 3000);
 }
 function getSchemaNodes() {
+    schemaNodes.length = 0;
+    var suggestedTagsDict = {};
     /* Initialize schema nodes list and set behavior of search box */
     $("a[name='schemaNode']").each(function() {
-	schemaNodes.push($(this).attr("tag"));
+        var nodeName = $(this).attr("tag");
+        schemaNodes.push(nodeName);
+
+        // build the suggestedtags dictionary
+        $(this).nextAll(`.attribute[name='${nodeName}']`).each(function(index) {
+            var parsed = $(this).text();
+            if (parsed.includes("suggestedTag")) {
+                var suggestedTags = parsed.split(":")[1].trim();
+                suggestedTags = suggestedTags.split(",");
+                clean_suggestedTags = [];
+                suggestedTags.forEach(element => {
+                    // for non empty string, remove whitespace and newline characters and tab characters and push to clean_suggestedTags
+                    if (element.trim().length > 0) {
+                        cleaned = element.trim();
+                        cleaned.replace((/[\t\n\r]/gm),"");
+                        cleaned = cleaned.toLowerCase();
+                        clean_suggestedTags.push(cleaned);
+                    }
+                });
+                // for each clean_suggestedTags, add its mapping with nodeName to the suggestedTagsDict
+                clean_suggestedTags.forEach(element => {
+                    if (!(element in suggestedTagsDict)) {
+                        suggestedTagsDict[element] = [nodeName];
+                    }
+                    else {
+                        suggestedTagsDict[element].push(nodeName);
+                    }
+                });
+            }
+        });
     });    
     
     /* add autocomplete and search */
+    /**
     $( function() {
         $( "#searchTags" ).autocomplete({
-          source: schemaNodes,
-          select: function(event, ui) {
-            toNode(ui.item.value);
-            }
-          });
+        source: schemaNodes,
+        select: function(event, ui) {
+        toNode(ui.item.value);
+        }
+        });
     } );
-    /* search on enter key press */
+    */
+    autocomplete(document.getElementById("searchTags"), schemaNodes, suggestedTagsDict);
+
+    /* go to tag on enter key press */
     $("#searchTags").on('keyup', function (e) {
         if (e.key === 'Enter' || e.keyCode === 13) {
-	    const searchText = $("#searchTags").val();
-	    const capitalized = capitalizeFirstLetter(searchText);
-	    if (schemaNodes.includes(capitalized))
-		    toNode(capitalized);
+        var searchText = $("#searchTags").val();
+        searchText = searchText.toLowerCase();
+        searchText = capitalizeFirstLetter(searchText);
+        if (schemaNodes.includes(searchText))
+            toNode(searchText);
         }
     });
 }
@@ -519,3 +536,125 @@ function backToTop() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
+/**
+ * From autocomplete online tutorial
+ */
+function autocomplete(inp, arr, suggestedTagsDict) {
+    /*the autocomplete function takes two arguments,
+    the text field element and an array of possible autocompleted values:*/
+    var currentFocus;
+    /*execute a function when someone writes in the text field:*/
+    inp.addEventListener("input", function(e) {
+        var a, b, i, val = this.value;
+        val = val.toLowerCase(); // make uniform
+        /*close any already open lists of autocompleted values*/
+        closeAllLists();
+        if (!val) { return false;}
+        currentFocus = -1;
+        /*create a DIV element that will contain the items (values):*/
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        /*append the DIV element as a child of the autocomplete container:*/
+        this.parentNode.appendChild(a);
+        /*for each item in the array...*/
+        for (i = 0; i < arr.length; i++) {
+          /*check if the item starts with the same letters as the text field value:*/
+          if (arr[i].substr(0, val.length).toLowerCase() == val) {
+            /*create a DIV element for each matching element:*/
+            b = document.createElement("DIV");
+            /*make the matching letters bold:*/
+            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+            b.innerHTML += arr[i].substr(val.length);
+            /*insert a input field that will hold the current array item's value:*/
+            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+            /*execute a function when someone clicks on the item value (DIV element):*/
+            b.addEventListener("click", function(e) {
+                /*insert the value for the autocomplete text field:*/
+                inp.value = this.getElementsByTagName("input")[0].value;
+                toNode(inp.value);
+                /*close the list of autocompleted values,
+                (or any other open lists of autocompleted values:*/
+                closeAllLists();
+            });
+            a.appendChild(b);
+          }
+        }
+        if (val in suggestedTagsDict) {
+            b = document.createElement("DIV");
+            b.innerHTML = "<strong>Suggested Tags Of:</strong>";
+            a.appendChild(b)
+            suggestedTagsDict[val].forEach(element => {
+                b = document.createElement("DIV");
+                b.innerHTML = element
+                /*insert a input field that will hold the current array item's value:*/
+                b.innerHTML += "<input type='hidden' value='" + element + "'>";
+                /*execute a function when someone clicks on the item value (DIV element):*/
+                b.addEventListener("click", function(e) {
+                    /*insert the value for the autocomplete text field:*/
+                    inp.value = this.getElementsByTagName("input")[0].value;
+                    toNode(inp.value);
+                    /*close the list of autocompleted values,
+                    (or any other open lists of autocompleted values:*/
+                    closeAllLists();
+                });
+                a.appendChild(b);
+            });
+        }
+    });
+    /*execute a function presses a key on the keyboard:*/
+    inp.addEventListener("keydown", function(e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+          /*If the arrow DOWN key is pressed,
+          increase the currentFocus variable:*/
+          currentFocus++;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 38) { //up
+          /*If the arrow UP key is pressed,
+          decrease the currentFocus variable:*/
+          currentFocus--;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 13) {
+          /*If the ENTER key is pressed, prevent the form from being submitted,*/
+          e.preventDefault();
+          if (currentFocus > -1) {
+            /*and simulate a click on the "active" item:*/
+            if (x) x[currentFocus].click();
+          }
+        }
+    });
+    function addActive(x) {
+      /*a function to classify an item as "active":*/
+      if (!x) return false;
+      /*start by removing the "active" class on all items:*/
+      removeActive(x);
+      if (currentFocus >= x.length) currentFocus = 0;
+      if (currentFocus < 0) currentFocus = (x.length - 1);
+      /*add class "autocomplete-active":*/
+      x[currentFocus].classList.add("autocomplete-active");
+    }
+    function removeActive(x) {
+      /*a function to remove the "active" class from all autocomplete items:*/
+      for (var i = 0; i < x.length; i++) {
+        x[i].classList.remove("autocomplete-active");
+      }
+    }
+    function closeAllLists(elmnt) {
+      /*close all autocomplete lists in the document,
+      except the one passed as an argument:*/
+      var x = document.getElementsByClassName("autocomplete-items");
+      for (var i = 0; i < x.length; i++) {
+        if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
+  } 
