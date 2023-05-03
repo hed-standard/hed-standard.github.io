@@ -26,15 +26,33 @@ function load(schema_name) {
     standard_schema_api_path = github_endpoint + "/standard_schema";
     library_schema_api_path = github_endpoint + "/library_schemas";
     if (schema_name.includes('prerelease')) {
-        var schema_link = getPrereleaseXml(standard_schema_api_path + "/prerelease");
-        // load default schema accordingly
+        var name_without_prerelease = schema_name.replace('_prerelease', '');
+        if (name_without_prerelease == "standard") {
+            var schema_link = getPrereleaseXml(standard_schema_api_path + "/prerelease");
+        }
+        else {
+            var schema_link = getPrereleaseXml(library_schema_api_path + "/" + name_without_prerelease + "/prerelease");
+        }
+        // load preprelease schema accordingly
         loadSchema(schema_link)
+
+        // add schema names to schema dropdown button
+        var standard_prerelease_schema_link = getPrereleaseXml(standard_schema_api_path + "/prerelease");
+        var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="loadSchema(\'' + standard_prerelease_schema_link + '\')">Standard</a>';
+        $("#schemaDropdown").append(html);
+        library_schemas = getLibarySchemas();
+        for (var i=0; i < library_schemas.length; i++) {
+            var library_schema_link = getPrereleaseXml(library_schema_api_path + "/" + library_schemas[i] + "/prerelease"); 
+            var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="loadSchema(\'' + library_schema_link + '\')">' + library_schemas[i] + '</a>';
+            $("#schemaDropdown").append(html);
+        }
     }
     else {
         // add schema names to schema dropdown button
         var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="loadDefaultSchema(\'standard\')">Standard</a>';
         $("#schemaDropdown").append(html);
         library_schemas = getLibarySchemas();
+        console.log(library_schemas);
         for (var i=0; i < library_schemas.length; i++) {
             var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="loadDefaultSchema(\'' + library_schemas[i] + '\')">' + library_schemas[i] + '</a>';
             $("#schemaDropdown").append(html);
@@ -99,7 +117,8 @@ function load(schema_name) {
                 $("#freezeInfo").html("Press enter/return to freeze info board");
             }
         }
-    });
+    })
+    
 }
 
 /**
@@ -231,20 +250,21 @@ function loadSchema(url)
     let re = /HED.*xml/;
     let schemaVersion = url.match(re)[0];
     if ((schemaVersion.charAt(3) >= "8" && !schemaVersion.includes('alpha')) || url.includes('test')) // assuming schemaVersion has form 'HEDx.x.x.*'
-    useNewFormat = true;
-    else {
-    useNewFormat = false;
-    }
+        useNewFormat = true;
+    else 
+        useNewFormat = false;
+        
     if (url.includes('deprecated')) // schema link will be */deprecated/*.xml if deprecated
-    var isDeprecated = true;
-    else {
-    var isDeprecated = false;
-    }
+        var isDeprecated = true;
+    else 
+        var isDeprecated = false;
+
     $.get(url, function(data,status) {
         xml = $.parseXML(data);
         displayResult(xml, useNewFormat, isDeprecated);
-    toLevel(2);
-    getSchemaNodes();
+        parseMergedSchema();
+        toLevel(2);
+        getSchemaNodes();
     });
     $('#dropdownSchemaVersionButton').text('Version: ' + schemaVersion.split('.xml')[0]);
 }
@@ -331,7 +351,7 @@ function displayResult(xml, useNewFormat, isDeprecated)
             $("#schemaAttributeDefinitions").html(resultDocument.getElementById("schemaAttributeDefinitions").innerHTML);
             $("#propertyDefinitions").html(resultDocument.getElementById("propertyDefinitions").innerHTML);
             var versionText = "HED " + resultDocument.getElementById("hed-version").innerHTML;
-        versionText = isDeprecated ? versionText + " (deprecated)" : versionText;
+            versionText = isDeprecated ? versionText + " (deprecated)" : versionText;
             $("#hed").html(versionText);
     }
     else {
@@ -342,6 +362,7 @@ function displayResult(xml, useNewFormat, isDeprecated)
             $("#hed").html(versionText);
     }
     $("a").mouseover({format: useNewFormat},infoBoardMouseoverEvent);
+
 }
 
 function infoBoardMouseoverEvent(event) {
@@ -653,8 +674,45 @@ function autocomplete(inp, arr, suggestedTagsDict) {
       }
     }
   }
+  
   /*execute a function when someone clicks in the document:*/
   document.addEventListener("click", function (e) {
       closeAllLists(e.target);
   });
-  } 
+} 
+
+function parseMergedSchema() {
+    // parse merged library schema
+    // scan through all <a> tags with name="schameNode" and detect whether its siblings contain <div> tag with class="attribute" whose values contains "inLibrary"
+    // if so, add the class "inLibrary" to the <a> tag
+    $("a[name='schemaNode']").each(function() {
+        var nodeName = $(this).attr("tag");
+        $(this).nextAll(`.attribute[name='${nodeName}']`).each(function(index) {
+            var parsed = $(this).text();
+            if (parsed.includes("inLibrary")) {
+                $(this).prevAll("a.list-group-item:first").addClass("inLibrary");
+            }
+        });
+    });
+
+    $("#schema").attr("inlibrarystatus","show");
+
+    // make inLibrary tag a different color
+    $(".inLibrary[data-toggle='collapse']").addClass('text-info');
+
+}
+
+/**
+ * Button listener
+ * Show/hide merged library tags
+ */
+function showHideMergedLibrary() {
+    if ($("#schema").attr("inlibrarystatus") == "show") {
+        $(".inLibrary").hide();
+        $("#schema").attr("inlibrarystatus","hide");
+    }
+    else {
+        $(".inLibrary").show();
+        $("#schema").attr("inlibrarystatus","show");
+    }
+}
