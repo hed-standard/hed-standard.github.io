@@ -367,7 +367,8 @@ function displayResult(xml, useNewFormat, isDeprecated)
             $("#hed").html(versionText);
     }
     $("a").mouseover({format: useNewFormat},infoBoardMouseoverEvent);
-
+    $(".list-group-item:not(.inLibrary),[data-toggle='collapse']").css('color','#0072B2');
+    $(".list-group-item:not(.inLibrary,[data-toggle='collapse'])").css('color','#56B4E9');
 }
 
 function infoBoardMouseoverEvent(event) {
@@ -703,7 +704,8 @@ function parseMergedSchema() {
     $("#schema").attr("inlibrarystatus","show");
 
     // make inLibrary tag a different color
-    $(".inLibrary[data-toggle='collapse']").addClass('text-info');
+    $(".inLibrary[data-toggle='collapse']").css('color', '#117733');
+    $(".inLibrary:not([data-toggle='collapse'])").css('color', '#44AA99');
 
 }
 
@@ -713,11 +715,11 @@ function parseMergedSchema() {
  */
 function showHideMergedLibrary() {
     if ($("#schema").attr("inlibrarystatus") == "show") {
-        $(".inLibrary").hide();
+        $(".list-group-item:not(.inLibrary)").hide();
         $("#schema").attr("inlibrarystatus","hide");
     }
     else {
-        $(".inLibrary").show();
+        $(".list-group-item:not(.inLibrary)").show();
         $("#schema").attr("inlibrarystatus","show");
     }
 }
