@@ -94,6 +94,9 @@
                   </button>
                   <div class="dropdown-menu" id="schemaVersionDropdown" aria-labelledby="dropdownSchemaVersionButton"></div>
                </div>
+                <button class="btn btn-light" type="button" id="toggleInLibrary" onclick="showHideMergedLibrary()">
+                    Show/hide merged library
+                </button>
                {% if page.schema_name == "standard" %}
                 <a href="/display_hed_prerelease.html" class="btn btn-light prerelease-switch" role="button">
                     View prerelease schema
@@ -103,9 +106,6 @@
                     View official schema
                 </a>
                 {% endif %}
-                <button class="btn btn-light" type="button" id="toggleInLibrary" onclick="showHideMergedLibrary()">
-                    Show/hide merged library
-                </button>
             </div>
          </div>
          <div class="row" name="button-section">
