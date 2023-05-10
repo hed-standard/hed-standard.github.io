@@ -4,7 +4,6 @@ var github_endpoint = "https://api.github.com/repos/hed-standard/hed-schemas/con
 var github_raw_endpoint = "https://raw.githubusercontent.com/hed-standard/hed-schemas/main";
 //Get the button
 let scrollToTopBtn = null;
-
 /**
  * Onload call. Build schema selection and schema versions dropdown
  * and load default schema accordingly to url params
@@ -28,6 +27,7 @@ function load(schema_name) {
     }
 
     console.log(schema_name)
+
     // Get and load schema according to official or prerelease
     standard_schema_api_path = github_endpoint + "/standard_schema";
     library_schema_api_path = github_endpoint + "/library_schemas";
@@ -40,16 +40,16 @@ function load(schema_name) {
             var schema_link = getPrereleaseXml(library_schema_api_path + "/" + name_without_prerelease + "/prerelease");
         }
         // load preprelease schema accordingly
-        loadSchema(schema_link)
+        loadSchema(schema_name, schema_link)
 
         // add schema names to schema dropdown button
         var standard_prerelease_schema_link = getPrereleaseXml(standard_schema_api_path + "/prerelease");
-        var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="loadSchema(\'' + standard_prerelease_schema_link + '\')">Standard</a>';
+        var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="loadSchema(\'' + schema_name + '\', \'' + standard_prerelease_schema_link + '\')">Standard</a>';
         $("#schemaDropdown").append(html);
         library_schemas = getLibarySchemas();
         for (var i=0; i < library_schemas.length; i++) {
             var library_schema_link = getPrereleaseXml(library_schema_api_path + "/" + library_schemas[i] + "/prerelease"); 
-            var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="loadSchema(\'' + library_schema_link + '\')">' + library_schemas[i] + '</a>';
+            var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="loadSchema(\'' + library_schemas[i] + '\', \'' + library_schema_link + '\')">' + library_schemas[i] + '</a>';
             $("#schemaDropdown").append(html);
         }
     }
@@ -208,7 +208,7 @@ function buildSchemaVersionDropdown(schema_name) {
             $("#schemaVersionDropdown").append(html);
             isDeprecatedTitleAdded = true;
         } 
-        var html = '<a class="dropdown-item" id="schema' + githubSchema["version"][i] + '" onclick="loadSchema(\'' + githubSchema["download_link"][i] + '\')">' + githubSchema["version"][i] + '</a>';
+        var html = '<a class="dropdown-item" id="schema' + githubSchema["version"][i] + '" onclick="loadSchema(\'' + schema_name + '\', \'' + githubSchema["download_link"][i] + '\')">' + githubSchema["version"][i] + '</a>';
         $("#schemaVersionDropdown").append(html);
     }
 }
@@ -250,7 +250,7 @@ function getSchemaURL(schema_name, version) {
  * and reload the html browser with the new schema
  * @param url   schema download link
  */
-function loadSchema(url)
+function loadSchema(schema_name, url)
 {
     let re = /HED.*xml/;
     let schemaVersion = url.match(re)[0];
@@ -272,6 +272,14 @@ function loadSchema(url)
         getSchemaNodes();
     });
     $('#dropdownSchemaVersionButton').text('Version: ' + schemaVersion.split('.xml')[0]);
+
+    // set prerelease switch btn href
+    if (schema_name.includes('prerelease')) {
+        var name_without_prerelease = schema_name.replace('_prerelease', '');
+        $('.prerelease-switch').attr('href', replaceUrlParam("/display_hed.html", 'schema', name_without_prerelease));
+    }
+    else
+        $('.prerelease-switch').attr('href', replaceUrlParam("/display_hed_prerelease.html", 'schema', schema_name + '_prerelease'));
 }
 
 function loadDefaultSchema(schema_name) {
@@ -286,7 +294,7 @@ function loadDefaultSchema(schema_name) {
         xml_path = github_raw_endpoint + "/library_schemas/" + schema_name + "/hedxml/HED_" + schema_name.toLowerCase() + "_Latest.xml";
     }
     
-    loadSchema(xml_path);
+    loadSchema(schema_name, xml_path);
     setDropdownBtnText(schema_name, "Latest");
 }
 
@@ -366,7 +374,10 @@ function displayResult(xml, useNewFormat, isDeprecated)
         versionText = isDeprecated ? versionText + " (deprecated)" : versionText;
             $("#hed").html(versionText);
     }
+    // set info board behavior
     $("a").mouseover({format: useNewFormat},infoBoardMouseoverEvent);
+
+    // set font colors
     $(".list-group-item:not(.inLibrary),[data-toggle='collapse']").css('color','#0072B2');
     $(".list-group-item:not(.inLibrary,[data-toggle='collapse'])").css('color','#56B4E9');
 }
@@ -724,3 +735,18 @@ function showHideMergedLibrary() {
         $("#schema").attr("inlibrarystatus","show");
     }
 }
+
+// Update url params
+function replaceUrlParam(url, paramName, paramValue)
+{
+    if (paramValue == null) {
+        paramValue = '';
+    }
+    var pattern = new RegExp('\\b('+paramName+'=).*?(&|#|$)');
+    if (url.search(pattern)>=0) {
+        return url.replace(pattern,'$1' + paramValue + '$2');
+    }
+    url = url.replace(/[?#]$/,'');
+    return url + (url.indexOf('?')>0 ? '&' : '?') + paramName + '=' + paramValue;
+}
+
