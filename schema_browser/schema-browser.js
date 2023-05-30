@@ -55,7 +55,7 @@ function load(schema_name) {
     }
     else {
         // add schema names to schema dropdown button
-        var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="loadDefaultSchema(\'standard\')">Standard</a>';
+        var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="loadDefaultSchema(\'standard\')">standard</a>';
         $("#schemaDropdown").append(html);
         library_schemas = getLibarySchemas();
         for (var i=0; i < library_schemas.length; i++) {
@@ -411,7 +411,8 @@ function infoBoardMouseoverEvent(event) {
             finalText = finalText == null || finalText.length == 0 ? "" : finalText;
         var disp_div = ["schemaNode", "unitClassDef", "unitModifierDef", "valueClassDef", "attributeDef", "propertyDef"];
         if (disp_div.includes(selected.attr('name'))) {
-            $("h4#title").text(path);
+            $("h4#title").text(nodeName);
+            $("p#tag").text("Full path: " + path);
             $("p#description").text(selected.attr("description"));
             $("div#attribute_info").html(finalText);
         }
