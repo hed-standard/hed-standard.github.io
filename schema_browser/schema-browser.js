@@ -415,7 +415,7 @@ function infoBoardMouseoverEvent(event) {
         var disp_div = ["schemaNode", "unitClassDef", "unitModifierDef", "valueClassDef", "attributeDef", "propertyDef"];
         if (disp_div.includes(selected.attr('name'))) {
             $("h4#title").text(nodeName);
-            $("p#tag").text("Full path: " + path);
+            $("h4#tag").text("Full path: " + path);
             $("p#description").text(selected.attr("description"));
             $("div#attribute_info").html(finalText);
         }
