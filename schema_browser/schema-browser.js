@@ -1,4 +1,7 @@
 var schemaNodes = [];
+var allSchemaNodes = [];
+var inLibraryNodes = [];
+var suggestedTagsDict = {};
 var useNewFormat = true;
 var github_endpoint = "https://api.github.com/repos/hed-standard/hed-schemas/contents";
 var github_raw_endpoint = "https://raw.githubusercontent.com/hed-standard/hed-schemas/main";
@@ -99,7 +102,7 @@ function load(schema_name) {
         $("#syn_getter").empty();
         synonyms.forEach(function(syn) {
             const capitalized = capitalizeFirstLetter(syn);
-        let matched_node = schemaNodes.filter(elem => elem.includes(capitalized) || elem.includes(syn));
+        let matched_node = allSchemaNodes.filter(elem => elem.includes(capitalized) || elem.includes(syn));
         if (matched_node.length !== 0) {
             matched_node.forEach(node => $("#syn_getter").append(`<option value="${node}" style="font-size:40px;">${node}</option>`));
         }
@@ -468,16 +471,6 @@ function toLevel(level) {
     }
     $("#schema").attr("status","show");
 }
-function searchNode(input) {
-    input = processNodeNameInput(input);
-    if (schemaNodes.includes(input)) {
-        toNode(input);
-    }
-}
-function processNodeNameInput(input) {
-    input = capitalizeFirstLetter(input);
-    return input;
-}
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -496,12 +489,16 @@ function toNode(nodeName) {
     node.effect("highlight", {}, 3000);
 }
 function getSchemaNodes() {
+    // clear array
     schemaNodes.length = 0;
-    var suggestedTagsDict = {};
+    allSchemaNodes.length = 0;
+
+    // clear dictionary
+    suggestedTagsDict = {};
     /* Initialize schema nodes list and set behavior of search box */
     $("a[name='schemaNode']").each(function() {
         var nodeName = $(this).attr("tag");
-        schemaNodes.push(nodeName);
+        allSchemaNodes.push(nodeName);
 
         // build the suggestedtags dictionary
         $(this).nextAll(`.attribute[name='${nodeName}']`).each(function(index) {
@@ -533,17 +530,8 @@ function getSchemaNodes() {
     });    
     
     /* add autocomplete and search */
-    /**
-    $( function() {
-        $( "#searchTags" ).autocomplete({
-        source: schemaNodes,
-        select: function(event, ui) {
-        toNode(ui.item.value);
-        }
-        });
-    } );
-    */
-    autocomplete(document.getElementById("searchTags"), schemaNodes, suggestedTagsDict);
+    console.log(allSchemaNodes.length);
+    autocomplete(document.getElementById("searchTags"), allSchemaNodes, suggestedTagsDict);
 
     /* go to tag on enter key press */
     $("#searchTags").on('keyup', function (e) {
@@ -551,7 +539,7 @@ function getSchemaNodes() {
         var searchText = $("#searchTags").val();
         searchText = searchText.toLowerCase();
         searchText = capitalizeFirstLetter(searchText);
-        if (schemaNodes.includes(searchText))
+        if (allSchemaNodes.includes(searchText))
             toNode(searchText);
         }
     });
@@ -701,6 +689,8 @@ function autocomplete(inp, arr, suggestedTagsDict) {
 } 
 
 function parseMergedSchema() {
+    // clear inLibraryNodes
+    inLibraryNodes.length = 0;
     // parse merged library schema
     // scan through all <a> tags with name="schameNode" and detect whether its siblings contain <div> tag with class="attribute" whose values contains "inLibrary"
     // if so, add the class "inLibrary" to the <a> tag
@@ -709,6 +699,7 @@ function parseMergedSchema() {
         $(this).nextAll(`.attribute[name='${nodeName}']`).each(function(index) {
             var parsed = $(this).text();
             if (parsed.includes("inLibrary")) {
+                inLibraryNodes.push(nodeName);
                 $(this).prevAll("a.list-group-item:first").addClass("inLibrary");
             }
         });
@@ -728,12 +719,22 @@ function parseMergedSchema() {
  */
 function showHideMergedLibrary() {
     if ($("#schema").attr("inlibrarystatus") == "show") {
+        // hide base schema
         $(".list-group-item:not(.inLibrary)").hide();
         $("#schema").attr("inlibrarystatus","hide");
+        /* reinitialize autocomplete and search */
+        console.log("hide");
+        // print length of inLibraryNodes
+        console.log(inLibraryNodes.length);
+        autocomplete(document.getElementById("searchTags"), inLibraryNodes, suggestedTagsDict);
     }
     else {
+        // show base schema
         $(".list-group-item:not(.inLibrary)").show();
         $("#schema").attr("inlibrarystatus","show");
+        /* reinitialize autocomplete and search */
+        console.log(allSchemaNodes.length);
+        autocomplete(document.getElementById("searchTags"), allSchemaNodes, suggestedTagsDict);
     }
 }
 
