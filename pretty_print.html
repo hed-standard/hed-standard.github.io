@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+   <head>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="schema_browser/hed-collapsible.css">
+      <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+   </head>
+   <body>
+   		<div class="container">
+	   		<div class="row">
+	   			<div class="col-lg">
+	   				<h1>HED indentation</h1>
+	   			</div>
+	   		</div>
+	   		<div class="row">
+	   			<div class="col-lg">
+	      			<div class="mb-3">
+					  <label for="exampleFormControlInput1" class="form-label">HED string</label>
+					  <input type="email" class="form-control" id="hed" placeholder="">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	   			<div class="col-lg">
+	      			<div class="btn btn-primary" onclick="indent_hed()">Indent</div>
+				</div>
+			</div>
+			<div class="row">
+	   			<div class="col-lg">
+	      			<div class="mb-3">
+					  <label for="exampleFormControlTextarea1" class="form-label">Indented HED string</label>
+					  <textarea class="form-control" id="indented" rows="25"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      <script>
+      		function indent_hed() {
+	      		var hed_string = $("#hed").val()
+	      		console.log(hed_string)
+				var level_open = []
+				var level = 0
+	 			var final = ""
+				var prev = ''
+				for (let i = 0; i < hed_string.length; i++) {
+					c = hed_string[i];
+					if (c == "(") {
+						level_open.push(level)
+						final += "\n" + "\t".repeat(level) + c
+						level += 1	
+					}
+					else if (c == ")") {
+						level = level_open.pop()
+						if (prev == ")") {
+							final += "\n" + "\t".repeat(level) + c
+						}
+						else {
+							final += c
+						}
+					}
+					else {
+						final += c
+					}
+					prev = c
+				}
+				$('#indented').val(final)
+			}
+      </script>
+   </body>
+</html>
