@@ -489,6 +489,10 @@ function toNode(nodeName) {
     node.effect("highlight", {}, 3000);
 }
 function getSchemaNodes() {
+    /**
+     * Set autocomplete behavior
+     */
+    allowDeprecated = $("#searchDeprecatedTags")[0].checked;
     // clear array
     schemaNodes.length = 0;
     allSchemaNodes.length = 0;
@@ -497,6 +501,11 @@ function getSchemaNodes() {
     suggestedTagsDict = {};
     /* Initialize schema nodes list and set behavior of search box */
     $("a[name='schemaNode']").each(function() {
+        attributes = getAttributesOfNode($(this));
+        if (!allowDeprecated && attributes.includes('deprecatedFrom')) {
+            return;
+        }
+        
         var nodeName = $(this).attr("tag");
         allSchemaNodes.push(nodeName);
 
@@ -543,6 +552,15 @@ function getSchemaNodes() {
             toNode(searchText);
         }
     });
+}
+
+function getAttributesOfNode(tagNode) {
+    attributes = []
+    attributeDivs = tagNode.nextUntil("a", ".attribute");
+    for (var i=0; i < attributeDivs.length; i++) {
+        attributes.push(attributeDivs[i].innerText.split(':')[0]);
+    }
+    return attributes
 }
 
 function capitalizeFirstLetter(string) {
