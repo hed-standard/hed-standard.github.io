@@ -382,7 +382,8 @@ function displayResult(xml, useNewFormat, isDeprecated)
 
     // set font colors
     $(".list-group-item:not(.inLibrary),[data-toggle='collapse']").css('color','#0072B2');
-    $(".list-group-item:not(.inLibrary,[data-toggle='collapse'])").css('color','#56B4E9');
+    $(".list-group-item:not(.inLibrary,[data-toggle='collapse'])").css('color','#0072B2');
+    $(".list-group-item:not(.inLibrary,[data-toggle='collapse'])").css('font-weight','bold'); // make bold leaf node
 }
 
 function infoBoardMouseoverEvent(event) {
@@ -726,8 +727,9 @@ function parseMergedSchema() {
     $("#schema").attr("inlibrarystatus","show");
 
     // make inLibrary tag a different color
-    $(".inLibrary[data-toggle='collapse']").css('color', '#117733');
-    $(".inLibrary:not([data-toggle='collapse'])").css('color', '#44AA99');
+    $(".inLibrary[data-toggle='collapse']").css('color', '#a0522d');
+    $(".inLibrary:not([data-toggle='collapse'])").css('color', '#a0522d');
+    $(".inLibrary:not([data-toggle='collapse'])").css('font-weight', 'bold');
 
 }
 
