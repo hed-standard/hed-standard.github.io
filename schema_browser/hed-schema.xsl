@@ -95,7 +95,7 @@
 	<xsl:param name="level"/>
 	<xsl:param name="nodeName"/>
 	<a description="{description}" role="button" class="list-group-item" name="attributeDef"><xsl:value-of select="name"/></a>
-	<xsl:apply-templates select="attribute">
+	<xsl:apply-templates select="property">
 		<xsl:with-param name="nodeName" select="name"/>
 	</xsl:apply-templates>
 </xsl:template>
