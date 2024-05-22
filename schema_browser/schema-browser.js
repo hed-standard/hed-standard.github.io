@@ -29,8 +29,6 @@ function load(schema_name) {
         schema_name = urlParams.get('schema');
     }
 
-    console.log(schema_name)
-
     // Get and load schema according to official or prerelease
     standard_schema_api_path = github_endpoint + "/standard_schema";
     library_schema_api_path = github_endpoint + "/library_schemas";
