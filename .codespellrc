@@ -1,0 +1,3 @@
+[codespell]
+skip = '*index.html, *.lock, *.css'
+ignore-words-list = 'covert'
