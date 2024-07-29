@@ -36,21 +36,21 @@ function load(schema_name) {
     if (schema_name.includes('prerelease')) {
         var name_without_prerelease = schema_name.replace('_prerelease', '');
         if (name_without_prerelease == "standard") {
-            var schema_link = getPrereleaseXml(standard_schema_api_path + "/prerelease?ref=develop-standard");
+            var schema_link = getPrereleaseXml(standard_schema_api_path + "/prerelease?ref=develop");
         }
         else {
-            var schema_link = getPrereleaseXml(library_schema_api_path + "/" + name_without_prerelease + "/prerelease?ref=develop-" + name_without_prerelease);
+            var schema_link = getPrereleaseXml(library_schema_api_path + "/" + name_without_prerelease + "/prerelease?ref=develop");
         }
         // load preprelease schema accordingly
         loadSchema(schema_name, schema_link)
 
         // add schema names to schema dropdown button
-        var standard_prerelease_schema_link = getPrereleaseXml(standard_schema_api_path + "/prerelease?ref=develop-standard");
+        var standard_prerelease_schema_link = getPrereleaseXml(standard_schema_api_path + "/prerelease?ref=develop");
         var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="loadSchema(\'' + schema_name + '\', \'' + standard_prerelease_schema_link + '\')">standard_prerelease</a>';
         $("#schemaDropdown").append(html);
         library_schemas = getLibarySchemas();
         for (var i=0; i < library_schemas.length; i++) {
-            var library_schema_link = getPrereleaseXml(library_schema_api_path + "/" + library_schemas[i] + "/prerelease?ref=develop-" + name_without_prerelease); 
+            var library_schema_link = getPrereleaseXml(library_schema_api_path + "/" + library_schemas[i] + "/prerelease?ref=develop"); 
             var html = '<a class="dropdown-item" id="schemaStandard" + " onclick="loadSchema(\'' + library_schemas[i] + '\', \'' + library_schema_link + '\')">' + library_schemas[i] + '_prerelease</a>';
             $("#schemaDropdown").append(html);
         }
