@@ -88,6 +88,7 @@ function load(schema_name) {
     var synonyms = null;
         $.ajax({dataType: "json", url: query, async: false, 
         success: function(data) {
+        console.log("hide");
             synonyms = [];
             synonyms.push($("#searchTags").val());
             synonyms = synonyms.concat(data["synonyms"]);
@@ -235,14 +236,11 @@ function getPrereleaseXml(prerelease_endpoint) {
  * @returns     schema download link
  */
 function getSchemaURL(schema_name, version) {
-    console.log(schema_name);
-    console.log(version);
     if (schema_name == "standard") {
         xml_path = github_raw_endpoint + "/standard_schema/hedxml/HED" + version + ".xml";
     }
     else
         xml_path = github_raw_endpoint + "/library_schemas/" + schema_name + "/hedxml/HED_" + schema_name.toLowerCase() + "_" + version + ".xml";
-    console.log(xml_path);
     return xml_path;
 }
 
@@ -389,7 +387,6 @@ function infoBoardMouseoverEvent(event) {
         var selected = $(event.target);
         var node = selected;
         var path = getPath(selected);
-	console.log(path);
         var nodeName = selected.text();
         var finalText = "";
         if (useNewFormat) {
@@ -539,7 +536,6 @@ function getSchemaNodes() {
     });    
     
     /* add autocomplete and search */
-    console.log(allSchemaNodes.length);
     autocomplete(document.getElementById("searchTags"), allSchemaNodes, suggestedTagsDict);
 
     /* go to tag on enter key press */
@@ -719,12 +715,24 @@ function parseMergedSchema() {
             if (parsed.includes("inLibrary")) {
                 inLibraryNodes.push(nodeName);
                 $(this).prevAll("a.list-group-item:first").addClass("inLibrary");
+                $(this).prevAll("a.list-group-item:first").addClass("hasInLibrary");
             }
         });
     });
 
     $("#schema").attr("inlibrarystatus","show");
 
+    // mark all tags as has inLibrary class or not
+    // for each <a> with list-group-item class
+    $("a.list-group-item").each(function() {
+        // print the href of this node
+        div_id = $(this).attr("href");
+        // if the div with id div_id has a child with class inLibrary
+        if ($(div_id).find('a.inLibrary').length !== 0) {
+            $(this).addClass("hasInLibrary");
+        }
+    });
+   
     // make inLibrary tag a different color
     $(".inLibrary[data-toggle='collapse']").css('color', '#a0522d');
     $(".inLibrary:not([data-toggle='collapse'])").css('color', '#a0522d');
@@ -739,7 +747,7 @@ function parseMergedSchema() {
 function showHideMergedLibrary() {
     if ($("#schema").attr("inlibrarystatus") == "show") {
         // hide base schema
-        $(".list-group-item:not(.inLibrary)").hide();
+        $(".list-group-item:not(.hasInLibrary)").hide();
         $("#schema").attr("inlibrarystatus","hide");
         /* reinitialize autocomplete and search */
         console.log("hide");
@@ -749,7 +757,7 @@ function showHideMergedLibrary() {
     }
     else {
         // show base schema
-        $(".list-group-item:not(.inLibrary)").show();
+        $(".list-group-item:not(.hasInLibrary)").show();
         $("#schema").attr("inlibrarystatus","show");
         /* reinitialize autocomplete and search */
         console.log(allSchemaNodes.length);
