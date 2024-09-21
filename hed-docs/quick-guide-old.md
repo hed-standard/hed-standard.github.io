@@ -58,7 +58,7 @@ Fields listed in the select box are extracted from the *EEG.event* fields, ignor
 
 ![CTAGGER](images/CTAGGER.png)
 
-CTAGGER (for 'Community Tagger') is an application written in Java to faciliate the process of adding HED tags to recorded events in existing datasets. Through its GUI, users can explore the HED schema, quickly look up and add tags (or tag groups) to the desired event codes, and use import/export features to reuse tags on other datasets (e.g., other datasets from the same study). On the left side, the **Data Events** panel contains values of the selected event field and their associated tags. The right panel **Schema Tags** contains all available tags organized defined in the HED schema hierarchy. The process of tagging is then to simply choose tags from the schema to associate with each event code. 
+CTAGGER (for 'Community Tagger') is an application written in Java to facilitate the process of adding HED tags to recorded events in existing datasets. Through its GUI, users can explore the HED schema, quickly look up and add tags (or tag groups) to the desired event codes, and use import/export features to reuse tags on other datasets (e.g., other datasets from the same study). On the left side, the **Data Events** panel contains values of the selected event field and their associated tags. The right panel **Schema Tags** contains all available tags organized defined in the HED schema hierarchy. The process of tagging is then to simply choose tags from the schema to associate with each event code. 
 
 First we will add a short label and a detailed description to the event codes using tag *Event/Label* and *Event/Description*. These tags are meant for human readability and will be ignored during machine processing. A restriction in HED tags is that tag values must not contain a comma (a common mistake in beginner event descriptions). Next, we want to generally categorize these events using tag *Event/Category*.  We will use the tag *Event/Category/Experimental stimulus* for stimulus presentation events (here, "*square*" events) and  *Event/Category/Participant response* for participant response events (here, "*rt*" events). 
 
@@ -66,9 +66,9 @@ First we will add a short label and a detailed description to the event codes us
 
 
 
-With this information, the dataset can now be shared; any researcher who uses the dataset can understand, quickly and easily, the meaning of the recorded events. However, the larger goal of HED is to capture the nature of the events to any (hopefully, fine) level of description, so that analysis tools can then automatically aggregrate events using tags with minimal human supervision. So let's keep tagging!
+With this information, the dataset can now be shared; any researcher who uses the dataset can understand, quickly and easily, the meaning of the recorded events. However, the larger goal of HED is to capture the nature of the events to any (hopefully, fine) level of description, so that analysis tools can then automatically aggregate events using tags with minimal human supervision. So let's keep tagging!
 
-Let us begin with the *partcipant response* events. We denote the type of action participant performed using *Action/* tags. As in this experiment the subject was asked to press a button as quickly as possible whenever they saw a '*target*' stimulus, we use *Action/Button press* to describe the basic nature of the event. We also asked subjects to use their right thumb to press the button, which we will capture using  *Participant/Effect/Body part/Arm/Hand/Finger/Thumb* and *Attribute/Object side/Right*. We'll put those two tags in a "tag group", which is used to group *Attribute/* tags with the item they describe. 
+Let us begin with the *participant response* events. We denote the type of action participant performed using *Action/* tags. As in this experiment the subject was asked to press a button as quickly as possible whenever they saw a '*target*' stimulus, we use *Action/Button press* to describe the basic nature of the event. We also asked subjects to use their right thumb to press the button, which we will capture using  *Participant/Effect/Body part/Arm/Hand/Finger/Thumb* and *Attribute/Object side/Right*. We'll put those two tags in a "tag group", which is used to group *Attribute/* tags with the item they describe. 
 
 The illustration below shows how to add additional tags to event values, create a new tag group, and use CTAGGER's search functionalities. The search bar in the **Data Events** panel let you quickly look up and directly add a tag to the selected event value. Users can also use the **Schema Tags** panel's search bar to explore tags in the HED schema and hover a tag to read its description when applicable. 
 
@@ -99,7 +99,7 @@ A last window will pop up asking what you would like to do to the newly tagged d
 
 ![new-set](images/newset.png)
 
-You just finished tagging! *HEDTools* generates the final HED string for each event by concatenating all tags associated with the event values of that event, seperated by commas, and put the string in a new field **usertags**. You can check this by opening up EEG.event in MATLAB variable window:
+You just finished tagging! *HEDTools* generates the final HED string for each event by concatenating all tags associated with the event values of that event, separated by commas, and put the string in a new field **usertags**. You can check this by opening up EEG.event in MATLAB variable window:
 
 ![EEG.event](images/finish-1.png)
 
