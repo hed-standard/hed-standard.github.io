@@ -1,4 +1,4 @@
-This documentation explains what goes into the HTML HED schema browser (display_hed.html). This is meant as a reference point for future maintainance.
+This documentation explains what goes into the HTML HED schema browser (display_hed.html). This is meant as a reference point for future maintenance.
 
 # Load the HTML page locally
 
@@ -18,7 +18,7 @@ The header section contains static content, specified under *header-section* div
 
 ### Buttons
 
-Buttons are specified under *button-section* div. There are two buttons: **Expand/Collapse all** and **Show another version**. Their event handlers are specfied in the html head's *\<script>* and explained below:
+Buttons are specified under *button-section* div. There are two buttons: **Expand/Collapse all** and **Show another version**. Their event handlers are specified in the html head's *\<script>* and explained below:
 
 * Expand/Collapse all: *showHideAll()* event handler. The main div containing the schema (div#schema) has an attribute *status* whose value is either "show" or "hide". If the button is clicked when status is "show" (a collapse all intent), find all children elements with class *collapse* and remove "show" from their list of classes. This is equivalent to hiding those elements. The opposite applies when button is clicked with "hide" status.
 * Show another version: *getSchemaVersions()* event handler. The content of the [hedxml](https://github.com/hed-standard/hed-specification/tree/master/hedxml) folder is retrieved using [Github API](https://developer.github.com/v3/repos/contents/#get-repository-content). Returned JSON result is parsed to extract only .xml files. Their names as links are then added to  div#schemaDropdown, each containing event handler *loadSchema()* with a download link of the according xml file. When user clicks on a menu item (a version), *loadSchema()* will retrieve the requested schema using the provided download link and update the schema display section accordingly.
