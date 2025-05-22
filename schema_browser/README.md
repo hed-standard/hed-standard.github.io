@@ -2,11 +2,20 @@ This documentation explains what goes into the HTML HED schema browser (display_
 
 # Load the HTML page locally
 
-For development, it would be convenient to be able to view the [display_hed.html](http://www.hedtags.org/display_hed.html) page locally. You'll need to have a local web server running. Here's how to set up a local server:  https://gist.github.com/jgravois/5e73b56fa7756fd00b89. Once your server is up, clone the [Github repository](https://github.com/hed-standard/hed-standard.github.io) into your server's root folder. Then you should be able to access the display file using
+For development, it would be convenient to be able to view the [display_hed.html](http://www.hedtags.org/display_hed.html) page locally.  Once you've cloned the [Github repository](https://github.com/hed-standard/hed-standard.github.io), follow the instruction on jekyll tutorial for local deployment: https://jekyllrb.com/tutorials/using-jekyll-with-bundler/. Then you should be able to access the display file using
 
-http://localhost/hed-standard.github.io/display_hed.html
+http://localhost:<port>/display_hed.html
 
+# Key Components and Files
 
+The schema browser consists of several key files:
+
+- `_layouts/display_hed_layout.html`: Main HTML layout of the webpage. All HTML components are specified here
+- `display_hed.html`: Jekyll header page that points to the layout specified in `display_hed_layout.html`. This is our public landing page
+- `display_hed_prerelease.html`: landing page for prerelease loading the standard_prerelease schema by default
+- `schema-browser.js`: Main JavaScript file containing all the interactive functionality
+- `hed-schema.xsl`: XSLT transformation file that converts HED XML schema to HTML
+- `hed-collapsible.css`: CSS styling for the collapsible tree structure
 
 # Structure of the HTML page
 
@@ -47,7 +56,26 @@ The styling is inspired by https://two-wrongs.com/draw-a-tree-structure-with-onl
 
 The static structure of the info board is specified under *info-board-section* div. Content of the info board is loaded dynamically as user hovers a HED tag. The loading logic is specified under *displayResult()* function in the document's head \<script\>.
 
+# Key Features and Functionality
 
+## Schema Loading and Version Management
+- Supports both standard and library schemas
+- Handles prerelease versions
+- Maintains a version history with deprecated versions
+- Uses GitHub API to fetch schema versions and content
+
+## Interactive Features
+- Expandable/collapsible tree structure
+- Search functionality with autocomplete
+- Synonym lookup capability
+- Info board with dynamic content loading
+- Keyboard shortcuts (Enter key to freeze/unfreeze info board)
+
+## Schema Navigation
+- Jump to specific nodes
+- Navigate to specific levels
+- Back to top button
+- Path display for current node
 
 # Push and check changes
 
