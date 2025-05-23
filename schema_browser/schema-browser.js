@@ -383,6 +383,7 @@ function displayResult(xml, useNewFormat, isDeprecated)
 }
 
 function infoBoardMouseoverEvent(event) {
+    // jQuery callback that responds to a mouse hover action
         var useNewFormat = event.data.format;
         var selected = $(event.target);
         var node = selected;
