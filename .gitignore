@@ -1,3 +1,5 @@
+status/
+
 _site
 vendor/
 .bundle/
