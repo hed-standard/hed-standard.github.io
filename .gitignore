@@ -1,3 +1,6 @@
+status/
+.github/copilot-instructions.md
+
 _site
 vendor/
 .bundle/
