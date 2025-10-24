@@ -36,6 +36,6 @@ Once you are familiar HED basics, check out the
 
 ## Other links
 
-[hedtags.org](https://hedtags.org) is the home page for HED tag users.  
+[hedtags.org](https://www.hedtags.org) is the home page for HED tag users.  
 
 [hed-standard](https://github.com/hed-standard) is the HED community organization repository for HED development.
