@@ -12,6 +12,10 @@
   
     <!-- Bootstrap icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link href="/assets/css/modern.css" rel="stylesheet">
+    
     <style>
         .bg-custom {
             background-color: #000080;
@@ -24,49 +28,10 @@
   <title>Hierarchical Event Descriptor (HED)</title>
 </head>
 <body>
-  <!-- Navigational Header -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-custom bg-gradient">
-    <div class="container">
-    <a class="navbar-brand text-white" href="/"><img src="assets/images/hed-logo-transparent.png" class="img-fluid" width="100" height="100" alt="Logo image"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon navbar-dark"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active m-2">
-          <a class="nav-link text-white fs-5" href="https://www.hedtags.org/about.html">About</a>
-        </li>
-        <li class="nav-item m-2">
-          <a class="nav-link text-white fs-5" href="https://www.hedtags.org/hed-resources/index.html">Documentation</a>
-        </li>
-        <li class="nav-item m-2">
-          <a class="nav-link text-white fs-5" href="https://www.hedtags.org/hed-resources/WhatsNew.html">What's new?</a>
-        </li>
-        <li class="nav-item m-2 dropdown">
-            <div class="dropdown">
-                <button class="btn btn-transparent dropdown-toggle text-white fs-5" type="button" data-bs-toggle="dropdown" aria-expanded="false">Quick links</button>
-                <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="https://www.hedtags.org/hed-schema-browser">HED schema browser</a></li>
-                    <li><a class="dropdown-item" href="https://hedtools.org/hed">HED online tools</a></li>
-                    <li><a class="dropdown-item" href="https://www.hedtags.org/hed-specification">HED specification</a></li>
-                    <li><a class="dropdown-item" href="https://github.com/hed-standard">HED on GitHub</a></li>
-                    <li><a class="dropdown-item" href="https://www.youtube.com/playlist?list=PLeII6cRFsP6L5S6icwRrJp0DHkhOHtbp-">HED on YouTube</a></li>
-                    <li><a class="dropdown-item" href="https://groups.google.com/g/hed-discussion">HED Google group</a></li>
-                    <li><a class="dropdown-item" href="https://www.hedtags.org/hed-resources/DocumentationSummary.html">Publications</a></li>
-                </ul>
-            </div>
-        </li>
-      </ul>
-      <div class="d-flex m-2" role="search">
-        <input class="form-control" id="searchInput" type="search" placeholder="Search documentation" aria-label="Search">
-        <button class="btn btn-primary" onclick="searchDoc()">Search</button>
-      </div>
-      </div>
-    </div>
-  </nav>
+  {% include navigation.html %}
 
   <!-- Front Banner -->
-  <div class="container-xxl bg-light text text-center py-2">
+  <div class="container-xxl bg-light text text-center py-2" style="padding-top: 100px !important;">
     <h1 class="text text-title">Hierarchical Event Descriptors (HED)</h1>
     <p><em>Linking brain, body, behavior and experience in experiments through metadata to enable analysis</em></p>
     <div class="row">
