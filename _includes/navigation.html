@@ -1,0 +1,56 @@
+<!-- Modern Navigation Component -->
+<nav class="navbar navbar-expand-lg navbar-modern fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img src="/assets/images/hed-logo-transparent.png" alt="HED Logo" class="img-fluid">
+    </a>
+    
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item">
+          <a class="nav-link nav-link-modern" href="https://www.hedtags.org/hed-resources/IntroductionToHed.html">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-modern" href="https://www.hedtags.org/hed-resources/index.html">Documentation</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-modern" href="https://www.hedtags.org/hed-resources/WhatsNew.html">What's New</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-link-modern dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Quick Links
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end border-0 shadow-lg">
+             <li><a class="dropdown-item" href="https://www.hedtags.org/hed-resources/">
+              <i class="bi bi-diagram-3 me-2"></i>HED Resources
+            </a></li>
+            <li><a class="dropdown-item" href="https://www.hedtags.org/hed-schema-browser">
+              <i class="bi bi-diagram-3 me-2"></i>Schema Browser
+            </a></li>
+            <li><a class="dropdown-item" href="https://hedtools.org/hed">
+              <i class="bi bi-tools me-2"></i>Online Tools
+            </a></li>
+            <li><a class="dropdown-item" href="https://github.com/hed-standard">
+              <i class="bi bi-github me-2"></i>GitHub
+            </a></li>
+            <li><a class="dropdown-item" href="https://www.youtube.com/playlist?list=PLeII6cRFsP6L5S6icwRrJp0DHkhOHtbp-">
+              <i class="bi bi-youtube me-2"></i>YouTube
+            </a></li>
+          </ul>
+        </li>
+        <li class="nav-item ms-3">
+          <div class="search-modern">
+            <input class="form-control" id="searchInput" type="search" placeholder="Search docs..." aria-label="Search">
+            <button class="btn" onclick="searchDoc()" aria-label="Search">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
