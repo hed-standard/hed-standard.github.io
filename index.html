@@ -33,23 +33,18 @@
   {% include navigation.html %}
 
   <!-- Front Banner -->
-  <div class="container-xxl bg-light text text-center py-2" style="padding-top: 100px !important;">
+  <div class="container bg-light text-center py-5" style="padding-top: 120px !important; max-width: 1000px;">
     <h1 class="text text-title">Hierarchical Event Descriptors (HED)</h1>
-    <p><em>Linking brain, body, behavior and experience in experiments through metadata to enable analysis</em></p>
-    <div class="row">
-        <div class="col-md-4">
-            <i class="fas fa-chart-bar fa-5x"></i>
-            <h3 class="text text-title">Why HED?</h3> <!--style="color:#0000CD"-->
-            <p class="mx-5">A very important question, for any neuroimaging time series data - <strong>What exactly happened during this recording?</strong><br>HED annotations record and store detailed answers to this question with the data - in a form readable by both human and machines.</p>
+    <p class="lead"><em>Linking brain, body, behavior and experience in experiments through metadata to enable analysis</em></p>
+    <div class="row align-items-center mt-5 g-4">
+        <div class="col-md-4 text-start">
+            <i class="fas fa-chart-bar fa-5x mb-4 text-primary"></i>
+            <h3 class="text text-title mb-4">Why HED?</h3>
+            <p class="fs-5">A very important question, for any neuroimaging time series data - <strong>What exactly happened during this recording?</strong></p>
+            <p class="fs-5">HED annotations record and store detailed answers to this question with the data - in a form readable by both human and machines.</p>
         </div>
-        <div class="col-md-4">
-            <i class="fas fa-globe fa-5x"></i>
-            <img src="assets/images/blue_head.png" class="img-fluid" alt="Responsive image">
-        </div>
-        <div class="col-md-4 p-lg">
-            <div class="card mx-0 px-0" style="width: 23rem;">
-                <embed type="text/html" class="card-img-top" src="https://www.hedtags.org/hed-resources/WhatsNew.html#what-s-new" width="350" height="350">
-            </div>
+        <div class="col-md-8 d-flex justify-content-center align-items-center">
+            <img src="assets/images/brain_filled.png" class="img-fluid" alt="Brain visualization" style="max-width: 90%;">
         </div>
     </div>
   </div>
@@ -121,13 +116,35 @@
 <footer class="text-center text-lg-start bg-body-tertiary text-muted">
     <!-- Section: Social media -->
     <section class="d-flex justify-content-center align-items-center p-4 border-bottom">
-        <img src="assets/images/incf_endorsed_with_spacing.png" class="img-fluid mx-2" alt="INCF Endorsed" style="width: 150px; height: auto;">
-        <img src="assets/images/1200px-BIDS_Logo.png" class="img-fluid mx-2" alt="BIDS Logo" style="width: 200px; height: auto;">
-        <img src="assets/images/nwb-logo.png" class="img-fluid mx-2" alt="NEMAR Logo" style="width: 200px; height: auto;">
-        <img src="assets/images/nemar-logo.png" class="img-fluid mx-2" alt="NEMAR Logo" style="width: 200px; height: auto;">
-        <img src="assets/images/openneuro-logo.png" class="img-fluid mx-2" alt="NEMAR Logo" style="width: 200px; height: auto;">
-        <img src="assets/images/eegnet-logo.png" class="img-fluid mx-2" alt="NEMAR Logo" style="width: 200px; height: auto;">
-        <img src="assets/images/anc-logo.png" class="img-fluid mx-2" alt="ANC Logo" style="width: 200px; height: auto;">
+        <div class="container" style="max-width: 1000px;">
+            <!-- First row: 3 logos -->
+            <div class="row justify-content-center align-items-center g-4 mb-3">
+                <div class="col-6 col-md-4 text-center">
+                    <img src="assets/images/incf_endorsed_with_spacing.png" class="img-fluid" alt="INCF Endorsed" style="max-width: 150px; height: auto;">
+                </div>
+                <div class="col-6 col-md-4 text-center">
+                    <img src="assets/images/1200px-BIDS_Logo.png" class="img-fluid" alt="BIDS Logo" style="max-width: 180px; height: auto;">
+                </div>
+                <div class="col-6 col-md-4 text-center">
+                    <img src="assets/images/nwb-logo.png" class="img-fluid" alt="NWB Logo" style="max-width: 180px; height: auto;">
+                </div>
+            </div>
+            <!-- Second row: 4 logos -->
+            <div class="row justify-content-center align-items-center g-4">
+                <div class="col-6 col-md-3 text-center">
+                    <img src="assets/images/nemar-logo.png" class="img-fluid" alt="NEMAR Logo" style="max-width: 160px; height: auto;">
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="assets/images/openneuro-logo.png" class="img-fluid" alt="OpenNeuro Logo" style="max-width: 160px; height: auto;">
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="assets/images/eegnet-logo.png" class="img-fluid" alt="EEGNet Logo" style="max-width: 160px; height: auto;">
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="assets/images/anc-logo.png" class="img-fluid" alt="ANC Logo" style="max-width: 160px; height: auto;">
+                </div>
+            </div>
+        </div>
     </section>
 </footer>
 <!-- Footer -->

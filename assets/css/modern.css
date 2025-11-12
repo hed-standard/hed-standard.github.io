@@ -84,19 +84,58 @@ h1, h2, h3, h4, h5, h6 {
   padding: var(--space-md) 0;
 }
 
+.navbar-modern .container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.navbar-modern .navbar-brand {
+  margin-right: 2rem;
+}
+
+.navbar-modern .navbar-collapse {
+  flex-grow: 0;
+}
+
 /* Custom background matching navbar gradient */
 .bg-custom {
   background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%) !important;
 }
 
+/* Hamburger menu icon - white for dark navbar */
+.navbar-modern .navbar-toggler {
+  border: 2px solid rgba(255, 255, 255, 0.5) !important;
+  padding: 0.5rem 0.75rem;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-modern .navbar-toggler:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar-modern .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-block;
+}
+
+.navbar-modern .navbar-toggler:focus {
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
+  outline: none;
+}
+
 .navbar-brand img {
-  height: 3rem;
+  height: 4rem;
   width: auto;
 }
 
 .nav-link-modern {
   color: white !important;
   font-weight: 500;
+  font-size: 1.5rem;
   padding: var(--space-sm) var(--space-md) !important;
   border-radius: var(--radius-md);
   transition: all 0.2s ease;
