@@ -1,9 +1,9 @@
 /* HED Modern Design System */
 
 :root {
-  /* Color Palette - Modern, accessible neuroscience-inspired colors */
-  --primary-blue: #2563eb;      /* Modern blue */
-  --primary-dark: #1e40af;      /* Darker blue for depth */
+  /* Color Palette - Navy blue to match HED brand */
+  --primary-blue: #000080;      /* Navy blue - matches brain graphic */
+  --primary-dark: #000066;      /* Darker navy for depth */
   --accent-cyan: #06b6d4;       /* Cyan accent */
   --accent-purple: #8b5cf6;     /* Purple for science/research */
   --success-green: #10b981;     /* Success states */
@@ -82,6 +82,11 @@ h1, h2, h3, h4, h5, h6 {
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: var(--space-md) 0;
+}
+
+/* Custom background matching navbar gradient */
+.bg-custom {
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%) !important;
 }
 
 .navbar-brand img {
