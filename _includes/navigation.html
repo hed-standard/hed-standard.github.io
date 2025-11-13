@@ -1,7 +1,7 @@
 <!-- Modern Navigation Component -->
 <nav class="navbar navbar-expand-lg navbar-modern fixed-top">
-  <div class="container" style="max-width: 1000px; display: flex; justify-content: center; align-items: center; gap: 3rem;">
-    <a class="navbar-brand" href="/" style="margin: 0;">
+  <div class="container">
+    <a class="navbar-brand" href="/">
       <img src="/assets/images/hed-logo-transparent.png" alt="HED Logo" class="img-fluid">
     </a>
     
@@ -9,17 +9,17 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     
-    <div class="collapse navbar-collapse" id="navbarNav" style="flex-grow: 0;">
-      <ul class="navbar-nav align-items-center" style="margin: 0;">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
         <li class="nav-item">
           <a class="nav-link nav-link-modern" href="https://www.hedtags.org/hed-resources/IntroductionToHed.html">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-modern" href="https://www.hedtags.org/hed-resources/WhatsNew.html">What's New</a>
+          <a class="nav-link nav-link-modern" href="https://www.hedtags.org/hed-resources/WhatsNew.html">What's new</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link nav-link-modern dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Quick Links
+            Quick links
           </a>
           <ul class="dropdown-menu dropdown-menu-end border-0 shadow-lg">
              <li><a class="dropdown-item" href="https://www.hedtags.org/hed-resources/">
@@ -40,14 +40,56 @@
           </ul>
         </li>
         <li class="nav-item ms-3">
-          <div class="search-modern">
+          <div class="search-modern" style="max-width: 600px; min-width: 400px;">
             <input class="form-control" id="searchInput" type="search" placeholder="Search docs..." aria-label="Search">
             <button class="btn" onclick="searchDoc()" aria-label="Search">
               <i class="bi bi-search"></i>
             </button>
           </div>
         </li>
+        <li class="nav-item ms-2">
+          <button class="btn btn-link nav-link-modern p-2" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme" style="font-size: 1.25rem;">
+            <i class="bi bi-sun-fill" id="themeIcon"></i>
+          </button>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-link nav-link-modern p-2" href="https://github.com/hed-standard" target="_blank" aria-label="GitHub" style="font-size: 1.25rem;">
+            <i class="bi bi-github"></i>
+          </a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
+
+<script>
+  // Theme toggle functionality
+  function toggleTheme() {
+    const html = document.documentElement;
+    const themeIcon = document.getElementById('themeIcon');
+    const currentTheme = html.getAttribute('data-bs-theme');
+    
+    if (currentTheme === 'dark') {
+      html.setAttribute('data-bs-theme', 'light');
+      themeIcon.className = 'bi bi-sun-fill';
+      localStorage.setItem('theme', 'light');
+    } else {
+      html.setAttribute('data-bs-theme', 'dark');
+      themeIcon.className = 'bi bi-moon-fill';
+      localStorage.setItem('theme', 'dark');
+    }
+  }
+  
+  // Load saved theme on page load
+  document.addEventListener('DOMContentLoaded', function() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    const themeIcon = document.getElementById('themeIcon');
+    document.documentElement.setAttribute('data-bs-theme', savedTheme);
+    
+    if (savedTheme === 'dark') {
+      themeIcon.className = 'bi bi-moon-fill';
+    } else {
+      themeIcon.className = 'bi bi-sun-fill';
+    }
+  });
+</script>
