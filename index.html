@@ -20,6 +20,9 @@
     
     <!-- Custom CSS -->
     <link href="/assets/css/modern.css" rel="stylesheet">
+
+    <!-- HED Chat Widget CSS -->
+    <link href="/assets/css/hed-chat-widget.css" rel="stylesheet">
     
     <style>
         .text-title {
@@ -124,10 +127,13 @@
             var search_endpoint = "https://www.hedtags.org/hed-resources/search.html?q=";
             var input = encodeURIComponent($("#searchInput").val());
             var search_args = "&check_keywords=yes&area=default#";
-            
+
             window.location = search_endpoint + input + search_args;
         }
     </script>
+
+    <!-- HED Chat Widget -->
+    <script src="/assets/js/hed-chat-widget.js"></script>
 </body>
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-body-tertiary text-muted">
