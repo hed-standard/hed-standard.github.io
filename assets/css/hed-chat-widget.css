@@ -104,6 +104,35 @@
   flex: 1;
 }
 
+/* Reset button */
+.hed-chat-reset {
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hed-chat-reset:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.hed-chat-reset:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.hed-chat-reset svg {
+  width: 16px;
+  height: 16px;
+}
+
 .hed-chat-title-text {
   font-weight: 600;
   color: #ffffff;
@@ -391,6 +420,76 @@
     max-width: none;
     height: 65vh;
   }
+}
+
+/* Suggested questions */
+.hed-chat-suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.hed-chat-suggestions-label {
+  font-size: 0.625rem;
+  color: #666666;
+  padding: 0 0.25rem;
+}
+
+.hed-chat-suggestion {
+  text-align: left;
+  font-size: 0.875rem;
+  padding: 0.625rem 0.875rem;
+  background: #ffffff;
+  border: 1px solid #d0d0d0;
+  border-radius: 0.75rem;
+  color: #555555;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hed-chat-suggestion:hover {
+  background: #f0f0f0;
+  border-color: #055c9d;
+  color: #055c9d;
+}
+
+/* Bullet list styling */
+.hed-chat-list {
+  margin: 0.5rem 0;
+  padding-left: 1.25rem;
+  list-style-type: disc;
+}
+
+.hed-chat-list li {
+  margin: 0.25rem 0;
+}
+
+/* Resize handle */
+.hed-chat-resize-handle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  cursor: nw-resize;
+  z-index: 10;
+}
+
+.hed-chat-resize-handle::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 8px;
+  height: 8px;
+  border-left: 2px solid #aaaaaa;
+  border-top: 2px solid #aaaaaa;
+  border-radius: 2px 0 0 0;
+}
+
+.hed-chat-resize-handle:hover::before {
+  border-color: #055c9d;
 }
 
 /* Scrollbar styling */
