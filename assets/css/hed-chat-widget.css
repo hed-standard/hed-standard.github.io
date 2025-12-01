@@ -413,12 +413,36 @@
   }
 
   .hed-chat-window {
-    bottom: 4.5rem;
+    position: fixed;
+    bottom: 4rem;
     right: 0.5rem;
     left: 0.5rem;
+    top: auto;
     width: auto;
     max-width: none;
-    height: 65vh;
+    height: 50vh;
+    max-height: 50vh;
+  }
+
+  .hed-chat-header {
+    padding: 0.75rem;
+  }
+
+  .hed-chat-messages {
+    padding: 0.75rem;
+  }
+
+  .hed-chat-input-area {
+    padding: 0.75rem;
+  }
+
+  .hed-chat-table {
+    font-size: 0.65rem;
+  }
+
+  .hed-chat-table th,
+  .hed-chat-table td {
+    padding: 0.25rem 0.375rem;
   }
 }
 
