@@ -470,6 +470,13 @@
   margin: 0.25rem 0;
 }
 
+/* Horizontal rule */
+.hed-chat-hr {
+  border: none;
+  border-top: 1px solid #d0d0d0;
+  margin: 0.75rem 0;
+}
+
 /* Header styling */
 .hed-chat-h1, .hed-chat-h2, .hed-chat-h3,
 .hed-chat-h4, .hed-chat-h5, .hed-chat-h6 {
