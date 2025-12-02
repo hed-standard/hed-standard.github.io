@@ -586,7 +586,7 @@
   border-radius: 0.5rem;
   overflow-x: auto;
   overflow-y: hidden;
-  margin: 0.5rem 0;
+  margin: 0.5rem 0 1rem 0;
   font-family: ui-monospace, 'SF Mono', Monaco, 'Cascadia Code', monospace;
   font-size: 0.8rem;
   line-height: 1.4;
