@@ -181,7 +181,6 @@
   flex-direction: column;
   max-width: 85%;
   min-width: 0;
-  overflow: hidden;
 }
 
 .hed-chat-message.user {
@@ -210,7 +209,7 @@
   word-break: break-word;
   min-width: 0;
   max-width: 100%;
-  overflow-x: hidden;
+  overflow: visible;
 }
 
 .hed-chat-message.user .hed-chat-message-content {
