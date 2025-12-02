@@ -426,12 +426,25 @@
     position: fixed;
     bottom: 4rem;
     right: 0.5rem;
-    left: 0.5rem;
+    left: auto;
     top: auto;
-    width: auto;
-    max-width: none;
-    height: 50vh;
+    width: 300px;
+    max-width: calc(100vw - 1rem);
+    min-width: 260px;
+    height: 45vh;
     max-height: 50vh;
+  }
+
+  /* Make resize handle more visible on mobile */
+  .hed-chat-resize-handle {
+    width: 20px;
+    height: 20px;
+  }
+
+  .hed-chat-resize-handle::before {
+    width: 10px;
+    height: 10px;
+    border-width: 3px;
   }
 
   .hed-chat-header {
