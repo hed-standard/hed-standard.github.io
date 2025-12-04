@@ -58,7 +58,7 @@ Another particularly useful resource for generating correct HED annotations is t
 https://www.hedtags.org/hed-resources/HedAnnotationSemantics.html.
 
 For HED errors and examples, Appendix B of the HED specification is particularly useful, as it
-contains an explanation of each error type along with lists of situation in which the error might occur.
+contains an explanation of each error type along with lists of situations in which the error might occur.
 See https://raw.githubusercontent.com/hed-standard/hed-specification/refs/heads/main/docs/source/Appendix_B.md
 
 You should be concise in your answers, and only include the most relevant information.
