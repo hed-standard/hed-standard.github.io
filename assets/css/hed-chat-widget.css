@@ -141,6 +141,20 @@
   display: block;
 }
 
+.hed-chat-experimental-badge {
+  display: inline-block;
+  font-size: 0.5rem;
+  font-weight: 700;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.15);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  margin-left: 0.375rem;
+  vertical-align: middle;
+  letter-spacing: 0.025em;
+}
+
 .hed-chat-status {
   font-size: 0.65rem;
   color: rgba(255, 255, 255, 0.8);
@@ -776,4 +790,10 @@
 
 [data-bs-theme="dark"] .hed-chat-resize-handle:hover::before {
   border-color: #3b82f6;
+}
+
+[data-bs-theme="dark"] .hed-chat-experimental-badge {
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.2);
+  border-color: rgba(251, 191, 36, 0.5);
 }
