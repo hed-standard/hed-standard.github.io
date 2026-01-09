@@ -14,8 +14,7 @@
   <!-- Custom CSS -->
   <link href="/assets/css/modern.css" rel="stylesheet">
 
-  <!-- HED Chat Widget CSS -->
-  <link href="/assets/css/hed-chat-widget.css" rel="stylesheet">
+  <!-- HED Chat Widget (OSA) - styles are embedded in the widget -->
 
   <title>{{ page.title | default: "HED" }}</title>
 </head>
@@ -102,8 +101,28 @@
     }
   </script>
 
-  <!-- HED Chat Widget -->
+  <!-- HED Chat Widget (powered by OSA) -->
   <script src="/assets/js/hed-chat-widget.js"></script>
+  <script>
+    // Configure the widget for HED
+    if (window.OSAChatWidget) {
+      OSAChatWidget.setConfig({
+        title: 'HED Assistant',
+        subtitle: 'Hierarchical Event Descriptors',
+        initialMessage: 'Hi! I\'m the HED Assistant. I can help with HED (Hierarchical Event Descriptors), annotation, validation, and related tools. What would you like to know?',
+        placeholder: 'Ask about HED...',
+        suggestedQuestions: [
+          'What is HED and how is it used?',
+          'How do I annotate an event with HED tags?',
+          'What tools are available for working with HED?',
+          'Explain this HED validation error.'
+        ],
+        showExperimentalBadge: true,
+        repoUrl: 'https://github.com/hed-standard',
+        repoName: 'HED Working Group'
+      });
+    }
+  </script>
 </body>
 </html>
 <!-- Footer-->
