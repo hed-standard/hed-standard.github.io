@@ -108,7 +108,6 @@
     if (window.OSAChatWidget) {
       OSAChatWidget.setConfig({
         title: 'HED Assistant',
-        subtitle: 'Hierarchical Event Descriptors',
         initialMessage: 'Hi! I\'m the HED Assistant. I can help with HED (Hierarchical Event Descriptors), annotation, validation, and related tools. What would you like to know?',
         placeholder: 'Ask about HED...',
         suggestedQuestions: [
@@ -121,6 +120,8 @@
         repoUrl: 'https://github.com/hed-standard',
         repoName: 'HED Working Group'
       });
+    } else {
+      console.warn('HED Chat Widget: OSAChatWidget not available. Widget may have failed to load.');
     }
   </script>
 </body>
