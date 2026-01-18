@@ -20,7 +20,7 @@
       ? 'https://osa-worker-dev.shirazi-10f.workers.dev'
       : 'https://osa-worker.shirazi-10f.workers.dev',
     storageKey: 'osa-chat-history',
-    // Turnstile: disabled for now (not set up yet)
+    // Turnstile: disabled by default (set turnstileSiteKey to enable CAPTCHA verification)
     turnstileSiteKey: null,
     // Customizable branding
     title: 'HED Assistant',
@@ -726,17 +726,18 @@
     try {
       const parsed = new URL(url, window.location.origin);
       return parsed.protocol === 'http:' || parsed.protocol === 'https:';
-    } catch {
+    } catch (e) {
+      console.warn('Invalid URL rejected:', url, e.message);
       return false;
     }
   }
 
   // Copy text to clipboard
   async function copyToClipboard(text, button) {
+    const originalHtml = button.innerHTML;
     try {
       await navigator.clipboard.writeText(text);
       // Show success feedback
-      const originalHtml = button.innerHTML;
       button.innerHTML = ICONS.check;
       button.classList.add('copied');
       setTimeout(() => {
@@ -745,6 +746,13 @@
       }, 2000);
     } catch (e) {
       console.error('Failed to copy:', e);
+      // Show failure feedback
+      button.textContent = '✗';
+      button.style.color = '#dc2626';
+      setTimeout(() => {
+        button.innerHTML = originalHtml;
+        button.style.color = '';
+      }, 2000);
     }
   }
 
@@ -965,7 +973,7 @@
       const saved = localStorage.getItem(CONFIG.storageKey);
       if (saved) {
         const parsed = JSON.parse(saved);
-        // Validate structure to prevent injection attacks
+        // Validate message structure and filter malformed entries
         if (Array.isArray(parsed)) {
           messages = parsed.filter(isValidMessage);
           if (messages.length !== parsed.length) {
@@ -1040,6 +1048,18 @@
     }
   }
 
+  // Fetch with timeout (compatible with older browsers)
+  async function fetchWithTimeout(url, options = {}, timeout = 5000) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+    try {
+      return await fetch(url, { ...options, signal: controller.signal });
+    } finally {
+      clearTimeout(timeoutId);
+    }
+  }
+
   // Check backend health status
   async function checkBackendStatus() {
     const statusDot = document.querySelector('.osa-status-dot');
@@ -1048,10 +1068,9 @@
     if (!statusDot || !statusText) return;
 
     try {
-      const response = await fetch(`${CONFIG.apiEndpoint}/health`, {
-        method: 'GET',
-        signal: AbortSignal.timeout(5000)
-      });
+      const response = await fetchWithTimeout(`${CONFIG.apiEndpoint}/health`, {
+        method: 'GET'
+      }, 5000);
 
       if (response.ok) {
         backendOnline = true;
@@ -1071,7 +1090,8 @@
             updateFooterVersion();
           }
         } catch (jsonErr) {
-          // Ignore JSON parse errors
+          console.warn('Backend health check: Failed to parse version info from response', jsonErr);
+          // Continue - version info is optional, but we should know it failed
         }
       } else {
         backendOnline = false;
@@ -1383,7 +1403,8 @@
           } else if (error && typeof error.error === 'string') {
             errorMessage = error.error.substring(0, 500);
           }
-        } catch {
+        } catch (parseErr) {
+          console.warn('Failed to parse error response body:', parseErr);
           // Response wasn't JSON - use status-based message
           if (response.status >= 500) {
             errorMessage = 'The service is temporarily unavailable. Please try again later.';
@@ -1407,7 +1428,17 @@
 
     } catch (error) {
       console.error('Chat error:', error);
-      showError(container, error.message || 'Failed to get response');
+
+      // Check if this is an expected error type
+      if (error.name === 'TypeError' || error.name === 'ReferenceError') {
+        // Programming error - this should not happen
+        console.error('CRITICAL: Programming error in sendMessage:', error.stack);
+        showError(container, 'An unexpected error occurred. Please refresh the page and try again.');
+      } else {
+        // Network or API error - expected
+        showError(container, error.message || 'Failed to get response');
+      }
+
       // Remove the user message on error and sync localStorage
       messages.pop();
       saveHistory();
@@ -1494,8 +1525,13 @@
 
     // Reuse existing popup if still open
     if (chatPopup && !chatPopup.closed) {
-      chatPopup.focus();
-      return;
+      try {
+        chatPopup.focus();
+        return;
+      } catch (e) {
+        // Popup was closed between check and focus
+        chatPopup = null;
+      }
     }
 
     // Prevent double-clicks during async operation
@@ -1521,6 +1557,14 @@
           console.warn(`OSA Chat Widget: Found ${scripts.length} matching script tags, using the last one.`);
         }
         scriptUrl = scripts[scripts.length - 1].src;
+      }
+
+      // Validate script URL origin for security
+      const currentOrigin = window.location.origin;
+      if (!scriptUrl.startsWith(currentOrigin) && !scriptUrl.startsWith('/')) {
+        console.error('Widget script URL is from unexpected origin:', scriptUrl);
+        alert('Security error: Cannot load widget from external source.');
+        return;
       }
 
       // Fetch the script content
@@ -1656,7 +1700,22 @@
 
     // Verify all required elements exist
     if (!chatButton || !closeBtn || !resetBtn || !input || !sendBtn || !suggestionsList) {
-      console.error('OSA Chat Widget: Required DOM elements not found. Widget may not function correctly.');
+      console.error('OSA Chat Widget: Required DOM elements not found. Widget cannot initialize.', {
+        chatButton: !!chatButton,
+        closeBtn: !!closeBtn,
+        resetBtn: !!resetBtn,
+        input: !!input,
+        sendBtn: !!sendBtn,
+        suggestionsList: !!suggestionsList
+      });
+
+      // Show error in the UI
+      const errorDiv = document.createElement('div');
+      errorDiv.style.cssText = 'position: fixed; bottom: 20px; right: 20px; background: #dc2626; color: white; padding: 16px; border-radius: 8px; max-width: 300px; z-index: 10000; font-family: sans-serif; font-size: 14px;';
+      errorDiv.textContent = 'Chat widget failed to initialize. Please refresh the page.';
+      document.body.appendChild(errorDiv);
+
+      return; // Don't continue initialization
     }
 
     // Update reset button state
