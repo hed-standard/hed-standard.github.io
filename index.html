@@ -147,8 +147,18 @@
         });
     </script>
 
-    <!-- HED Chat Widget -->
-    <script src="/assets/js/hed-chat-widget.js"></script>
+    <!-- OSA Chat Widget (HED Assistant) -->
+    <script src="https://osa-demo.pages.dev/osa-chat-widget.js"
+            crossorigin="anonymous"></script>
+    <script>
+      if (window.OSAChatWidget) {
+        OSAChatWidget.setConfig({
+          communityId: 'hed',
+          allowPageContext: true,
+          pageContextDefaultEnabled: true
+        });
+      }
+    </script>
 </body>
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-body-tertiary text-muted">
