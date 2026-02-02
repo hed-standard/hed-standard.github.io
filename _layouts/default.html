@@ -84,21 +84,29 @@
   <script>
     function searchDoc() {
       const searchEndpoint = "https://www.hedtags.org/hed-resources/search.html?q=";
-      const input = encodeURIComponent(document.getElementById("searchInput").value);
+      const searchInput = document.getElementById("searchInput");
+      if (!searchInput) {
+        console.error('Search input not found');
+        return;
+      }
+      const input = encodeURIComponent(searchInput.value);
       const searchArgs = "&check_keywords=yes&area=default#";
       
       window.location = searchEndpoint + input + searchArgs;
     }
     
-    // Search on Enter key
-    const searchInput = document.getElementById("searchInput");
-    if (searchInput) {
-      searchInput.addEventListener("keypress", function(e) {
-        if (e.key === "Enter") {
-          searchDoc();
-        }
-      });
-    }
+    // Search on Enter key - wait for DOM to be ready
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.getElementById("searchInput");
+      if (searchInput) {
+        searchInput.addEventListener("keypress", function(e) {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            searchDoc();
+          }
+        });
+      }
+    });
   </script>
 
   <!-- HED Chat Widget (powered by OSA) -->

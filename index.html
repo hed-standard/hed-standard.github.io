@@ -125,11 +125,26 @@
     <script>
         function searchDoc() {
             var search_endpoint = "https://www.hedtags.org/hed-resources/search.html?q=";
-            var input = encodeURIComponent($("#searchInput").val());
+            var searchInput = document.getElementById("searchInput");
+            if (!searchInput) {
+                console.error('Search input not found');
+                return;
+            }
+            var input = encodeURIComponent(searchInput.value);
             var search_args = "&check_keywords=yes&area=default#";
 
             window.location = search_endpoint + input + search_args;
         }
+        
+        // Search on Enter key
+        $(document).ready(function() {
+            $("#searchInput").on("keypress", function(e) {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    searchDoc();
+                }
+            });
+        });
     </script>
 
     <!-- HED Chat Widget -->
