@@ -124,12 +124,30 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script>
         function searchDoc() {
-            var search_endpoint = "https://www.hedtags.org/hed-resources/search.html?q=";
-            var input = encodeURIComponent($("#searchInput").val());
-            var search_args = "&check_keywords=yes&area=default#";
+            const searchEndpoint = "https://www.hedtags.org/hed-resources/search.html?q=";
+            const searchInput = document.getElementById("searchInput");
+            if (!searchInput) {
+                console.error('Search input not found');
+                return;
+            }
+            const input = encodeURIComponent(searchInput.value);
+            const searchArgs = "&check_keywords=yes&area=default#";
 
-            window.location = search_endpoint + input + search_args;
+            window.location = searchEndpoint + input + searchArgs;
         }
+        
+        // Search on Enter key - wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById("searchInput");
+            if (searchInput) {
+                searchInput.addEventListener("keypress", function(e) {
+                    if (e.key === "Enter") {
+                        e.preventDefault();
+                        searchDoc();
+                    }
+                });
+            }
+        });
     </script>
 
     <!-- OSA Chat Widget (HED Assistant) -->

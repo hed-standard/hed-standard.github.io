@@ -1,5 +1,7 @@
 status/
+.status/
 .github/copilot-instructions.md
+.DS_Store
 
 _site
 vendor/
