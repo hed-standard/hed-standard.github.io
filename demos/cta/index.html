@@ -25,7 +25,7 @@
 </style>
 <body>
 <div align="center">Values in (parenthesis) indicate the number of tags at each level.<div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" integrity="sha384-EU1dURc8oJ/Ec2n9odZegm1iva+lUs6tS2kIQyRWJc5KjzRFvTBuix+qvrbLSQYj" crossorigin="anonymous"></script>
 <script>
 
 
@@ -84,7 +84,7 @@ function update(source) {
   // Normalize for fixed-depth.
   nodes.forEach(function(d) { d.y = d.depth * 180; });
 
-  // Update the nodes…
+  // Update the nodesï¿½
   var node = svg.selectAll("g.node")
       .data(nodes, function(d) { return d.id || (d.id = ++i); });
 
@@ -129,7 +129,7 @@ function update(source) {
   nodeExit.select("text")
       .style("fill-opacity", 1e-6);
 
-  // Update the links…
+  // Update the linksï¿½
   var link = svg.selectAll("path.link")
       .data(links, function(d) { return d.target.id; });
 
